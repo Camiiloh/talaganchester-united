@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancha de Fútbol - Talaganchester United</title>
+    <link rel="stylesheet" href="cancha.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>⚽ Cancha de Fútbol</h1>
+        <p>Talaganchester United - Partido Jueves 10/07</p>
+        <nav class="page-navigation">
+          <a href="index.html" class="nav-link">📊 Lista Jugadores</a>
+          <a href="cancha.html" class="nav-link active">⚽ Cancha Simple</a>
+          <a href="cancha-didactica.html" class="nav-link">🎮 Cancha Interactiva</a>
+        </nav>
+      </header>
+      
+      <main>
+        <div class="field-container">
+          <div class="soccer-field">
+            <!-- Campo de fútbol -->
+            <div class="field-line center-line"></div>
+            <div class="field-line center-circle"></div>
+            <div class="field-line center-spot"></div>
+            
+            <!-- Área izquierda (Equipo Negro) -->
+            <div class="penalty-area left-penalty">
+              <div class="goal-area left-goal-area"></div>
+              <div class="penalty-spot left-penalty-spot"></div>
+            </div>
+            <div class="goal left-goal"></div>
+            
+            <!-- Área derecha (Equipo Rojo) -->
+            <div class="penalty-area right-penalty">
+              <div class="goal-area right-goal-area"></div>
+              <div class="penalty-spot right-penalty-spot"></div>
+            </div>
+            <div class="goal right-goal"></div>
+            
+            <!-- Jugadores Equipo Negro - Lado Izquierdo -->
+            <div class="player black-team goalkeeper has-photo" data-position="arquero" style="left: 8%; top: 50%;">
+              <img src="Luis.png" alt="Luis" class="player-photo">
+            </div>
+            
+            <div class="player black-team defender has-photo" data-position="defensa" style="left: 20%; top: 35%;">
+              <img src="Riky.png" alt="Riky" class="player-photo">
+            </div>
+            
+            <div class="player black-team defender has-photo" data-position="defensa" style="left: 20%; top: 65%;">
+              <img src="Marco.png" alt="Marco" class="player-photo">
+            </div>
+            
+            <div class="player black-team midfielder has-photo" data-position="mediocampo" style="left: 35%; top: 50%;">
+              <img src="Erik.png" alt="Erik" class="player-photo">
+            </div>
+            
+            <div class="player black-team forward has-photo" data-position="delantero" style="left: 45%; top: 35%;">
+              <img src="Pablo.png" alt="Pablo" class="player-photo">
+            </div>
+            
+            <div class="player black-team forward has-photo" data-position="delantero" style="left: 45%; top: 65%;">
+              <img src="Camilo.png" alt="Camilo" class="player-photo">
+            </div>
+            
+            <!-- Jugadores Equipo Rojo - Lado Derecho -->
+            <div class="player red-team goalkeeper has-photo" data-position="arquero" style="right: 8%; top: 50%;">
+              <img src="Maxi.png" alt="Maxi" class="player-photo">
+            </div>
+            
+            <div class="player red-team defender has-photo" data-position="defensa" style="right: 20%; top: 35%;">
+              <img src="Enrique.png" alt="Enrique" class="player-photo">
+            </div>
+            
+            <div class="player red-team defender has-photo" data-position="defensa" style="right: 20%; top: 65%;">
+              <img src="Pancho.png" alt="Pancho" class="player-photo">
+            </div>
+            
+            <div class="player red-team midfielder has-photo" data-position="mediocampo" style="right: 27%; top: 50%;">
+              <img src="Francisco H.png" alt="Francisco H" class="player-photo">
+            </div>
+            
+            <div class="player red-team forward has-photo" data-position="delantero" style="right: 35%; top: 35%;">
+              <img src="Ivan.png" alt="Iván" class="player-photo">
+            </div>
+            
+            <div class="player red-team forward has-photo" data-position="delantero" style="right: 35%; top: 65%;">
+              <img src="Diego.png" alt="Diego" class="player-photo">
+            </div>
+          </div>
+        </div>
+        
+        <div class="teams-info">
+          <div class="team-info black">
+            <h3>⚫ Equipo Negro</h3>
+            <div class="formation">Formación: 1-2-1-2</div>
+            <ul>
+              <li><strong>Luis</strong> - Arquero</li>
+              <li><strong>Riky</strong> - Defensa</li>
+              <li><strong>Marco</strong> - Defensa</li>
+              <li><strong>Erik</strong> - Mediocampo</li>
+              <li><strong>Pablo</strong> - Delantero</li>
+              <li><strong>Camilo</strong> - Delantero</li>
+            </ul>
+          </div>
+          
+          <div class="team-info red">
+            <h3>🔴 Equipo Rojo</h3>
+            <div class="formation">Formación: 1-2-1-2</div>
+            <ul>
+              <li><strong>Maxi</strong> - Arquero</li>
+              <li><strong>Enrique</strong> - Defensa</li>
+              <li><strong>Pancho</strong> - Defensa</li>
+              <li><strong>Francisco H</strong> - Mediocampo</li>
+              <li><strong>Iván</strong> - Delantero</li>
+              <li><strong>Diego</strong> - Delantero</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

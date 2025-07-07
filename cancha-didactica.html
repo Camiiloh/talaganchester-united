@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancha Interactiva - Talaganchester United</title>
+    <link rel="stylesheet" href="cancha-didactica.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>⚽ Cancha Interactiva de Fútbol</h1>
+        <p>Talaganchester United - Partido Jueves 10/07</p>
+        <nav class="page-navigation">
+          <a href="index.html" class="nav-link">📊 Lista Jugadores</a>
+          <a href="cancha.html" class="nav-link">⚽ Cancha Simple</a>
+          <a href="cancha-didactica.html" class="nav-link active">🎮 Cancha Interactiva</a>
+        </nav>
+        <div class="controls">
+          <button id="showInfo" class="btn-control">📊 Mostrar Info</button>
+          <button id="showPositions" class="btn-control">📍 Posiciones</button>
+          <button id="showStats" class="btn-control">📈 Estadísticas</button>
+          <button id="animateFormation" class="btn-control">⚡ Animar Formación</button>
+        </div>
+      </header>
+      
+      <main>
+        <div class="field-container">
+          <div class="soccer-field">
+            <!-- Campo de fútbol con elementos más didácticos -->
+            <div class="field-line center-line"></div>
+            <div class="field-line center-circle"></div>
+            <div class="field-line center-spot"></div>
+            
+            <!-- Zonas del campo con etiquetas -->
+            <div class="field-zone defensive-zone left" data-tooltip="Zona Defensiva - Equipo Negro">
+              <span class="zone-label">ZONA DEFENSIVA</span>
+            </div>
+            <div class="field-zone midfield-zone" data-tooltip="Zona de Mediocampo">
+              <span class="zone-label">MEDIOCAMPO</span>
+            </div>
+            <div class="field-zone offensive-zone right" data-tooltip="Zona Ofensiva - Equipo Rojo">
+              <span class="zone-label">ZONA OFENSIVA</span>
+            </div>
+            
+            <!-- Área izquierda (Equipo Negro) -->
+            <div class="penalty-area left-penalty">
+              <div class="goal-area left-goal-area"></div>
+              <div class="penalty-spot left-penalty-spot"></div>
+            </div>
+            <div class="goal left-goal"></div>
+            
+            <!-- Área derecha (Equipo Rojo) -->
+            <div class="penalty-area right-penalty">
+              <div class="goal-area right-goal-area"></div>
+              <div class="penalty-spot right-penalty-spot"></div>
+            </div>
+            <div class="goal right-goal"></div>
+            
+            <!-- Jugadores Equipo Negro - Con información interactiva -->
+            <div class="player black-team goalkeeper has-photo interactive" 
+                 data-name="Luis" 
+                 data-position="Arquero" 
+                 data-role="Protege la portería del equipo negro"
+                 data-skills="Reflejos, Agilidad, Comunicación"
+                 style="left: 8%; top: 50%;">
+              <img src="Luis.png" alt="Luis" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Luis - Arquero</strong>
+                <p>🥅 Guardián de la portería</p>
+                <p>🛡️ Última línea defensiva</p>
+              </div>
+            </div>
+            
+            <div class="player black-team defender has-photo interactive" 
+                 data-name="Riky" 
+                 data-position="Defensa Central"
+                 data-role="Defiende y marca a los delanteros rivales"
+                 data-skills="Marcaje, Despeje, Fuerza"
+                 style="left: 20%; top: 35%;">
+              <img src="Riky.png" alt="Riky" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Riky - Defensa</strong>
+                <p>🛡️ Bloquea ataques enemigos</p>
+                <p>⚡ Inicia jugadas desde atrás</p>
+              </div>
+            </div>
+            
+            <div class="player black-team defender has-photo interactive" 
+                 data-name="Marco" 
+                 data-position="Defensa Central"
+                 data-role="Protege el área y apoya en córners"
+                 data-skills="Juego aéreo, Marcaje, Liderazgo"
+                 style="left: 20%; top: 65%;">
+              <img src="Marco.png" alt="Marco" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Marco - Defensa</strong>
+                <p>🏰 Fortaleza defensiva</p>
+                <p>📢 Organiza la defensa</p>
+              </div>
+            </div>
+            
+            <div class="player black-team midfielder has-photo interactive" 
+                 data-name="Erik" 
+                 data-position="Mediocampo Central"
+                 data-role="Conecta defensa con ataque, distribuye el juego"
+                 data-skills="Pase, Visión, Control del balón"
+                 style="left: 35%; top: 50%;">
+              <img src="Erik.png" alt="Erik" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Erik - Mediocampo</strong>
+                <p>🎯 Cerebro del equipo</p>
+                <p>🔄 Distribuye el juego</p>
+              </div>
+            </div>
+            
+            <div class="player black-team forward has-photo interactive" 
+                 data-name="Pablo" 
+                 data-position="Delantero"
+                 data-role="Busca el gol y presiona la defensa rival"
+                 data-skills="Finalización, Velocidad, Regate"
+                 style="left: 45%; top: 35%;">
+              <img src="Pablo.png" alt="Pablo" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Pablo - Delantero</strong>
+                <p>⚽ Cazador de goles</p>
+                <p>🏃‍♂️ Velocidad y precisión</p>
+              </div>
+            </div>
+            
+            <div class="player black-team forward has-photo interactive" 
+                 data-name="Camilo" 
+                 data-position="Delantero"
+                 data-role="Ataca la portería y crea oportunidades"
+                 data-skills="Remate, Creatividad, Posicionamiento"
+                 style="left: 45%; top: 65%;">
+              <img src="Camilo.png" alt="Camilo" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Camilo - Delantero</strong>
+                <p>🎯 Finalizador letal</p>
+                <p>💡 Crea jugadas de gol</p>
+              </div>
+            </div>
+            
+            <!-- Jugadores Equipo Rojo - Con información interactiva -->
+            <div class="player red-team goalkeeper has-photo interactive" 
+                 data-name="Maxi" 
+                 data-position="Arquero"
+                 data-role="Protege la portería del equipo rojo"
+                 data-skills="Reflejos, Coordinación, Salida"
+                 style="right: 8%; top: 50%;">
+              <img src="Maxi.png" alt="Maxi" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Maxi - Arquero</strong>
+                <p>🥅 Guardián vigilante</p>
+                <p>🤲 Manos seguras</p>
+              </div>
+            </div>
+            
+            <div class="player red-team defender has-photo interactive" 
+                 data-name="Enrique" 
+                 data-position="Defensa"
+                 data-role="Marca y despeja balones peligrosos"
+                 data-skills="Anticipación, Entrada, Resistencia"
+                 style="right: 20%; top: 35%;">
+              <img src="Enrique.png" alt="Enrique" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Enrique - Defensa</strong>
+                <p>⚔️ Guerrero defensivo</p>
+                <p>🚫 Corta ataques rivales</p>
+              </div>
+            </div>
+            
+            <div class="player red-team defender has-photo interactive" 
+                 data-name="Pancho" 
+                 data-position="Defensa"
+                 data-role="Solidez defensiva y apoyo en balones aéreos"
+                 data-skills="Cabeceo, Marca, Concentración"
+                 style="right: 20%; top: 65%;">
+              <img src="Pancho.png" alt="Pancho" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Pancho - Defensa</strong>
+                <p>🏔️ Muro defensivo</p>
+                <p>🦅 Dominio aéreo</p>
+              </div>
+            </div>
+            
+            <div class="player red-team midfielder has-photo interactive" 
+                 data-name="Francisco H" 
+                 data-position="Mediocampo"
+                 data-role="Equilibra el juego entre defensa y ataque"
+                 data-skills="Pase largo, Recuperación, Táctica"
+                 style="right: 27%; top: 50%;">
+              <img src="Francisco H.png" alt="Francisco H" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Francisco H - Mediocampo</strong>
+                <p>⚖️ Equilibrio del equipo</p>
+                <p>🎮 Estratega de campo</p>
+              </div>
+            </div>
+            
+            <div class="player red-team forward has-photo interactive" 
+                 data-name="Iván" 
+                 data-position="Delantero"
+                 data-role="Ataca y busca espacios para anotar"
+                 data-skills="Definición, Movimiento, Presión"
+                 style="right: 35%; top: 35%;">
+              <img src="Ivan.png" alt="Iván" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Iván - Delantero</strong>
+                <p>🏹 Arquero de goles</p>
+                <p>👻 Aparece donde menos te esperas</p>
+              </div>
+            </div>
+            
+            <div class="player red-team forward has-photo interactive" 
+                 data-name="Diego" 
+                 data-position="Delantero"
+                 data-role="Finaliza jugadas y genera peligro"
+                 data-skills="Regate, Velocidad, Inteligencia"
+                 style="right: 35%; top: 65%;">
+              <img src="Diego.png" alt="Diego" class="player-photo">
+              <div class="player-tooltip">
+                <strong>Diego - Delantero</strong>
+                <p>⚡ Rayo en ataque</p>
+                <p>🧠 Jugador inteligente</p>
+              </div>
+            </div>
+            
+            <!-- Líneas de pase dinámicas (se mostrarán con JavaScript) -->
+            <svg class="pass-lines" width="100%" height="100%">
+              <!-- Las líneas se generarán dinámicamente -->
+            </svg>
+          </div>
+        </div>
+        
+        <div class="interactive-info">
+          <div class="team-comparison">
+            <div class="team-stats black">
+              <h3>⚫ Equipo Negro</h3>
+              <div class="formation-display">
+                <span class="formation-number">1-2-1-2</span>
+                <span class="formation-name">Formación Balanceada</span>
+              </div>
+              <div class="team-strengths">
+                <h4>💪 Fortalezas:</h4>
+                <ul>
+                  <li>🛡️ Defensa sólida</li>
+                  <li>🎯 Precisión en el pase</li>
+                  <li>⚡ Contraataques rápidos</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="vs-indicator">
+              <div class="vs-circle">VS</div>
+              <div class="match-info">
+                <p>🏆 Partido Amistoso</p>
+                <p>⏰ Jueves 10/07</p>
+                <p>🌟 ¡Que gane el mejor!</p>
+              </div>
+            </div>
+            
+            <div class="team-stats red">
+              <h3>🔴 Equipo Rojo</h3>
+              <div class="formation-display">
+                <span class="formation-number">1-2-1-2</span>
+                <span class="formation-name">Formación Equilibrada</span>
+              </div>
+              <div class="team-strengths">
+                <h4>💪 Fortalezas:</h4>
+                <ul>
+                  <li>🏃‍♂️ Velocidad en ataque</li>
+                  <li>🎨 Creatividad</li>
+                  <li>🔥 Intensidad alta</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="educational-content">
+            <div class="soccer-tips">
+              <h3>⚽ ¿Sabías que...?</h3>
+              <div class="tip-carousel">
+                <div class="tip active">
+                  <p>🥅 El arquero es el único jugador que puede usar las manos, pero solo dentro de su área</p>
+                </div>
+                <div class="tip">
+                  <p>🛡️ Los defensas deben mantener la línea para evitar dejar en posición legal a los atacantes rivales</p>
+                </div>
+                <div class="tip">
+                  <p>🎯 Los mediocampistas son los "cerebros" del equipo - conectan defensa con ataque</p>
+                </div>
+                <div class="tip">
+                  <p>⚡ Los delanteros deben moverse constantemente para encontrar espacios y oportunidades de gol</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    
+    <script src="cancha-didactica.js"></script>
+  </body>
+</html>
