@@ -107,7 +107,7 @@ fulito/
 1. Crear repositorio en GitHub
 2. Subir todos los archivos
 3. Activar GitHub Pages en Settings
-4. Acceder en: `https://usuario.github.io/fulito`
+4. Acceder en: `https://camiiloh.github.io/talaganchester-united`
 
 ### Opción 2: Netlify
 1. Ir a [netlify.com](https://netlify.com)
