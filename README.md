@@ -143,7 +143,7 @@ git add .
 git commit -m "Initial commit - Talaganchester United app"
 
 # Add remote repository (replace with your GitHub repo URL)
-git remote add origin https://github.com/YOUR_USERNAME/talaganchester-united.git
+git remote add origin https://github.com/Camiiloh/talaganchester-united.git
 
 # Push to GitHub
 git branch -M main
