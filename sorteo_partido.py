@@ -38,16 +38,16 @@ fecha_partido = f"{dia_semana} {dia:02d} de {mes_nombre}"
 confirmados = [
     "Camilo",
     "Cristobal",
-    "FranciscoH",
+    "Francisco",
     "Ivan",
     "Pancho",
     "Maxi Vargas",
-    "pablodona",
+    "Pablo",
     "Enrique",
     "Diego",
     "Marco",
     "Juan R",
-    "Carlos P."
+    "Carlos"
 ]
 
 # Filtrar jugadores confirmados con coincidencia parcial (case-insensitive, ignora espacios)
@@ -155,7 +155,8 @@ def actualizar_cancha_html():
                 base = nombre.split()[0].split('(')[0].strip()
                 img = f'fotos/{base}.png'
             return f'<li><img src="{img}" alt="{nombre}" style="width:28px;height:28px;vertical-align:middle;border-radius:6px;margin-right:6px;box-shadow:0 2px 8px #2196f355;"> <strong>{nombre}</strong></li>'
-        return '\n'.join([jugador_li(j) for j in equipo])
+        # Mostrar solo los primeros 6 jugadores
+        return '\n'.join([jugador_li(j) for j in equipo[:6]])
 
     cancha_html = re.sub(r'(<div class="team-info black">[\s\S]*?<ul>)[\s\S]*?(</ul>)',
         r'\1\n' + jugadores_li(team2) + r'\2', cancha_html)
