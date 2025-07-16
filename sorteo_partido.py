@@ -47,7 +47,7 @@ confirmados = [
     "Diego",
     "Marco",
     "Juan R",
-    "Carlos"
+    "Carlos P"
 ]
 
 # Filtrar jugadores confirmados con coincidencia parcial (case-insensitive, ignora espacios)
@@ -188,48 +188,17 @@ def actualizar_cancha_html():
         return "delantero"  # fallback
 
     def get_img(nombre):
-        # Usa el primer nombre antes de espacio o paréntesis para la imagen
-        # Si el nombre es 'Iván', usar 'ivan.png' (minúsculas)
-        # Si el nombre en confirmados es 'Ivan' o 'FranciscoH', usar la imagen exacta
-        if nombre.strip() in ['Ivan', 'Iván']:
-            return 'fotos/Ivan.png'
-        if nombre.strip() in ['FranciscoH', 'Francisco H']:
-            return 'fotos/FranciscoH.png'
-        # Por defecto, usar el primer nombre (sin paréntesis) y mayúsculas originales
-        base = nombre.split()[0].split('(')[0].strip()
-        return f'fotos/{base}.png'
+        # Usar el nombre completo tal como aparece en el listado para la imagen
+        # Reemplazar tildes y caracteres especiales si es necesario para los archivos
+        nombre_img = nombre.strip()
+        # Opcional: normalizar tildes si los archivos no las tienen
+        # nombre_img = nombre_img.replace('í', 'i').replace('á', 'a').replace('é', 'e').replace('ó', 'o').replace('ú', 'u')
+        return f'fotos/{nombre_img}.png'
 
     def generar_bloques(equipo, color):
-        # color: 'black' o 'red'
-        # 1. Agrupar por posición
-        pos_dict = {"arquero": [], "defensa": [], "mediocampo": [], "delantero": []}
-        for j in equipo:
-            pos = map_posicion(j["posicion"])
-            pos_dict[pos].append(j)
-        # 2. Si no hay arquero, elegir uno aleatorio
-        if not pos_dict["arquero"]:
-            candidatos = equipo.copy()
-            elegido = random.choice(candidatos)
-            pos_dict["arquero"].append(elegido)
-            # Quitarlo de su posición original
-            for k in pos_dict:
-                if elegido in pos_dict[k] and k != "arquero":
-                    pos_dict[k].remove(elegido)
-        # 3. Armar lista ordenada para la cancha
-        orden = [
-            pos_dict["arquero"][:1],
-            pos_dict["defensa"][:2],
-            pos_dict["mediocampo"][:1],
-            pos_dict["delantero"][:2],
-        ]
-        jugadores_ordenados = [j for sub in orden for j in sub]
-        # Si faltan jugadores, rellenar con los que sobren
-        ya = set(id(j) for j in jugadores_ordenados)
-        extras = [j for j in equipo if id(j) not in ya]
-        jugadores_ordenados += extras
-        # 4. Generar bloques HTML
+        # Mostrar los jugadores en el mismo orden que el listado, ignorando posición
         bloques = []
-        for idx, j in enumerate(jugadores_ordenados):
+        for idx, j in enumerate(equipo[:6]):
             if idx >= len(posiciones):
                 break
             pos, pos_black, pos_red = posiciones[idx]
@@ -238,14 +207,14 @@ def actualizar_cancha_html():
                 style = f'left: {pos_black["left"]}; top: {pos_black["top"]};'
             else:
                 style = f'right: {pos_red["right"]}; top: {pos_red["top"]};'
-            clase = f'player {color}-team {map_posicion(j["posicion"])} has-photo'
-            # Agregar borde y sombra a la imagen
-            bloque = f'<div class="{clase}" data-position="{map_posicion(j["posicion"])}" style="{style}">\n  <img src="{get_img(j["nombre"])}" alt="{j["nombre"]}" class="player-photo player-photo-borde-sombra">\n</div>'
+            clase = f'player {color}-team has-photo'
+            bloque = f'<div class="{clase}" style="{style}">\n  <img src="{get_img(j["nombre"])}" alt="{j["nombre"]}" class="player-photo player-photo-borde-sombra">\n</div>'
             bloques.append(bloque)
         return '\n\n'.join(bloques)
 
     # Reemplazar el comentario por los bloques de jugadores
-    jugadores_html = generar_bloques(team2, 'black') + '\n' + generar_bloques(team1, 'red')
+    # Ajuste: Rojo (team1) a la izquierda (black-team), Negro (team2) a la derecha (red-team)
+    jugadores_html = generar_bloques(team1, 'black') + '\n' + generar_bloques(team2, 'red')
     cancha_html = re.sub(r'<!-- Aquí van solo las fotos de los jugadores, generado por el script -->', jugadores_html, cancha_html)
 
     with open('cancha.html', 'w', encoding='utf-8') as f:
