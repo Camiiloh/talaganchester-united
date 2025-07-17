@@ -40,7 +40,7 @@ confirmados = [
     "Cristobal",
     "Francisco",
     "Ivan",
-    "Pancho",
+    "Willians",
     "Maxi Vargas",
     "Pablo",
     "Enrique",
@@ -84,7 +84,7 @@ with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
 # Actualizar fecha en el título
-html = re.sub(r'<h1>⚽ Partido.*? - 21:00 hrs - Cancha 1</h1>',
+html = re.sub(r'<h1>⚽ Partido.*? - 21:00 hrs - Cancha 2</h1>',
               f'<h1>⚽ Partido {fecha_partido} - 21:00 hrs - Cancha 1</h1>', html)
 
 # Actualizar listado de jugadores confirmados
@@ -158,9 +158,10 @@ def actualizar_cancha_html():
         # Mostrar solo los primeros 6 jugadores
         return '\n'.join([jugador_li(j) for j in equipo[:6]])
 
-    cancha_html = re.sub(r'(<div class="team-info black">[\s\S]*?<ul>)[\s\S]*?(</ul>)',
+    # Unificar clases: black-team/equipo-negro y red-team/equipo-rojo
+    cancha_html = re.sub(r'(<div class="team-info (black|equipo-negro)">[\s\S]*?<ul>)[\s\S]*?(</ul>)',
         r'\1\n' + jugadores_li(team2) + r'\2', cancha_html)
-    cancha_html = re.sub(r'(<div class="team-info red">[\s\S]*?<ul>)[\s\S]*?(</ul>)',
+    cancha_html = re.sub(r'(<div class="team-info (red|equipo-rojo)">[\s\S]*?<ul>)[\s\S]*?(</ul>)',
         r'\1\n' + jugadores_li(team1) + r'\2', cancha_html)
 
     # --- Generar bloques de jugadores en cancha según posición ---
@@ -205,9 +206,10 @@ def actualizar_cancha_html():
             style = ''
             if color == 'black':
                 style = f'left: {pos_black["left"]}; top: {pos_black["top"]};'
+                clase = 'player black-team has-photo'
             else:
                 style = f'right: {pos_red["right"]}; top: {pos_red["top"]};'
-            clase = f'player {color}-team has-photo'
+                clase = 'player red-team has-photo'
             bloque = f'<div class="{clase}" style="{style}">\n  <img src="{get_img(j["nombre"])}" alt="{j["nombre"]}" class="player-photo player-photo-borde-sombra">\n</div>'
             bloques.append(bloque)
         return '\n\n'.join(bloques)
