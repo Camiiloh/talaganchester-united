@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 # --- Actualizar cancha.html automáticamente ---
 import re
 
@@ -226,3 +219,15 @@ def actualizar_cancha_html():
 
 # Llamar la función solo al final, cuando todo está definido
 actualizar_cancha_html()
+
+# Mostrar resultado del sorteo en pantalla
+if __name__ == "__main__":
+    print(f"\nResultado del sorteo para el partido {fecha_partido} - {hora_str} hrs - Cancha {cancha_str}\n")
+    print("Equipo Rojo:")
+    for j in team1:
+        print(f"- {j['nombre']} (puntaje: {j['puntaje']})")
+    print(f"Promedio equipo rojo: {prom1:.2f}\n")
+    print("Equipo Negro:")
+    for j in team2:
+        print(f"- {j['nombre']} (puntaje: {j['puntaje']})")
+    print(f"Promedio equipo negro: {prom2:.2f}\n")
