@@ -18,7 +18,15 @@ with open('jugadores.json', 'r', encoding='utf-8') as f:
 
 
 
-fecha_str = "17/07"
+
+# Leer fecha y hora desde partido.txt
+with open('partido.txt', 'r', encoding='utf-8') as f:
+    datos_partido = dict(
+        line.strip().split(':', 1) for line in f if ':' in line
+    )
+fecha_str = datos_partido.get('fecha', '24/07').strip()
+hora_str = datos_partido.get('hora', '21:00').strip()
+
 import datetime, locale
 try:
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
@@ -34,21 +42,9 @@ dia_semana = fecha_dt.strftime('%A').capitalize()
 mes_nombre = fecha_dt.strftime('%B').capitalize()
 fecha_partido = f"{dia_semana} {dia:02d} de {mes_nombre}"
 
-# Lista de confirmados para el partido (ajustar nombres según base de datos)
-confirmados = [
-    "Camilo",
-    "Cristobal",
-    "Francisco",
-    "Ivan",
-    "Willians",
-    "Maxi Vargas",
-    "Pablo",
-    "Enrique",
-    "Diego",
-    "Marco",
-    "Juan R",
-    "Carlos P"
-]
+# Leer lista de confirmados desde confirmados.txt
+with open('confirmados.txt', 'r', encoding='utf-8') as f:
+    confirmados = [line.strip() for line in f if line.strip()]
 
 # Filtrar jugadores confirmados con coincidencia parcial (case-insensitive, ignora espacios)
 def normaliza(s):
@@ -83,9 +79,15 @@ import re
 with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
-# Actualizar fecha en el título
-html = re.sub(r'<h1>⚽ Partido.*? - 21:00 hrs - Cancha 2</h1>',
-              f'<h1>⚽ Partido {fecha_partido} - 21:00 hrs - Cancha 1</h1>', html)
+
+# Leer cancha desde partido.txt, si existe
+cancha_str = datos_partido.get('cancha', '').strip()
+if not cancha_str:
+    cancha_str = 'por confirmar'
+
+# Actualizar fecha, hora y cancha en el título (soporta cualquier formato anterior)
+html = re.sub(r'<h1>⚽ Partido[^<]*?</h1>',
+              f'<h1>⚽ Partido {fecha_partido} - {hora_str} hrs - Cancha {cancha_str}</h1>', html)
 
 # Actualizar listado de jugadores confirmados
 jugadores_grid = ''

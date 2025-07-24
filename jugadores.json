@@ -2,17 +2,19 @@
   {"nombre": "Erik Bravo", "posicion": "Creador", "puntaje": 8.8},
   {"nombre": "Pablo", "posicion": "Mediocampo", "puntaje": 6.5},
   {"nombre": "Maxi Vargas", "posicion": "Mediocampo", "puntaje": 5.8},
-  {"nombre": "Ivan", "posicion": "Defensa", "puntaje": 7.2},
+  {"nombre": "Iván", "posicion": "Defensa", "puntaje": 7.2},
   {"nombre": "Marco", "posicion": "Mediocampo", "puntaje": 6.0},
   {"nombre": "Camilo", "posicion": "Defensa", "puntaje": 5.8},
   {"nombre": "Luis Fuentealba (Luisito)", "posicion": "Mediocampo", "puntaje": 6.3},
   {"nombre": "Pancho", "posicion": "Mediocampo", "puntaje": 6.0},
-  {"nombre": "Francisco", "posicion": "Delantero", "puntaje": 8.2},
+  {"nombre": "Francisco H", "posicion": "Delantero", "puntaje": 8.2},
   {"nombre": "Diego", "posicion": "Mediocampo", "puntaje": 7.0},
   {"nombre": "Riky", "posicion": "Atacante", "puntaje": 9.0},
   {"nombre": "Enrique", "posicion": "Delantero", "puntaje": 8.1},
   {"nombre": "Juan R", "posicion": "Mediocampo", "puntaje": 5.9},
   {"nombre": "Carlos P", "posicion": "Mediocampo", "puntaje": 6.6},
   {"nombre": "Cristobal", "posicion": "Mediocampo", "puntaje": 5.9},
-  {"nombre": "Willians", "posicion": "Mediocampo", "puntaje": 8.2}
+  {"nombre": "Willians", "posicion": "Mediocampo", "puntaje": 8.2},
+  {"nombre": "Vicente", "posicion": "Delantero", "puntaje": 8.0},
+  {"nombre": "Ruben", "posicion": "Delantero", "puntaje": 6.2}
 ]
