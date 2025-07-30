@@ -1,13 +1,21 @@
 @media (max-width: 600px) {
   .soccer-field-v2 {
-    width: 60vw;
-    height: 98vw;
-    min-width: 80px;
-    min-height: 140px;
-    max-width: 65vw;
-    max-height: 100vw;
+    width: 98vw;
+    height: 60vw;
+    min-width: 140px;
+    min-height: 80px;
+    max-width: 100vw;
+    max-height: 65vw;
     border-width: 2px;
     margin: 0 auto;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    display: block;
+  }
+  .field-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .player-v2 {
     width: 24px;
