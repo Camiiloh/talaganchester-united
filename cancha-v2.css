@@ -2,6 +2,51 @@
   .alineacion-responsive {
     flex-direction: column !important;
     align-items: center !important;
+    gap: 8px !important;
+  }
+  .labels-lateral {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 8px !important;
+    margin-bottom: 4px !important;
+    margin-top: 0 !important;
+  }
+  .equipo-negro-label, .equipo-rojo-label {
+    font-size: 1em !important;
+    padding: 8px 12px !important;
+    margin: 0 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    min-width: 0 !important;
+    max-width: 48vw !important;
+    line-height: 1.1 !important;
+  }
+  .field-container {
+    min-width: 0 !important;
+    width: 100vw !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+  .soccer-field-v2 {
+    width: 98vw !important;
+    height: 60vw !important;
+    min-width: 140px !important;
+    min-height: 80px !important;
+    max-width: 100vw !important;
+    max-height: 65vw !important;
+    border-width: 2px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    display: block !important;
+  }
+}
+@media (max-width: 600px) {
+  .alineacion-responsive {
+    flex-direction: column !important;
+    align-items: center !important;
     gap: 16px !important;
   }
   .alineacion-responsive .labels-lateral {
