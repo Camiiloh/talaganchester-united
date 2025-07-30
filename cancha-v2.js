@@ -1,11 +1,11 @@
 // Configuración de posiciones (puedes personalizar para más jugadores o formaciones)
 const posiciones = {
   negro: [
-    { left: '-5%', top: '50%' }, // arquero
-    { left: '10%', top: '20%' },
-    { left: '10%', top: '80%' },
-    { left: '28%', top: '35%' },
-    { left: '28%', top: '65%' },
+    { left: '10%', top: '50%' }, // arquero (de 50% a 53%)
+    { left: '13%', top: '20%' },  // defensas (de 20% a 23%)
+    { left: '13%', top: '80%' },  // defensas (de 80% a 83%)
+    { left: '31%', top: '35%' },  // defensas (de 35% a 38%)
+    { left: '31%', top: '65%' },  // defensas (de 65% a 68%)
     { left: '50%', top: '30%' },
     { left: '50%', top: '70%' }
   ],
@@ -65,7 +65,7 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
   let x_key, x_fr;
   if (lado === 'izq') {
     x_key = 'left';
-    x_fr = { arquero: 0, defensa: 13, mediocampo: 30, delantero: 35 };
+    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37 };
   } else {
     x_key = 'right';
     x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37 };
