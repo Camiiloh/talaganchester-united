@@ -1,0 +1,43 @@
+{
+  "rojo": [
+    "Luisito",
+    "Turra",
+    "Riky",
+    "Pantera",
+    "Diego",
+    "Juan R",
+    "Pablo"
+  ],
+  "negro": [
+    "Maxi",
+    "Pancho",
+    "Camilo",
+    "Carlos P",
+    "Marco",
+    "Erik",
+    "Iván"
+  ],
+  "rojo_posiciones": {
+    "Luisito": "Arquero",
+    "Riky": "Defensa",
+    "Juan R": "Defensa",
+    "Pablo": "Defensa",
+    "Turra": "Mediocampo",
+    "Diego": "Mediocampo",
+    "Pantera": "Delantero"
+  },
+  "negro_posiciones": {
+    "Maxi": "Arquero",
+    "Pancho": "Defensa",
+    "Carlos P": "Defensa",
+    "Marco": "Defensa",
+    "Erik": "Mediocampo",
+    "Iván": "Mediocampo",
+    "Camilo": "Delantero"
+  },
+  "promedio_rojo": 6.628571428571428,
+  "promedio_negro": 6.628571428571428,
+  "fecha": "Jueves 31 de Julio",
+  "hora": "21.00",
+  "cancha": "por Confirmar"
+}

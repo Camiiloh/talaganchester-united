@@ -1,6 +1,5 @@
 .player-photo-borde-sombra {
   border: 3px solid #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.35), 0 0 0 3px #2196f3;
   border-radius: 12px;
 }
 :root {
@@ -240,8 +239,8 @@ header p {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 3px solid white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  /* border: 3px solid white; */
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.3); */
   transform: translate(-50%, -50%);
   overflow: hidden;
 }
