@@ -31,16 +31,10 @@
     margin: 0 !important;
   }
   .soccer-field-v2 {
-    width: 98vw !important;
-    height: 60vw !important;
-    min-width: 140px !important;
-    min-height: 80px !important;
-    max-width: 100vw !important;
-    max-height: 65vw !important;
-    border-width: 2px !important;
-    margin: 0 auto !important;
-    transform: none !important;
-    display: block !important;
+  transform: rotate(90deg);
+  transform-origin: center center;
+  transform: rotate(90deg);
+  transform-origin: center center;
   }
 }
 @media (max-width: 600px) {
@@ -89,6 +83,7 @@
     align-items: center;
   }
   .player-v2 {
+  transform: rotate(-90deg);
     width: 24px;
     height: 24px;
   }
@@ -113,9 +108,6 @@
   h1, #partido-info {
     font-size: 1.1em !important;
     line-height: 1.2;
-  }
-  .player-photo-v2 {
-    transform: rotate(270deg);
   }
   /* Mover etiqueta Equipo Rojo al lado izquierdo */
   .field-container {
