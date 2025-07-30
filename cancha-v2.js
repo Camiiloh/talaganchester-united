@@ -58,16 +58,7 @@ let ultimoEstado = '';
 function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
   // Agrupar por función
   const arqueros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'arquero').map(([n]) => n);
-  let defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
-  // Enroque visual solo para el equipo rojo
-  if (lado === 'der') {
-    const idxRiky = defensas.indexOf('Riky');
-    const idxJuanR = defensas.indexOf('Juan R');
-    if (idxRiky !== -1 && idxJuanR !== -1) {
-      // Intercambiar posiciones
-      [defensas[idxRiky], defensas[idxJuanR]] = [defensas[idxJuanR], defensas[idxRiky]];
-    }
-  }
+  const defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
   const mediocampos = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'mediocampo').map(([n]) => n);
   const delanteros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'delantero').map(([n]) => n);
   let x_key, x_fr;
@@ -106,6 +97,11 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
 
 async function renderCanchaV2() {
   const equipos = await cargarEquipos();
+  // Actualizar encabezado con fecha, hora y cancha
+  const info = document.getElementById('partido-info');
+  if (info && equipos.fecha && equipos.hora && equipos.cancha) {
+    info.textContent = `⚽ Partido ${equipos.fecha} - ${equipos.hora} hrs - Cancha ${equipos.cancha}`;
+  }
   const field = document.getElementById('soccer-field-v2');
   // Serializar el estado actual para evitar parpadeos innecesarios
   const estadoActual = JSON.stringify({negro: equipos.negro, rojo: equipos.rojo, negro_posiciones: equipos.negro_posiciones, rojo_posiciones: equipos.rojo_posiciones});
