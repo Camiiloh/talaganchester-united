@@ -40,6 +40,26 @@
     font-size: 1.1em !important;
     line-height: 1.2;
   }
+  .player-photo-v2 {
+    transform: rotate(90deg);
+  }
+  /* Mover etiqueta Equipo Rojo al lado izquierdo */
+  .field-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .equipo-rojo-label {
+    order: -1;
+    align-self: flex-start;
+    margin-right: 8px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .equipo-negro-label {
+    margin-bottom: 8px;
+  }
 }
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
