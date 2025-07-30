@@ -32,10 +32,13 @@
     padding: 4px 0 2px 0;
     font-size: 0.95em;
   }
-  .page-navigation {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
+.page-navigation {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
   h1, #partido-info {
     font-size: 1.1em !important;
     line-height: 1.2;
@@ -77,17 +80,19 @@ header {
   border-radius: 0 0 18px 18px;
   box-shadow: 0 2px 8px #222a3633;
 }
-.page-navigation {
-  margin-top: 10px;
 }
 .nav-link {
   color: #fff;
   text-decoration: none;
-  margin-right: 18px;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 10px;
   transition: background 0.2s;
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  background: none;
+  margin: 0;
 }
 .nav-link.active, .nav-link:hover {
   background: #e53935;
@@ -201,22 +206,21 @@ header {
   width: 12px; height: 80px; background: #fff; position: absolute; top: 50%; transform: translateY(-50%); border-radius: 4px; z-index: 3;}
 .soccer-field-v2 .goal.left { left: -12px; }
 .soccer-field-v2 .goal.right { right: -12px; }
-@media (max-width: 800px) {
-  .soccer-field-v2 {
-    width: 98vw;
-    height: 56vw;
-    min-width: 320px;
-    min-height: 180px;
-    max-width: 99vw;
-    max-height: 70vw;
+@media (max-width: 600px) {
+  .page-navigation {
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 1.08em !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
-  .player-v2 {
-    width: 52px;
-    height: 52px;
-  }
-  .player-photo-v2 {
-    width: 38px;
-    height: 38px;
+  .nav-link {
+    font-size: 1em !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    letter-spacing: 0.01em;
+    margin: 0 !important;
   }
 }
 .player-v2.black-team > .player-photo-v2 {
