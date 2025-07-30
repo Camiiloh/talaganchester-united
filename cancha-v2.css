@@ -151,7 +151,7 @@ header {
   border-radius: 0 0 18px 18px;
   box-shadow: 0 2px 8px #222a3633;
 }
-}
+
 .nav-link {
   color: #fff;
   text-decoration: none;
@@ -169,7 +169,7 @@ header {
   background: #e53935;
 }
 .field-container {
-  margin: 32px auto 0 auto;
+  margin: 64px auto 0 auto;
   display: flex;
   justify-content: center;
 }
