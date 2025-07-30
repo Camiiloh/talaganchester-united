@@ -1,0 +1,158 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6fa;
+  margin: 0;
+}
+#app {
+  max-width: 900px;
+  margin: 0 auto;
+}
+header {
+  background: #222a36;
+  color: #fff;
+  padding: 18px 0 8px 0;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 8px #222a3633;
+}
+.page-navigation {
+  margin-top: 10px;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 18px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.nav-link.active, .nav-link:hover {
+  background: #e53935;
+}
+.field-container {
+  margin: 32px auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.soccer-field-v2 {
+  position: relative;
+  width: 700px;
+  height: 400px;
+  background: linear-gradient(135deg, #388e3c 80%, #2e7d32 100%);
+  border: 6px solid #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px #222a3622;
+  overflow: hidden;
+}
+.player-v2 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px #222a3644;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+  z-index: 10;
+  animation: fadeInPlayer 0.7s cubic-bezier(.68,-0.55,.27,1.55) 1;
+}
+@keyframes fadeInPlayer {
+  0% { transform: scale(0.7); }
+  100% { transform: scale(1); }
+}
+.player-v2:hover {
+  transform: scale(1.15) rotate(-2deg);
+  box-shadow: 0 6px 24px #e5393533;
+}
+.player-photo-v2 {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 35%; /* Centra el rostro más arriba */
+  border: 2px solid #e53935;
+  margin-bottom: 2px;
+}
+.player-photo-v2[alt="Luisito"] {
+  object-position: 50% 26%;
+}
+.player-label-v2 {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #222a36;
+  text-shadow: 0 1px 2px #fff;
+}
+.player-tooltip-v2 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -70px;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #222a36;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #222a3644;
+  padding: 12px 18px;
+  min-width: 180px;
+  z-index: 10;
+  font-size: 1em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.player-v2:hover .player-tooltip-v2 {
+  display: block;
+  opacity: 1;
+}
+/* Líneas de la cancha */
+.soccer-field-v2 .field-line {
+  position: absolute;
+  background: #fff;
+  z-index: 3;
+  opacity: 0.95;
+}
+.soccer-field-v2 .center-line {
+  left: 50%; top: 0; width: 4px; height: 100%; transform: translateX(-50%);
+}
+.soccer-field-v2 .center-circle {
+  left: 50%; top: 50%; width: 110px; height: 110px; border-radius: 50%; border: 4px solid #fff; background: none; transform: translate(-50%, -50%); z-index: 3;}
+.soccer-field-v2 .center-spot {
+  left: 50%; top: 50%; width: 12px; height: 12px; border-radius: 50%; background: #fff; transform: translate(-50%, -50%); z-index: 3;}
+.soccer-field-v2 .penalty-area {
+  width: 90px; height: 220px; border: 4px solid #fff; border-radius: 18px; position: absolute; top: 50%; transform: translateY(-50%); background: none; z-index: 3;}
+.soccer-field-v2 .penalty-area.left { left: 0; }
+.soccer-field-v2 .penalty-area.right { right: 0; }
+.soccer-field-v2 .goal-area {
+  width: 40px; height: 90px; border: 4px solid #fff; border-radius: 8px; position: absolute; top: 50%; transform: translateY(-50%); background: none; z-index: 3;}
+.soccer-field-v2 .goal-area.left { left: -40px; }
+.soccer-field-v2 .goal-area.right { right: -40px; }
+.soccer-field-v2 .penalty-spot {
+  width: 10px; height: 10px; border-radius: 50%; background: #fff; position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;}
+.soccer-field-v2 .penalty-spot.left { left: 70px; }
+.soccer-field-v2 .penalty-spot.right { right: 70px; }
+.soccer-field-v2 .goal {
+  width: 12px; height: 80px; background: #fff; position: absolute; top: 50%; transform: translateY(-50%); border-radius: 4px; z-index: 3;}
+.soccer-field-v2 .goal.left { left: -12px; }
+.soccer-field-v2 .goal.right { right: -12px; }
+@media (max-width: 800px) {
+  .soccer-field-v2 {
+    width: 98vw;
+    height: 56vw;
+    min-width: 320px;
+    min-height: 180px;
+    max-width: 99vw;
+    max-height: 70vw;
+  }
+  .player-v2 {
+    width: 52px;
+    height: 52px;
+  }
+  .player-photo-v2 {
+    width: 38px;
+    height: 38px;
+  }
+}
