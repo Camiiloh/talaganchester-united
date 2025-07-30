@@ -1,132 +1,52 @@
-@media (max-width: 600px) {
-  .alineacion-responsive {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  .labels-lateral {
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: auto !important;
-    gap: 8px !important;
-    margin-bottom: 4px !important;
-    margin-top: 0 !important;
-  }
-  .equipo-negro-label, .equipo-rojo-label {
-    font-size: 1em !important;
-    padding: 8px 12px !important;
-    margin: 0 !important;
-    white-space: normal !important;
-    text-align: center !important;
-    min-width: 0 !important;
-    max-width: 48vw !important;
-    line-height: 1.1 !important;
-  }
-  .field-container {
-    min-width: 0 !important;
-    width: 100vw !important;
-    height: auto !important;
-    margin: 0 !important;
-  }
-  .soccer-field-v2 {
+/* --- LIMPIEZA Y SIMPLIFICACIÓN PARA ROTACIÓN Y RESPONSIVIDAD --- */
+.soccer-field-v2 {
+  position: relative;
+  width: 80vw;
+  height: 40vw;
+  background: linear-gradient(135deg, #388e3c 80%, #2e7d32 100%);
+  border: 6px solid #fff;
+  border-radius: 2vw;
+  box-shadow: 0 4px 24px #222a3622;
+  overflow: hidden;
   transform: rotate(90deg);
   transform-origin: center center;
-  transform: rotate(90deg);
-  transform-origin: center center;
-  }
+  margin: 0 auto 2vw auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@media (max-width: 600px) {
-  .alineacion-responsive {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 16px !important;
-  }
-  .alineacion-responsive .labels-lateral {
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: auto !important;
-    gap: 16px !important;
-    margin-bottom: 8px !important;
-  }
-  .alineacion-responsive .equipo-negro-label,
-  .alineacion-responsive .equipo-rojo-label {
-    margin: 0 !important;
-    align-self: unset !important;
-  }
-  .field-container {
-    min-width: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-  }
+.player-v2 {
+  transform: rotate(-90deg);
+  position: absolute;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px #222a3644;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+  z-index: 10;
+  animation: fadeInPlayer 0.7s cubic-bezier(.68,-0.55,.27,1.55) 1;
 }
-@media (max-width: 600px) {
+
   .soccer-field-v2 {
     width: 98vw;
     height: 60vw;
-    min-width: 140px;
-    min-height: 80px;
-    max-width: 100vw;
-    max-height: 65vw;
-    border-width: 2px;
-    margin: 0 auto;
+    border-radius: 4vw;
+    margin: 0 auto 2vw auto;
     transform: rotate(90deg);
     transform-origin: center center;
-    display: block;
-  }
-  .field-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .player-v2 {
-  transform: rotate(-90deg);
-    width: 24px;
-    height: 24px;
+    width: 13vw;
+    height: 13vw;
+    font-size: 2.5vw;
   }
-  .player-photo-v2 {
-    width: 16px;
-    transform: none;
-  }
-  .field-container {
-    margin: 4px auto 0 auto;
-  }
-  header {
-    transform: none;
-    font-size: 0.95em;
-  }
-.page-navigation {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-  h1, #partido-info {
-    font-size: 1.1em !important;
-    line-height: 1.2;
-  }
-  /* Mover etiqueta Equipo Rojo al lado izquierdo */
-  .field-container {
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .equipo-rojo-label {
-    order: -1;
-    align-self: flex-start;
-    margin-right: 8px;
-    margin-left: 0;
-    margin-top: 0;
-  }
-  .equipo-negro-label {
-    margin-bottom: 8px;
-  }
-}
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #f4f6fa;
