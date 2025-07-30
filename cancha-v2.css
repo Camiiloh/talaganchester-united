@@ -33,15 +33,15 @@
     font-size: 0.95em;
   }
   .page-navigation {
-    margin-top: 2px;
-    font-size: 0.9em;
+    flex-direction: row;
+    justify-content: flex-start;
   }
   h1, #partido-info {
     font-size: 1.1em !important;
     line-height: 1.2;
   }
   .player-photo-v2 {
-    transform: rotate(90deg);
+    transform: rotate(270deg);
   }
   /* Mover etiqueta Equipo Rojo al lado izquierdo */
   .field-container {
