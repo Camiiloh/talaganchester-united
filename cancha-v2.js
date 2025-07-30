@@ -1,13 +1,13 @@
 // Configuración de posiciones (puedes personalizar para más jugadores o formaciones)
 const posiciones = {
   negro: [
-    { left: '5%', top: '50%' }, // arquero
-    { left: '20%', top: '20%' },
-    { left: '20%', top: '80%' },
-    { left: '38%', top: '35%' },
-    { left: '38%', top: '65%' },
-    { left: '60%', top: '30%' },
-    { left: '60%', top: '70%' }
+    { left: '-5%', top: '50%' }, // arquero
+    { left: '10%', top: '20%' },
+    { left: '10%', top: '80%' },
+    { left: '28%', top: '35%' },
+    { left: '28%', top: '65%' },
+    { left: '50%', top: '30%' },
+    { left: '50%', top: '70%' }
   ],
   rojo: [
     { right: '5%', top: '50%' }, // arquero
@@ -58,13 +58,22 @@ let ultimoEstado = '';
 function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
   // Agrupar por función
   const arqueros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'arquero').map(([n]) => n);
-  const defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
+  let defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
+  // Enroque visual solo para el equipo rojo
+  if (lado === 'der') {
+    const idxRiky = defensas.indexOf('Riky');
+    const idxJuanR = defensas.indexOf('Juan R');
+    if (idxRiky !== -1 && idxJuanR !== -1) {
+      // Intercambiar posiciones
+      [defensas[idxRiky], defensas[idxJuanR]] = [defensas[idxJuanR], defensas[idxRiky]];
+    }
+  }
   const mediocampos = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'mediocampo').map(([n]) => n);
   const delanteros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'delantero').map(([n]) => n);
   let x_key, x_fr;
   if (lado === 'izq') {
     x_key = 'left';
-    x_fr = { arquero: 2, defensa: 18, mediocampo: 35, delantero: 40 };
+    x_fr = { arquero: 0, defensa: 13, mediocampo: 30, delantero: 35 };
   } else {
     x_key = 'right';
     x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37 };

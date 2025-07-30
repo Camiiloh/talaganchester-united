@@ -18,23 +18,27 @@
     </header>
     <main>
         <div style="height: 32px;"></div>
-        <div style="width: 700px; margin: 0 auto 18px auto; display: flex; justify-content: space-between; align-items: center;">
+        <div style="width: 700px; margin: 0 auto 18px auto; display: flex; justify-content: flex-start; align-items: center;">
           <div style="background: #222a36; color: #fff; padding: 8px 18px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #222a3633;">⚫ Equipo Negro</div>
-          <div style="background: #e53935; color: #fff; padding: 8px 18px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #e5393533;">🔴 Equipo Rojo</div>
         </div>
-        <div class="field-container">
-          <div id="soccer-field-v2" class="soccer-field-v2">
-            <div class="field-line center-line"></div>
-            <div class="field-line center-circle"></div>
-            <div class="field-line center-spot"></div>
-            <div class="penalty-area left"></div>
-            <div class="penalty-area right"></div>
-            <div class="goal-area left"></div>
-            <div class="goal-area right"></div>
-            <div class="penalty-spot left"></div>
-            <div class="penalty-spot right"></div>
-            <div class="goal left"></div>
-            <div class="goal right"></div>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="field-container" style="position: relative; display: flex; flex-direction: column; align-items: center;">
+            <div id="soccer-field-v2" class="soccer-field-v2">
+              <div class="field-line center-line"></div>
+              <div class="field-line center-circle"></div>
+              <div class="field-line center-spot"></div>
+              <div class="penalty-area left"></div>
+              <div class="penalty-area right"></div>
+              <div class="goal-area left"></div>
+              <div class="goal-area right"></div>
+              <div class="penalty-spot left"></div>
+              <div class="penalty-spot right"></div>
+              <div class="goal left"></div>
+              <div class="goal right"></div>
+            </div>
+            <div style="width: 700px; display: flex; justify-content: flex-end; margin-top: 12px;">
+              <div style="background: #e53935; color: #fff; padding: 8px 18px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #e5393533;">🔴 Equipo Rojo</div>
+            </div>
           </div>
         </div>
       </div>

@@ -74,7 +74,7 @@ header {
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 35%; /* Centra el rostro más arriba */
-  border: 2px solid #e53935;
+  border: 2px solid transparent;
   margin-bottom: 2px;
 }
 .player-photo-v2[alt="Luisito"] {
@@ -155,4 +155,10 @@ header {
     width: 38px;
     height: 38px;
   }
+}
+.player-v2.black-team > .player-photo-v2 {
+  border: 3px solid #000 !important;
+}
+.player-v2.red-team > .player-photo-v2 {
+  border: 3px solid #e53935 !important;
 }
