@@ -1,4 +1,30 @@
 @media (max-width: 600px) {
+  .alineacion-responsive {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+  .alineacion-responsive .labels-lateral {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 16px !important;
+    margin-bottom: 8px !important;
+  }
+  .alineacion-responsive .equipo-negro-label,
+  .alineacion-responsive .equipo-rojo-label {
+    margin: 0 !important;
+    align-self: unset !important;
+  }
+  .field-container {
+    min-width: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+@media (max-width: 600px) {
   .soccer-field-v2 {
     width: 98vw;
     height: 60vw;
@@ -23,13 +49,13 @@
   }
   .player-photo-v2 {
     width: 16px;
-    height: 16px;
+    transform: none;
   }
   .field-container {
     margin: 4px auto 0 auto;
   }
   header {
-    padding: 4px 0 2px 0;
+    transform: none;
     font-size: 0.95em;
   }
 .page-navigation {
@@ -111,6 +137,8 @@ header {
   border-radius: 24px;
   box-shadow: 0 4px 24px #222a3622;
   overflow: hidden;
+  transform: rotate(90deg);
+  transform-origin: center center;
 }
 .player-v2 {
   position: absolute;
@@ -127,6 +155,7 @@ header {
   transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
   z-index: 10;
   animation: fadeInPlayer 0.7s cubic-bezier(.68,-0.55,.27,1.55) 1;
+  transform: rotate(90deg);
 }
 @keyframes fadeInPlayer {
   0% { transform: scale(0.7); }
@@ -144,17 +173,13 @@ header {
   object-position: 50% 35%; /* Centra el rostro más arriba */
   border: 2px solid transparent;
   margin-bottom: 2px;
+  transform: rotate(-90deg);
 }
 .player-photo-v2[alt="Luisito"] {
   object-position: 50% 26%;
 }
+/* Etiqueta de jugador (tooltip) */
 .player-label-v2 {
-  font-size: 0.9em;
-  font-weight: bold;
-  color: #222a36;
-   .player-photo-v2 {
-     transform: rotate(90deg);
-   }
   display: none;
   position: absolute;
   left: 50%;
@@ -164,13 +189,12 @@ header {
   color: #222a36;
   border-radius: 10px;
   box-shadow: 0 2px 12px #222a3644;
-  padding: 12px 18px;
   min-width: 180px;
   z-index: 10;
   font-size: 1em;
   pointer-events: none;
-  opacity: 0;
   transition: opacity 0.2s;
+  font-weight: bold;
 }
 .player-v2:hover .player-tooltip-v2 {
   display: block;
