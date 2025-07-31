@@ -19,28 +19,29 @@
     <main>
         <div style="height: 32px;"></div>
         <!-- MOBILE: Equipo Negro arriba, cancha, Equipo Rojo abajo -->
-        <div class="alineacion-responsive" style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 0;">
-          <div class="equipo-negro-label" style="background: #222a36; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #222a3633; white-space: normal; margin-bottom: 48px; text-align: center; max-width: 90vw;">⚫ Equipo Negro</div>
-          <div class="field-container" style="position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; min-width: 320px; height: 540px;">
-            <div id="soccer-field-v2" class="soccer-field-v2">
-              <div class="field-line center-line"></div>
-              <div class="field-line center-circle"></div>
-              <div class="field-line center-spot"></div>
-              <div class="penalty-area left"></div>
-              <div class="penalty-area right"></div>
-              <div class="goal-area left"></div>
-              <div class="goal-area right"></div>
-              <div class="penalty-spot left"></div>
-              <div class="penalty-spot right"></div>
-              <div class="goal left"></div>
-              <div class="goal right"></div>
-            </div>
+          <div class="alineacion-responsive" style="width: 100%; max-width: 900px; margin: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0;">
+          <div class="equipo-negro-label" style="background: #222a36; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #222a3633; white-space: normal; margin-bottom: 48px; text-align: left; max-width: 90vw;">⚫ Equipo Negro</div>
+          <div class="field-container" style="position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; min-width: 320px; height: 540px;">
+                  <div id="soccer-field-v2" class="soccer-field-v2">
+                  <div class="field-line center-line"></div>
+                  <div class="field-line center-circle"></div>
+                  <div class="field-line center-spot"></div>
+                  <div class="penalty-area left"></div>
+                  <div class="penalty-area right"></div>
+                  <div class="goal-area left"></div>
+                  <div class="goal-area right"></div>
+                  <div class="penalty-spot left"></div>
+                  <div class="penalty-spot right"></div>
+                  <div class="goal left"></div>
+                  <div class="goal right"></div>
+                  </div>
+            <div class="equipo-rojo-label" style="background: #e53935; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #e5393533; white-space: normal; margin: 0; text-align: left; max-width: 90vw;">🔴 Equipo Rojo</div>
           </div>
-          <div class="equipo-rojo-label" style="background: #e53935; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 8px #e5393533; white-space: normal; margin-top: 80px; text-align: center; max-width: 90vw;">🔴 Equipo Rojo</div>
         </div>
       </div>
     </main>
   </div>
   <script src="cancha-v2.js"></script>
+  <script src="actualiza-header.js"></script>
 </body>
 </html>

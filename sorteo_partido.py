@@ -40,16 +40,31 @@ with open('confirmados.txt', 'r', encoding='utf-8') as f:
     confirmados = [line.strip() for line in f if line.strip()]
 
 # Filtrar jugadores confirmados con coincidencia parcial (case-insensitive, ignora espacios)
+import unicodedata
 def normaliza(s):
-    return s.lower().replace(" ", "")
+    s = s.lower().replace(" ", "")
+    s = ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+    return s
 
 # Mapear confirmados a nombres oficiales del JSON
+
 jugadores_partido = []
+no_encontrados = []
 for n in confirmados:
+    encontrado = False
     for j in jugadores_db:
         if normaliza(n) == normaliza(j["nombre"]):
             jugadores_partido.append(j)
+            encontrado = True
             break
+    if not encontrado:
+        no_encontrados.append(n)
+
+if no_encontrados:
+    print("ATENCIÓN: Los siguientes nombres de confirmados no coinciden con jugadores.json:")
+    for nombre in no_encontrados:
+        print(f"  - {nombre}")
+    print("Corrige los nombres en confirmados.txt para que coincidan con jugadores.json.")
 
 
 # Balancear equipos por puntaje promedio (algoritmo simple: greedy)
@@ -68,9 +83,24 @@ arqueros = [j for j in jugadores_partido if 'arquero' in j['posicion'].lower()]
 delanteros = [j for j in jugadores_partido if 'delantero' in j['posicion'].lower()]
 
 # Elegir dos arqueros distintos
+
+# Si no hay suficientes arqueros, asignar al de menor puntaje
 if len(arqueros) < 2:
-    raise Exception('No hay suficientes arqueros confirmados para el sorteo')
-arquero1, arquero2 = random.sample(arqueros, 2)
+    # Permitir que cualquier jugador pueda ir al arco, el de menor puntaje
+    if len(arqueros) == 1:
+        arquero1 = arqueros[0]
+        resto_candidatos = [j for j in jugadores_partido if j['nombre'] != arquero1['nombre']]
+        if not resto_candidatos:
+            raise Exception('No hay suficientes jugadores para cubrir el arco. Solo hay un jugador disponible.')
+        arquero2 = min(resto_candidatos, key=lambda x: x['puntaje'])
+    else:
+        # No hay arqueros, elegir dos de menor puntaje de todos los jugadores
+        ordenados = sorted(jugadores_partido, key=lambda x: x['puntaje'])
+        if len(ordenados) < 2:
+            raise Exception('No hay suficientes jugadores para cubrir el arco. Faltan jugadores.')
+        arquero1, arquero2 = ordenados[:2]
+else:
+    arquero1, arquero2 = random.sample(arqueros, 2)
 
 # Elegir dos delanteros distintos y que no sean los arqueros
 delanteros_validos = [j for j in delanteros if j['nombre'] not in [arquero1['nombre'], arquero2['nombre']]]
@@ -120,33 +150,67 @@ def asigna_posiciones_dinamico(equipo):
     else:
         arquero = equipo[0]
         asignados[arquero['nombre']] = 'Arquero'
-    # 2. Separar el resto de los jugadores
+
     resto = [j for j in equipo if j['nombre'] != arquero['nombre']]
-    # 3. Clasificar por preferencia principal
-    defensas = [j for j in resto if 'defensa' in j['posicion'].lower()]
-    mediocampos = [j for j in resto if 'mediocampo' in j['posicion'].lower()]
-    delanteros = [j for j in resto if 'delantero' in j['posicion'].lower()]
-    # 4. Asignar defensas (pueden ser 1, 2, 3... según cantidad y preferencias)
-    usados = set()
-    for j in defensas:
-        if j['nombre'] not in asignados:
-            asignados[j['nombre']] = 'Defensa'
-            usados.add(j['nombre'])
-    # 5. Asignar mediocampos
-    for j in mediocampos:
-        if j['nombre'] not in asignados:
-            asignados[j['nombre']] = 'Mediocampo'
-            usados.add(j['nombre'])
-    # 6. Asignar delanteros
-    for j in delanteros:
-        if j['nombre'] not in asignados:
-            asignados[j['nombre']] = 'Delantero'
-            usados.add(j['nombre'])
-    # 7. Si quedan jugadores sin asignar, usar su primera preferencia
+    max_por_funcion = 3
+    posiciones = ['Arquero', 'Defensa', 'Mediocampo', 'Delantero']
+    conteo = {p: 0 for p in posiciones}
+    conteo['Arquero'] = 1  # Ya se asignó el arquero fijo
+    usados = set([arquero['nombre']])
+
+    # 1. Asignar hasta 3 por función según preferencias
     for j in resto:
-        if j['nombre'] not in asignados:
-            primera = j['posicion'].split(',')[0].strip().capitalize()
-            asignados[j['nombre']] = primera
+        if j['nombre'] in usados:
+            continue
+        preferencias = [p.strip().capitalize() for p in j['posicion'].split(',')]
+        asignado = False
+        for pref in preferencias:
+            if pref == 'Arquero':
+                continue  # Solo un arquero por equipo
+            if pref in conteo and conteo[pref] < max_por_funcion:
+                asignados[j['nombre']] = pref
+                conteo[pref] += 1
+                usados.add(j['nombre'])
+                asignado = True
+                break
+        if not asignado:
+            asignados[j['nombre']] = ''
+
+    # 2. Si alguna posición quedó sin al menos 1 jugador, reasignar para cubrir todas las posiciones
+    sin_funcion = [n for n, f in asignados.items() if f == '']
+    for pos in posiciones:
+        if conteo[pos] == 0:
+            # Buscar primero entre los sin función
+            candidato = None
+            if sin_funcion:
+                candidato = sin_funcion.pop(0)
+            else:
+                # Si no hay sin función, buscar entre los que tienen función repetida (más de 1 en la misma función)
+                for n, f in asignados.items():
+                    if f and conteo[f] > 1 and f != pos:
+                        candidato = n
+                        conteo[f] -= 1
+                        break
+            if candidato:
+                asignados[candidato] = pos
+                conteo[pos] += 1
+
+    # 3. Si aún quedan sin función y alguna posición tiene menos de 3, seguir llenando hasta 3 por función
+    for pos in posiciones:
+        while conteo[pos] < max_por_funcion and sin_funcion:
+            nombre = sin_funcion.pop(0)
+            asignados[nombre] = pos
+            conteo[pos] += 1
+
+    # 4. Si aún quedan sin función, repartirlos equitativamente en las posiciones (aunque se sobrepase el límite)
+    idx = 0
+    while sin_funcion:
+        nombre = sin_funcion.pop(0)
+        pos = posiciones[idx % len(posiciones)]
+        asignados[nombre] = pos
+        conteo[pos] += 1
+        idx += 1
+
     return asignados
 
 # Asignar posiciones dinámicamente a cada equipo

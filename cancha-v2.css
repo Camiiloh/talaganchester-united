@@ -12,9 +12,8 @@
 /* Sin rotación: la cancha queda horizontal */
   margin: 0 0 2vw 0;
   /* Pegado a la izquierda */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  /* Eliminado centrado para alineación a la izquierda */
 }
 /* Solo una definición global para .player-v2, sin transform */
 .player-v2 {
@@ -94,9 +93,9 @@ header {
   background: #e53935;
 }
 .field-container {
-  margin: 64px auto 0 auto;
-  display: flex;
-  justify-content: center;
+  margin: 64px 0 0 0;
+  display: block;
+  /* Eliminado centrado para alineación a la izquierda */
 }
 .soccer-field-v2 {
   position: relative;
