@@ -62,19 +62,21 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
   const defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
   const mediocampos = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'mediocampo').map(([n]) => n);
   const delanteros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'delantero').map(([n]) => n);
+  const sin_funcion = Object.entries(posiciones_dict).filter(([_, pos]) => !pos).map(([n]) => n);
   let x_key, x_fr;
   if (lado === 'izq') {
     x_key = 'left';
-    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37 };
+    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37, sin_funcion: 50 };
   } else {
     x_key = 'right';
-    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37 };
+    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37, sin_funcion: 60 };
   }
   const lineas = [
-    ['arquero', arqueros.slice(0, 1)],
-    ['defensa', defensas.slice(0, 3)],
-    ['mediocampo', mediocampos.slice(0, 3)],
-    ['delantero', delanteros.slice(0, 3)]
+    ['arquero', arqueros],
+    ['defensa', defensas],
+    ['mediocampo', mediocampos],
+    ['delantero', delanteros],
+    ['sin_funcion', sin_funcion]
   ];
   const posiciones = {};
   for (const [funcion, grupo] of lineas) {
@@ -89,7 +91,7 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
         y = Math.round(15 + 70 * i / (n - 1)); // de 15% a 85%
       }
       y = y - 10; // subir 10% más arriba en total
-      const x = x_fr[funcion];
+      const x = x_fr[funcion] || 50;
       posiciones[nombre] = { [x_key]: x + '%', top: y + '%' };
     }
   }

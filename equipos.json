@@ -1,47 +1,39 @@
 {
   "rojo": [
-    "Maxi",
-    "Riky",
-    "Pantera",
-    "Willians",
-    "Juan R",
-    "Pablo"
-  ],
-  "negro": [
     "Pablo",
     "Camilo",
-    "Erik",
-    "José Luis",
-    "Juan R",
     "Luisito",
-    "Fabián"
+    "Erik",
+    "Juan R",
+    "Fabián",
+    "José Luis"
+  ],
+  "negro": [
+    "Maxi",
+    "Iván",
+    "Marco",
+    "Pancho",
+    "Carlos P",
+    "Willians",
+    "Riky"
   ],
   "rojo_posiciones": {
-    "Luisito": "Arquero",
-    "Riky": "Defensa",
-    "Juan R": "Defensa",
-    "Pablo": "Defensa",
-    "Turra": "Mediocampo",
-    "Willians": "Mediocampo",
-    "Pantera": "Delantero"
+    "Pablo": "Arquero",
+    "Camilo": "Delantero",
+    "Luisito": "Defensa",
+    "Erik": "Mediocampo",
+    "Juan R": "Delantero",
+    "Fabián": "Defensa",
+    "José Luis": "Defensa"
   },
   "negro_posiciones": {
     "Maxi": "Arquero",
-    "Riky": "Delantero",
-    "Iván": "Mediocampo",
-    "Willians": "Defensa",
-    "Pancho": "Defensa",
+    "Iván": "Delantero",
     "Marco": "Defensa",
-    "Carlos P": "Mediocampo"
-  },
-  "negro_posiciones": {
-    "Pablo": "Arquero",
-    "Camilo": "Delantero",
-    "Erik": "Mediocampo",
-    "José Luis": "Defensa",
-    "Juan R": "Delantero",
-    "Luisito": "Defensa",
-    "Fabián": "Defensa"
+    "Pancho": "Defensa",
+    "Carlos P": "Mediocampo",
+    "Willians": "Defensa",
+    "Riky": "Mediocampo"
   },
   "promedio_rojo": 6.942857142857143,
   "promedio_negro": 6.942857142857143,

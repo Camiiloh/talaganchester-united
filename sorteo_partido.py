@@ -147,9 +147,11 @@ def asigna_posiciones_dinamico(equipo):
     if arqueros:
         arquero = arqueros[0]
         asignados[arquero['nombre']] = 'Arquero'
+        arquero_nombre = arquero['nombre']
     else:
         arquero = equipo[0]
         asignados[arquero['nombre']] = 'Arquero'
+        arquero_nombre = arquero['nombre']
 
     resto = [j for j in equipo if j['nombre'] != arquero['nombre']]
     max_por_funcion = 3
@@ -165,8 +167,9 @@ def asigna_posiciones_dinamico(equipo):
         preferencias = [p.strip().capitalize() for p in j['posicion'].split(',')]
         asignado = False
         for pref in preferencias:
-            if pref == 'Arquero':
-                continue  # Solo un arquero por equipo
+            # Solo el primer arquero puede recibir esa función
+            if pref == 'Arquero' or (pref == 'Arquero' and j['nombre'] != arquero_nombre):
+                continue
             if pref in conteo and conteo[pref] < max_por_funcion:
                 asignados[j['nombre']] = pref
                 conteo[pref] += 1
