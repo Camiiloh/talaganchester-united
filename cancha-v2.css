@@ -10,7 +10,8 @@
   overflow: hidden;
   transform: rotate(90deg) !important;
 /* Sin rotación: la cancha queda horizontal */
-  margin: 0 auto 2vw auto;
+  margin: 0 0 2vw 0;
+  /* Pegado a la izquierda */
   display: flex;
   align-items: center;
   justify-content: center;
