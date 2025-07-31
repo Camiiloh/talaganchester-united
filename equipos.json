@@ -2,11 +2,10 @@
   "rojo": [
     "Maxi",
     "Riky",
-    "Iván",
+    "Pantera",
     "Willians",
-    "Pancho",
-    "Marco",
-    "Carlos P"
+    "Juan R",
+    "Pablo"
   ],
   "negro": [
     "Pablo",
@@ -18,6 +17,15 @@
     "Fabián"
   ],
   "rojo_posiciones": {
+    "Luisito": "Arquero",
+    "Riky": "Defensa",
+    "Juan R": "Defensa",
+    "Pablo": "Defensa",
+    "Turra": "Mediocampo",
+    "Willians": "Mediocampo",
+    "Pantera": "Delantero"
+  },
+  "negro_posiciones": {
     "Maxi": "Arquero",
     "Riky": "Delantero",
     "Iván": "Mediocampo",
