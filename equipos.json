@@ -1,43 +1,39 @@
 {
   "rojo": [
-    "Pablo",
-    "Camilo",
-    "Luisito",
-    "Erik",
+    "Maxi",
     "Juan R",
-    "Fabián",
-    "José Luis"
+    "Enrique",
+    "Willians",
+    "Turra",
+    "Pantera"
   ],
   "negro": [
-    "Maxi",
+    "Pablo",
     "Iván",
-    "Marco",
     "Pancho",
-    "Carlos P",
-    "Willians",
-    "Riky"
+    "Marco",
+    "Francisco H",
+    "Camilo"
   ],
   "rojo_posiciones": {
-    "Pablo": "Arquero",
-    "Camilo": "Delantero",
-    "Luisito": "Defensa",
-    "Erik": "Mediocampo",
+    "Maxi": "Arquero",
     "Juan R": "Delantero",
-    "Fabián": "Defensa",
-    "José Luis": "Defensa"
+    "Enrique": "Defensa",
+    "Willians": "Mediocampo",
+    "Turra": "Mediocampo",
+    "Pantera": "Delantero"
   },
   "negro_posiciones": {
-    "Maxi": "Arquero",
-    "Iván": "Delantero",
-    "Marco": "Defensa",
+    "Pablo": "Arquero",
+    "Iván": "Mediocampo",
     "Pancho": "Defensa",
-    "Carlos P": "Mediocampo",
-    "Willians": "Defensa",
-    "Riky": "Mediocampo"
+    "Marco": "Defensa",
+    "Francisco H": "Mediocampo",
+    "Camilo": "Delantero"
   },
-  "promedio_rojo": 6.942857142857143,
-  "promedio_negro": 6.942857142857143,
-  "fecha": "Jueves 31 de Julio",
-  "hora": "21.00",
+  "promedio_rojo": 6.5,
+  "promedio_negro": 6.516666666666667,
+  "fecha": "Jueves 7 de Agosto",
+  "hora": "22.00",
   "cancha": "por Confirmar"
 }
