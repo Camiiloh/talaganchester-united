@@ -47,9 +47,9 @@ async function cargarEquipos() {
 
 function crearJugador(nombre, color, pos, idx) {
   const style = Object.entries(pos).map(([k, v]) => `${k}: ${v}`).join('; ');
-  // Solo la imagen rota -90deg, el resto del contenido queda derecho
+  // Las fotos se rotan con CSS, no con clase adicional
   return `<div class="player-v2 ${color}" style="${style}; animation-delay:${idx*0.08}s">
-    <img src="fotos/${nombre}.png" alt="${nombre}" class="player-photo-v2 img-rotar-90">
+    <img src="fotos/${nombre}.png" alt="${nombre}" class="player-photo-v2">
   </div>`;
 }
 
