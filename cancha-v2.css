@@ -67,13 +67,45 @@ body {
 #app {
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+  #app {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  #app {
+    padding: 0 5px;
+  }
 }
 header {
   background: #222a36;
   color: #fff;
-  padding: 18px 0 8px 0;
+  padding: 18px 20px 8px 20px;
   border-radius: 0 0 18px 18px;
   box-shadow: 0 2px 8px #222a3633;
+}
+
+header h1 {
+  margin: 0 0 16px 0;
+  padding: 0;
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -177,21 +209,71 @@ header {
   width: 12px; height: 80px; background: #fff; position: absolute; top: 50%; transform: translateY(-50%); border-radius: 4px; z-index: 3;}
 .soccer-field-v2 .goal.left { left: -12px; }
 .soccer-field-v2 .goal.right { right: -12px; }
+@media (max-width: 768px) {
+  header {
+    padding: 16px 16px 12px 16px;
+    border-radius: 0 0 16px 16px;
+  }
+  
+  header h1 {
+    font-size: 1.6em;
+    margin-bottom: 12px;
+  }
+  
+  .page-navigation {
+    gap: 6px;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    font-size: 0.95em !important;
+    padding: 8px 14px !important;
+    border-radius: 8px !important;
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 600px) {
+  header {
+    padding: 14px 12px 10px 12px;
+  }
+  
+  header h1 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  
   .page-navigation {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     font-size: 1.08em !important;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
   }
+  
   .nav-link {
-    font-size: 1em !important;
+    font-size: 0.9em !important;
     padding: 6px 12px !important;
     border-radius: 8px !important;
     letter-spacing: 0.01em;
     margin: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 10px 8px 10px;
+  }
+  
+  header h1 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+  }
+  
+  .nav-link {
+    font-size: 0.85em !important;
+    padding: 5px 10px !important;
   }
 }
 .player-v2.black-team > .player-photo-v2 {
