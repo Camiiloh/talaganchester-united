@@ -103,7 +103,7 @@ async function renderCanchaV2() {
   // Actualizar encabezado con fecha, hora y cancha
   const info = document.getElementById('partido-info');
   if (info && equipos.fecha && equipos.hora && equipos.cancha) {
-    info.textContent = `⚽ Partido ${equipos.fecha} - ${equipos.hora} hrs - Cancha 3`;
+    info.textContent = `⚽ Partido ${equipos.fecha} - ${equipos.hora} hrs - Cancha ${equipos.cancha}`;
   }
   const field = document.getElementById('soccer-field-v2');
   // Serializar el estado actual para evitar parpadeos innecesarios
