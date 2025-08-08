@@ -1,39 +1,39 @@
 {
   "rojo": [
     "Pablo",
+    "Francisco H",
     "Turra",
-    "Pancho",
-    "Iván",
-    "Willians",
-    "Cristóbal"
+    "Maxi",
+    "Félix",
+    "Iván"
   ],
   "negro": [
-    "Maxi",
     "Camilo",
-    "Francisco H",
+    "Cristóbal",
     "Juan R",
     "Pantera",
+    "Willians",
     "Enrique"
   ],
   "rojo_posiciones": {
     "Pablo": "Arquero",
+    "Francisco H": "Mediocampo",
     "Turra": "Mediocampo",
-    "Pancho": "Defensa",
-    "Iván": "Mediocampo",
-    "Willians": "Mediocampo",
-    "Cristóbal": "Delantero"
+    "Maxi": "Delantero",
+    "Félix": "Defensa",
+    "Iván": "Mediocampo"
   },
   "negro_posiciones": {
-    "Maxi": "Arquero",
-    "Camilo": "Delantero",
-    "Francisco H": "Mediocampo",
+    "Camilo": "Arquero",
+    "Cristóbal": "Mediocampo",
     "Juan R": "Delantero",
     "Pantera": "Delantero",
+    "Willians": "Mediocampo",
     "Enrique": "Defensa"
   },
-  "promedio_rojo": 6.483333333333333,
-  "promedio_negro": 6.483333333333333,
+  "promedio_rojo": 6.45,
+  "promedio_negro": 6.5,
   "fecha": "Jueves 07 de Agosto",
   "hora": "22:00",
-  "cancha": "Por confirmar"
+  "cancha": "2"
 }
