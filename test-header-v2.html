@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cancha v2</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1 id="partido-info">⚽ Partido (cargando...)</h1>
+    
+    <div id="test-results"></div>
+    
+    <script src="actualiza-header.js"></script>
+    <script>
+        setTimeout(() => {
+            const info = document.getElementById('partido-info');
+            const resultsDiv = document.getElementById('test-results');
+            
+            const texto = info.textContent;
+            
+            let resultados = [];
+            
+            // Test 1: No debe tener "hrs hrs"
+            if (texto.includes('hrs hrs')) {
+                resultados.push('<div class="test-result fail">❌ ERROR: Contiene "hrs hrs" duplicado</div>');
+            } else {
+                resultados.push('<div class="test-result pass">✅ OK: No hay "hrs" duplicado</div>');
+            }
+            
+            // Test 2: Debe tener formato correcto
+            if (texto.match(/⚽ Partido .+ - .+ hrs - .+/)) {
+                resultados.push('<div class="test-result pass">✅ OK: Formato correcto</div>');
+            } else {
+                resultados.push('<div class="test-result fail">❌ ERROR: Formato incorrecto</div>');
+            }
+            
+            // Test 3: Mostrar texto actual
+            resultados.push(`<div class="test-result">📋 Texto actual: "${texto}"</div>`);
+            
+            resultsDiv.innerHTML = resultados.join('');
+        }, 2000);
+    </script>
+</body>
+</html>

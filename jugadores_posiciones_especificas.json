@@ -1,0 +1,352 @@
+[
+  {
+    "nombre": "Erik",
+    "posicion": "CM, LM, RM",
+    "puntaje": 8.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.5,
+      "RCB": 8.3,
+      "LM": 8.8,
+      "CM": 9.0,
+      "RM": 8.6,
+      "CF": 8.8
+    }
+  },
+  {
+    "nombre": "Pablo",
+    "posicion": "LCB, RCB, CM",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "GK": 5.5,
+      "LCB": 6.5,
+      "RCB": 6.3,
+      "LM": 5.8,
+      "CM": 6.0,
+      "RM": 5.5,
+      "CF": 5.0
+    }
+  },
+  {
+    "nombre": "Maxi",
+    "posicion": "GK, LCB, RCB, RM",
+    "puntaje": 5.9,
+    "puntajes_posicion": {
+      "GK": 6.8,
+      "LCB": 5.0,
+      "RCB": 4.8,
+      "LM": 5.2,
+      "CM": 5.5,
+      "RM": 5.0,
+      "CF": 6.2
+    }
+  },
+  {
+    "nombre": "Iván",
+    "posicion": "RM, CF",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "GK": 3.5,
+      "LCB": 5.5,
+      "RCB": 5.8,
+      "LM": 6.0,
+      "CM": 6.0,
+      "RM": 6.3,
+      "CF": 6.0
+    }
+  },
+  {
+    "nombre": "Marco",
+    "posicion": "LCB, RCB",
+    "puntaje": 6.4,
+    "puntajes_posicion": {
+      "GK": 4.2,
+      "LCB": 7.0,
+      "RCB": 6.8,
+      "LM": 5.8,
+      "CM": 6.2,
+      "RM": 5.5,
+      "CF": 5.5
+    }
+  },
+  {
+    "nombre": "Camilo",
+    "posicion": "GK, CF, RM",
+    "puntaje": 6.0,
+    "puntajes_posicion": {
+      "GK": 7.5,
+      "LCB": 5.0,
+      "RCB": 4.8,
+      "LM": 5.5,
+      "CM": 5.8,
+      "RM": 5.2,
+      "CF": 6.5
+    }
+  },
+  {
+    "nombre": "Luisito",
+    "posicion": "GK, LCB, RCB",
+    "puntaje": 6.4,
+    "puntajes_posicion": {
+      "GK": 7.0,
+      "LCB": 7.0,
+      "RCB": 7.0,
+      "LM": 4.5,
+      "CM": 4.8,
+      "RM": 4.2,
+      "CF": 3.2
+    }
+  },
+  {
+    "nombre": "Pancho",
+    "posicion": "LCB, RCB",
+    "puntaje": 6.1,
+    "puntajes_posicion": {
+      "GK": 3.8,
+      "LCB": 6.5,
+      "RCB": 6.2,
+      "LM": 5.2,
+      "CM": 5.5,
+      "RM": 5.0,
+      "CF": 6.0
+    }
+  },
+  {
+    "nombre": "Francisco H",
+    "posicion": "CM, LM, RM",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "GK": 5.5,
+      "LCB": 8.0,
+      "RCB": 7.8,
+      "LM": 8.2,
+      "CM": 8.5,
+      "RM": 8.0,
+      "CF": 8.8
+    }
+  },
+  {
+    "nombre": "Diego",
+    "posicion": "CM, RM, CF",
+    "puntaje": 7.6,
+    "puntajes_posicion": {
+      "GK": 4.5,
+      "LCB": 6.8,
+      "RCB": 7.0,
+      "LM": 7.8,
+      "CM": 7.2,
+      "RM": 7.8,
+      "CF": 8.0
+    }
+  },
+  {
+    "nombre": "Riky",
+    "posicion": "LCB, RCB, CF",
+    "puntaje": 9.2,
+    "puntajes_posicion": {
+      "GK": 4.0,
+      "LCB": 9.2,
+      "RCB": 9.0,
+      "LM": 8.0,
+      "CM": 8.2,
+      "RM": 7.8,
+      "CF": 9.0
+    }
+  },
+  {
+    "nombre": "Enrique",
+    "posicion": "LCB, RCB",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "GK": 5.2,
+      "LCB": 8.5,
+      "RCB": 8.3,
+      "LM": 8.0,
+      "CM": 8.2,
+      "RM": 7.8,
+      "CF": 7.0
+    }
+  },
+  {
+    "nombre": "Juan R",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 5.2,
+    "puntajes_posicion": {
+      "GK": 3.0,
+      "LCB": 4.2,
+      "RCB": 4.5,
+      "LM": 5.5,
+      "CM": 5.8,
+      "RM": 5.6,
+      "CF": 5.6
+    }
+  },
+  {
+    "nombre": "Carlos P",
+    "posicion": "LM, LCB, CM",
+    "puntaje": 6.6,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 6.2,
+      "RCB": 6.0,
+      "LM": 6.2,
+      "CM": 6.5,
+      "RM": 6.0,
+      "CF": 6.0
+    }
+  },
+  {
+    "nombre": "Cristóbal",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 6.1,
+    "puntajes_posicion": {
+      "GK": 3.8,
+      "LCB": 5.2,
+      "RCB": 5.5,
+      "LM": 6.2,
+      "CM": 6.6,
+      "RM": 6.0,
+      "CF": 6.5
+    }
+  },
+  {
+    "nombre": "Willians",
+    "posicion": "LCB, RCB, CM",
+    "puntaje": 8.1,
+    "puntajes_posicion": {
+      "GK": 4.0,
+      "LCB": 8.2,
+      "RCB": 8.0,
+      "LM": 8.2,
+      "CM": 8.5,
+      "RM": 8.0,
+      "CF": 7.5
+    }
+  },
+  {
+    "nombre": "Vicente",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "GK": 5.2,
+      "LCB": 7.0,
+      "RCB": 7.2,
+      "LM": 7.8,
+      "CM": 8.2,
+      "RM": 8.0,
+      "CF": 8.5
+    }
+  },
+  {
+    "nombre": "Ruben",
+    "posicion": "LCB, RCB, CF",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "GK": 4.0,
+      "LCB": 6.4,
+      "RCB": 6.6,
+      "LM": 5.8,
+      "CM": 6.0,
+      "RM": 5.5,
+      "CF": 5.2
+    }
+  },
+  {
+    "nombre": "Pantera",
+    "posicion": "CF",
+    "puntaje": 5.2,
+    "puntajes_posicion": {
+      "GK": 3.2,
+      "LCB": 4.5,
+      "RCB": 4.8,
+      "LM": 4.8,
+      "CM": 5.0,
+      "RM": 4.5,
+      "CF": 5.6
+    }
+  },
+  {
+    "nombre": "Turra",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 6.0,
+    "puntajes_posicion": {
+      "GK": 3.8,
+      "LCB": 5.2,
+      "RCB": 5.5,
+      "LM": 6.0,
+      "CM": 6.2,
+      "RM": 5.8,
+      "CF": 6.3
+    }
+  },
+  {
+    "nombre": "Fabián",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "GK": 5.5,
+      "LCB": 8.0,
+      "RCB": 7.8,
+      "LM": 8.2,
+      "CM": 8.5,
+      "RM": 8.0,
+      "CF": 8.2
+    }
+  },
+  {
+    "nombre": "Nel",
+    "posicion": "LCB, RCB, GK",
+    "puntaje": 6.8,
+    "puntajes_posicion": {
+      "GK": 7.8,
+      "LCB": 7.2,
+      "RCB": 6.8,
+      "LM": 6.0,
+      "CM": 6.5,
+      "RM": 5.8,
+      "CF": 6.0
+    }
+  },
+  {
+    "nombre": "Félix",
+    "posicion": "LCB, RCB, CM, CF",
+    "puntaje": 5.0,
+    "puntajes_posicion": {
+      "GK": 3.1,
+      "LCB": 5.2,
+      "RCB": 5.0,
+      "LM": 4.2,
+      "CM": 4.5,
+      "RM": 4.0,
+      "CF": 4.8
+    }
+  },
+  {
+    "nombre": "José Luis",
+    "posicion": "LCB, RCB, CM",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.2,
+      "RCB": 8.0,
+      "LM": 7.8,
+      "CM": 8.0,
+      "RM": 7.5,
+      "CF": 7.0
+    }
+  },
+    {
+    "nombre": "Juan HG",
+    "posicion": "CF, LM, RM",
+    "puntaje": 6.0,
+    "puntajes_posicion": {
+      "GK": 3.0,
+      "LCB": 4.2,
+      "RCB": 4.0,
+      "LM": 4.8,
+      "CM": 8.0,
+      "RM": 7.5,
+      "CF": 7.0
+    }
+  }
+]

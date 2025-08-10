@@ -1,39 +1,134 @@
 {
+  "fecha": "Martes 12 de Agosto",
+  "hora": "21:00 hrs",
+  "cancha": "por Confirmar",
+  "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
+    "Nel",
+    "Carlos P",
     "Camilo",
+    "Francisco H",
     "Iván",
-    "Félix",
-    "Pablo",
-    "Cristóbal",
-    "Francisco H"
+    "Enrique"
   ],
   "negro": [
     "Maxi",
     "Turra",
+    "Marco",
     "Willians",
-    "Enrique",
-    "Pantera",
-    "Juan R"
+    "Fabián",
+    "Diego"
   ],
+  "promedio_rojo": 7.48,
+  "promedio_negro": 7.48,
+  "diferencia": 0.0,
   "rojo_posiciones": {
-    "Camilo": "Arquero",
-    "Iván": "Mediocampo",
-    "Félix": "Defensa",
-    "Pablo": "Defensa",
-    "Cristóbal": "Mediocampo",
-    "Francisco H": "Mediocampo"
+    "Nel": "Arquero",
+    "Enrique": "Defensa",
+    "Francisco H": "Mediocampo",
+    "Carlos P": "Mediocampo",
+    "Camilo": "Delantero",
+    "Iván": "Mediocampo"
   },
   "negro_posiciones": {
     "Maxi": "Arquero",
-    "Turra": "Mediocampo",
-    "Willians": "Mediocampo",
-    "Enrique": "Defensa",
-    "Pantera": "Delantero",
-    "Juan R": "Delantero"
+    "Willians": "Defensa",
+    "Marco": "Defensa",
+    "Fabián": "Mediocampo",
+    "Diego": "Delantero",
+    "Turra": "Delantero"
   },
-  "promedio_rojo": 6.45,
-  "promedio_negro": 6.5,
-  "fecha": "Jueves 07 de Agosto",
-  "hora": "22:00",
-  "cancha": "2"
+  "equipos": {
+    "rojo": [
+      "Nel",
+      "Carlos P",
+      "Camilo",
+      "Francisco H",
+      "Iván",
+      "Enrique"
+    ],
+    "negro": [
+      "Maxi",
+      "Turra",
+      "Marco",
+      "Willians",
+      "Fabián",
+      "Diego"
+    ]
+  },
+  "formaciones": {
+    "rojo": "1-1-3-1",
+    "negro": "1-2-1-2"
+  },
+  "puntajes": {
+    "rojo": 44.9,
+    "negro": 44.9,
+    "diferencia": 0.0
+  },
+  "posiciones": {
+    "rojo": [
+      [
+        "Nel",
+        "GK",
+        7.8
+      ],
+      [
+        "Enrique",
+        "RCB",
+        8.3
+      ],
+      [
+        "Francisco H",
+        "CM",
+        8.5
+      ],
+      [
+        "Carlos P",
+        "CM",
+        7.0
+      ],
+      [
+        "Camilo",
+        "CF",
+        6.5
+      ],
+      [
+        "Iván",
+        "RM",
+        6.8
+      ]
+    ],
+    "negro": [
+      [
+        "Maxi",
+        "GK",
+        6.8
+      ],
+      [
+        "Willians",
+        "RCB",
+        8.0
+      ],
+      [
+        "Marco",
+        "RCB",
+        6.8
+      ],
+      [
+        "Fabián",
+        "RM",
+        8.0
+      ],
+      [
+        "Diego",
+        "CF",
+        8.5
+      ],
+      [
+        "Turra",
+        "CF",
+        6.8
+      ]
+    ]
+  }
 }

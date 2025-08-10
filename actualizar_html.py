@@ -9,12 +9,21 @@ with open('equipos.json', 'r', encoding='utf-8') as f:
 with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
-# Formato fijo para el título
+# Formato fijo para el título manteniendo el id para el script JS
 fecha = equipos.get('fecha', '').strip()
 hora = equipos.get('hora', '').replace('hrs', '').strip()
 cancha = equipos.get('cancha', '').strip()
-titulo = f'<h1>⚽ Partido {fecha} - {hora} hrs - Cancha {cancha}</h1>'
-html = re.sub(r'<h1>[^<]*</h1>', titulo, html)
+
+# Formatear la cancha correctamente
+if cancha.lower().find('por confirmar') != -1:
+    cancha_formateada = cancha
+elif cancha.isdigit():
+    cancha_formateada = f"Cancha {cancha}"
+else:
+    cancha_formateada = cancha
+
+titulo = f'<h1 id="partido-info">⚽ Partido {fecha} - {hora} hrs - {cancha_formateada}</h1>'
+html = re.sub(r'<h1[^>]*>[^<]*</h1>', titulo, html)
 
 # Actualizar equipos y jugadores
 rojo_html = f'''
@@ -55,9 +64,16 @@ with open('index.html', 'w', encoding='utf-8') as f:
 with open('cancha.html', 'r', encoding='utf-8') as f:
     cancha_html = f.read()
 
-# Formato fijo para el título en la cancha
-cancha_titulo = f'<h1>⚽ Partido {fecha} - {hora} hrs - Cancha {cancha}</h1>'
-cancha_html = re.sub(r'<h1>[^<]*</h1>', cancha_titulo, cancha_html)
+# Formato fijo para el título en la cancha manteniendo el id
+if cancha.lower().find('por confirmar') != -1:
+    cancha_formateada = cancha
+elif cancha.isdigit():
+    cancha_formateada = f"Cancha {cancha}"
+else:
+    cancha_formateada = cancha
+    
+cancha_titulo = f'<h1 id="partido-info">⚽ Partido {fecha} - {hora} hrs - {cancha_formateada}</h1>'
+cancha_html = re.sub(r'<h1[^>]*>[^<]*</h1>', cancha_titulo, cancha_html)
 
 # --- Generar bloques visuales de jugadores en la cancha ---
 # Posiciones fijas por orden (7 jugadores por equipo)
@@ -206,4 +222,23 @@ cancha_html = reemplaza_lista_equipo(cancha_html, "black", negro_li)
 cancha_html = reemplaza_lista_equipo(cancha_html, "red", rojo_li)
 with open('cancha.html', 'w', encoding='utf-8') as f:
     f.write(cancha_html)
-print('index.html y cancha.html actualizados desde equipos.json.')
+
+# --- Actualizar cancha-v2.html ---
+with open('cancha-v2.html', 'r', encoding='utf-8') as f:
+    cancha_v2_html = f.read()
+
+# Actualizar título en cancha-v2.html
+if cancha.lower().find('por confirmar') != -1:
+    cancha_formateada = cancha
+elif cancha.isdigit():
+    cancha_formateada = f"Cancha {cancha}"
+else:
+    cancha_formateada = cancha
+    
+cancha_v2_titulo = f'<h1 id="partido-info">⚽ Partido {fecha} - {hora} hrs - {cancha_formateada}</h1>'
+cancha_v2_html = re.sub(r'<h1[^>]*>[^<]*</h1>', cancha_v2_titulo, cancha_v2_html)
+
+with open('cancha-v2.html', 'w', encoding='utf-8') as f:
+    f.write(cancha_v2_html)
+
+print('index.html, cancha.html y cancha-v2.html actualizados desde equipos.json.')

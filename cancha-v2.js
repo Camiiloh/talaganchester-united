@@ -100,11 +100,26 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
 
 async function renderCanchaV2() {
   const equipos = await cargarEquipos();
-  // Actualizar encabezado con fecha, hora y cancha
-  const info = document.getElementById('partido-info');
-  if (info && equipos.fecha && equipos.hora && equipos.cancha) {
-    info.textContent = `⚽ Partido ${equipos.fecha} - ${equipos.hora} hrs - Cancha ${equipos.cancha}`;
-  }
+  // El header se actualiza por actualiza-header.js, no aquí para evitar conflictos
+  // const info = document.getElementById('partido-info');
+  // if (info && equipos.fecha && equipos.hora && equipos.cancha) {
+  //   // Verificar si la hora ya incluye "hrs" para evitar duplicación
+  //   const horaFormateada = equipos.hora.includes('hrs') ? equipos.hora : `${equipos.hora} hrs`;
+  //   
+  //   // Formatear la cancha correctamente
+  //   let canchaFormateada;
+  //   if (equipos.cancha.toLowerCase().includes('por confirmar')) {
+  //     canchaFormateada = equipos.cancha;
+  //   } else if (/^\d+$/.test(equipos.cancha.trim())) {
+  //     // Si es solo un número, agregar "Cancha"
+  //     canchaFormateada = `Cancha ${equipos.cancha}`;
+  //   } else {
+  //     // Si ya tiene texto, usar tal como está
+  //     canchaFormateada = equipos.cancha;
+  //   }
+  //   
+  //   info.textContent = `⚽ Partido ${equipos.fecha} - ${horaFormateada} - ${canchaFormateada}`;
+  // }
   const field = document.getElementById('soccer-field-v2');
   // Serializar el estado actual para evitar parpadeos innecesarios
   const estadoActual = JSON.stringify({negro: equipos.negro, rojo: equipos.rojo, negro_posiciones: equipos.negro_posiciones, rojo_posiciones: equipos.rojo_posiciones});
@@ -135,6 +150,23 @@ style.innerHTML = `.player-v2 { opacity:0; transform: scale(0.7); animation: fad
 @keyframes fadeInPlayer { to { opacity:1; transform: scale(1); } }`;
 document.head.appendChild(style);
 
-// Actualización continua cada 2 segundos
-setInterval(renderCanchaV2, 2000);
+// Actualización inteligente: solo actualizar si hay cambios reales
+let ultimaActualizacion = 0;
+const INTERVALO_VERIFICACION = 5000; // 5 segundos en lugar de 2
+
+async function verificarYActualizar() {
+  try {
+    const response = await fetch('equipos.json');
+    const lastModified = new Date(response.headers.get('Last-Modified') || 0).getTime();
+    
+    if (lastModified > ultimaActualizacion) {
+      ultimaActualizacion = lastModified;
+      await renderCanchaV2();
+    }
+  } catch (error) {
+    console.log('Error verificando actualizaciones:', error);
+  }
+}
+
+setInterval(verificarYActualizar, INTERVALO_VERIFICACION);
 window.addEventListener('DOMContentLoaded', renderCanchaV2);

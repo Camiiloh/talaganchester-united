@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Header</title>
+</head>
+<body>
+    <h1 id="partido-info">⚽ Partido (cargando...)</h1>
+    
+    <script>
+        console.log('🔄 Iniciando test...');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado');
+            
+            fetch('./equipos.json')
+                .then(response => {
+                    console.log('Respuesta:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Datos:', data);
+                    const info = document.getElementById('partido-info');
+                    if (info && data.fecha && data.hora && data.cancha) {
+                        const horaFormateada = data.hora.includes('hrs') ? data.hora : `${data.hora} hrs`;
+                        const nuevoTexto = `⚽ Partido ${data.fecha} - ${horaFormateada} - ${data.cancha}`;
+                        info.textContent = nuevoTexto;
+                        console.log('✅ Header actualizado');
+                    }
+                })
+                .catch(err => {
+                    console.error('Error:', err);
+                });
+        });
+    </script>
+</body>
+</html>

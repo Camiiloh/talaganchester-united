@@ -1,0 +1,255 @@
+[
+  {
+    "nombre": "Erik",
+    "posicion": "Mediocampo, Defensa, Delantero",
+    "puntaje": 8.8,
+    "puntajes_posicion": {
+      "Arquero": 5.0,
+      "Defensa": 8.5,
+      "Mediocampo": 9.0,
+      "Delantero": 8.8
+    }
+  },
+  {
+    "nombre": "Pablo",
+    "posicion": "Defensa, Mediocampo",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "Arquero": 5.5,
+      "Defensa": 6.5,
+      "Mediocampo": 6.0,
+      "Delantero": 5.0
+    }
+  },
+  {
+    "nombre": "Maxi",
+    "posicion": "Arquero, Delantero",
+    "puntaje": 5.9,
+    "puntajes_posicion": {
+      "Arquero": 6.8,
+      "Defensa": 5.0,
+      "Mediocampo": 5.5,
+      "Delantero": 6.2
+    }
+  },
+  {
+    "nombre": "Iván",
+    "posicion": "Mediocampo, Delantero",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "Arquero": 3.5,
+      "Defensa": 5.8,
+      "Mediocampo": 6.5,
+      "Delantero": 6.0
+    }
+  },
+  {
+    "nombre": "Marco",
+    "posicion": "Defensa, Mediocampo",
+    "puntaje": 6.4,
+    "puntajes_posicion": {
+      "Arquero": 4.2,
+      "Defensa": 7.0,
+      "Mediocampo": 6.2,
+      "Delantero": 5.5
+    }
+  },
+  {
+    "nombre": "Camilo",
+    "posicion": "Arquero, Delantero, Mediocampo",
+    "puntaje": 6.0,
+    "puntajes_posicion": {
+      "Arquero": 7.5,
+      "Defensa": 5.0,
+      "Mediocampo": 5.8,
+      "Delantero": 6.5
+    }
+  },
+  {
+    "nombre": "Luisito",
+    "posicion": "Defensa, Arquero",
+    "puntaje": 6.4,
+    "puntajes_posicion": {
+      "Arquero": 6.8,
+      "Defensa": 7.0,
+      "Mediocampo": 4.8,
+      "Delantero": 3.2
+    }
+  },
+  {
+    "nombre": "Pancho",
+    "posicion": "Defensa, Delantero",
+    "puntaje": 6.1,
+    "puntajes_posicion": {
+      "Arquero": 3.8,
+      "Defensa": 6.5,
+      "Mediocampo": 5.5,
+      "Delantero": 6.0
+    }
+  },
+  {
+    "nombre": "Francisco H",
+    "posicion": "Mediocampo, Defensa, Delantero",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "Arquero": 5.5,
+      "Defensa": 8.0,
+      "Mediocampo": 8.5,
+      "Delantero": 8.8
+    }
+  },
+  {
+    "nombre": "Diego",
+    "posicion": "Mediocampo, Delantero",
+    "puntaje": 7.6,
+    "puntajes_posicion": {
+      "Arquero": 4.5,
+      "Defensa": 7.0,
+      "Mediocampo": 8.0,
+      "Delantero": 8.2
+    }
+  },
+  {
+    "nombre": "Riky",
+    "posicion": "Defensa, Delantero",
+    "puntaje": 9.2,
+    "puntajes_posicion": {
+      "Arquero": 4.0,
+      "Defensa": 9.2,
+      "Mediocampo": 8.2,
+      "Delantero": 9.0
+    }
+  },
+  {
+    "nombre": "Enrique",
+    "posicion": "Defensa, Mediocampo",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "Arquero": 5.2,
+      "Defensa": 8.5,
+      "Mediocampo": 8.2,
+      "Delantero": 7.0
+    }
+  },
+  {
+    "nombre": "Juan R",
+    "posicion": "Delantero, Mediocampo",
+    "puntaje": 5.2,
+    "puntajes_posicion": {
+      "Arquero": 3.0,
+      "Defensa": 4.5,
+      "Mediocampo": 5.8,
+      "Delantero": 5.2
+    }
+  },
+  {
+    "nombre": "Carlos P",
+    "posicion": "Mediocampo, Defensa",
+    "puntaje": 6.6,
+    "puntajes_posicion": {
+      "Arquero": 5.0,
+      "Defensa": 6.2,
+      "Mediocampo": 6.5,
+      "Delantero": 6.0
+    }
+  },
+  {
+    "nombre": "Cristóbal",
+    "posicion": "Mediocampo, Delantero",
+    "puntaje": 6.1,
+    "puntajes_posicion": {
+      "Arquero": 3.8,
+      "Defensa": 5.5,
+      "Mediocampo": 6.6,
+      "Delantero": 6.5
+    }
+  },
+  {
+    "nombre": "Willians",
+    "posicion": "Mediocampo, Defensa",
+    "puntaje": 8.1,
+    "puntajes_posicion": {
+      "Arquero": 4.0,
+      "Defensa": 8.2,
+      "Mediocampo": 8.5,
+      "Delantero": 7.5
+    }
+  },
+  {
+    "nombre": "Vicente",
+    "posicion": "Mediocampo, Delantero",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "Arquero": 5.2,
+      "Defensa": 7.2,
+      "Mediocampo": 8.2,
+      "Delantero": 8.5
+    }
+  },
+  {
+    "nombre": "Ruben",
+    "posicion": "Defensa, Mediocampo",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "Arquero": 4.0,
+      "Defensa": 6.8,
+      "Mediocampo": 6.0,
+      "Delantero": 5.2
+    }
+  },
+  {
+    "nombre": "Pantera",
+    "posicion": "Delantero",
+    "puntaje": 5.2,
+    "puntajes_posicion": {
+      "Arquero": 3.2,
+      "Defensa": 4.8,
+      "Mediocampo": 5.0,
+      "Delantero": 5.6
+    }
+  },
+  {
+    "nombre": "Turra",
+    "posicion": "Mediocampo, Delantero",
+    "puntaje": 6.0,
+    "puntajes_posicion": {
+      "Arquero": 3.8,
+      "Defensa": 5.5,
+      "Mediocampo": 6.2,
+      "Delantero": 6.3
+    }
+  },
+  {
+    "nombre": "Fabián",
+    "posicion": "Defensa, Mediocampo, Delantero",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "Arquero": 5.5,
+      "Defensa": 8.0,
+      "Mediocampo": 8.5,
+      "Delantero": 8.2
+    }
+  },
+  {
+    "nombre": "Félix",
+    "posicion": "Defensa, Mediocampo, Delantero",
+    "puntaje": 5.0,
+    "puntajes_posicion": {
+      "Arquero": 3.1,
+      "Defensa": 5.2,
+      "Mediocampo": 4.5,
+      "Delantero": 4.8
+    }
+  },
+  {
+    "nombre": "José Luis",
+    "posicion": "Defensa, Mediocampo",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "Arquero": 5.0,
+      "Defensa": 8.2,
+      "Mediocampo": 8.0,
+      "Delantero": 7.0
+    }
+  }
+]
