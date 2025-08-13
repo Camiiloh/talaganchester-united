@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "fecha": "2025-07-24",
+    "fecha_formato": "Jueves 24 de Julio",
+    "hora": "22:00",
+    "cancha": "Pasto Sintético",
+    "equipo_rojo": ["Pablo", "Francisco H", "Iván", "Camilo", "Turra", "Pancho"],
+    "equipo_negro": ["Maxi", "Cristóbal", "Juan R", "Enrique", "Pantera", "Willians"],
+    "resultado": {
+      "rojo": 3,
+      "negro": 2
+    },
+    "goleadores": [
+      {"jugador": "Camilo", "equipo": "rojo", "goles": 2},
+      {"jugador": "Francisco H", "equipo": "rojo", "goles": 1},
+      {"jugador": "Enrique", "equipo": "negro", "goles": 1},
+      {"jugador": "Willians", "equipo": "negro", "goles": 1}
+    ],
+    "mvp": "Camilo",
+    "asistencias": 12,
+    "estado": "finalizado"
+  }
+]
