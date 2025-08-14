@@ -215,6 +215,78 @@
       max-width: 500px;
       max-height: 80vh;
       overflow-y: auto;
+      position: relative;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .modal-header h3 {
+      margin: 0;
+      color: #222a36;
+      font-size: 1.3em;
+    }
+    
+    .close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+    }
+    
+    .close:hover {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .modal-actions button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    
+    .modal-actions button[type="submit"] {
+      background: #e53935;
+      color: white;
+    }
+    
+    .modal-actions button[type="submit"]:hover {
+      background: #d32f2f;
+    }
+    
+    .modal-actions button[type="button"] {
+      background: #666;
+      color: white;
+    }
+    
+    .modal-actions button[type="button"]:hover {
+      background: #555;
     }
     
     .form-group {

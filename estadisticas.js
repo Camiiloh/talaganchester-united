@@ -943,10 +943,39 @@ function mostrarModalLogin() {
 
 // Cerrar modal de login
 function cerrarModalLogin() {
-  document.getElementById('modal-login').style.display = 'none';
+  const modal = document.getElementById('modal-login');
+  modal.style.display = 'none';
   document.getElementById('form-login').reset();
   document.getElementById('login-error').style.display = 'none';
 }
+
+// Mejorar UX del modal - cerrar con Escape y click fuera
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modalLogin = document.getElementById('modal-login');
+    const modalResultado = document.getElementById('modal-resultado');
+    
+    if (modalLogin && modalLogin.style.display !== 'none') {
+      cerrarModalLogin();
+    }
+    if (modalResultado && modalResultado.style.display !== 'none') {
+      cerrarModalResultado();
+    }
+  }
+});
+
+// Cerrar modal al hacer click fuera
+document.getElementById('modal-login').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    cerrarModalLogin();
+  }
+});
+
+document.getElementById('modal-resultado').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    cerrarModalResultado();
+  }
+});
 
 // Verificar credenciales de administrador
 function verificarCredenciales(password) {
@@ -962,26 +991,34 @@ document.getElementById('form-login').addEventListener('submit', (e) => {
   const errorDiv = document.getElementById('login-error');
   
   if (verificarCredenciales(password)) {
-    // Login exitoso
-    isAuthenticated = true;
-    const timestamp = Date.now();
-    authExpirationTime = timestamp + (authConfig?.session_duration || 3600000);
+    // Login exitoso - mostrar feedback visual
+    errorDiv.style.display = 'block';
+    errorDiv.style.color = 'green';
+    errorDiv.textContent = '✅ Login exitoso';
     
-    localStorage.setItem('admin_session', JSON.stringify({ timestamp }));
-    
-    mostrarEstadoAdmin();
-    cerrarModalLogin();
-    
-    // Verificar si había una acción pendiente
-    const accionPendiente = sessionStorage.getItem('accion_pendiente');
-    if (accionPendiente) {
-      sessionStorage.removeItem('accion_pendiente');
-      if (accionPendiente === 'agregar') {
-        abrirModalResultado();
+    // Esperar un momento para que el usuario vea el mensaje
+    setTimeout(() => {
+      isAuthenticated = true;
+      const timestamp = Date.now();
+      authExpirationTime = timestamp + (authConfig?.session_duration || 3600000);
+      
+      localStorage.setItem('admin_session', JSON.stringify({ timestamp }));
+      
+      mostrarEstadoAdmin();
+      cerrarModalLogin();
+      
+      // Verificar si había una acción pendiente
+      const accionPendiente = sessionStorage.getItem('accion_pendiente');
+      if (accionPendiente) {
+        sessionStorage.removeItem('accion_pendiente');
+        if (accionPendiente === 'agregar') {
+          abrirModalResultado();
+        }
       }
-    }
+    }, 500);
   } else {
     // Login fallido
+    errorDiv.style.color = 'red';
     errorDiv.textContent = 'Contraseña incorrecta';
     errorDiv.style.display = 'block';
     document.getElementById('password-admin').value = '';

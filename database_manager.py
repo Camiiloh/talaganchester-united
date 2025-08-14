@@ -256,10 +256,26 @@ class DatabaseManager:
             for row in rows:
                 partido = dict(row)
                 # Convertir campos JSONB de vuelta a objetos Python
-                if partido['equipos']:
-                    partido['equipos'] = partido['equipos']
-                if partido['resultado']:
-                    partido['resultado'] = partido['resultado']
+                if partido['equipos'] and isinstance(partido['equipos'], str):
+                    try:
+                        partido['equipos'] = json.loads(partido['equipos'])
+                    except (json.JSONDecodeError, TypeError):
+                        print(f"⚠️ Error parseando equipos: {partido['equipos']}")
+                        
+                if partido['resultado'] and isinstance(partido['resultado'], str):
+                    try:
+                        partido['resultado'] = json.loads(partido['resultado'])
+                    except (json.JSONDecodeError, TypeError):
+                        print(f"⚠️ Error parseando resultado: {partido['resultado']}")
+                        
+                if partido['jugadores_confirmados'] and isinstance(partido['jugadores_confirmados'], str):
+                    try:
+                        # Si es un string JSON válido, parsearlo
+                        if partido['jugadores_confirmados'].startswith('{') or partido['jugadores_confirmados'].startswith('['):
+                            partido['jugadores_confirmados'] = json.loads(partido['jugadores_confirmados'])
+                    except (json.JSONDecodeError, TypeError):
+                        print(f"⚠️ Error parseando jugadores_confirmados: {partido['jugadores_confirmados']}")
+                        
                 historial.append(partido)
             
             conn.close()
