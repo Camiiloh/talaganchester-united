@@ -49,27 +49,39 @@ async function cargarEquipos() {
 }
 
 function actualizarTitulo(equipos) {
-  // Formatear fecha
+  // Formatear fecha igual que en los scripts de Python
   let fechaTexto = equipos.fecha || 'Fecha por confirmar';
   if (fechaTexto !== 'Fecha por confirmar' && fechaTexto !== 'Por confirmar') {
     try {
       const fecha = new Date(fechaTexto + 'T00:00:00');
-      fechaTexto = fecha.toLocaleDateString('es-ES', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
+      const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+                     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      
+      const diaSemana = diasSemana[fecha.getDay()];
+      const dia = fecha.getDate();
+      const mes = meses[fecha.getMonth()];
+      
+      fechaTexto = `${diaSemana} ${dia} de ${mes}`;
     } catch (e) {
       // Si no se puede parsear, usar el texto original
     }
   }
   
-  const hora = equipos.hora || 'Por confirmar';
-  const cancha = equipos.cancha || 'Por confirmar';
+  // Formatear hora igual que en Python
+  let hora = equipos.hora || 'Por confirmar';
+  if (hora !== 'Por confirmar') {
+    hora = `${hora} hrs`;
+  }
   
-  // Crear nuevo título
-  const nuevoTitulo = `Partido ${fechaTexto} - ${hora} - Cancha ${cancha}`;
+  // Formatear cancha igual que en Python
+  let cancha = equipos.cancha || 'Por confirmar';
+  if (cancha !== 'Por confirmar' && /^\d+$/.test(cancha.toString().trim())) {
+    cancha = `Cancha ${cancha}`;
+  }
+  
+  // Crear nuevo título con el formato exacto
+  const nuevoTitulo = `⚽ Partido ${fechaTexto} - ${hora} - ${cancha}`;
   
   // Actualizar title del documento
   document.title = nuevoTitulo;
@@ -77,7 +89,7 @@ function actualizarTitulo(equipos) {
   // Actualizar el h1 con id partido-info
   const partidoInfo = document.getElementById('partido-info');
   if (partidoInfo) {
-    partidoInfo.textContent = `⚽ ${nuevoTitulo}`;
+    partidoInfo.textContent = nuevoTitulo;
   }
   
   // Actualizar cualquier otro h1 como fallback
@@ -143,26 +155,8 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
 
 async function renderCanchaV2() {
   const equipos = await cargarEquipos();
-  // Actualizar el título del partido
-  const info = document.getElementById('partido-info');
-  if (info && equipos.fecha && equipos.hora && equipos.cancha) {
-    // Verificar si la hora ya incluye "hrs" para evitar duplicación
-    const horaFormateada = equipos.hora.includes('hrs') ? equipos.hora : `${equipos.hora} hrs`;
-    
-    // Formatear la cancha correctamente
-    let canchaFormateada;
-    if (equipos.cancha.toLowerCase().includes('por confirmar')) {
-      canchaFormateada = equipos.cancha;
-    } else if (/^\d+$/.test(equipos.cancha.trim())) {
-      // Si es solo un número, agregar "Cancha"
-      canchaFormateada = `Cancha ${equipos.cancha}`;
-    } else {
-      // Si ya tiene texto, usar tal como está
-      canchaFormateada = equipos.cancha;
-    }
-    
-    info.textContent = `⚽ Partido ${equipos.fecha} - ${horaFormateada} - ${canchaFormateada}`;
-  }
+  // El título ya se actualiza en cargarEquipos() -> actualizarTitulo()
+  
   const field = document.getElementById('soccer-field-v2');
   // Serializar el estado actual para evitar parpadeos innecesarios
   const estadoActual = JSON.stringify({negro: equipos.negro, rojo: equipos.rojo, negro_posiciones: equipos.negro_posiciones, rojo_posiciones: equipos.rojo_posiciones});
