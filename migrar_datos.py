@@ -70,6 +70,14 @@ def migrar_datos_a_postgres():
             try:
                 print(f"📝 Migrando registro {i+1}/{len(datos_json)}: ID {registro.get('id', 'N/A')}")
                 
+                # Convertir formato de equipos si es necesario
+                if 'equipo_rojo' in registro and 'equipo_negro' in registro and 'equipos' not in registro:
+                    registro['equipos'] = {
+                        'rojo': registro.get('equipo_rojo', []),
+                        'negro': registro.get('equipo_negro', [])
+                    }
+                    print(f"🔄 Convertido formato de equipos para registro {i+1}")
+                
                 # Guardar en PostgreSQL usando el database_manager
                 exito = db.save_partido(registro)
                 if exito:
