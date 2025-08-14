@@ -445,7 +445,68 @@ function abrirModalResultado() {
   // Cargar jugadores automáticamente
   cargarJugadoresAutomaticamente();
   
+  // 🆕 CARGAR EQUIPOS DEL ÚLTIMO SORTEO
+  cargarEquiposDelSorteo();
+  
   document.getElementById('modal-resultado').style.display = 'block';
+}
+
+// 🆕 Nueva función para cargar equipos del último sorteo
+async function cargarEquiposDelSorteo() {
+  try {
+    const response = await fetch('equipos.json?_=' + Date.now());
+    if (response.ok) {
+      const equipos = await response.json();
+      const equipoRojo = equipos.rojo || [];
+      const equipoNegro = equipos.negro || [];
+      
+      if (equipoRojo.length > 0 || equipoNegro.length > 0) {
+        document.getElementById('equipo-rojo').value = equipoRojo.join(', ');
+        document.getElementById('equipo-negro').value = equipoNegro.join(', ');
+        console.log('✅ Equipos cargados automáticamente desde último sorteo:', { 
+          rojo: equipoRojo, 
+          negro: equipoNegro 
+        });
+        
+        // Mostrar notificación visual
+        mostrarNotificacionEquipos(equipoRojo.length + equipoNegro.length);
+      }
+    }
+  } catch (error) {
+    console.log('❌ No se pudieron cargar los equipos del sorteo:', error);
+  }
+}
+
+// Función para mostrar notificación de equipos cargados
+function mostrarNotificacionEquipos(totalJugadores) {
+  const notificacion = document.createElement('div');
+  notificacion.innerHTML = `
+    <div style="
+      position: fixed; 
+      top: 20px; 
+      right: 20px; 
+      background: #4caf50; 
+      color: white; 
+      padding: 12px 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+      z-index: 10000;
+      font-size: 14px;
+      max-width: 300px;
+    ">
+      ⚽ Equipos cargados desde último sorteo<br>
+      <small>${totalJugadores} jugadores distribuidos</small>
+    </div>
+  `;
+  
+  document.body.appendChild(notificacion);
+  
+  // Remover después de 3 segundos
+  setTimeout(() => {
+    if (notificacion && notificacion.parentNode) {
+      notificacion.parentNode.removeChild(notificacion);
+    }
+  }, 3000);
 }
 
 // Función para cargar jugadores automáticamente
@@ -504,6 +565,11 @@ async function cargarJugadoresAutomaticamente() {
             jugadoresConfirmados = jugadoresSorteo;
             fuente = 'último sorteo';
             console.log('✅ Jugadores cargados desde último sorteo:', jugadoresConfirmados);
+            
+            // 🆕 LLENAR CAMPOS DE EQUIPOS AUTOMÁTICAMENTE
+            document.getElementById('equipo-rojo').value = equipoRojo.join(', ');
+            document.getElementById('equipo-negro').value = equipoNegro.join(', ');
+            console.log('✅ Equipos llenados automáticamente:', { rojo: equipoRojo, negro: equipoNegro });
           }
         }
       } catch (error) {
@@ -597,6 +663,8 @@ async function recargarJugadores() {
   
   try {
     await cargarJugadoresAutomaticamente();
+    // 🆕 TAMBIÉN RECARGAR EQUIPOS
+    await cargarEquiposDelSorteo();
   } catch (error) {
     console.error('Error al recargar jugadores:', error);
     alert('❌ Error al cargar jugadores automáticamente');
