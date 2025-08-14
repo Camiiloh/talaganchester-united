@@ -1,6 +1,6 @@
 FECHA: 2025-08-20
 HORA: 21:00
-CANCHA: Por confirmar
+CANCHA: Cancha por Confirmar
 ---
 Pablo 
 Maxi
