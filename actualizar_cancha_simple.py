@@ -50,12 +50,15 @@ def actualizar_cancha_simple():
     # Generar HTML de jugadores
     nuevos_jugadores = generar_jugadores_html(equipos)
     
-    # Reemplazar la sección
+    # Reemplazar la sección de posiciones
     nuevo_html = (
         html_content[:inicio_match.end()] + 
         "\n" + nuevos_jugadores + "\n" + 
         html_content[fin_match.start():]
     )
+    
+    # Actualizar también el listado inferior
+    nuevo_html = actualizar_listado_equipos(nuevo_html, equipos)
     
     # Guardar archivo actualizado
     try:
@@ -169,6 +172,66 @@ def obtener_posiciones_por_funcion(equipo, posiciones_dict, lado):
             posiciones[nombre] = {'left': f'{x}%', 'top': f'{y}%'}
     
     return posiciones
+
+def actualizar_listado_equipos(html_content, equipos):
+    """Actualiza el listado de equipos en la parte inferior de cancha.html"""
+    # Buscar la sección del listado
+    inicio_pattern = r'<!-- LISTADO EQUIPOS INICIO -->'
+    fin_pattern = r'<!-- LISTADO EQUIPOS FIN -->'
+    
+    inicio_match = re.search(inicio_pattern, html_content)
+    fin_match = re.search(fin_pattern, html_content)
+    
+    if not inicio_match or not fin_match:
+        print("Advertencia: No se encontraron los marcadores del listado")
+        return html_content
+    
+    # Generar HTML del listado
+    nuevo_listado = generar_listado_html(equipos)
+    
+    # Reemplazar la sección
+    nuevo_html = (
+        html_content[:inicio_match.end()] + 
+        "\n" + nuevo_listado + "\n" + 
+        html_content[fin_match.start():]
+    )
+    
+    return nuevo_html
+
+def generar_listado_html(equipos):
+    """Genera el HTML del listado de equipos"""
+    equipo_negro = equipos.get('negro', [])
+    equipo_rojo = equipos.get('rojo', [])
+    
+    # Generar HTML para equipo negro
+    html_negro = '''          <div class="team-info black">
+            <h3>⚫ Equipo Negro</h3>
+            <div class="formation"></div>
+<ul>'''
+    
+    for jugador in equipo_negro:
+        html_negro += f'''
+<li><img src="fotos/{jugador}.png" alt="{jugador}" style="width:28px;height:28px;vertical-align:middle;border-radius:6px;margin-right:6px;box-shadow:0 2px 8px #222a3655;"> <strong>{jugador}</strong></li>'''
+    
+    html_negro += '''
+</ul>
+          </div>'''
+    
+    # Generar HTML para equipo rojo
+    html_rojo = '''          <div class="team-info red">
+            <h3>🔴 Equipo Rojo</h3>
+            <div class="formation"></div>
+<ul>'''
+    
+    for jugador in equipo_rojo:
+        html_rojo += f'''
+<li><img src="fotos/{jugador}.png" alt="{jugador}" style="width:28px;height:28px;vertical-align:middle;border-radius:6px;margin-right:6px;box-shadow:0 2px 8px #e5393555;"> <strong>{jugador}</strong></li>'''
+    
+    html_rojo += '''
+</ul>
+          </div>'''
+    
+    return html_negro + "\n" + html_rojo
 
 def actualizar_titulo_partido(html_content, equipos):
     """Actualiza el título del partido en el HTML"""
