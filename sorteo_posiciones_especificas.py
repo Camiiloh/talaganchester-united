@@ -536,7 +536,8 @@ def actualizar_archivos_html():
     try:
         # Actualizar cancha simple
         import subprocess
-        result = subprocess.run(['python', 'actualizar_cancha_simple.py'], 
+        import sys
+        result = subprocess.run([sys.executable, 'actualizar_cancha_simple.py'], 
                               capture_output=True, text=True, cwd='.')
         if result.returncode == 0:
             print("✅ Cancha simple actualizada automáticamente")
@@ -547,7 +548,7 @@ def actualizar_archivos_html():
     
     try:
         # Actualizar index.html
-        result = subprocess.run(['python', 'actualizar_index.py'], 
+        result = subprocess.run([sys.executable, 'actualizar_index.py'], 
                               capture_output=True, text=True, cwd='.')
         if result.returncode == 0:
             print("✅ Index.html actualizado automáticamente")
