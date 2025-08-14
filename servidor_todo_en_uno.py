@@ -128,6 +128,51 @@ def obtener_historial():
     historial = cargar_historial()
     return jsonify(historial)  # Devolver directamente el array
 
+@app.route('/api/migrar', methods=['POST'])
+def ejecutar_migracion():
+    """API: Ejecuta migración manual desde JSON a PostgreSQL"""
+    try:
+        if not os.environ.get('DATABASE_URL'):
+            return jsonify({'error': 'No disponible en desarrollo local'}), 400
+            
+        from migrar_datos import migrar_datos_a_postgres
+        resultado = migrar_datos_a_postgres()
+        
+        if resultado:
+            return jsonify({'success': True, 'mensaje': 'Migración ejecutada correctamente'})
+        else:
+            return jsonify({'error': 'Falló la migración - revisar logs del servidor'}), 500
+            
+    except Exception as e:
+        return jsonify({'error': f'Error ejecutando migración: {str(e)}'}), 500
+
+@app.route('/api/migration-status', methods=['GET'])
+def migration_status():
+    """API: Verifica estado de la migración"""
+    try:
+        info = {
+            'database_url_exists': bool(os.environ.get('DATABASE_URL')),
+            'json_file_exists': os.path.exists('historial_partidos.json'),
+            'db_available': DB_AVAILABLE
+        }
+        
+        if DB_AVAILABLE:
+            historial = cargar_historial()
+            info['records_in_db'] = len(historial) if historial else 0
+        
+        if os.path.exists('historial_partidos.json'):
+            try:
+                with open('historial_partidos.json', 'r', encoding='utf-8') as f:
+                    json_data = json.load(f)
+                info['records_in_json'] = len(json_data) if json_data else 0
+            except:
+                info['records_in_json'] = 'error_reading_file'
+        
+        return jsonify(info)
+        
+    except Exception as e:
+        return jsonify({'error': f'Error verificando estado: {str(e)}'}), 500
+
 @app.route('/api/health', methods=['GET'])
 def health():
     """API: Health check"""
