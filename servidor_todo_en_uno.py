@@ -39,27 +39,21 @@ HISTORIAL_FILE = 'historial_partidos.json'
 
 def cargar_historial():
     """Carga el historial de partidos"""
-    # En Railway sin DATABASE_URL, usar directamente el archivo JSON
-    if os.environ.get('PORT') and not os.environ.get('DATABASE_URL'):
-        print("🗄️  Railway sin PostgreSQL - usando JSON directamente")
-        if os.path.exists(HISTORIAL_FILE):
-            try:
-                with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
-                    return json.load(f)
-            except:
-                return []
-        return []
+    # Intentar base de datos primero solo si tenemos DATABASE_URL
+    if DB_AVAILABLE and os.environ.get('DATABASE_URL'):
+        try:
+            return db_manager.get_historial_partidos()
+        except Exception as e:
+            print(f"⚠️  Error cargando desde base de datos: {e}")
     
-    # Para desarrollo local o Railway con PostgreSQL
-    if DB_AVAILABLE:
-        return db_manager.get_historial_partidos()
-    
-    # Fallback a archivo JSON
+    # Usar archivo JSON como fallback o en Railway sin PostgreSQL configurado
+    print("📁 Cargando historial desde archivo JSON")
     if os.path.exists(HISTORIAL_FILE):
         try:
             with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
                 return json.load(f)
-        except:
+        except Exception as e:
+            print(f"⚠️  Error cargando JSON: {e}")
             return []
     return []
 
