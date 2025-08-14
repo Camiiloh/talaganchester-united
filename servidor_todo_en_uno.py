@@ -233,7 +233,7 @@ def debug_env():
     
     return jsonify({
         'env_vars': env_vars,
-        'db_manager_url': db_manager.postgres_url[:50] + '...' if db_manager.postgres_url else None,
+        'db_manager_url': db_manager.database_url[:50] + '...' if db_manager.database_url else None,
         'db_available': DB_AVAILABLE
     })
 
