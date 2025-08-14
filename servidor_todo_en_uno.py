@@ -13,6 +13,14 @@ from datetime import datetime
 import logging
 from pathlib import Path
 
+# Importar el gestor de base de datos
+try:
+    from database_manager import db_manager
+    DB_AVAILABLE = True
+except ImportError:
+    print("⚠️  database_manager no disponible, usando modo JSON")
+    DB_AVAILABLE = False
+
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -25,6 +33,10 @@ HISTORIAL_FILE = 'historial_partidos.json'
 
 def cargar_historial():
     """Carga el historial de partidos"""
+    if DB_AVAILABLE:
+        return db_manager.get_historial_partidos()
+    
+    # Fallback a archivo JSON
     if os.path.exists(HISTORIAL_FILE):
         try:
             with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
@@ -35,12 +47,35 @@ def cargar_historial():
 
 def guardar_historial(historial):
     """Guarda el historial de partidos"""
+    if DB_AVAILABLE:
+        # Con la nueva arquitectura, guardamos partido por partido
+        return True  # Se maneja individualmente en save_partido
+    
+    # Fallback a archivo JSON
     try:
         with open(HISTORIAL_FILE, 'w', encoding='utf-8') as f:
             json.dump(historial, f, indent=2, ensure_ascii=False)
         return True
     except:
         return False
+
+def guardar_partido(partido):
+    """Guarda un partido individual"""
+    if DB_AVAILABLE:
+        return db_manager.save_partido(partido)
+    
+    # Fallback: usar método antiguo
+    historial = cargar_historial()
+    
+    # Buscar si ya existe
+    for i, p in enumerate(historial):
+        if p['id'] == partido['id']:
+            historial[i] = partido
+            break
+    else:
+        historial.append(partido)
+    
+    return guardar_historial(historial)
 
 # ===== API ENDPOINTS =====
 
@@ -53,10 +88,8 @@ def guardar_resultado():
             return jsonify({'error': 'No se recibieron datos'}), 400
         
         datos_partido['timestamp'] = datetime.now().isoformat()
-        historial = cargar_historial()
-        historial.append(datos_partido)
         
-        if guardar_historial(historial):
+        if guardar_partido(datos_partido):
             return jsonify({'success': True, 'mensaje': 'Partido guardado'})
         else:
             return jsonify({'error': 'Error guardando'}), 500
@@ -72,10 +105,19 @@ def guardar_historial_completo():
         if not isinstance(nuevo_historial, list):
             return jsonify({'error': 'Debe ser una lista'}), 400
         
-        if guardar_historial(nuevo_historial):
-            return jsonify({'success': True, 'total': len(nuevo_historial)})
+        if DB_AVAILABLE:
+            # Guardar cada partido individualmente en la base de datos
+            count = 0
+            for partido in nuevo_historial:
+                if db_manager.save_partido(partido):
+                    count += 1
+            return jsonify({'success': True, 'total': count})
         else:
-            return jsonify({'error': 'Error guardando'}), 500
+            # Método antiguo
+            if guardar_historial(nuevo_historial):
+                return jsonify({'success': True, 'total': len(nuevo_historial)})
+            else:
+                return jsonify({'error': 'Error guardando'}), 500
             
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -84,7 +126,7 @@ def guardar_historial_completo():
 def obtener_historial():
     """API: Obtiene historial"""
     historial = cargar_historial()
-    return jsonify({'historial': historial, 'total': len(historial)})
+    return jsonify(historial)  # Devolver directamente el array
 
 @app.route('/api/health', methods=['GET'])
 def health():

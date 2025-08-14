@@ -59,24 +59,45 @@ function actualizarTituloEstadisticas(equipos) {
   document.title = `Estadísticas - ${fechaTexto} - ${hora} - Cancha ${cancha}`;
 }
 
-// Cargar historial desde JSON
+// Cargar historial desde la base de datos vía API
 async function cargarHistorial() {
   try {
-    console.log('🔄 Intentando cargar historial desde servidor...');
-    const response = await fetch('historial_partidos.json?_=' + Date.now());
-    console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+    console.log('🔄 Intentando cargar historial desde API...');
+    const response = await fetch('/api/historial?_=' + Date.now());
+    console.log('📡 Respuesta de la API:', response.status, response.statusText);
     
     if (response.ok) {
       historialPartidos = await response.json();
-      console.log('✅ Historial cargado desde servidor:', historialPartidos.length, 'partidos');
+      console.log('✅ Historial cargado desde API:', historialPartidos.length, 'partidos');
       console.log('📊 Datos del historial:', historialPartidos);
     } else {
-      console.log('❌ Error al cargar historial del servidor:', response.status);
-      historialPartidos = [];
+      console.log('❌ Error al cargar historial de la API:', response.status);
+      // Fallback: intentar cargar desde JSON como respaldo
+      console.log('🔄 Intentando fallback a JSON...');
+      const fallbackResponse = await fetch('historial_partidos.json?_=' + Date.now());
+      if (fallbackResponse.ok) {
+        historialPartidos = await fallbackResponse.json();
+        console.log('✅ Historial cargado desde JSON (fallback):', historialPartidos.length, 'partidos');
+      } else {
+        historialPartidos = [];
+      }
     }
   } catch (error) {
     console.log('❌ Error al cargar el historial:', error);
-    historialPartidos = [];
+    // Fallback: intentar cargar desde JSON como respaldo
+    try {
+      console.log('🔄 Intentando fallback a JSON...');
+      const fallbackResponse = await fetch('historial_partidos.json?_=' + Date.now());
+      if (fallbackResponse.ok) {
+        historialPartidos = await fallbackResponse.json();
+        console.log('✅ Historial cargado desde JSON (fallback):', historialPartidos.length, 'partidos');
+      } else {
+        historialPartidos = [];
+      }
+    } catch (fallbackError) {
+      console.log('❌ Error en fallback:', fallbackError);
+      historialPartidos = [];
+    }
   }
 }
 
@@ -95,16 +116,38 @@ function guardarHistorial() {
 
 // Actualizar estadísticas generales
 function actualizarEstadisticas() {
-  const totalPartidos = historialPartidos.filter(p => p.estado === 'finalizado').length;
+  console.log('🔍 Iniciando actualizarEstadisticas()');
+  console.log('📊 historialPartidos completo:', historialPartidos);
+  
+  // Considerar partidos finalizados los que tienen resultado válido
+  const totalPartidos = historialPartidos.filter(p => {
+    const tieneResultado = p.resultado && 
+      (p.resultado.rojo !== undefined && p.resultado.negro !== undefined);
+    const noCancelado = !(p.resultado.rojo === 0 && p.resultado.negro === 0 && p.mvp === 'Cancelado');
+    const incluir = tieneResultado && noCancelado;
+    
+    console.log(`🏆 Partido ${p.fecha}: resultado=${JSON.stringify(p.resultado)}, mvp=${p.mvp}, incluir=${incluir}`);
+    return incluir;
+  }).length;
+  
+  console.log(`📈 Total partidos calculado: ${totalPartidos}`);
+  
   const victoriasRojo = historialPartidos.filter(p => 
-    p.estado === 'finalizado' && p.resultado.rojo > p.resultado.negro
+    p.resultado && p.resultado.rojo > p.resultado.negro &&
+    !(p.resultado.rojo === 0 && p.resultado.negro === 0 && p.mvp === 'Cancelado')
   ).length;
+  
   const victoriasNegro = historialPartidos.filter(p => 
-    p.estado === 'finalizado' && p.resultado.negro > p.resultado.rojo
+    p.resultado && p.resultado.negro > p.resultado.rojo &&
+    !(p.resultado.rojo === 0 && p.resultado.negro === 0 && p.mvp === 'Cancelado')
   ).length;
+  
   const empates = historialPartidos.filter(p => 
-    p.estado === 'finalizado' && p.resultado.rojo === p.resultado.negro
+    p.resultado && p.resultado.rojo === p.resultado.negro &&
+    !(p.resultado.rojo === 0 && p.resultado.negro === 0 && p.mvp === 'Cancelado')
   ).length;
+
+  console.log(`📊 Estadísticas: total=${totalPartidos}, rojo=${victoriasRojo}, negro=${victoriasNegro}, empates=${empates}`);
 
   document.getElementById('total-partidos').textContent = totalPartidos;
   document.getElementById('victorias-rojo').textContent = victoriasRojo;
@@ -132,7 +175,10 @@ function mostrarHistorial() {
   }
 
   const partidosOrdenados = [...historialPartidos]
-    .filter(p => p.estado === 'finalizado')
+    .filter(p => 
+      p.resultado && 
+      (p.resultado.rojo !== undefined && p.resultado.negro !== undefined)
+    )
     .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
     
   console.log('partidosOrdenados:', partidosOrdenados);
@@ -149,9 +195,11 @@ function mostrarHistorial() {
       p.resultado.negro === partido.resultado.negro
     );
     
-    // Mostrar jugadores de los equipos
-    const equipoRojoJugadores = partido.equipo_rojo ? partido.equipo_rojo.join(', ') : 'No registrado';
-    const equipoNegroJugadores = partido.equipo_negro ? partido.equipo_negro.join(', ') : 'No registrado';
+    // Mostrar jugadores de los equipos - compatible con ambas estructuras
+    const equipoRojo = partido.equipo_rojo || (partido.equipos && partido.equipos.rojo) || [];
+    const equipoNegro = partido.equipo_negro || (partido.equipos && partido.equipos.negro) || [];
+    const equipoRojoJugadores = equipoRojo.length > 0 ? equipoRojo.join(', ') : 'No registrado';
+    const equipoNegroJugadores = equipoNegro.length > 0 ? equipoNegro.join(', ') : 'No registrado';
     
     return `
       <div class="match-item" data-index="${indiceOriginal}" style="background: white; color: black; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; padding: 15px;">
@@ -217,7 +265,10 @@ function mostrarGoleadores() {
   // Sumar goles por jugador
   const golesPorJugador = {};
   historialPartidos
-    .filter(p => p.estado === 'finalizado')
+    .filter(p => 
+      p.resultado && 
+      (p.resultado.rojo !== undefined && p.resultado.negro !== undefined)
+    )
     .forEach(partido => {
       if (partido.goleadores) {
         partido.goleadores.forEach(gol => {
@@ -603,13 +654,16 @@ async function agregarNuevoPartido() {
   }
   
   // Validar duplicados por fecha, hora y equipos (prevenir partidos duplicados)
-  const partidoDuplicado = historialPartidos.find(p => 
-    p.fecha === fecha && 
-    p.hora === hora && 
-    p.cancha === cancha &&
-    JSON.stringify(p.equipo_rojo.sort()) === JSON.stringify(equipoRojo.sort()) &&
-    JSON.stringify(p.equipo_negro.sort()) === JSON.stringify(equipoNegro.sort())
-  );
+  const partidoDuplicado = historialPartidos.find(p => {
+    const pEquipoRojo = p.equipo_rojo || (p.equipos && p.equipos.rojo) || [];
+    const pEquipoNegro = p.equipo_negro || (p.equipos && p.equipos.negro) || [];
+    
+    return p.fecha === fecha && 
+           p.hora === hora && 
+           p.cancha === cancha &&
+           JSON.stringify(pEquipoRojo.sort()) === JSON.stringify(equipoRojo.sort()) &&
+           JSON.stringify(pEquipoNegro.sort()) === JSON.stringify(equipoNegro.sort());
+  });
   
   if (partidoDuplicado) {
     alert(`⚠️ Ya existe un partido registrado para la fecha ${fecha} a las ${hora} en cancha ${cancha} con estos equipos.`);
@@ -624,6 +678,11 @@ async function agregarNuevoPartido() {
     hora: hora,
     cancha: cancha,
     jugadores_confirmados: jugadoresConfirmados,
+    equipos: {
+      rojo: equipoRojo,
+      negro: equipoNegro
+    },
+    // Mantener compatibilidad con estructura antigua
     equipo_rojo: equipoRojo,
     equipo_negro: equipoNegro,
     resultado: {
