@@ -143,26 +143,26 @@ function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
 
 async function renderCanchaV2() {
   const equipos = await cargarEquipos();
-  // El header se actualiza por actualiza-header.js, no aquí para evitar conflictos
-  // const info = document.getElementById('partido-info');
-  // if (info && equipos.fecha && equipos.hora && equipos.cancha) {
-  //   // Verificar si la hora ya incluye "hrs" para evitar duplicación
-  //   const horaFormateada = equipos.hora.includes('hrs') ? equipos.hora : `${equipos.hora} hrs`;
-  //   
-  //   // Formatear la cancha correctamente
-  //   let canchaFormateada;
-  //   if (equipos.cancha.toLowerCase().includes('por confirmar')) {
-  //     canchaFormateada = equipos.cancha;
-  //   } else if (/^\d+$/.test(equipos.cancha.trim())) {
-  //     // Si es solo un número, agregar "Cancha"
-  //     canchaFormateada = `Cancha ${equipos.cancha}`;
-  //   } else {
-  //     // Si ya tiene texto, usar tal como está
-  //     canchaFormateada = equipos.cancha;
-  //   }
-  //   
-  //   info.textContent = `⚽ Partido ${equipos.fecha} - ${horaFormateada} - ${canchaFormateada}`;
-  // }
+  // Actualizar el título del partido
+  const info = document.getElementById('partido-info');
+  if (info && equipos.fecha && equipos.hora && equipos.cancha) {
+    // Verificar si la hora ya incluye "hrs" para evitar duplicación
+    const horaFormateada = equipos.hora.includes('hrs') ? equipos.hora : `${equipos.hora} hrs`;
+    
+    // Formatear la cancha correctamente
+    let canchaFormateada;
+    if (equipos.cancha.toLowerCase().includes('por confirmar')) {
+      canchaFormateada = equipos.cancha;
+    } else if (/^\d+$/.test(equipos.cancha.trim())) {
+      // Si es solo un número, agregar "Cancha"
+      canchaFormateada = `Cancha ${equipos.cancha}`;
+    } else {
+      // Si ya tiene texto, usar tal como está
+      canchaFormateada = equipos.cancha;
+    }
+    
+    info.textContent = `⚽ Partido ${equipos.fecha} - ${horaFormateada} - ${canchaFormateada}`;
+  }
   const field = document.getElementById('soccer-field-v2');
   // Serializar el estado actual para evitar parpadeos innecesarios
   const estadoActual = JSON.stringify({negro: equipos.negro, rojo: equipos.rojo, negro_posiciones: equipos.negro_posiciones, rojo_posiciones: equipos.rojo_posiciones});

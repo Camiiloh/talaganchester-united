@@ -77,28 +77,42 @@ def cargar_info_partido():
         with open('confirmaciones_automaticas.json', 'r', encoding='utf-8') as f:
             confirmaciones = json.load(f)
         
-        # Buscar la fecha más reciente o la de hoy
+        # Buscar la fecha más reciente disponible (priorizando fechas futuras)
+        fechas_disponibles = sorted(confirmaciones.keys(), reverse=True)
         fecha_hoy = datetime.now().strftime('%Y-%m-%d')
         
-        if fecha_hoy in confirmaciones:
+        # Priorizar fechas futuras, luego hoy, luego pasadas
+        fecha_seleccionada = None
+        datos_partido = None
+        
+        # Primero buscar fechas futuras
+        for fecha in fechas_disponibles:
+            if fecha > fecha_hoy:
+                fecha_seleccionada = fecha
+                datos_partido = confirmaciones[fecha]
+                print(f"ℹ️  Usando fecha futura: {fecha}")
+                break
+        
+        # Si no hay fechas futuras, usar la de hoy si existe
+        if not fecha_seleccionada and fecha_hoy in confirmaciones:
+            fecha_seleccionada = fecha_hoy
             datos_partido = confirmaciones[fecha_hoy]
-            fecha_clave = fecha_hoy
-        else:
-            # Buscar la fecha más reciente disponible
-            fechas_disponibles = sorted(confirmaciones.keys(), reverse=True)
-            if fechas_disponibles:
-                fecha_reciente = fechas_disponibles[0]
-                datos_partido = confirmaciones[fecha_reciente]
-                fecha_clave = fecha_reciente
-                print(f"ℹ️  Usando datos de {fecha_reciente} (no hay para hoy)")
-            else:
-                return info_default
+            print(f"ℹ️  Usando fecha de hoy: {fecha_hoy}")
+        
+        # Si no hay hoy ni futuras, usar la más reciente
+        if not fecha_seleccionada and fechas_disponibles:
+            fecha_seleccionada = fechas_disponibles[0]
+            datos_partido = confirmaciones[fecha_seleccionada]
+            print(f"ℹ️  Usando fecha más reciente: {fecha_seleccionada}")
+        
+        if not fecha_seleccionada:
+            return info_default
         
         # Extraer información del partido
         resultado = info_default.copy()
         
         # La fecha viene de la clave del JSON (formato YYYY-MM-DD)
-        resultado['fecha'] = fecha_clave
+        resultado['fecha'] = fecha_seleccionada
         
         # Buscar hora y cancha en los datos, si existen
         if 'hora' in datos_partido:
