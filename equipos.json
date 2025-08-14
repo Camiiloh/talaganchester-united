@@ -4,25 +4,33 @@
   "cancha": "1",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Maxi",
-    "Willians",
-    "Juan HG",
-    "Enrique",
-    "Ruben",
-    "Pablo"
-  ],
-  "negro": [
     "Nel",
-    "Félix",
+    "Iván",
+    "Vicente",
     "Marco",
     "Diego",
-    "Vicente",
-    "Iván"
+    "Félix"
+  ],
+  "negro": [
+    "Maxi",
+    "Enrique",
+    "Ruben",
+    "Willians",
+    "Pablo",
+    "Juan HG"
   ],
   "promedio_rojo": 7.07,
   "promedio_negro": 7.07,
   "diferencia": 0.0,
   "rojo_posiciones": {
+    "Nel": "Arquero",
+    "Marco": "Defensa",
+    "Félix": "Defensa",
+    "Diego": "Mediocampo",
+    "Iván": "Mediocampo",
+    "Vicente": "Delantero"
+  },
+  "negro_posiciones": {
     "Maxi": "Arquero",
     "Pablo": "Defensa",
     "Ruben": "Defensa",
@@ -30,30 +38,22 @@
     "Willians": "Mediocampo",
     "Juan HG": "Delantero"
   },
-  "negro_posiciones": {
-    "Nel": "Arquero",
-    "Félix": "Defensa",
-    "Marco": "Defensa",
-    "Diego": "Mediocampo",
-    "Iván": "Mediocampo",
-    "Vicente": "Delantero"
-  },
   "equipos": {
     "rojo": [
-      "Maxi",
-      "Willians",
-      "Juan HG",
-      "Enrique",
-      "Ruben",
-      "Pablo"
-    ],
-    "negro": [
       "Nel",
-      "Félix",
+      "Iván",
+      "Vicente",
       "Marco",
       "Diego",
-      "Vicente",
-      "Iván"
+      "Félix"
+    ],
+    "negro": [
+      "Maxi",
+      "Enrique",
+      "Ruben",
+      "Willians",
+      "Pablo",
+      "Juan HG"
     ]
   },
   "formaciones": {
@@ -67,6 +67,38 @@
   },
   "posiciones": {
     "rojo": [
+      [
+        "Nel",
+        "GK",
+        7.8
+      ],
+      [
+        "Marco",
+        "LCB",
+        7.0
+      ],
+      [
+        "Félix",
+        "RCB",
+        5.0
+      ],
+      [
+        "Diego",
+        "LM",
+        7.8
+      ],
+      [
+        "Iván",
+        "RM",
+        6.3
+      ],
+      [
+        "Vicente",
+        "CF",
+        8.5
+      ]
+    ],
+    "negro": [
       [
         "Maxi",
         "GK",
@@ -96,38 +128,6 @@
         "Juan HG",
         "CF",
         6.0
-      ]
-    ],
-    "negro": [
-      [
-        "Nel",
-        "GK",
-        7.8
-      ],
-      [
-        "Félix",
-        "LCB",
-        5.2
-      ],
-      [
-        "Marco",
-        "RCB",
-        6.8
-      ],
-      [
-        "Diego",
-        "LM",
-        7.8
-      ],
-      [
-        "Iván",
-        "RM",
-        6.3
-      ],
-      [
-        "Vicente",
-        "CF",
-        8.5
       ]
     ]
   }

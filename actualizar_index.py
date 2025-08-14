@@ -33,6 +33,9 @@ def actualizar_index_html():
         print(f"Error leyendo index.html: {e}")
         return False
     
+    # Actualizar título del partido
+    html_content = actualizar_titulo_partido(html_content, equipos)
+    
     # Generar HTML de equipos
     nuevo_html_equipos = generar_equipos_html(equipos)
     
@@ -135,6 +138,36 @@ def generar_equipos_html(equipos):
         </div>'''
     
     return html_equipos
+
+def actualizar_titulo_partido(html_content, equipos):
+    """Actualiza el título del partido en el HTML"""
+    import datetime
+    
+    # Formatear fecha
+    fechaTexto = equipos.get('fecha', 'Fecha por confirmar')
+    if fechaTexto != 'Fecha por confirmar' and fechaTexto != 'Por confirmar':
+        try:
+            fecha = datetime.datetime.strptime(fechaTexto, '%Y-%m-%d')
+            fechaTexto = fecha.strftime('%A %d de %B').replace('Monday', 'Lunes').replace('Tuesday', 'Martes').replace('Wednesday', 'Miércoles').replace('Thursday', 'Jueves').replace('Friday', 'Viernes').replace('Saturday', 'Sábado').replace('Sunday', 'Domingo')
+            fechaTexto = fechaTexto.replace('January', 'Enero').replace('February', 'Febrero').replace('March', 'Marzo').replace('April', 'Abril').replace('May', 'Mayo').replace('June', 'Junio').replace('July', 'Julio').replace('August', 'Agosto').replace('September', 'Septiembre').replace('October', 'Octubre').replace('November', 'Noviembre').replace('December', 'Diciembre')
+        except:
+            pass
+    
+    hora = equipos.get('hora', 'Por confirmar')
+    if hora != 'Por confirmar':
+        hora = f"{hora} hrs"
+    
+    cancha = equipos.get('cancha', 'Por confirmar')
+    if cancha != 'Por confirmar' and cancha.isdigit():
+        cancha = f"Cancha {cancha}"
+    
+    nuevo_titulo = f"⚽ Partido {fechaTexto} - {hora} - {cancha}"
+    
+    # Buscar y reemplazar el título
+    patron_titulo = r'<h1 id="partido-info">.*?</h1>'
+    nuevo_html = re.sub(patron_titulo, f'<h1 id="partido-info">{nuevo_titulo}</h1>', html_content)
+    
+    return nuevo_html
 
 if __name__ == '__main__':
     print("Actualizando index.html...")
