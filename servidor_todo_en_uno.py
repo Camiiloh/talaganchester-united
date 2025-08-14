@@ -39,6 +39,18 @@ HISTORIAL_FILE = 'historial_partidos.json'
 
 def cargar_historial():
     """Carga el historial de partidos"""
+    # En Railway sin DATABASE_URL, usar directamente el archivo JSON
+    if os.environ.get('PORT') and not os.environ.get('DATABASE_URL'):
+        print("🗄️  Railway sin PostgreSQL - usando JSON directamente")
+        if os.path.exists(HISTORIAL_FILE):
+            try:
+                with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except:
+                return []
+        return []
+    
+    # Para desarrollo local o Railway con PostgreSQL
     if DB_AVAILABLE:
         return db_manager.get_historial_partidos()
     
@@ -133,6 +145,18 @@ def obtener_historial():
     """API: Obtiene historial"""
     historial = cargar_historial()
     return jsonify(historial)  # Devolver directamente el array
+
+@app.route('/api/historial-directo', methods=['GET'])
+def obtener_historial_directo():
+    """API: Obtiene historial directamente del JSON (para debug en Railway)"""
+    try:
+        if os.path.exists(HISTORIAL_FILE):
+            with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
+                datos = json.load(f)
+            return jsonify(datos)
+        return jsonify([])
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @app.route('/api/migrar', methods=['POST'])
 def ejecutar_migracion():
