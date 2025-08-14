@@ -40,9 +40,9 @@ HISTORIAL_FILE = 'historial_partidos.json'
 def cargar_historial():
     """Carga el historial de partidos"""
     # Intentar base de datos primero usando nueva detección multivaribles
-    if DB_AVAILABLE and db_manager.postgres_url:
+    if DB_AVAILABLE and db_manager.use_postgres:
         try:
-            print(f"🗄️  Cargando historial desde PostgreSQL: {db_manager.postgres_url[:30]}...")
+            print(f"🗄️  Cargando historial desde PostgreSQL: {db_manager.database_url[:30]}...")
             return db_manager.get_historial_partidos()
         except Exception as e:
             print(f"⚠️  Error cargando desde base de datos: {e}")
@@ -74,7 +74,7 @@ def guardar_historial(historial):
 
 def guardar_partido(partido):
     """Guarda un partido individual"""
-    if DB_AVAILABLE and db_manager.postgres_url:
+    if DB_AVAILABLE and db_manager.use_postgres:
         print(f"🗄️  Guardando partido en PostgreSQL")
         return db_manager.save_partido(partido)
     
@@ -197,7 +197,7 @@ def debug_simple():
         'test': 'working_v2',
         'postgres_vars': found_vars,
         'PORT': os.environ.get('PORT', 'not_set'),
-        'db_manager_url': bool(db_manager.postgres_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
+        'db_manager_url': bool(db_manager.database_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
     })
 
 @app.route('/api/debug-env', methods=['GET'])
@@ -228,8 +228,9 @@ def migration_status():
     """API: Verifica estado de la migración"""
     try:
         info = {
-            'database_url_exists': bool(db_manager.postgres_url if DB_AVAILABLE else None),
-            'postgres_url_detected': db_manager.postgres_url[:50] + '...' if DB_AVAILABLE and db_manager.postgres_url else None,
+            'database_url_exists': bool(db_manager.database_url if DB_AVAILABLE else None),
+            'postgres_url_detected': db_manager.database_url[:50] + '...' if DB_AVAILABLE and db_manager.database_url else None,
+            'use_postgres': db_manager.use_postgres if DB_AVAILABLE else False,
             'json_file_exists': os.path.exists('historial_partidos.json'),
             'db_available': DB_AVAILABLE
         }
