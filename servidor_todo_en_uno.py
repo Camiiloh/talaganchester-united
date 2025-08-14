@@ -176,7 +176,7 @@ def ejecutar_migracion():
 
 @app.route('/api/debug-simple', methods=['GET'])
 def debug_simple():
-    """API: Debug simple de PostgreSQL - v2"""
+    """API: Debug simple de PostgreSQL - FIXED VERSION"""
     # Variables comunes de Railway PostgreSQL
     postgres_vars = [
         'DATABASE_URL', 'POSTGRES_URL', 'DATABASE_PUBLIC_URL',
@@ -194,10 +194,24 @@ def debug_simple():
             found_vars[var] = False
     
     return jsonify({
-        'test': 'working_v2',
+        'test': 'FIXED_VERSION_v3',
         'postgres_vars': found_vars,
         'PORT': os.environ.get('PORT', 'not_set'),
-        'db_manager_url': bool(db_manager.database_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
+        'db_manager_url': bool(db_manager.database_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE',
+        'db_use_postgres': db_manager.use_postgres if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
+    })
+
+@app.route('/api/version', methods=['GET'])
+def version_check():
+    """Verificar versión desplegada"""
+    return jsonify({
+        'version': 'POSTGRESQL_FIXED_v3',
+        'timestamp': datetime.now().isoformat(),
+        'database_status': {
+            'available': DB_AVAILABLE,
+            'postgres_url_exists': bool(db_manager.database_url) if DB_AVAILABLE else False,
+            'use_postgres': db_manager.use_postgres if DB_AVAILABLE else False
+        }
     })
 
 @app.route('/api/debug-env', methods=['GET'])
