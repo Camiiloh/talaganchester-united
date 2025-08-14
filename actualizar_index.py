@@ -90,8 +90,9 @@ def generar_equipos_html(equipos):
     equipo_rojo = equipos.get('rojo', [])
     equipo_negro = equipos.get('negro', [])
     
-    promedio_rojo = calcular_promedio_equipo(equipo_rojo)
-    promedio_negro = calcular_promedio_equipo(equipo_negro)
+    # Usar los promedios por posición ya calculados en equipos.json
+    promedio_rojo = equipos.get('promedio_rojo', 6.0)
+    promedio_negro = equipos.get('promedio_negro', 6.0)
     
     # Generar jugadores del equipo rojo
     jugadores_rojo_html = ""
