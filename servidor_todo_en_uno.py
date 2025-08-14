@@ -15,7 +15,13 @@ from pathlib import Path
 
 # Importar el gestor de base de datos
 try:
-    from database_manager import db_manager
+    from database_manager import DatabaseManager
+    # Crear instancia apropiada según el entorno
+    if os.environ.get('PORT'):  # Estamos en Railway
+        db_manager = DatabaseManager()
+        print(f"🔧 Inicializado database_manager para Railway")
+    else:
+        from database_manager import db_manager
     DB_AVAILABLE = True
 except ImportError:
     print("⚠️  database_manager no disponible, usando modo JSON")

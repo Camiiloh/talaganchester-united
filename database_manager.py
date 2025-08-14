@@ -373,5 +373,15 @@ class DatabaseManager:
             print(f"❌ Error eliminando de historial_partidos.json: {e}")
             return False
 
-# Instancia global del gestor de base de datos
-db_manager = DatabaseManager()
+# Instancia global del gestor de base de datos (lazy loading)
+_db_manager_instance = None
+
+def get_db_manager():
+    """Obtiene la instancia del gestor de base de datos (lazy loading)"""
+    global _db_manager_instance
+    if _db_manager_instance is None:
+        _db_manager_instance = DatabaseManager()
+    return _db_manager_instance
+
+# Para compatibilidad con código existente
+db_manager = get_db_manager()
