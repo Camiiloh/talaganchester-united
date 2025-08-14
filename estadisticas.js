@@ -311,16 +311,45 @@ function mostrarHistorial() {
           </div>
         </div>
         
-        ${partido.jugadores_confirmados && partido.jugadores_confirmados.length > 0 ? `
-          <div class="jugadores-confirmados" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-            <div style="font-weight: bold; color: #2196f3; margin-bottom: 5px;">👥 Jugadores Confirmados (${partido.jugadores_confirmados.length})</div>
-            <div style="font-size: 0.9em; color: black; line-height: 1.4;">
-              ${partido.jugadores_confirmados.join(' • ')}
-            </div>
-          </div>
-        ` : ''}
         
-        ${partido.goleadores && partido.goleadores.length > 0 ? `
+        ${(() => {
+          // Procesar jugadores_confirmados que puede venir como string o array
+          let jugadoresConfirmados = [];
+          if (partido.jugadores_confirmados) {
+            if (Array.isArray(partido.jugadores_confirmados)) {
+              jugadoresConfirmados = partido.jugadores_confirmados;
+            } else if (typeof partido.jugadores_confirmados === 'string') {
+              // Si es string, intentar parsearlo o separarlo
+              try {
+                if (partido.jugadores_confirmados.startsWith('[') || partido.jugadores_confirmados.startsWith('{')) {
+                  jugadoresConfirmados = JSON.parse(partido.jugadores_confirmados);
+                } else {
+                  // Separar por comas, punto y coma, o saltos de línea
+                  jugadoresConfirmados = partido.jugadores_confirmados
+                    .split(/[,;|\n]/)
+                    .map(j => j.trim())
+                    .filter(j => j.length > 0);
+                }
+              } catch (e) {
+                // Si falla el parsing, separar por comas
+                jugadoresConfirmados = partido.jugadores_confirmados
+                  .split(',')
+                  .map(j => j.trim())
+                  .filter(j => j.length > 0);
+              }
+            }
+          }
+          
+          return jugadoresConfirmados.length > 0 ? `
+            <div class="jugadores-confirmados" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+              <div style="font-weight: bold; color: #2196f3; margin-bottom: 5px;">👥 Jugadores Confirmados (${jugadoresConfirmados.length})</div>
+              <div style="font-size: 0.9em; color: black; line-height: 1.4;">
+                ${jugadoresConfirmados.join(' • ')}
+              </div>
+            </div>
+          ` : '';
+        })()} 
+                ${partido.goleadores && partido.goleadores.length > 0 ? `
           <div class="goleadores-partido" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
             <div style="font-weight: bold; color: black; margin-bottom: 5px;">⚽ Goleadores</div>
             <div style="font-size: 0.9em; color: black;">
