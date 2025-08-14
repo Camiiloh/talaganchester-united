@@ -1,63 +1,63 @@
 {
-  "fecha": "Fecha por confirmar",
-  "hora": "22:00",
-  "cancha": "Por confirmar",
+  "fecha": "2025-08-13",
+  "hora": "21:00",
+  "cancha": "2",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Maxi",
+    "Nel",
+    "Marco",
+    "Camilo",
+    "Juan HG",
     "Enrique",
-    "Ruben",
-    "Iván",
-    "Félix",
-    "Willians"
+    "Pablo"
   ],
   "negro": [
-    "Nel",
-    "Camilo",
-    "Pablo",
-    "Vicente",
-    "Marco",
-    "Juan HG"
+    "Maxi",
+    "Félix",
+    "Willians",
+    "Ruben",
+    "Iván",
+    "Vicente"
   ],
   "promedio_rojo": 6.93,
   "promedio_negro": 6.93,
   "diferencia": 0.0,
   "rojo_posiciones": {
+    "Nel": "Arquero",
+    "Marco": "Defensa",
+    "Pablo": "Defensa",
+    "Juan HG": "Mediocampo",
+    "Enrique": "Mediocampo",
+    "Camilo": "Delantero"
+  },
+  "negro_posiciones": {
     "Maxi": "Arquero",
     "Félix": "Defensa",
     "Ruben": "Defensa",
-    "Enrique": "Mediocampo",
+    "Iván": "Mediocampo",
     "Willians": "Mediocampo",
-    "Iván": "Mediocampo"
-  },
-  "negro_posiciones": {
-    "Nel": "Arquero",
-    "Pablo": "Defensa",
-    "Marco": "Defensa",
-    "Juan HG": "Mediocampo",
-    "Vicente": "Mediocampo",
-    "Camilo": "Delantero"
+    "Vicente": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Maxi",
+      "Nel",
+      "Marco",
+      "Camilo",
+      "Juan HG",
       "Enrique",
-      "Ruben",
-      "Iván",
-      "Félix",
-      "Willians"
+      "Pablo"
     ],
     "negro": [
-      "Nel",
-      "Camilo",
-      "Pablo",
-      "Vicente",
-      "Marco",
-      "Juan HG"
+      "Maxi",
+      "Félix",
+      "Willians",
+      "Ruben",
+      "Iván",
+      "Vicente"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-3-0",
+    "rojo": "1-2-2-1",
     "negro": "1-2-2-1"
   },
   "puntajes": {
@@ -67,6 +67,38 @@
   },
   "posiciones": {
     "rojo": [
+      [
+        "Nel",
+        "GK",
+        7.8
+      ],
+      [
+        "Marco",
+        "LCB",
+        7.0
+      ],
+      [
+        "Pablo",
+        "RCB",
+        6.3
+      ],
+      [
+        "Juan HG",
+        "LM",
+        5.8
+      ],
+      [
+        "Enrique",
+        "CM",
+        8.2
+      ],
+      [
+        "Camilo",
+        "CF",
+        6.5
+      ]
+    ],
+    "negro": [
       [
         "Maxi",
         "GK",
@@ -83,9 +115,9 @@
         6.6
       ],
       [
-        "Enrique",
-        "CM",
-        8.2
+        "Iván",
+        "LM",
+        6.0
       ],
       [
         "Willians",
@@ -93,41 +125,9 @@
         8.5
       ],
       [
-        "Iván",
-        "RM",
-        6.3
-      ]
-    ],
-    "negro": [
-      [
-        "Nel",
-        "GK",
-        7.8
-      ],
-      [
-        "Pablo",
-        "LCB",
-        6.5
-      ],
-      [
-        "Marco",
-        "RCB",
-        6.8
-      ],
-      [
-        "Juan HG",
-        "LM",
-        5.8
-      ],
-      [
         "Vicente",
-        "CM",
-        8.2
-      ],
-      [
-        "Camilo",
         "CF",
-        6.5
+        8.5
       ]
     ]
   }

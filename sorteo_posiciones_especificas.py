@@ -65,7 +65,7 @@ def cargar_jugadores(archivo='jugadores_posiciones_especificas.json'):
         return []
 
 def cargar_info_partido():
-    """Carga la información del partido desde configuración"""
+    """Carga la información del partido desde confirmaciones_automaticas.json"""
     info_default = {
         'fecha': 'Fecha por confirmar',
         'hora': '22:00',
@@ -73,24 +73,48 @@ def cargar_info_partido():
     }
     
     try:
-        # Intentar cargar desde historial_partidos.json para obtener info del próximo partido
-        with open('historial_partidos.json', 'r', encoding='utf-8') as f:
-            historial = json.load(f)
+        # Cargar desde confirmaciones_automaticas.json
+        with open('confirmaciones_automaticas.json', 'r', encoding='utf-8') as f:
+            confirmaciones = json.load(f)
+        
+        # Buscar la fecha más reciente o la de hoy
+        fecha_hoy = datetime.now().strftime('%Y-%m-%d')
+        
+        if fecha_hoy in confirmaciones:
+            datos_partido = confirmaciones[fecha_hoy]
+            fecha_clave = fecha_hoy
+        else:
+            # Buscar la fecha más reciente disponible
+            fechas_disponibles = sorted(confirmaciones.keys(), reverse=True)
+            if fechas_disponibles:
+                fecha_reciente = fechas_disponibles[0]
+                datos_partido = confirmaciones[fecha_reciente]
+                fecha_clave = fecha_reciente
+                print(f"ℹ️  Usando datos de {fecha_reciente} (no hay para hoy)")
+            else:
+                return info_default
+        
+        # Extraer información del partido
+        resultado = info_default.copy()
+        
+        # La fecha viene de la clave del JSON (formato YYYY-MM-DD)
+        resultado['fecha'] = fecha_clave
+        
+        # Buscar hora y cancha en los datos, si existen
+        if 'hora' in datos_partido:
+            resultado['hora'] = datos_partido['hora']
+        if 'cancha' in datos_partido:
+            resultado['cancha'] = datos_partido['cancha']
             
-        # Si hay información de próximo partido, usarla
-        if 'proximo_partido' in historial and historial['proximo_partido']:
-            proximo = historial['proximo_partido']
-            return {
-                'fecha': proximo.get('fecha', 'Fecha por confirmar'),
-                'hora': proximo.get('hora', '22:00') + (' hrs' if not proximo.get('hora', '').endswith(('hrs', 'hr')) else ''),
-                'cancha': proximo.get('cancha', 'Por confirmar')
-            }
-    except (FileNotFoundError, json.JSONDecodeError, KeyError):
-        pass
-    
-    # Usar valores por defecto
-    print("⚠️  Usando información por defecto del partido")
-    return info_default
+        print(f"✅ Info del partido cargada: {resultado['fecha']} - {resultado['hora']} - Cancha {resultado['cancha']}")
+        return resultado
+        
+    except FileNotFoundError:
+        print("⚠️  No se encontró confirmaciones_automaticas.json, usando valores por defecto")
+        return info_default
+    except Exception as e:
+        print(f"⚠️  Error cargando info del partido: {e}")
+        return info_default
 
 def jugadores_confirmados(todos_jugadores):
     """Filtra jugadores confirmados basado en confirmaciones_automaticas.json"""
