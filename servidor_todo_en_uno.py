@@ -174,6 +174,29 @@ def ejecutar_migracion():
     except Exception as e:
         return jsonify({'error': f'Error ejecutando migración: {str(e)}'}), 500
 
+@app.route('/api/debug-env', methods=['GET'])
+def debug_env():
+    """API: Debug de variables de entorno para PostgreSQL"""
+    env_vars = {}
+    pg_vars = ['DATABASE_URL', 'DATABASE_PUBLIC_URL', 'PGHOST', 'PGPORT', 'PGDATABASE', 'PGUSER', 'PGPASSWORD']
+    
+    for var in pg_vars:
+        value = os.environ.get(var)
+        if value:
+            # Ocultar password por seguridad
+            if 'PASSWORD' in var.upper():
+                env_vars[var] = '***HIDDEN***'
+            else:
+                env_vars[var] = value[:50] + '...' if len(value) > 50 else value
+        else:
+            env_vars[var] = None
+    
+    return jsonify({
+        'env_vars': env_vars,
+        'db_manager_url': db_manager.postgres_url[:50] + '...' if db_manager.postgres_url else None,
+        'db_available': DB_AVAILABLE
+    })
+
 @app.route('/api/migration-status', methods=['GET'])
 def migration_status():
     """API: Verifica estado de la migración"""
