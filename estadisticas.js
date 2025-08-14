@@ -67,9 +67,44 @@ async function cargarHistorial() {
     console.log('📡 Respuesta de la API:', response.status, response.statusText);
     
     if (response.ok) {
-      historialPartidos = await response.json();
-      console.log('✅ Historial cargado desde API:', historialPartidos.length, 'partidos');
-      console.log('📊 Datos del historial:', historialPartidos);
+      let rawData = await response.json();
+      console.log('📊 Datos crudos recibidos:', rawData);
+      
+      // Procesar datos de PostgreSQL - parsear campos JSON
+      historialPartidos = rawData.map(partido => {
+        // Parsear campos que vienen como strings JSON desde PostgreSQL
+        if (typeof partido.resultado === 'string') {
+          try {
+            partido.resultado = JSON.parse(partido.resultado);
+          } catch (e) {
+            console.warn('⚠️ No se pudo parsear resultado:', partido.resultado);
+          }
+        }
+        
+        if (typeof partido.equipos === 'string') {
+          try {
+            partido.equipos = JSON.parse(partido.equipos);
+          } catch (e) {
+            console.warn('⚠️ No se pudo parsear equipos:', partido.equipos);
+          }
+        }
+        
+        if (typeof partido.jugadores_confirmados === 'string') {
+          try {
+            // Este campo puede venir en diferentes formatos
+            if (partido.jugadores_confirmados.startsWith('{') || partido.jugadores_confirmados.startsWith('[')) {
+              partido.jugadores_confirmados = JSON.parse(partido.jugadores_confirmados);
+            }
+          } catch (e) {
+            console.warn('⚠️ No se pudo parsear jugadores_confirmados:', partido.jugadores_confirmados);
+          }
+        }
+        
+        return partido;
+      });
+      
+      console.log('✅ Historial procesado desde API:', historialPartidos.length, 'partidos');
+      console.log('📊 Datos procesados:', historialPartidos);
     } else {
       console.log('❌ Error al cargar historial de la API:', response.status);
       // Fallback: intentar cargar desde JSON como respaldo
