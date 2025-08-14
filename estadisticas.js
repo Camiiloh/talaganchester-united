@@ -17,10 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await cargarConfiguracionAuth();
   verificarSesionActiva();
   
-  // Actualizar interfaz
-  actualizarEstadisticas();
-  mostrarHistorial();
-  mostrarGoleadores();
+  console.log('✅ Carga inicial completada');
 });
 
 // Función para cargar datos del partido y actualizar título
@@ -105,6 +102,14 @@ async function cargarHistorial() {
       
       console.log('✅ Historial procesado desde API:', historialPartidos.length, 'partidos');
       console.log('📊 Datos procesados:', historialPartidos);
+      
+      // Actualizar interfaz inmediatamente después de cargar datos
+      setTimeout(() => {
+        actualizarEstadisticas();
+        mostrarHistorial();
+        mostrarGoleadores();
+      }, 50);
+      
     } else {
       console.log('❌ Error al cargar historial de la API:', response.status);
       // Fallback: intentar cargar desde JSON como respaldo
@@ -113,6 +118,12 @@ async function cargarHistorial() {
       if (fallbackResponse.ok) {
         historialPartidos = await fallbackResponse.json();
         console.log('✅ Historial cargado desde JSON (fallback):', historialPartidos.length, 'partidos');
+        // Actualizar interfaz para fallback también
+        setTimeout(() => {
+          actualizarEstadisticas();
+          mostrarHistorial();
+          mostrarGoleadores();
+        }, 50);
       } else {
         historialPartidos = [];
       }
@@ -126,12 +137,30 @@ async function cargarHistorial() {
       if (fallbackResponse.ok) {
         historialPartidos = await fallbackResponse.json();
         console.log('✅ Historial cargado desde JSON (fallback):', historialPartidos.length, 'partidos');
+        // Actualizar interfaz para fallback también
+        setTimeout(() => {
+          actualizarEstadisticas();
+          mostrarHistorial();
+          mostrarGoleadores();
+        }, 50);
       } else {
         historialPartidos = [];
+        // Actualizar interfaz incluso sin datos
+        setTimeout(() => {
+          actualizarEstadisticas();
+          mostrarHistorial();
+          mostrarGoleadores();
+        }, 50);
       }
     } catch (fallbackError) {
       console.log('❌ Error en fallback:', fallbackError);
       historialPartidos = [];
+      // Actualizar interfaz incluso con error
+      setTimeout(() => {
+        actualizarEstadisticas();
+        mostrarHistorial();
+        mostrarGoleadores();
+      }, 50);
     }
   }
 }
