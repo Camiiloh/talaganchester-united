@@ -441,6 +441,8 @@ function cerrarModalResultado() {
   
   // Limpiar campos específicos
   document.getElementById('jugadores-confirmados').value = '';
+  document.getElementById('equipo-rojo').value = '';
+  document.getElementById('equipo-negro').value = '';
   
   // Limpiar estado de edición
   delete document.getElementById('form-resultado').dataset.editingIndex;
@@ -543,6 +545,17 @@ function editarPartido(index) {
   const jugadoresConfirmados = partido.jugadores_confirmados || [];
   document.getElementById('jugadores-confirmados').value = jugadoresConfirmados.join(', ');
   
+  // Llenar equipos - compatible con ambas estructuras
+  const equipoRojo = partido.equipo_rojo || (partido.equipos && partido.equipos.rojo) || [];
+  const equipoNegro = partido.equipo_negro || (partido.equipos && partido.equipos.negro) || [];
+  
+  document.getElementById('equipo-rojo').value = equipoRojo.join(', ');
+  document.getElementById('equipo-negro').value = equipoNegro.join(', ');
+  
+  console.log('📝 Cargando equipos para edición:');
+  console.log('🔴 Equipo Rojo:', equipoRojo);
+  console.log('⚫ Equipo Negro:', equipoNegro);
+  
   // Cambiar el título y comportamiento del modal
   const modal = document.getElementById('modal-resultado');
   const titulo = modal.querySelector('h3');
@@ -626,20 +639,45 @@ async function agregarNuevoPartido() {
       .filter(jugador => jugador.length > 0);
   }
 
-  // Obtener equipos del último sorteo
+  // Obtener equipos - priorizar campos del formulario, luego último sorteo
   let equipoRojo = [];
   let equipoNegro = [];
   
-  try {
-    const response = await fetch('equipos.json?_=' + Date.now());
-    if (response.ok) {
-      const equipos = await response.json();
-      equipoRojo = equipos.rojo || [];
-      equipoNegro = equipos.negro || [];
-    }
-  } catch (error) {
-    console.log('No se pudieron cargar los equipos');
+  // Primero intentar obtener desde los campos del formulario
+  const equipoRojoFormulario = document.getElementById('equipo-rojo').value.trim();
+  const equipoNegroFormulario = document.getElementById('equipo-negro').value.trim();
+  
+  if (equipoRojoFormulario) {
+    equipoRojo = equipoRojoFormulario
+      .split(',')
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
   }
+  
+  if (equipoNegroFormulario) {
+    equipoNegro = equipoNegroFormulario
+      .split(',')
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
+  }
+  
+  // Si no hay equipos en el formulario, obtener del último sorteo
+  if (equipoRojo.length === 0 || equipoNegro.length === 0) {
+    try {
+      const response = await fetch('equipos.json?_=' + Date.now());
+      if (response.ok) {
+        const equipos = await response.json();
+        if (equipoRojo.length === 0) equipoRojo = equipos.rojo || [];
+        if (equipoNegro.length === 0) equipoNegro = equipos.negro || [];
+      }
+    } catch (error) {
+      console.log('No se pudieron cargar los equipos del sorteo');
+    }
+  }
+  
+  console.log('🏆 Equipos procesados:');
+  console.log('🔴 Equipo Rojo:', equipoRojo);
+  console.log('⚫ Equipo Negro:', equipoNegro);
 
   // Generar ID único más robusto
   const fechaTimestamp = new Date(fecha + 'T' + hora).getTime();
@@ -738,6 +776,31 @@ function actualizarPartido(index) {
       .map(jugador => jugador.trim())
       .filter(jugador => jugador.length > 0);
   }
+  
+  // Procesar equipos desde los campos del formulario
+  const equipoRojoFormulario = document.getElementById('equipo-rojo').value.trim();
+  const equipoNegroFormulario = document.getElementById('equipo-negro').value.trim();
+  
+  let equipoRojo = [];
+  let equipoNegro = [];
+  
+  if (equipoRojoFormulario) {
+    equipoRojo = equipoRojoFormulario
+      .split(',')
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
+  }
+  
+  if (equipoNegroFormulario) {
+    equipoNegro = equipoNegroFormulario
+      .split(',')
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
+  }
+  
+  console.log('📝 Actualizando equipos:');
+  console.log('🔴 Equipo Rojo:', equipoRojo);
+  console.log('⚫ Equipo Negro:', equipoNegro);
 
   if (!fecha || golesRojo < 0 || golesNegro < 0) {
     alert('Por favor, completa todos los campos requeridos correctamente.');
@@ -752,6 +815,13 @@ function actualizarPartido(index) {
     hora: hora,
     cancha: cancha,
     jugadores_confirmados: jugadoresConfirmados,
+    equipos: {
+      rojo: equipoRojo,
+      negro: equipoNegro
+    },
+    // Mantener compatibilidad con estructura antigua
+    equipo_rojo: equipoRojo,
+    equipo_negro: equipoNegro,
     resultado: {
       rojo: golesRojo,
       negro: golesNegro
