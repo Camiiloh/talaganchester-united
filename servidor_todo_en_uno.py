@@ -164,6 +164,15 @@ def serve_static(filename):
         return "Archivo no encontrado", 404
 
 if __name__ == '__main__':
+    # Ejecutar migración automática en Railway
+    if os.environ.get('DATABASE_URL'):
+        print("🔄 Ejecutando migración automática de datos...")
+        try:
+            from migrar_datos import migrar_datos_a_postgres
+            migrar_datos_a_postgres()
+        except Exception as e:
+            print(f"⚠️  Error en migración automática: {e}")
+    
     port = int(os.environ.get('PORT', 8080))
     
     print("🚀 SERVIDOR TODO-EN-UNO - TALAGANCHESTER UNITED")
