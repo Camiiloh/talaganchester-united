@@ -19,12 +19,29 @@ except ImportError:
 
 class DatabaseManager:
     def __init__(self):
-        self.database_url = os.environ.get('DATABASE_URL')
+        # Buscar variables de PostgreSQL de Railway
+        self.database_url = (
+            os.environ.get('DATABASE_URL') or 
+            os.environ.get('DATABASE_PUBLIC_URL') or
+            os.environ.get('DATABASE_PRIVATE_URL')
+        )
+        
+        # También verificar si tenemos variables individuales de PostgreSQL
+        if not self.database_url and os.environ.get('PGHOST'):
+            pghost = os.environ.get('PGHOST')
+            pgport = os.environ.get('PGPORT', '5432')
+            pguser = os.environ.get('PGUSER', 'postgres')
+            pgpassword = os.environ.get('PGPASSWORD')
+            pgdatabase = os.environ.get('PGDATABASE', 'railway')
+            
+            if pgpassword:
+                self.database_url = f"postgresql://{pguser}:{pgpassword}@{pghost}:{pgport}/{pgdatabase}"
+        
         self.use_postgres = self.database_url is not None and POSTGRES_AVAILABLE
         self.sqlite_db = 'talaganchester.db'
         
         if self.use_postgres:
-            print("🐘 Usando PostgreSQL")
+            print(f"🐘 Usando PostgreSQL: {self.database_url[:50]}...")
             self._init_postgres()
         elif os.path.exists(self.sqlite_db) or True:  # Always try SQLite for local
             print("🗄️  Usando SQLite para testing local")
