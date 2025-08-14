@@ -7,6 +7,9 @@ let isAuthenticated = false;
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('🚀 Iniciando carga de estadísticas...');
   
+  // Cargar datos del partido para actualizar título
+  await cargarDatosPartidoParaTitulo();
+  
   // Cargar historial primero (es lo más importante)
   await cargarHistorial();
   
@@ -19,6 +22,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   mostrarHistorial();
   mostrarGoleadores();
 });
+
+// Función para cargar datos del partido y actualizar título
+async function cargarDatosPartidoParaTitulo() {
+  try {
+    const response = await fetch('equipos.json?_=' + Date.now());
+    const equipos = await response.json();
+    actualizarTituloEstadisticas(equipos);
+  } catch (error) {
+    console.log('No se pudieron cargar datos para el título');
+  }
+}
+
+// Función para actualizar título de estadísticas
+function actualizarTituloEstadisticas(equipos) {
+  // Formatear fecha
+  let fechaTexto = equipos.fecha || 'Fecha por confirmar';
+  if (fechaTexto !== 'Fecha por confirmar' && fechaTexto !== 'Por confirmar') {
+    try {
+      const fecha = new Date(fechaTexto + 'T00:00:00');
+      fechaTexto = fecha.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      // Si no se puede parsear, usar el texto original
+    }
+  }
+  
+  const hora = equipos.hora || 'Por confirmar';
+  const cancha = equipos.cancha || 'Por confirmar';
+  
+  // Actualizar título del documento
+  document.title = `Estadísticas - ${fechaTexto} - ${hora} - Cancha ${cancha}`;
+}
 
 // Cargar historial desde JSON
 async function cargarHistorial() {

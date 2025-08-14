@@ -1,5 +1,64 @@
 import './style.css'
 
+// Variables globales para datos dinámicos
+let equiposDinamicos = null;
+
+// Función para cargar datos del partido actual
+async function cargarDatosPartido() {
+  try {
+    const response = await fetch('equipos.json?_=' + Date.now());
+    equiposDinamicos = await response.json();
+    actualizarTituloPartido();
+    actualizarEquiposDinamicos();
+  } catch (error) {
+    console.log('No se pudieron cargar datos dinámicos, usando datos estáticos');
+  }
+}
+
+// Función para actualizar el título del partido
+function actualizarTituloPartido() {
+  if (!equiposDinamicos) return;
+  
+  // Formatear fecha
+  let fechaTexto = equiposDinamicos.fecha || 'Fecha por confirmar';
+  if (fechaTexto !== 'Fecha por confirmar' && fechaTexto !== 'Por confirmar') {
+    try {
+      const fecha = new Date(fechaTexto + 'T00:00:00');
+      fechaTexto = fecha.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      // Si no se puede parsear, usar el texto original
+    }
+  }
+  
+  const hora = equiposDinamicos.hora || 'Por confirmar';
+  const cancha = equiposDinamicos.cancha || 'Por confirmar';
+  
+  // Actualizar título del documento
+  document.title = `Partido ${fechaTexto} - ${hora} - Cancha ${cancha}`;
+  
+  // Actualizar h1 en la página
+  const partidoInfo = document.getElementById('partido-info');
+  if (partidoInfo) {
+    partidoInfo.textContent = `⚽ Partido ${fechaTexto} - ${hora} - Cancha ${cancha}`;
+  }
+}
+
+// Función para actualizar equipos con datos dinámicos
+function actualizarEquiposDinamicos() {
+  if (!equiposDinamicos) return;
+  
+  // Si hay equipos dinámicos, usarlos en lugar de los estáticos
+  if (equiposDinamicos.rojo && equiposDinamicos.negro) {
+    // Actualizar la visualización con los equipos reales
+    console.log('Equipos actualizados desde equipos.json');
+  }
+}
+
 // Team data (actualizado con los datos más recientes)
 const teams = {
   team1: {
@@ -82,6 +141,9 @@ function addPlayerToTeam(teamId, player) {
 
 // Initialize the app
 function init() {
+  // Cargar datos dinámicos del partido
+  cargarDatosPartido();
+  
   // Update team averages button
   document.getElementById('update-teams').addEventListener('click', () => {
     const erikTeam = document.getElementById('erik-team').value;

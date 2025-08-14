@@ -41,7 +41,50 @@ const descripciones = {
 async function cargarEquipos() {
   const resp = await fetch('equipos.json?_=' + Date.now());
   const data = await resp.json();
+  
+  // Actualizar título de la página
+  actualizarTitulo(data);
+  
   return data;
+}
+
+function actualizarTitulo(equipos) {
+  // Formatear fecha
+  let fechaTexto = equipos.fecha || 'Fecha por confirmar';
+  if (fechaTexto !== 'Fecha por confirmar' && fechaTexto !== 'Por confirmar') {
+    try {
+      const fecha = new Date(fechaTexto + 'T00:00:00');
+      fechaTexto = fecha.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      // Si no se puede parsear, usar el texto original
+    }
+  }
+  
+  const hora = equipos.hora || 'Por confirmar';
+  const cancha = equipos.cancha || 'Por confirmar';
+  
+  // Crear nuevo título
+  const nuevoTitulo = `Partido ${fechaTexto} - ${hora} - Cancha ${cancha}`;
+  
+  // Actualizar title del documento
+  document.title = nuevoTitulo;
+  
+  // Actualizar el h1 con id partido-info
+  const partidoInfo = document.getElementById('partido-info');
+  if (partidoInfo) {
+    partidoInfo.textContent = `⚽ ${nuevoTitulo}`;
+  }
+  
+  // Actualizar cualquier otro h1 como fallback
+  const h1Element = document.querySelector('h1');
+  if (h1Element && !partidoInfo) {
+    h1Element.textContent = `⚽ ${nuevoTitulo}`;
+  }
 }
 
 
