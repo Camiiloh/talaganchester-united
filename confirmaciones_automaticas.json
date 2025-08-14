@@ -31,5 +31,71 @@
       "Enrique": "Archivo TXT",
       "Camilo": "Archivo TXT"
     }
+  },
+  "2025-08-15": {
+    "jugadores": [
+      "Pablo",
+      "Maxi",
+      "Iván",
+      "Vicente",
+      "Ruben",
+      "Marco",
+      "Félix",
+      "Juan HG",
+      "Nel",
+      "Willians",
+      "Enrique",
+      "Camilo"
+    ],
+    "timestamp": "2025-08-13T23:19:26.039307",
+    "fuentes": {
+      "Pablo": "Archivo TXT",
+      "Maxi": "Archivo TXT",
+      "Iván": "Archivo TXT",
+      "Vicente": "Archivo TXT",
+      "Ruben": "Archivo TXT",
+      "Marco": "Archivo TXT",
+      "Félix": "Archivo TXT",
+      "Juan HG": "Archivo TXT",
+      "Nel": "Archivo TXT",
+      "Willians": "Archivo TXT",
+      "Enrique": "Archivo TXT",
+      "Camilo": "Archivo TXT"
+    },
+    "hora": "21:00",
+    "cancha": "2"
+  },
+  "2025-08-14": {
+    "jugadores": [
+      "Pablo",
+      "Maxi",
+      "Iván",
+      "Vicente",
+      "Ruben",
+      "Marco",
+      "Félix",
+      "Juan HG",
+      "Nel",
+      "Willians",
+      "Enrique",
+      "Diego"
+    ],
+    "timestamp": "2025-08-13T23:20:15.754419",
+    "fuentes": {
+      "Pablo": "Archivo TXT",
+      "Maxi": "Archivo TXT",
+      "Iván": "Archivo TXT",
+      "Vicente": "Archivo TXT",
+      "Ruben": "Archivo TXT",
+      "Marco": "Archivo TXT",
+      "Félix": "Archivo TXT",
+      "Juan HG": "Archivo TXT",
+      "Nel": "Archivo TXT",
+      "Willians": "Archivo TXT",
+      "Enrique": "Archivo TXT",
+      "Diego": "Archivo TXT"
+    },
+    "hora": "22:00",
+    "cancha": "1"
   }
 }

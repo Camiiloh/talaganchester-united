@@ -1,3 +1,7 @@
+FECHA: 2025-08-14
+HORA: 22:00
+CANCHA: 1
+---
 Pablo 
 Maxi
 Iván 
@@ -9,4 +13,4 @@ Juan HG
 Nel
 Willians 
 Enrique
-Camilo
+Diego
