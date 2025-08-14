@@ -137,6 +137,30 @@ def guardar_historial_completo():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/eliminar-partido', methods=['POST'])
+def eliminar_partido():
+    """API: Elimina un partido específico"""
+    try:
+        data = request.get_json()
+        partido_id = data.get('partido_id')
+        
+        if not partido_id:
+            return jsonify({'error': 'ID de partido requerido'}), 400
+        
+        print(f"🗑️ Intentando eliminar partido ID: {partido_id}")
+        
+        # Usar DatabaseManager para eliminar
+        if db_manager.delete_partido(partido_id):
+            print(f"✅ Partido {partido_id} eliminado correctamente")
+            return jsonify({'success': True, 'partido_id': partido_id})
+        else:
+            print(f"❌ No se pudo eliminar partido {partido_id}")
+            return jsonify({'error': 'No se pudo eliminar el partido'}), 500
+            
+    except Exception as e:
+        print(f"❌ Error eliminando partido: {e}")
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/historial', methods=['GET'])
 def obtener_historial():
     """API: Obtiene historial"""

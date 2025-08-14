@@ -706,9 +706,12 @@ function editarPartido(index) {
 }
 
 // Eliminar un partido
-function eliminarPartido(index) {
+async function eliminarPartido(index) {
   const partido = historialPartidos[index];
-  if (!partido) return;
+  if (!partido) {
+    alert('❌ No se encontró el partido a eliminar');
+    return;
+  }
   
   const confirmar = confirm(
     `¿Estás seguro de que quieres eliminar el partido del ${partido.fecha_formato}?\n` +
@@ -716,13 +719,43 @@ function eliminarPartido(index) {
   );
   
   if (confirmar) {
-    historialPartidos.splice(index, 1);
-    guardarHistorial();
-    actualizarEstadisticas();
-    mostrarHistorial();
-    mostrarGoleadores();
-    
-    alert('Partido eliminado correctamente');
+    try {
+      console.log('🗑️ Intentando eliminar partido ID:', partido.id);
+      
+      // Eliminar del servidor primero
+      const response = await fetch(`${API_BASE_URL}/api/eliminar-partido`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          partido_id: partido.id
+        })
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        console.log('✅ Partido eliminado del servidor:', result);
+        
+        // Eliminar del array local solo si el servidor confirmó
+        historialPartidos.splice(index, 1);
+        
+        // Actualizar interfaz
+        actualizarEstadisticas();
+        mostrarHistorial();
+        mostrarGoleadores();
+        
+        alert('✅ Partido eliminado correctamente');
+      } else {
+        const error = await response.text();
+        console.error('❌ Error del servidor:', error);
+        alert('❌ Error al eliminar del servidor: ' + error);
+      }
+      
+    } catch (error) {
+      console.error('❌ Error al eliminar partido:', error);
+      alert('❌ Error de conexión al eliminar el partido');
+    }
   }
 }
 
