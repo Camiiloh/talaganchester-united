@@ -39,9 +39,10 @@ HISTORIAL_FILE = 'historial_partidos.json'
 
 def cargar_historial():
     """Carga el historial de partidos"""
-    # Intentar base de datos primero solo si tenemos DATABASE_URL
-    if DB_AVAILABLE and os.environ.get('DATABASE_URL'):
+    # Intentar base de datos primero usando nueva detección multivaribles
+    if DB_AVAILABLE and db_manager.postgres_url:
         try:
+            print(f"🗄️  Cargando historial desde PostgreSQL: {db_manager.postgres_url[:30]}...")
             return db_manager.get_historial_partidos()
         except Exception as e:
             print(f"⚠️  Error cargando desde base de datos: {e}")
@@ -73,10 +74,12 @@ def guardar_historial(historial):
 
 def guardar_partido(partido):
     """Guarda un partido individual"""
-    if DB_AVAILABLE:
+    if DB_AVAILABLE and db_manager.postgres_url:
+        print(f"🗄️  Guardando partido en PostgreSQL")
         return db_manager.save_partido(partido)
     
-    # Fallback: usar método antiguo
+    # Fallback: usar método antiguo con JSON
+    print("📁 Guardando partido en archivo JSON")
     historial = cargar_historial()
     
     # Buscar si ya existe
@@ -176,7 +179,8 @@ def migration_status():
     """API: Verifica estado de la migración"""
     try:
         info = {
-            'database_url_exists': bool(os.environ.get('DATABASE_URL')),
+            'database_url_exists': bool(db_manager.postgres_url if DB_AVAILABLE else None),
+            'postgres_url_detected': db_manager.postgres_url[:50] + '...' if DB_AVAILABLE and db_manager.postgres_url else None,
             'json_file_exists': os.path.exists('historial_partidos.json'),
             'db_available': DB_AVAILABLE
         }
