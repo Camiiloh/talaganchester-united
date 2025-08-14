@@ -1,59 +1,59 @@
 {
-  "fecha": "2025-08-20",
+  "fecha": "2025-08-21",
   "hora": "21:00",
   "cancha": "Cancha por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
     "Nel",
-    "Diego",
+    "Maxi",
     "Marco",
     "Pablo",
-    "Willians",
-    "Luisito"
+    "Francisco H",
+    "Willians"
   ],
   "negro": [
-    "Maxi",
+    "Luisito",
+    "Diego",
     "Ruben",
     "Enrique",
-    "Félix",
     "Vicente",
-    "Francisco H"
+    "Félix"
   ],
   "promedio_rojo": 7.27,
-  "promedio_negro": 7.27,
-  "diferencia": 0.0,
+  "promedio_negro": 7.22,
+  "diferencia": 0.3,
   "rojo_posiciones": {
     "Nel": "Arquero",
     "Marco": "Defensa",
-    "Luisito": "Defensa",
-    "Pablo": "Mediocampo",
+    "Pablo": "Defensa",
     "Willians": "Mediocampo",
-    "Diego": "Delantero"
+    "Francisco H": "Mediocampo",
+    "Maxi": "Delantero"
   },
   "negro_posiciones": {
-    "Maxi": "Arquero",
+    "Luisito": "Arquero",
     "Félix": "Defensa",
     "Ruben": "Defensa",
+    "Diego": "Mediocampo",
     "Enrique": "Mediocampo",
-    "Francisco H": "Mediocampo",
     "Vicente": "Delantero"
   },
   "equipos": {
     "rojo": [
       "Nel",
-      "Diego",
+      "Maxi",
       "Marco",
       "Pablo",
-      "Willians",
-      "Luisito"
+      "Francisco H",
+      "Willians"
     ],
     "negro": [
-      "Maxi",
+      "Luisito",
+      "Diego",
       "Ruben",
       "Enrique",
-      "Félix",
       "Vicente",
-      "Francisco H"
+      "Félix"
     ]
   },
   "formaciones": {
@@ -62,8 +62,8 @@
   },
   "puntajes": {
     "rojo": 43.6,
-    "negro": 43.6,
-    "diferencia": 0.0
+    "negro": 43.3,
+    "diferencia": 0.3
   },
   "posiciones": {
     "rojo": [
@@ -78,31 +78,31 @@
         7.0
       ],
       [
-        "Luisito",
-        "RCB",
-        7.0
-      ],
-      [
         "Pablo",
-        "LM",
-        5.8
+        "RCB",
+        6.3
       ],
       [
         "Willians",
-        "CM",
-        8.0
+        "LM",
+        7.8
       ],
       [
-        "Diego",
+        "Francisco H",
+        "CM",
+        8.5
+      ],
+      [
+        "Maxi",
         "CF",
-        8.0
+        6.2
       ]
     ],
     "negro": [
       [
-        "Maxi",
+        "Luisito",
         "GK",
-        6.8
+        7.0
       ],
       [
         "Félix",
@@ -115,14 +115,14 @@
         6.6
       ],
       [
-        "Enrique",
+        "Diego",
         "LM",
-        8.0
+        7.8
       ],
       [
-        "Francisco H",
+        "Enrique",
         "CM",
-        8.5
+        8.2
       ],
       [
         "Vicente",

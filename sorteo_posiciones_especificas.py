@@ -65,7 +65,11 @@ def cargar_jugadores(archivo='jugadores_posiciones_especificas.json'):
         return []
 
 def cargar_info_partido():
-    """Carga la información del partido desde jugadores_confirmados.txt o confirmaciones_automaticas.json"""
+    """Carga la información del partido desde jugadores_confirmados.txt o confirmaciones_automaticas.json
+    
+    Returns:
+        tuple: (info_partido, modo_automatico) donde modo_automatico indica si se leyó desde jugadores_confirmados.txt
+    """
     info_default = {
         'fecha': 'Fecha por confirmar',
         'hora': '22:00',
@@ -94,7 +98,7 @@ def cargar_info_partido():
                     break  # Termina la sección de metadatos
             
             print(f"✅ Información cargada: {info['fecha']} - {info['hora']} - {info['cancha']}")
-            return info
+            return info, True  # True = modo automático desde jugadores_confirmados.txt
     except Exception as e:
         print(f"⚠️ Error leyendo jugadores_confirmados.txt: {e}")
     
@@ -134,7 +138,7 @@ def cargar_info_partido():
             print(f"ℹ️  Usando fecha más reciente: {fecha_seleccionada}")
         
         if not fecha_seleccionada:
-            return info_default
+            return info_default, False  # False = modo interactivo
         
         # Extraer información del partido
         resultado = info_default.copy()
@@ -149,14 +153,14 @@ def cargar_info_partido():
             resultado['cancha'] = datos_partido['cancha']
             
         print(f"✅ Info del partido cargada: {resultado['fecha']} - {resultado['hora']} - Cancha {resultado['cancha']}")
-        return resultado
+        return resultado, False  # False = modo interactivo
         
     except FileNotFoundError:
         print("⚠️  No se encontró confirmaciones_automaticas.json, usando valores por defecto")
-        return info_default
+        return info_default, False  # False = modo interactivo
     except Exception as e:
         print(f"⚠️  Error cargando info del partido: {e}")
-        return info_default
+        return info_default, False  # False = modo interactivo
 
 def jugadores_confirmados(todos_jugadores):
     """Filtra jugadores confirmados basado en jugadores_confirmados.txt o confirmaciones_automaticas.json"""
@@ -383,8 +387,15 @@ def puede_jugar_posicion(jugador, posicion):
     posiciones_validas = [pos.strip() for pos in jugador['posicion'].split(',')]
     return posicion in posiciones_validas
 
-def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6):
-    """Realiza el sorteo optimizando posiciones específicas - FLEXIBLE para 6 o 7 jugadores por equipo"""
+def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6, margen_error=0.3):
+    """Realiza el sorteo optimizando posiciones específicas - FLEXIBLE para 6 o 7 jugadores por equipo
+    
+    Args:
+        jugadores: Lista de jugadores con sus datos
+        num_intentos: Número máximo de intentos de optimización
+        jugadores_por_equipo: Jugadores por equipo (6 o 7)
+        margen_error: Margen de error aceptable en diferencia de promedios (por ejemplo, 0.3 puntos)
+    """
     if len(jugadores) % 2 != 0:
         print("❌ Error: Número impar de jugadores")
         return None, None, None
@@ -490,6 +501,11 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
                 'asignacion2': [(arquero2['nombre'], 'GK', puntaje_arquero2)] + asignacion2,
                 'diferencia': diferencia
             }
+            
+            # 🆕 MARGEN DE ERROR: Si estamos dentro del margen aceptable, parar búsqueda
+            if diferencia <= margen_error:
+                print(f"✅ Encontrado equilibrio aceptable en intento {intento + 1}: diferencia = {diferencia:.3f} (≤ {margen_error})")
+                break
         
         # Mostrar progreso con mejor diferencia
         if (intento + 1) % 100 == 0:
@@ -674,8 +690,10 @@ def main():
     print("=" * 60)
     
     # Cargar información del partido
-    info_partido = cargar_info_partido()
+    info_partido, modo_automatico = cargar_info_partido()
     print(f"📅 Partido: {info_partido['fecha']} - {info_partido['hora']} - {info_partido['cancha']}")
+    if modo_automatico:
+        print("🤖 Modo automático detectado (desde jugadores_confirmados.txt)")
     print("=" * 60)
     
     # Cargar jugadores
@@ -735,15 +753,31 @@ def main():
         print(f"   - {jugador['nombre']} (General: {jugador['puntaje']})")
     
     # Configurar intentos
-    try:
-        intentos_str = input(f"\nNúmero de intentos para optimización (100-5000) [1000]: ").strip()
-        intentos = int(intentos_str) if intentos_str else 1000
-        intentos = max(100, min(5000, intentos))
-    except ValueError:
+    if modo_automatico:
+        # Modo automático: usar valores por defecto optimizados para rotación
         intentos = 1000
+        margen_error = 0.4  # Margen más amplio para permitir más rotación
+        print(f"🤖 Configuración automática: {intentos} intentos, margen de error {margen_error:.1f}")
+    else:
+        # Modo interactivo: preguntar al usuario
+        try:
+            intentos_str = input(f"\nNúmero de intentos para optimización (100-5000) [1000]: ").strip()
+            intentos = int(intentos_str) if intentos_str else 1000
+            intentos = max(100, min(5000, intentos))
+        except ValueError:
+            intentos = 1000
+        
+        # 🆕 Configurar margen de error para permitir rotación
+        try:
+            margen_str = input(f"\nMargen de error aceptable en diferencia de promedios (0.1-1.0) [0.3]: ").strip()
+            margen_error = float(margen_str) if margen_str else 0.3
+            margen_error = max(0.1, min(1.0, margen_error))
+            print(f"📊 Margen de error configurado: {margen_error:.1f} puntos (permite más rotación de jugadores)")
+        except ValueError:
+            margen_error = 0.3
     
     # Realizar sorteo
-    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos, jugadores_por_equipo)
+    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos, jugadores_por_equipo, margen_error)
     
     if equipo1 is None:
         print("❌ Error: No se pudo generar un sorteo válido")
