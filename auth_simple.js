@@ -3,6 +3,7 @@
 // Variables globales para autenticación
 let isAdminAuthenticated = false;
 let adminPasswords = ['admin2025', 'talaga123', 'manchester2025'];
+let configCargada = false;
 
 // Cargar configuración de autenticación
 async function cargarConfiguracionAuth() {
@@ -11,10 +12,14 @@ async function cargarConfiguracionAuth() {
     if (response.ok) {
       const config = await response.json();
       adminPasswords = config.admin_passwords || adminPasswords;
+      console.log('Configuración de auth cargada:', adminPasswords);
     }
   } catch (error) {
-    console.log('Usando contraseñas por defecto');
+    console.log('Usando contraseñas por defecto:', adminPasswords);
   }
+  configCargada = true;
+  // Actualizar las variables globales
+  window.adminPasswords = adminPasswords;
 }
 
 // Verificar sesión activa
@@ -27,6 +32,8 @@ function verificarSesionActiva() {
       // Sesión válida por 1 hora
       if (ahora - data.timestamp < 3600000) {
         isAdminAuthenticated = true;
+        window.isAdminAuthenticated = true;
+        console.log('Sesión activa restaurada - Estado:', isAdminAuthenticated);
         mostrarEstadoAdmin();
         return;
       } else {
@@ -79,36 +86,33 @@ function mostrarLoginSiNecesario() {
 
 // Verificar credenciales
 function verificarCredenciales(password) {
-  return adminPasswords.includes(password);
+  console.log('Verificando contraseña:', password);
+  console.log('Contraseñas disponibles:', adminPasswords);
+  const esValida = adminPasswords.includes(password);
+  console.log('¿Es válida?:', esValida);
+  return esValida;
 }
 
 // Manejar login
 function manejarLogin(event) {
   event.preventDefault();
   
-  const password = document.getElementById('password-admin').value;
+  const password = document.getElementById('password-admin').value.trim();
   const errorDiv = document.getElementById('login-error');
   
   if (verificarCredenciales(password)) {
     // Login exitoso
     isAdminAuthenticated = true;
+    window.isAdminAuthenticated = true;
     localStorage.setItem('admin_session', JSON.stringify({ timestamp: Date.now() }));
+    
+    console.log('Login exitoso - Estado actualizado a:', isAdminAuthenticated);
     
     mostrarEstadoAdmin();
     cerrarModalLogin();
     
-    // Abrir modal de resultado automáticamente
-    setTimeout(() => {
-      const modal = document.getElementById('modal-resultado');
-      if (modal) {
-        modal.style.display = 'block';
-        const fechaInput = document.getElementById('fecha-partido');
-        if (fechaInput) {
-          const hoy = new Date().toISOString().split('T')[0];
-          fechaInput.value = hoy;
-        }
-      }
-    }, 200);
+    // Mostrar mensaje de confirmación
+    alert('¡Login exitoso! Ahora puedes editar y eliminar partidos.');
   } else {
     // Login fallido
     errorDiv.textContent = 'Contraseña incorrecta';
@@ -119,6 +123,12 @@ function manejarLogin(event) {
 
 // Mostrar estado de administrador
 function mostrarEstadoAdmin() {
+  // Actualizar variables globales
+  isAdminAuthenticated = true;
+  window.isAdminAuthenticated = true;
+  
+  console.log('mostrarEstadoAdmin - Estado actualizado a:', isAdminAuthenticated);
+  
   // Crear indicador si no existe
   let indicator = document.getElementById('admin-indicator');
   if (!indicator) {
@@ -147,6 +157,12 @@ function mostrarEstadoAdmin() {
 
 // Mostrar estado de no administrador
 function mostrarEstadoNoAdmin() {
+  // Actualizar variables globales
+  isAdminAuthenticated = false;
+  window.isAdminAuthenticated = false;
+  
+  console.log('mostrarEstadoNoAdmin - Estado actualizado a:', isAdminAuthenticated);
+  
   // Remover indicador de admin
   const indicator = document.getElementById('admin-indicator');
   if (indicator) indicator.remove();
@@ -172,16 +188,42 @@ function cerrarSesion() {
 
 // Verificar autenticación para editar/eliminar
 function verificarParaEditar(callback, index) {
-  if (isAdminAuthenticated) {
+  // Verificar sesión activa primero
+  verificarSesionActiva();
+  
+  // Verificar múltiples fuentes de verdad
+  const localAuth = isAdminAuthenticated;
+  const globalAuth = window.isAdminAuthenticated;
+  const hasSession = !!localStorage.getItem('admin_session');
+  const hasIndicator = !!document.getElementById('admin-indicator');
+  
+  console.log('=== verificarParaEditar DEBUG ===');
+  console.log('Local auth:', localAuth);
+  console.log('Global auth:', globalAuth);
+  console.log('Has session:', hasSession);
+  console.log('Has indicator:', hasIndicator);
+  
+  // Si cualquiera indica que está autenticado, proceder
+  if (localAuth || globalAuth || hasSession) {
+    console.log('Usuario autenticado, ejecutando acción directamente');
+    // Asegurar sincronización
+    isAdminAuthenticated = true;
+    window.isAdminAuthenticated = true;
     callback(index);
   } else {
-    alert('Necesitas autenticarte como administrador para realizar esta acción');
-    mostrarModalLogin();
+    console.log('Usuario no autenticado, debe hacer login primero');
+    alert('Necesitas hacer login como administrador primero. Usa el botón "Login" en la parte superior.');
   }
 }
 
 // Configurar event listeners cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+  // Cargar configuración de autenticación primero
+  await cargarConfiguracionAuth();
+  
+  // Verificar sesión activa
+  verificarSesionActiva();
+  
   // Event listener para el formulario de login
   const formLogin = document.getElementById('form-login');
   if (formLogin) {
@@ -204,6 +246,27 @@ window.mostrarModalLogin = mostrarModalLogin;
 window.cerrarModalLogin = cerrarModalLogin;
 window.mostrarLoginSiNecesario = mostrarLoginSiNecesario;
 window.cerrarSesion = cerrarSesion;
+window.verificarParaEditar = verificarParaEditar;
+
+// Variables globales para debug
+window.adminPasswords = adminPasswords;
+window.isAdminAuthenticated = isAdminAuthenticated;
+window.verificarCredenciales = verificarCredenciales;
+
+// Función de debug para verificar estado
+window.debugAuth = function() {
+  console.log('=== DEBUG AUTENTICACIÓN ===');
+  console.log('isAdminAuthenticated (local):', isAdminAuthenticated);
+  console.log('window.isAdminAuthenticated (global):', window.isAdminAuthenticated);
+  console.log('localStorage sesión:', localStorage.getItem('admin_session'));
+  console.log('Admin indicator visible:', !!document.getElementById('admin-indicator'));
+  return {
+    local: isAdminAuthenticated,
+    global: window.isAdminAuthenticated,
+    session: localStorage.getItem('admin_session'),
+    indicator: !!document.getElementById('admin-indicator')
+  };
+};
 
 // Función para cerrar modal de resultado
 window.cerrarModalResultado = function() {

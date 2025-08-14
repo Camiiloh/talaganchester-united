@@ -132,10 +132,21 @@
     .match-result {
       font-weight: bold;
       font-size: 1.1em;
+      background: none !important;
     }
     
-    .match-result .team-red { color: #e53935; }
-    .match-result .team-black { color: #222a36; }
+    .match-result .team-red { 
+      color: black !important; 
+      background: none !important;
+    }
+    .match-result .team-black { 
+      color: black !important; 
+      background: none !important;
+    }
+    
+    .match-result div {
+      background: none !important;
+    }
     
     .top-scorers {
       background: #fff;
@@ -413,6 +424,20 @@
           <input type="number" id="asistencia-partido" min="0" max="50" placeholder="Número de personas">
         </div>
         
+        <div class="form-group">
+          <label>Jugadores Confirmados:</label>
+          <div style="display: flex; gap: 10px; align-items: flex-start;">
+            <textarea id="jugadores-confirmados" placeholder="Lista de jugadores confirmados, separados por comas o líneas" rows="4" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+            <button type="button" onclick="recargarJugadores()" style="background: #2196f3; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; white-space: nowrap;">
+              🔄 Recargar
+            </button>
+          </div>
+          <small style="color: #666; font-size: 0.9em;">
+            Se cargan automáticamente desde el último sorteo o confirmados.txt<br>
+            Ejemplo: Maxi, Carlos P, Nel, Diego, etc.
+          </small>
+        </div>
+        
         <div style="display: flex; gap: 10px; margin-top: 20px;">
           <button type="submit" style="flex: 1; background: #e53935; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer;">
             💾 Guardar Resultado
@@ -425,7 +450,7 @@
     </div>
   </div>
   
-  <script src="estadisticas.js"></script>
-  <script src="auth_simple.js"></script>
+  <script src="auth_simple.js?v=7"></script>
+  <script src="estadisticas.js?v=9"></script>
 </body>
 </html>

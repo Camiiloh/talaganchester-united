@@ -5,23 +5,16 @@ let isAuthenticated = false;
 
 // Cargar datos al iniciar
 document.addEventListener('DOMContentLoaded', async () => {
-  await cargarConfiguracionAuth();
-  verificarSesionActiva();
+  console.log('🚀 Iniciando carga de estadísticas...');
+  
+  // Cargar historial primero (es lo más importante)
   await cargarHistorial();
   
-  // Cargar datos del localStorage si existen (para cambios locales)
-  const historialGuardado = localStorage.getItem('historial_partidos');
-  if (historialGuardado) {
-    try {
-      const historialLocal = JSON.parse(historialGuardado);
-      if (historialLocal.length > historialPartidos.length) {
-        historialPartidos = historialLocal;
-      }
-    } catch (error) {
-      console.log('Error al cargar del localStorage');
-    }
-  }
+  // Cargar configuración de autenticación
+  await cargarConfiguracionAuth();
+  verificarSesionActiva();
   
+  // Actualizar interfaz
   actualizarEstadisticas();
   mostrarHistorial();
   mostrarGoleadores();
@@ -30,21 +23,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Cargar historial desde JSON
 async function cargarHistorial() {
   try {
+    console.log('🔄 Intentando cargar historial desde servidor...');
     const response = await fetch('historial_partidos.json?_=' + Date.now());
+    console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+    
     if (response.ok) {
       historialPartidos = await response.json();
-      console.log('Historial cargado:', historialPartidos);
+      console.log('✅ Historial cargado desde servidor:', historialPartidos.length, 'partidos');
+      console.log('📊 Datos del historial:', historialPartidos);
+    } else {
+      console.log('❌ Error al cargar historial del servidor:', response.status);
+      historialPartidos = [];
     }
   } catch (error) {
-    console.log('No se pudo cargar el historial, iniciando vacío');
+    console.log('❌ Error al cargar el historial:', error);
     historialPartidos = [];
   }
 }
 
 // Guardar historial en localStorage
 function guardarHistorial() {
+  // Guardar localmente primero
   localStorage.setItem('historial_partidos', JSON.stringify(historialPartidos));
-  console.log('Historial actualizado:', JSON.stringify(historialPartidos, null, 2));
+  console.log('Historial actualizado localmente:', JSON.stringify(historialPartidos, null, 2));
+  
+  // Intentar guardar en el servidor
+  guardarHistorialCompleto().catch(error => {
+    console.error('Error al sincronizar con servidor:', error);
+    alert('⚠️ Cambios guardados localmente, pero no se pudo sincronizar con el servidor. Los cambios se perderán al recargar la página.');
+  });
 }
 
 // Actualizar estadísticas generales
@@ -103,18 +110,6 @@ function mostrarHistorial() {
       p.resultado.negro === partido.resultado.negro
     );
     
-  container.innerHTML = partidosOrdenados.map((partido, index) => {
-    const ganador = partido.resultado.rojo > partido.resultado.negro ? 'rojo' : 
-                   partido.resultado.negro > partido.resultado.rojo ? 'negro' : 'empate';
-    
-    // Encontrar el índice original en el historial
-    const indiceOriginal = historialPartidos.findIndex(p => 
-      p.fecha === partido.fecha && 
-      p.hora === partido.hora && 
-      p.resultado.rojo === partido.resultado.rojo && 
-      p.resultado.negro === partido.resultado.negro
-    );
-    
     // Mostrar jugadores de los equipos
     const equipoRojoJugadores = partido.equipo_rojo ? partido.equipo_rojo.join(', ') : 'No registrado';
     const equipoNegroJugadores = partido.equipo_negro ? partido.equipo_negro.join(', ') : 'No registrado';
@@ -128,14 +123,14 @@ function mostrarHistorial() {
             ${partido.mvp ? `<div style="font-size: 0.9em; color: #333;">🏆 MVP: ${partido.mvp}</div>` : ''}
           </div>
           <div class="match-result" style="text-align: center;">
-            <div style="font-size: 1.5em; font-weight: bold; color: black;">
-              <span class="team-red" style="color: #d32f2f;">${partido.resultado.rojo}</span>
+            <div style="font-size: 1.5em; font-weight: bold; color: black; background: none;">
+              <span class="team-red" style="color: black;">${partido.resultado.rojo}</span>
               <span style="color: black;"> - </span>
-              <span class="team-black" style="color: #424242;">${partido.resultado.negro}</span>
+              <span class="team-black" style="color: black;">${partido.resultado.negro}</span>
               ${ganador !== 'empate' ? `<span style="margin-left: 10px;">${ganador === 'rojo' ? '🔴' : '⚫'}</span>` : ' 🤝'}
             </div>
           </div>
-          <div class="match-actions">
+          <div class="match-actions" ${!isAuthenticated ? 'style="display: none;"' : ''}>
             <button class="btn-edit" onclick="verificarParaEditar(editarPartido, ${indiceOriginal})">✏️ Editar</button>
             <button class="btn-delete" onclick="verificarParaEditar(eliminarPartido, ${indiceOriginal})">🗑️ Eliminar</button>
           </div>
@@ -151,6 +146,15 @@ function mostrarHistorial() {
             <div style="font-size: 0.9em; color: black; line-height: 1.4;">${equipoNegroJugadores}</div>
           </div>
         </div>
+        
+        ${partido.jugadores_confirmados && partido.jugadores_confirmados.length > 0 ? `
+          <div class="jugadores-confirmados" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+            <div style="font-weight: bold; color: #2196f3; margin-bottom: 5px;">👥 Jugadores Confirmados (${partido.jugadores_confirmados.length})</div>
+            <div style="font-size: 0.9em; color: black; line-height: 1.4;">
+              ${partido.jugadores_confirmados.join(' • ')}
+            </div>
+          </div>
+        ` : ''}
         
         ${partido.goleadores && partido.goleadores.length > 0 ? `
           <div class="goleadores-partido" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
@@ -211,19 +215,221 @@ function abrirModalResultado() {
   const hoy = new Date().toISOString().split('T')[0];
   document.getElementById('fecha-partido').value = hoy;
   
+  // Cargar jugadores automáticamente
+  cargarJugadoresAutomaticamente();
+  
   document.getElementById('modal-resultado').style.display = 'block';
+}
+
+// Función para cargar jugadores automáticamente
+async function cargarJugadoresAutomaticamente() {
+  let jugadoresConfirmados = [];
+  let fuente = '';
+  
+  const fechaHoy = new Date().toISOString().split('T')[0];
+  
+  try {
+    // Opción 1: Intentar cargar desde confirmaciones automáticas (servidor)
+    try {
+      const responseAuto = await fetch(`http://localhost:5000/lista-jugadores/${fechaHoy}`);
+      if (responseAuto.ok) {
+        const dataAuto = await responseAuto.json();
+        if (dataAuto.jugadores && dataAuto.jugadores.length > 0) {
+          jugadoresConfirmados = dataAuto.jugadores;
+          fuente = 'confirmaciones automáticas (servidor)';
+          console.log('✅ Jugadores cargados desde confirmaciones automáticas:', jugadoresConfirmados);
+        }
+      }
+    } catch (error) {
+      console.log('⚠️ Servidor de confirmaciones no disponible:', error.message);
+    }
+    
+    // Opción 1b: Si no hay servidor, intentar cargar desde archivo local
+    if (jugadoresConfirmados.length === 0) {
+      try {
+        const responseAutoLocal = await fetch('confirmaciones_automaticas.json?_=' + Date.now());
+        if (responseAutoLocal.ok) {
+          const confirmacionesData = await responseAutoLocal.json();
+          if (confirmacionesData[fechaHoy] && confirmacionesData[fechaHoy].jugadores) {
+            jugadoresConfirmados = confirmacionesData[fechaHoy].jugadores;
+            fuente = 'confirmaciones automáticas (archivo)';
+            console.log('✅ Jugadores cargados desde confirmaciones automáticas locales:', jugadoresConfirmados);
+          }
+        }
+      } catch (error) {
+        console.log('⚠️ Archivo de confirmaciones automáticas no disponible:', error.message);
+      }
+    }
+    
+    // Opción 2: Si no hay confirmaciones automáticas, intentar cargar desde equipos.json (último sorteo)
+    if (jugadoresConfirmados.length === 0) {
+      try {
+        const responseEquipos = await fetch('equipos.json?_=' + Date.now());
+        if (responseEquipos.ok) {
+          const equipos = await responseEquipos.json();
+          const equipoRojo = equipos.rojo || [];
+          const equipoNegro = equipos.negro || [];
+          
+          // Combinar ambos equipos para obtener la lista completa
+          const jugadoresSorteo = [...equipoRojo, ...equipoNegro];
+          
+          if (jugadoresSorteo.length > 0) {
+            jugadoresConfirmados = jugadoresSorteo;
+            fuente = 'último sorteo';
+            console.log('✅ Jugadores cargados desde último sorteo:', jugadoresConfirmados);
+          }
+        }
+      } catch (error) {
+        console.log('❌ No se pudo cargar desde equipos.json:', error);
+      }
+    }
+    
+    // Opción 3: Si no hay sorteo, intentar cargar desde confirmados.txt
+    if (jugadoresConfirmados.length === 0) {
+      try {
+        const responseConfirmados = await fetch('confirmados.txt?_=' + Date.now());
+        if (responseConfirmados.ok) {
+          const textoConfirmados = await responseConfirmados.text();
+          jugadoresConfirmados = textoConfirmados
+            .split('\n')
+            .map(linea => linea.trim())
+            .filter(linea => linea.length > 0);
+          
+          if (jugadoresConfirmados.length > 0) {
+            fuente = 'lista de confirmados';
+            console.log('✅ Jugadores cargados desde confirmados.txt:', jugadoresConfirmados);
+          }
+        }
+      } catch (error) {
+        console.log('❌ No se pudo cargar desde confirmados.txt:', error);
+      }
+    }
+    
+    // Llenar el campo si se encontraron jugadores
+    if (jugadoresConfirmados.length > 0) {
+      document.getElementById('jugadores-confirmados').value = jugadoresConfirmados.join(', ');
+      
+      // Mostrar notificación al usuario indicando la fuente
+      mostrarNotificacionCarga(jugadoresConfirmados.length, fuente);
+    } else {
+      console.log('ℹ️ No se encontraron jugadores para cargar automáticamente');
+    }
+  } catch (error) {
+    console.error('❌ Error en carga automática:', error);
+  }
+}
+
+// Mostrar notificación de carga automática
+function mostrarNotificacionCarga(cantidad, fuente = 'origen desconocido') {
+  const campo = document.getElementById('jugadores-confirmados');
+  const notificacion = document.createElement('div');
+  notificacion.innerHTML = `✅ Se cargaron automáticamente ${cantidad} jugadores desde ${fuente}`;
+  notificacion.style.cssText = `
+    color: #16a34a;
+    font-size: 0.9em;
+    margin-top: 5px;
+    padding: 5px;
+    background: #f0f9ff;
+    border-radius: 4px;
+    border: 1px solid #16a34a;
+  `;
+  
+  // Insertar después del campo
+  campo.parentNode.insertBefore(notificacion, campo.nextSibling);
+  
+  // Remover después de 3 segundos
+  setTimeout(() => {
+    if (notificacion.parentNode) {
+      notificacion.parentNode.removeChild(notificacion);
+    }
+  }, 3000);
 }
 
 function cerrarModalResultado() {
   document.getElementById('modal-resultado').style.display = 'none';
   document.getElementById('form-resultado').reset();
   
+  // Limpiar campos específicos
+  document.getElementById('jugadores-confirmados').value = '';
+  
   // Limpiar estado de edición
   delete document.getElementById('form-resultado').dataset.editingIndex;
   document.querySelector('#modal-resultado h3').textContent = '📝 Agregar Resultado de Partido';
 }
 
-// Hacer accesibles las funciones globalmente
+// Función para recargar jugadores manualmente
+async function recargarJugadores() {
+  const boton = event.target;
+  const textoOriginal = boton.innerHTML;
+  
+  // Mostrar indicador de carga
+  boton.innerHTML = '⏳ Cargando...';
+  boton.disabled = true;
+  
+  try {
+    await cargarJugadoresAutomaticamente();
+  } catch (error) {
+    console.error('Error al recargar jugadores:', error);
+    alert('❌ Error al cargar jugadores automáticamente');
+  } finally {
+    // Restaurar botón
+    boton.innerHTML = textoOriginal;
+    boton.disabled = false;
+  }
+}
+
+// Verificar automáticamente si hay nuevos sorteos
+let ultimoSorteoTimestamp = null;
+
+async function verificarNuevoSorteo() {
+  try {
+    const response = await fetch('equipos.json?_=' + Date.now());
+    if (response.ok) {
+      const lastModified = response.headers.get('Last-Modified');
+      if (lastModified) {
+        const timestamp = new Date(lastModified).getTime();
+        
+        if (ultimoSorteoTimestamp && timestamp > ultimoSorteoTimestamp) {
+          // Hay un nuevo sorteo
+          console.log('🆕 Nuevo sorteo detectado');
+          
+          // Si el modal está abierto, ofrecer recargar
+          const modal = document.getElementById('modal-resultado');
+          if (modal && modal.style.display === 'block') {
+            mostrarSugerenciaRecarga();
+          }
+        }
+        
+        ultimoSorteoTimestamp = timestamp;
+      }
+    }
+  } catch (error) {
+    console.log('No se pudo verificar nuevo sorteo:', error);
+  }
+}
+
+// Mostrar sugerencia de recarga
+function mostrarSugerenciaRecarga() {
+  const sugerencia = document.createElement('div');
+  sugerencia.innerHTML = `
+    <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; padding: 10px; margin: 10px 0;">
+      <strong>🆕 Nuevo sorteo detectado</strong><br>
+      <small>¿Quieres actualizar la lista de jugadores?</small>
+      <button onclick="recargarJugadores(); this.parentNode.parentNode.remove();" style="background: #ffc107; border: none; padding: 4px 8px; border-radius: 4px; margin-left: 10px; cursor: pointer;">
+        Actualizar
+      </button>
+      <button onclick="this.parentNode.parentNode.remove();" style="background: #6c757d; color: white; border: none; padding: 4px 8px; border-radius: 4px; margin-left: 5px; cursor: pointer;">
+        Ignorar
+      </button>
+    </div>
+  `;
+  
+  const campo = document.getElementById('jugadores-confirmados');
+  campo.parentNode.insertBefore(sugerencia, campo);
+}
+
+// Verificar cada 30 segundos si hay cambios
+setInterval(verificarNuevoSorteo, 30000);
 window.abrirModalResultado = abrirModalResultado;
 window.cerrarModalResultado = cerrarModalResultado;
 
@@ -242,6 +448,10 @@ function editarPartido(index) {
   document.getElementById('goles-negro').value = partido.resultado.negro;
   document.getElementById('mvp-partido').value = partido.mvp || '';
   document.getElementById('asistencia-partido').value = partido.asistencia || '';
+  
+  // Llenar jugadores confirmados
+  const jugadoresConfirmados = partido.jugadores_confirmados || [];
+  document.getElementById('jugadores-confirmados').value = jugadoresConfirmados.join(', ');
   
   // Cambiar el título y comportamiento del modal
   const modal = document.getElementById('modal-resultado');
@@ -300,6 +510,18 @@ async function agregarNuevoPartido() {
   const golesNegro = parseInt(document.getElementById('goles-negro').value);
   const mvp = document.getElementById('mvp-partido').value;
   const asistencia = parseInt(document.getElementById('asistencia-partido').value) || 0;
+  
+  // Procesar jugadores confirmados
+  const jugadoresConfirmadosTexto = document.getElementById('jugadores-confirmados').value;
+  let jugadoresConfirmados = [];
+  
+  if (jugadoresConfirmadosTexto.trim()) {
+    // Dividir por comas o saltos de línea y limpiar espacios
+    jugadoresConfirmados = jugadoresConfirmadosTexto
+      .split(/[,\n]/)
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
+  }
 
   // Obtener equipos del último sorteo
   let equipoRojo = [];
@@ -322,6 +544,7 @@ async function agregarNuevoPartido() {
     fecha_formato: formatearFecha(fecha),
     hora: hora,
     cancha: cancha,
+    jugadores_confirmados: jugadoresConfirmados,
     equipo_rojo: equipoRojo,
     equipo_negro: equipoNegro,
     resultado: {
@@ -335,7 +558,18 @@ async function agregarNuevoPartido() {
 
   historialPartidos.push(nuevoPartido);
   
+  // Guardar en localStorage
   guardarHistorial();
+  
+  // Enviar al servidor para persistir en JSON
+  try {
+    await enviarResultadoAlServidor(nuevoPartido);
+    console.log('✅ Resultado enviado al servidor correctamente');
+  } catch (error) {
+    console.error('❌ Error al enviar resultado al servidor:', error);
+    alert('⚠️ Resultado guardado localmente pero no se pudo sincronizar con el servidor');
+  }
+  
   actualizarEstadisticas();
   mostrarHistorial();
   mostrarGoleadores();
@@ -353,6 +587,17 @@ function actualizarPartido(index) {
   const golesNegro = parseInt(document.getElementById('goles-negro').value);
   const mvp = document.getElementById('mvp-partido').value;
   const asistencia = document.getElementById('asistencia-partido').value;
+  
+  // Procesar jugadores confirmados
+  const jugadoresConfirmadosTexto = document.getElementById('jugadores-confirmados').value;
+  let jugadoresConfirmados = [];
+  
+  if (jugadoresConfirmadosTexto.trim()) {
+    jugadoresConfirmados = jugadoresConfirmadosTexto
+      .split(/[,\n]/)
+      .map(jugador => jugador.trim())
+      .filter(jugador => jugador.length > 0);
+  }
 
   if (!fecha || golesRojo < 0 || golesNegro < 0) {
     alert('Por favor, completa todos los campos requeridos correctamente.');
@@ -366,6 +611,7 @@ function actualizarPartido(index) {
     fecha_formato: formatearFecha(fecha),
     hora: hora,
     cancha: cancha,
+    jugadores_confirmados: jugadoresConfirmados,
     resultado: {
       rojo: golesRojo,
       negro: golesNegro
@@ -526,12 +772,8 @@ function mostrarEstadoAdmin() {
 
 // Mostrar funciones de administración
 function mostrarFuncionesAdmin() {
-  // Mostrar botones de editar/eliminar en partidos
-  const matchActions = document.querySelectorAll('.match-actions');
-  matchActions.forEach(action => {
-    action.style.opacity = '1';
-    action.style.pointerEvents = 'auto';
-  });
+  // Actualizar historial para mostrar botones
+  mostrarHistorial();
   
   // Habilitar botón de agregar
   const addBtn = document.querySelector('.add-result-btn');
@@ -544,12 +786,8 @@ function mostrarFuncionesAdmin() {
 
 // Ocultar funciones de administración
 function ocultarFuncionesAdmin() {
-  // Ocultar botones de editar/eliminar
-  const matchActions = document.querySelectorAll('.match-actions');
-  matchActions.forEach(action => {
-    action.style.opacity = '0.3';
-    action.style.pointerEvents = 'none';
-  });
+  // Actualizar historial para ocultar botones
+  mostrarHistorial();
   
   // Cambiar comportamiento del botón agregar
   const addBtn = document.querySelector('.add-result-btn');
@@ -597,7 +835,10 @@ function cerrarSesion() {
     indicator.remove();
   }
   
+  // Ocultar funciones de administración
   ocultarFuncionesAdmin();
+  
+  alert('Sesión cerrada correctamente');
 }
 
 // Modificar funciones de editar y eliminar para verificar autenticación
@@ -605,16 +846,55 @@ const editarPartidoOriginal = editarPartido;
 const eliminarPartidoOriginal = eliminarPartido;
 
 window.editarPartido = function(index) {
-  if (verificarAdmin('editar')) {
-    editarPartidoOriginal(index);
-  }
+  console.log('window.editarPartido llamado con index:', index);
+  editarPartidoOriginal(index);
 };
 
 window.eliminarPartido = function(index) {
-  if (verificarAdmin('eliminar')) {
-    eliminarPartidoOriginal(index);
-  }
+  console.log('window.eliminarPartido llamado con index:', index);
+  eliminarPartidoOriginal(index);
 };
+
+// Función para enviar resultado al servidor
+async function enviarResultadoAlServidor(partido) {
+  const response = await fetch('http://localhost:8083/guardar-resultado', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(partido)
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || 'Error del servidor');
+  }
+  
+  return await response.json();
+}
+
+// Función para guardar todo el historial en el servidor
+async function guardarHistorialCompleto() {
+  try {
+    const response = await fetch('http://localhost:8083/guardar-historial-completo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ historial: historialPartidos })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al guardar historial completo');
+    }
+    
+    console.log('✅ Historial completo guardado en servidor');
+    return await response.json();
+  } catch (error) {
+    console.error('❌ Error al guardar historial completo:', error);
+    throw error;
+  }
+}
 
 // Hacer disponible globalmente las funciones necesarias
 window.verificarAdmin = verificarAdmin;

@@ -1,68 +1,68 @@
 {
   "fecha": "Martes 12 de Agosto",
   "hora": "21:00 hrs",
-  "cancha": "por Confirmar",
+  "cancha": "1",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
     "Nel",
-    "Carlos P",
+    "Enrique",
+    "Turra",
     "Camilo",
-    "Francisco H",
-    "Iván",
-    "Enrique"
+    "Willians",
+    "Francisco H"
   ],
   "negro": [
     "Maxi",
-    "Turra",
     "Marco",
-    "Willians",
     "Fabián",
-    "Diego"
+    "Diego",
+    "Carlos P",
+    "Erik"
   ],
-  "promedio_rojo": 7.48,
-  "promedio_negro": 7.48,
+  "promedio_rojo": 7.82,
+  "promedio_negro": 7.82,
   "diferencia": 0.0,
   "rojo_posiciones": {
     "Nel": "Arquero",
     "Enrique": "Defensa",
-    "Francisco H": "Mediocampo",
-    "Carlos P": "Mediocampo",
+    "Turra": "Delantero",
     "Camilo": "Delantero",
-    "Iván": "Mediocampo"
+    "Willians": "Mediocampo",
+    "Francisco H": "Mediocampo"
   },
   "negro_posiciones": {
     "Maxi": "Arquero",
-    "Willians": "Defensa",
     "Marco": "Defensa",
-    "Fabián": "Mediocampo",
     "Diego": "Delantero",
-    "Turra": "Delantero"
+    "Erik": "Mediocampo",
+    "Fabián": "Mediocampo",
+    "Carlos P": "Mediocampo"
   },
   "equipos": {
     "rojo": [
       "Nel",
-      "Carlos P",
+      "Enrique",
+      "Turra",
       "Camilo",
-      "Francisco H",
-      "Iván",
-      "Enrique"
+      "Willians",
+      "Francisco H"
     ],
     "negro": [
       "Maxi",
-      "Turra",
       "Marco",
-      "Willians",
       "Fabián",
-      "Diego"
+      "Diego",
+      "Carlos P",
+      "Erik"
     ]
   },
   "formaciones": {
-    "rojo": "1-1-3-1",
-    "negro": "1-2-1-2"
+    "rojo": "1-1-2-2",
+    "negro": "1-1-3-1"
   },
   "puntajes": {
-    "rojo": 44.9,
-    "negro": 44.9,
+    "rojo": 46.9,
+    "negro": 46.9,
     "diferencia": 0.0
   },
   "posiciones": {
@@ -78,14 +78,9 @@
         8.3
       ],
       [
-        "Francisco H",
-        "CM",
-        8.5
-      ],
-      [
-        "Carlos P",
-        "CM",
-        7.0
+        "Turra",
+        "CF",
+        6.8
       ],
       [
         "Camilo",
@@ -93,9 +88,14 @@
         6.5
       ],
       [
-        "Iván",
-        "RM",
-        6.8
+        "Willians",
+        "CM",
+        9.0
+      ],
+      [
+        "Francisco H",
+        "CM",
+        8.5
       ]
     ],
     "negro": [
@@ -105,19 +105,9 @@
         6.8
       ],
       [
-        "Willians",
-        "RCB",
-        8.0
-      ],
-      [
         "Marco",
         "RCB",
         6.8
-      ],
-      [
-        "Fabián",
-        "RM",
-        8.0
       ],
       [
         "Diego",
@@ -125,9 +115,19 @@
         8.5
       ],
       [
-        "Turra",
-        "CF",
-        6.8
+        "Erik",
+        "LM",
+        8.8
+      ],
+      [
+        "Fabián",
+        "CM",
+        9.0
+      ],
+      [
+        "Carlos P",
+        "CM",
+        7.0
       ]
     ]
   }

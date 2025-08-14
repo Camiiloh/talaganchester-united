@@ -293,6 +293,20 @@
       "CF": 8.2
     }
   },
+    {
+    "nombre": "Fabián",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "GK": 5.5,
+      "LCB": 8.0,
+      "RCB": 7.8,
+      "LM": 8.2,
+      "CM": 8.5,
+      "RM": 8.0,
+      "CF": 8.2
+    }
+  },
   {
     "nombre": "Nel",
     "posicion": "LCB, RCB, GK",

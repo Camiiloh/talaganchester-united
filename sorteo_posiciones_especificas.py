@@ -520,14 +520,7 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido):
 
 def actualizar_archivos_html():
     """Actualiza los archivos HTML desde equipos.json"""
-    try:
-        result = os.system('python actualizar_html.py')
-        if result == 0:
-            print("✅ Archivos HTML actualizados correctamente")
-        else:
-            print("⚠️  Advertencia: No se pudieron actualizar los archivos HTML")
-    except:
-        print("⚠️  Advertencia: No se pudo ejecutar actualizar_html.py")
+    print("✅ Sorteo completado - Los archivos HTML se actualizarán automáticamente desde la web")
 
 def main():
     print("🚀 SORTEO CON POSICIONES ESPECÍFICAS (7 POSICIONES)")

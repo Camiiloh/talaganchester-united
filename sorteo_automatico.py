@@ -222,10 +222,5 @@ with open("equipos.json", "w", encoding="utf-8") as f:
 
 print(f"\n✅ Sorteo completado y guardado en equipos.json")
 
-# Ejecutar actualización del HTML si existe el script
-try:
-    import subprocess
-    subprocess.run(["python", "actualizar_html.py"], check=True)
-    print("✅ Archivos HTML actualizados correctamente")
-except:
-    print("⚠️  No se pudo actualizar automáticamente los archivos HTML")
+# El HTML se actualizará automáticamente desde la interfaz web
+print("✅ Sorteo completado - Los archivos HTML se actualizarán automáticamente desde la web")

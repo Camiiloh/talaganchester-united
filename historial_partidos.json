@@ -1,24 +1,46 @@
 [
   {
-    "id": 1,
-    "fecha": "2025-07-24",
-    "fecha_formato": "Jueves 24 de Julio",
-    "hora": "22:00",
-    "cancha": "Pasto Sintético",
-    "equipo_rojo": ["Pablo", "Francisco H", "Iván", "Camilo", "Turra", "Pancho"],
-    "equipo_negro": ["Maxi", "Cristóbal", "Juan R", "Enrique", "Pantera", "Willians"],
-    "resultado": {
-      "rojo": 3,
-      "negro": 2
-    },
-    "goleadores": [
-      {"jugador": "Camilo", "equipo": "rojo", "goles": 2},
-      {"jugador": "Francisco H", "equipo": "rojo", "goles": 1},
-      {"jugador": "Enrique", "equipo": "negro", "goles": 1},
-      {"jugador": "Willians", "equipo": "negro", "goles": 1}
+    "id": 1755131400000,
+    "fecha": "2025-08-12",
+    "fecha_formato": "martes, 12 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "1",
+    "jugadores_confirmados": [
+      "Maxi",
+      "Carlos P",
+      "Marco",
+      "Francisco H",
+      "Fabian",
+      "Diego",
+      "Nel",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Enrique",
+      "Jaime"
     ],
-    "mvp": "Camilo",
-    "asistencias": 12,
+    "equipo_rojo": [
+      "Maxi",
+      "Carlos P",
+      "Marco",
+      "Francisco H",
+      "Fabian",
+      "Diego"
+    ],
+    "equipo_negro": [
+      "Nel",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Enrique",
+      "Jaime"
+    ],
+    "resultado": {
+      "rojo": 15,
+      "negro": 12
+    },
+    "mvp": "Maxi",
+    "asistencia": 12,
     "estado": "finalizado"
   }
 ]

@@ -308,6 +308,5 @@ if __name__ == "__main__":
         import json
         json.dump(equipos_data, f, ensure_ascii=False, indent=2)
 
-    # Ejecutar actualizar_html.py para sincronizar los equipos en index.html y cancha.html
-    import subprocess
-    subprocess.run(["python", "actualizar_html.py"], check=True)
+    # Los equipos se sincronizarán automáticamente desde la interfaz web
+    print("✅ Sorteo completado - Los archivos HTML se actualizarán automáticamente desde la web")

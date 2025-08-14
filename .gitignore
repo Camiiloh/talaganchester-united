@@ -18,6 +18,31 @@ build/
 # IDE/Editor files
 .vscode/
 .idea/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Test files
+test-*.html
+debug-*.html
+*-test.js
+*_test.py
+test_*.py
+
+# Backup files
+*.bak
+*.bkp
+*_backup.*
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
 *.swp
 *.swo
 *~
