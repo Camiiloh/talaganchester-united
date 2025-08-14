@@ -130,9 +130,10 @@ def obtener_historial():
 
 @app.route('/api/migrar', methods=['POST'])
 def ejecutar_migracion():
-    """API: Ejecuta migración manual desde JSON a PostgreSQL"""
+    """API: Ejecuta migración manual desde JSON a base de datos"""
     try:
-        if not os.environ.get('DATABASE_URL'):
+        # Verificar que estemos en producción (Railway tiene PORT)
+        if not os.environ.get('PORT'):
             return jsonify({'error': 'No disponible en desarrollo local'}), 400
             
         from migrar_datos import migrar_datos_a_postgres
@@ -209,8 +210,8 @@ def serve_static(filename):
         return "Archivo no encontrado", 404
 
 if __name__ == '__main__':
-    # Ejecutar migración automática en Railway
-    if os.environ.get('DATABASE_URL'):
+    # Ejecutar migración automática en producción (Railway)
+    if os.environ.get('PORT'):
         print("🔄 Ejecutando migración automática de datos...")
         try:
             from migrar_datos import migrar_datos_a_postgres

@@ -9,16 +9,22 @@ import json
 from database_manager import DatabaseManager
 
 def migrar_datos_a_postgres():
-    """Migra datos desde historial_partidos.json a PostgreSQL"""
+    """Migra datos desde historial_partidos.json a la base de datos (PostgreSQL o SQLite)"""
     
     print("🔄 Iniciando proceso de migración...")
     
-    # Solo ejecutar si estamos en Railway (tiene DATABASE_URL)
-    if not os.environ.get('DATABASE_URL'):
-        print("ℹ️  No se detectó DATABASE_URL, saltando migración")
+    # Ejecutar tanto en Railway (PostgreSQL) como en producción con SQLite
+    database_url = os.environ.get('DATABASE_URL')
+    port = os.environ.get('PORT')  # Railway siempre tiene PORT
+    
+    if not port:
+        print("ℹ️  No se detectó ambiente de producción, saltando migración")
         return False
     
-    print(f"🐘 DATABASE_URL detectada: {os.environ.get('DATABASE_URL')[:50]}...")
+    if database_url:
+        print(f"🐘 DATABASE_URL detectada: {database_url[:50]}...")
+    else:
+        print("🗄️  No hay DATABASE_URL, usando SQLite en producción")
     
     try:
         db = DatabaseManager()
