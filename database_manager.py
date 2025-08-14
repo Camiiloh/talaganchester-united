@@ -25,6 +25,7 @@ class DatabaseManager:
         
         if self.use_postgres:
             print("🐘 Usando PostgreSQL")
+            self._init_postgres()
         elif os.path.exists(self.sqlite_db) or True:  # Always try SQLite for local
             print("🗄️  Usando SQLite para testing local")
             self._init_sqlite()
@@ -61,6 +62,39 @@ class DatabaseManager:
             
         except Exception as e:
             print(f"❌ Error inicializando SQLite: {e}")
+            return False
+    
+    def _init_postgres(self):
+        """Inicializa la base de datos PostgreSQL"""
+        try:
+            conn = psycopg2.connect(self.database_url)
+            cur = conn.cursor()
+            
+            # Crear tabla si no existe
+            cur.execute('''
+                CREATE TABLE IF NOT EXISTS historial_partidos (
+                    id BIGINT PRIMARY KEY,
+                    fecha TEXT NOT NULL,
+                    fecha_formato TEXT,
+                    hora TEXT,
+                    cancha TEXT,
+                    jugadores_confirmados TEXT,
+                    equipos TEXT,
+                    resultado TEXT,
+                    mvp TEXT,
+                    asistencia INTEGER,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            conn.commit()
+            conn.close()
+            print("✅ Tabla PostgreSQL inicializada correctamente")
+            return True
+            
+        except Exception as e:
+            print(f"❌ Error inicializando PostgreSQL: {e}")
             return False
     
     def get_connection(self):
