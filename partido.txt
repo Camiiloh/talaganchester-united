@@ -1,3 +1,0 @@
-fecha: 12/08
-hora: 21:00
-cancha: 1

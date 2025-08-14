@@ -857,39 +857,43 @@ window.eliminarPartido = function(index) {
 
 // Función para enviar resultado al servidor
 async function enviarResultadoAlServidor(partido) {
-  const response = await fetch('http://localhost:8083/guardar-resultado', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(partido)
-  });
-  
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message || 'Error del servidor');
+  try {
+    return await guardarResultadoConFallback(partido);
+  } catch (error) {
+    console.error('Error enviando resultado:', error);
+    throw error;
   }
-  
-  return await response.json();
 }
 
 // Función para guardar todo el historial en el servidor
 async function guardarHistorialCompleto() {
   try {
-    const response = await fetch('http://localhost:8083/guardar-historial-completo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ historial: historialPartidos })
-    });
+    const configs = [getApiConfig(), API_CONFIG.todoEnUno, API_CONFIG.development];
     
-    if (!response.ok) {
-      throw new Error('Error al guardar historial completo');
+    for (const config of configs) {
+      try {
+        const url = config.base + config.endpoints.guardarHistorial;
+        console.log(`🔄 Intentando guardar historial en: ${url}`);
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(historialPartidos)
+        });
+        
+        if (response.ok) {
+          console.log('✅ Historial completo guardado en servidor');
+          return await response.json();
+        }
+      } catch (error) {
+        console.log(`⚠️ Error con ${config.base}: ${error.message}`);
+        continue;
+      }
     }
     
-    console.log('✅ Historial completo guardado en servidor');
-    return await response.json();
+    throw new Error('No se pudo guardar el historial en ningún servidor');
   } catch (error) {
     console.error('❌ Error al guardar historial completo:', error);
     throw error;

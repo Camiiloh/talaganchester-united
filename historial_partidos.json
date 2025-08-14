@@ -42,5 +42,50 @@
     "mvp": "Maxi",
     "asistencia": 12,
     "estado": "finalizado"
+  },
+  {
+    "id": 1755134380089,
+    "fecha": "2025-08-14",
+    "fecha_formato": "jueves, 14 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "4",
+    "jugadores_confirmados": [
+      "Nel",
+      "Enrique",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Francisco H",
+      "Maxi",
+      "Marco",
+      "Fabián",
+      "Diego",
+      "Carlos P",
+      "Erik"
+    ],
+    "equipo_rojo": [
+      "Nel",
+      "Enrique",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Francisco H"
+    ],
+    "equipo_negro": [
+      "Maxi",
+      "Marco",
+      "Fabián",
+      "Diego",
+      "Carlos P",
+      "Erik"
+    ],
+    "resultado": {
+      "rojo": 3,
+      "negro": 7
+    },
+    "mvp": "yo",
+    "asistencia": 12,
+    "estado": "finalizado",
+    "timestamp": "2025-08-13T21:19:42.449635"
   }
 ]
