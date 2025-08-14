@@ -221,31 +221,44 @@ function actualizarEstadisticas() {
 
 // Mostrar historial de partidos
 function mostrarHistorial() {
-  console.log('mostrarHistorial() llamada');
-  console.log('historialPartidos:', historialPartidos);
+  console.log('🏁 mostrarHistorial() llamada');
+  console.log('📊 historialPartidos array:', historialPartidos);
+  console.log('📊 historialPartidos.length:', historialPartidos.length);
   
   const container = document.getElementById('historial-container');
-  console.log('container encontrado:', container);
+  console.log('📦 container encontrado:', !!container);
   
   if (!container) {
-    console.error('No se encontró el contenedor historial-container');
+    console.error('❌ No se encontró el contenedor historial-container');
     return;
   }
   
   if (historialPartidos.length === 0) {
-    console.log('No hay partidos en el historial');
+    console.log('⚠️ No hay partidos en el historial');
     container.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No hay partidos registrados aún</p>';
     return;
   }
 
+  console.log('🔍 Analizando cada partido:');
+  historialPartidos.forEach((p, i) => {
+    console.log(`Partido ${i+1}:`, {
+      fecha: p.fecha,
+      resultado: p.resultado,
+      tieneResultado: !!(p.resultado && p.resultado.rojo !== undefined && p.resultado.negro !== undefined)
+    });
+  });
+
   const partidosOrdenados = [...historialPartidos]
-    .filter(p => 
-      p.resultado && 
-      (p.resultado.rojo !== undefined && p.resultado.negro !== undefined)
-    )
+    .filter(p => {
+      const tieneResultado = p.resultado && 
+        (p.resultado.rojo !== undefined && p.resultado.negro !== undefined);
+      console.log(`🔍 Partido ${p.fecha}: tieneResultado=${tieneResultado}, resultado=`, p.resultado);
+      return tieneResultado;
+    })
     .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
     
-  console.log('partidosOrdenados:', partidosOrdenados);
+  console.log('✅ partidosOrdenados:', partidosOrdenados.length, 'partidos');
+  console.log('📊 partidosOrdenados detalle:', partidosOrdenados);
 
   container.innerHTML = partidosOrdenados.map((partido, index) => {
     const ganador = partido.resultado.rojo > partido.resultado.negro ? 'rojo' : 
@@ -318,7 +331,38 @@ function mostrarHistorial() {
       </div>
     `;
   }).join('');
+  
+  console.log('✅ HTML del historial generado, length:', container.innerHTML.length);
+  
+  // Si no hay partidos filtrados pero sí hay datos, mostrar mensaje específico
+  if (partidosOrdenados.length === 0 && historialPartidos.length > 0) {
+    container.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Los partidos están en la base de datos pero no tienen resultados válidos para mostrar</p>';
+    console.log('⚠️ Partidos sin resultados válidos');
+  }
 }
+
+// Función de debugging para llamar manualmente
+window.debugEstadisticas = function() {
+  console.log('🔧 DEBUG MANUAL DE ESTADÍSTICAS');
+  console.log('historialPartidos:', historialPartidos);
+  console.log('historialPartidos.length:', historialPartidos.length);
+  
+  // Forzar recarga
+  cargarHistorial().then(() => {
+    console.log('✅ Recarga completada');
+    actualizarEstadisticas();
+    mostrarHistorial();
+    mostrarGoleadores();
+  });
+};
+
+// Función para forzar actualización manual
+window.forzarActualizacion = function() {
+  console.log('🔄 Forzando actualización...');
+  actualizarEstadisticas();
+  mostrarHistorial();
+  mostrarGoleadores();
+};
 
 // Calcular y mostrar goleadores
 function mostrarGoleadores() {
