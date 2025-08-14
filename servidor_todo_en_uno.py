@@ -174,6 +174,16 @@ def ejecutar_migracion():
     except Exception as e:
         return jsonify({'error': f'Error ejecutando migración: {str(e)}'}), 500
 
+@app.route('/api/debug-simple', methods=['GET'])
+def debug_simple():
+    """API: Debug simple de PostgreSQL"""
+    return jsonify({
+        'test': 'working',
+        'DATABASE_URL': bool(os.environ.get('DATABASE_URL')),
+        'POSTGRES_URL': bool(os.environ.get('POSTGRES_URL')),
+        'PORT': os.environ.get('PORT', 'not_set')
+    })
+
 @app.route('/api/debug-env', methods=['GET'])
 def debug_env():
     """API: Debug de variables de entorno para PostgreSQL"""
