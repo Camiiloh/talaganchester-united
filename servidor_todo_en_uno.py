@@ -179,6 +179,37 @@ def health():
     """API: Health check"""
     return jsonify({'status': 'ok', 'timestamp': datetime.now().isoformat()})
 
+@app.route('/api/debug-json', methods=['GET'])
+def debug_json():
+    """API: Debug - mostrar contenido del archivo JSON"""
+    try:
+        if not os.path.exists('historial_partidos.json'):
+            return jsonify({'error': 'Archivo JSON no existe'})
+        
+        with open('historial_partidos.json', 'r', encoding='utf-8') as f:
+            contenido = f.read()
+        
+        # Intentar parsear JSON
+        try:
+            datos_json = json.loads(contenido)
+            return jsonify({
+                'archivo_existe': True,
+                'contenido_raw': contenido[:500],  # Primeros 500 caracteres
+                'datos_parseados': datos_json,
+                'numero_registros': len(datos_json) if isinstance(datos_json, list) else 'No es lista',
+                'tipo_datos': type(datos_json).__name__
+            })
+        except json.JSONDecodeError as e:
+            return jsonify({
+                'archivo_existe': True,
+                'contenido_raw': contenido[:500],
+                'error_json': str(e),
+                'contenido_completo': contenido
+            })
+            
+    except Exception as e:
+        return jsonify({'error': f'Error leyendo archivo: {str(e)}'})
+
 # ===== SERVIR ARCHIVOS ESTÁTICOS =====
 
 @app.route('/')
