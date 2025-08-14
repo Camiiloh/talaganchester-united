@@ -722,8 +722,14 @@ async function eliminarPartido(index) {
     try {
       console.log('🗑️ Intentando eliminar partido ID:', partido.id);
       
+      // Obtener configuración API correcta
+      const apiConfig = getApiConfig();
+      const apiUrl = `${apiConfig.base}/api/eliminar-partido`;
+      
+      console.log('🔗 URL para eliminar:', apiUrl);
+      
       // Eliminar del servidor primero
-      const response = await fetch(`${API_BASE_URL}/api/eliminar-partido`, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -732,6 +738,8 @@ async function eliminarPartido(index) {
           partido_id: partido.id
         })
       });
+      
+      console.log('📡 Respuesta del servidor:', response.status, response.statusText);
       
       if (response.ok) {
         const result = await response.json();
@@ -747,9 +755,9 @@ async function eliminarPartido(index) {
         
         alert('✅ Partido eliminado correctamente');
       } else {
-        const error = await response.text();
-        console.error('❌ Error del servidor:', error);
-        alert('❌ Error al eliminar del servidor: ' + error);
+        const errorText = await response.text();
+        console.error('❌ Error del servidor:', response.status, errorText);
+        alert(`❌ Error del servidor (${response.status}): ${errorText}`);
       }
       
     } catch (error) {
