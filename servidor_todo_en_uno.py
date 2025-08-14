@@ -176,7 +176,7 @@ def ejecutar_migracion():
 
 @app.route('/api/debug-simple', methods=['GET'])
 def debug_simple():
-    """API: Debug simple de PostgreSQL"""
+    """API: Debug simple de PostgreSQL - v2"""
     # Variables comunes de Railway PostgreSQL
     postgres_vars = [
         'DATABASE_URL', 'POSTGRES_URL', 'DATABASE_PUBLIC_URL',
@@ -194,7 +194,7 @@ def debug_simple():
             found_vars[var] = False
     
     return jsonify({
-        'test': 'working',
+        'test': 'working_v2',
         'postgres_vars': found_vars,
         'PORT': os.environ.get('PORT', 'not_set'),
         'db_manager_url': bool(db_manager.postgres_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
