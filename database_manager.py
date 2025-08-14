@@ -313,7 +313,7 @@ class DatabaseManager:
                 partido.get('fecha_formato'),
                 partido.get('hora'),
                 partido.get('cancha'),
-                partido.get('jugadores_confirmados', []),
+                json.dumps(partido.get('jugadores_confirmados', [])),
                 json.dumps(partido.get('equipos', {})),
                 json.dumps(partido.get('resultado', {})),
                 partido.get('mvp'),
