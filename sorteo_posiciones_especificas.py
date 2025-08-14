@@ -65,14 +65,42 @@ def cargar_jugadores(archivo='jugadores_posiciones_especificas.json'):
         return []
 
 def cargar_info_partido():
-    """Carga la información del partido desde confirmaciones_automaticas.json"""
+    """Carga la información del partido desde jugadores_confirmados.txt o confirmaciones_automaticas.json"""
     info_default = {
         'fecha': 'Fecha por confirmar',
         'hora': '22:00',
         'cancha': 'Por confirmar'
     }
     
+    # Prioridad 1: Intentar leer desde jugadores_confirmados.txt
     try:
+        if os.path.exists('jugadores_confirmados.txt'):
+            print("📄 Leyendo información desde jugadores_confirmados.txt")
+            with open('jugadores_confirmados.txt', 'r', encoding='utf-8') as f:
+                contenido = f.read().strip()
+            
+            # Parsear el formato del archivo
+            lineas = contenido.split('\n')
+            info = info_default.copy()
+            
+            for linea in lineas:
+                if linea.startswith('FECHA:'):
+                    info['fecha'] = linea.replace('FECHA:', '').strip()
+                elif linea.startswith('HORA:'):
+                    info['hora'] = linea.replace('HORA:', '').strip()
+                elif linea.startswith('CANCHA:'):
+                    info['cancha'] = linea.replace('CANCHA:', '').strip()
+                elif linea.strip() == '---':
+                    break  # Termina la sección de metadatos
+            
+            print(f"✅ Información cargada: {info['fecha']} - {info['hora']} - {info['cancha']}")
+            return info
+    except Exception as e:
+        print(f"⚠️ Error leyendo jugadores_confirmados.txt: {e}")
+    
+    # Prioridad 2: Fallback a confirmaciones_automaticas.json (código original)
+    try:
+        print("📄 Fallback: leyendo desde confirmaciones_automaticas.json")
         # Cargar desde confirmaciones_automaticas.json
         with open('confirmaciones_automaticas.json', 'r', encoding='utf-8') as f:
             confirmaciones = json.load(f)
@@ -131,8 +159,50 @@ def cargar_info_partido():
         return info_default
 
 def jugadores_confirmados(todos_jugadores):
-    """Filtra jugadores confirmados basado en confirmaciones_automaticas.json"""
+    """Filtra jugadores confirmados basado en jugadores_confirmados.txt o confirmaciones_automaticas.json"""
+    
+    # Prioridad 1: Intentar leer desde jugadores_confirmados.txt
     try:
+        if os.path.exists('jugadores_confirmados.txt'):
+            print("📄 Leyendo jugadores desde jugadores_confirmados.txt")
+            with open('jugadores_confirmados.txt', 'r', encoding='utf-8') as f:
+                contenido = f.read().strip()
+            
+            # Buscar la sección después de "---"
+            lineas = contenido.split('\n')
+            en_seccion_jugadores = False
+            nombres_confirmados = []
+            
+            for linea in lineas:
+                if linea.strip() == '---':
+                    en_seccion_jugadores = True
+                    continue
+                
+                if en_seccion_jugadores and linea.strip():
+                    # Limpiar el nombre (quitar espacios extra)
+                    nombre = linea.strip()
+                    if nombre:
+                        nombres_confirmados.append(nombre)
+            
+            # Buscar jugadores en la base de datos
+            confirmados = []
+            for nombre in nombres_confirmados:
+                jugador = next((j for j in todos_jugadores if j['nombre'].lower() == nombre.lower()), None)
+                if jugador:
+                    confirmados.append(jugador)
+                else:
+                    print(f"⚠️  Jugador '{nombre}' no encontrado en la base de datos")
+            
+            print(f"✅ {len(confirmados)} jugadores confirmados cargados desde jugadores_confirmados.txt")
+            if confirmados:
+                return confirmados
+                
+    except Exception as e:
+        print(f"⚠️ Error leyendo jugadores_confirmados.txt: {e}")
+    
+    # Prioridad 2: Fallback a confirmaciones_automaticas.json (código original)
+    try:
+        print("📄 Fallback: leyendo jugadores desde confirmaciones_automaticas.json")
         with open('confirmaciones_automaticas.json', 'r', encoding='utf-8') as f:
             confirmaciones = json.load(f)
         
