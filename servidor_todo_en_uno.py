@@ -292,7 +292,10 @@ if __name__ == '__main__':
     print("📡 API:")
     print(f"   • POST /api/guardar-resultado")
     print(f"   • GET /api/historial")
-    print("🛑 Ctrl+C para detener")
+    print("� Base de datos:")
+    print(f"   • PostgreSQL: {'✅' if os.environ.get('DATABASE_URL') else '❌'}")
+    print(f"   • SQLite fallback: {'✅' if not os.environ.get('DATABASE_URL') else '🚫'}")
+    print("�🛑 Ctrl+C para detener")
     print("=" * 50)
     
     app.run(
