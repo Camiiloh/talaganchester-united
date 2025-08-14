@@ -1,1 +1,1 @@
-web: python servidor_web.py
+web: python servidor_todo_en_uno.py

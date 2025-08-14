@@ -39,28 +39,32 @@ def agregar_confirmaciones(jugadores, fecha=None, fuente='Manual'):
     print(f"👥 Jugadores: {len(jugadores)}")
     print(f"📝 Lista: {', '.join(jugadores)}")
 
+def leer_jugadores_desde_txt(archivo_txt='jugadores_confirmados.txt'):
+    """Lee la lista de jugadores desde un archivo de texto"""
+    try:
+        with open(archivo_txt, 'r', encoding='utf-8') as f:
+            jugadores = [linea.strip() for linea in f.readlines() if linea.strip()]
+        print(f"📄 Jugadores leídos desde {archivo_txt}: {len(jugadores)}")
+        return jugadores
+    except FileNotFoundError:
+        print(f"❌ No se encontró el archivo {archivo_txt}")
+        print(f"💡 Crea el archivo con un jugador por línea")
+        return []
+    except Exception as e:
+        print(f"❌ Error leyendo {archivo_txt}: {e}")
+        return []
+
 if __name__ == '__main__':
     print("📝 Agregando confirmaciones para hoy...")
     
-    # Lista de ejemplo (puedes modificar esta lista)
-    jugadores_hoy = [
-        "Carlos P",
-        "Diego", 
-        "Erik",
-        "Francisco H",
-        "Iván",
-        "Luisito",
-        "Marco",
-        "Pancho",
-        "Riky",
-        "Willians",
-        "Camilo",
-        "Enrique",
-        "Fabián",
-        "Jaime"
-    ]
+    # Leer jugadores desde archivo de texto
+    jugadores_hoy = leer_jugadores_desde_txt()
     
-    agregar_confirmaciones(jugadores_hoy, fuente="Script Local")
+    if not jugadores_hoy:
+        print("❌ No hay jugadores para procesar")
+        exit(1)
+    
+    agregar_confirmaciones(jugadores_hoy, fuente="Archivo TXT")
     
     print("\n💡 Ahora puedes:")
     print("   1. Abrir http://localhost:8080/estadisticas.html")

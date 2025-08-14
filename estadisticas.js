@@ -511,6 +511,19 @@ async function agregarNuevoPartido() {
   const mvp = document.getElementById('mvp-partido').value;
   const asistencia = parseInt(document.getElementById('asistencia-partido').value) || 0;
   
+  // Validar si ya existe un partido en esta fecha
+  const partidoExistente = historialPartidos.find(p => p.fecha === fecha);
+  if (partidoExistente) {
+    const confirmar = confirm(`⚠️ Ya existe un partido registrado para el ${fecha}.\n¿Deseas sobrescribirlo?`);
+    if (!confirmar) {
+      return;
+    }
+    // Remover partido existente
+    const indice = historialPartidos.findIndex(p => p.fecha === fecha);
+    historialPartidos.splice(indice, 1);
+    console.log(`🗑️ Partido existente del ${fecha} removido para evitar duplicados`);
+  }
+  
   // Procesar jugadores confirmados
   const jugadoresConfirmadosTexto = document.getElementById('jugadores-confirmados').value;
   let jugadoresConfirmados = [];
@@ -538,8 +551,35 @@ async function agregarNuevoPartido() {
     console.log('No se pudieron cargar los equipos');
   }
 
+  // Generar ID único más robusto
+  const fechaTimestamp = new Date(fecha + 'T' + hora).getTime();
+  const timestampAdicional = Date.now();
+  const randomComponent = Math.floor(Math.random() * 10000);
+  let idUnico = fechaTimestamp + randomComponent;
+  
+  // Validar que el ID no exista ya (prevenir duplicados)
+  while (historialPartidos.some(p => p.id === idUnico)) {
+    idUnico = fechaTimestamp + Math.floor(Math.random() * 100000);
+    console.log(`⚠️ ID duplicado detectado, generando nuevo: ${idUnico}`);
+  }
+  
+  // Validar duplicados por fecha, hora y equipos (prevenir partidos duplicados)
+  const partidoDuplicado = historialPartidos.find(p => 
+    p.fecha === fecha && 
+    p.hora === hora && 
+    p.cancha === cancha &&
+    JSON.stringify(p.equipo_rojo.sort()) === JSON.stringify(equipoRojo.sort()) &&
+    JSON.stringify(p.equipo_negro.sort()) === JSON.stringify(equipoNegro.sort())
+  );
+  
+  if (partidoDuplicado) {
+    alert(`⚠️ Ya existe un partido registrado para la fecha ${fecha} a las ${hora} en cancha ${cancha} con estos equipos.`);
+    console.log('❌ Partido duplicado detectado, cancelando registro');
+    return false;
+  }
+
   const nuevoPartido = {
-    id: Date.now(),
+    id: idUnico,
     fecha: fecha,
     fecha_formato: formatearFecha(fecha),
     hora: hora,
@@ -553,10 +593,12 @@ async function agregarNuevoPartido() {
     },
     mvp: mvp,
     asistencia: asistencia,
-    estado: 'finalizado'
+    estado: 'finalizado',
+    timestamp: new Date().toISOString()
   };
 
   historialPartidos.push(nuevoPartido);
+  console.log(`✅ Nuevo partido agregado con ID: ${idUnico} para fecha: ${fecha}`);
   
   // Guardar en localStorage
   guardarHistorial();

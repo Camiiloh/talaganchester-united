@@ -1,37 +1,33 @@
 {
   "2025-08-13": {
     "jugadores": [
-      "Carlos P",
-      "Diego",
-      "Erik",
-      "Francisco H",
+      "Pablo",
+      "Maxi",
       "Iván",
-      "Luisito",
+      "Vicente",
+      "Ruben",
       "Marco",
-      "Pancho",
-      "Riky",
+      "Félix",
+      "Juan HG",
+      "Nel",
       "Willians",
-      "Camilo",
       "Enrique",
-      "Fabián",
-      "Jaime"
+      "Camilo"
     ],
-    "timestamp": "2025-08-13T21:06:31.076444",
+    "timestamp": "2025-08-13T22:06:59.220990",
     "fuentes": {
-      "Carlos P": "Script Local",
-      "Diego": "Script Local",
-      "Erik": "Script Local",
-      "Francisco H": "Script Local",
-      "Iván": "Script Local",
-      "Luisito": "Script Local",
-      "Marco": "Script Local",
-      "Pancho": "Script Local",
-      "Riky": "Script Local",
-      "Willians": "Script Local",
-      "Camilo": "Script Local",
-      "Enrique": "Script Local",
-      "Fabián": "Script Local",
-      "Jaime": "Script Local"
+      "Pablo": "Archivo TXT",
+      "Maxi": "Archivo TXT",
+      "Iván": "Archivo TXT",
+      "Vicente": "Archivo TXT",
+      "Ruben": "Archivo TXT",
+      "Marco": "Archivo TXT",
+      "Félix": "Archivo TXT",
+      "Juan HG": "Archivo TXT",
+      "Nel": "Archivo TXT",
+      "Willians": "Archivo TXT",
+      "Enrique": "Archivo TXT",
+      "Camilo": "Archivo TXT"
     }
   }
 }

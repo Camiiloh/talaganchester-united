@@ -64,8 +64,8 @@ def cargar_jugadores(archivo='jugadores_posiciones_especificas.json'):
         print(f"❌ Error: No se encontró el archivo {archivo}")
         return []
 
-def cargar_info_partido(archivo='partido.txt'):
-    """Carga la información del partido desde partido.txt"""
+def cargar_info_partido():
+    """Carga la información del partido desde configuración"""
     info_default = {
         'fecha': 'Fecha por confirmar',
         'hora': '22:00',
@@ -73,43 +73,46 @@ def cargar_info_partido(archivo='partido.txt'):
     }
     
     try:
-        with open(archivo, 'r', encoding='utf-8') as f:
-            lineas = f.readlines()
-        
-        info_partido = {}
-        for linea in lineas:
-            linea = linea.strip()
-            if ':' in linea:
-                clave, valor = linea.split(':', 1)
-                clave = clave.strip().lower()
-                valor = valor.strip()
-                
-                if clave == 'fecha':
-                    info_partido['fecha'] = valor
-                elif clave == 'hora':
-                    info_partido['hora'] = valor if valor.endswith('hrs') or valor.endswith('hr') else valor + ' hrs'
-                elif clave == 'cancha':
-                    info_partido['cancha'] = valor
-        
-        # Usar valores por defecto si no se encuentran
-        for key, default in info_default.items():
-            if key not in info_partido:
-                info_partido[key] = default
-                
-        return info_partido
-        
-    except FileNotFoundError:
-        print(f"⚠️  Archivo {archivo} no encontrado, usando valores por defecto")
-        return info_default
-    except Exception as e:
-        print(f"⚠️  Error leyendo {archivo}: {e}, usando valores por defecto")
-        return info_default
+        # Intentar cargar desde historial_partidos.json para obtener info del próximo partido
+        with open('historial_partidos.json', 'r', encoding='utf-8') as f:
+            historial = json.load(f)
+            
+        # Si hay información de próximo partido, usarla
+        if 'proximo_partido' in historial and historial['proximo_partido']:
+            proximo = historial['proximo_partido']
+            return {
+                'fecha': proximo.get('fecha', 'Fecha por confirmar'),
+                'hora': proximo.get('hora', '22:00') + (' hrs' if not proximo.get('hora', '').endswith(('hrs', 'hr')) else ''),
+                'cancha': proximo.get('cancha', 'Por confirmar')
+            }
+    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+        pass
+    
+    # Usar valores por defecto
+    print("⚠️  Usando información por defecto del partido")
+    return info_default
 
 def jugadores_confirmados(todos_jugadores):
-    """Filtra jugadores confirmados basado en confirmados.txt"""
+    """Filtra jugadores confirmados basado en confirmaciones_automaticas.json"""
     try:
-        with open('confirmados.txt', 'r', encoding='utf-8') as f:
-            nombres_confirmados = [line.strip() for line in f if line.strip()]
+        with open('confirmaciones_automaticas.json', 'r', encoding='utf-8') as f:
+            confirmaciones = json.load(f)
+        
+        # Buscar confirmaciones para hoy
+        fecha_hoy = datetime.now().strftime('%Y-%m-%d')
+        
+        if fecha_hoy in confirmaciones and 'jugadores' in confirmaciones[fecha_hoy]:
+            nombres_confirmados = confirmaciones[fecha_hoy]['jugadores']
+        else:
+            # Buscar la fecha más reciente disponible
+            fechas_disponibles = sorted(confirmaciones.keys(), reverse=True)
+            if fechas_disponibles:
+                fecha_reciente = fechas_disponibles[0]
+                nombres_confirmados = confirmaciones[fecha_reciente]['jugadores']
+                print(f"⚠️  Usando confirmaciones de {fecha_reciente} (no hay para hoy)")
+            else:
+                print("❌ Error: No hay confirmaciones disponibles")
+                return []
         
         confirmados = []
         for nombre in nombres_confirmados:
@@ -119,36 +122,55 @@ def jugadores_confirmados(todos_jugadores):
             else:
                 print(f"⚠️  Jugador '{nombre}' no encontrado en la base de datos")
         
+        print(f"✅ {len(confirmados)} jugadores confirmados cargados")
         return confirmados
+        
     except FileNotFoundError:
-        print("❌ Error: No se encontró confirmados.txt")
+        print("❌ Error: No se encontró confirmaciones_automaticas.json")
+        return []
+    except json.JSONDecodeError:
+        print("❌ Error: confirmaciones_automaticas.json tiene formato inválido")
+        return []
+    except Exception as e:
+        print(f"❌ Error cargando confirmaciones: {e}")
         return []
 
-def generar_formaciones_posibles():
-    """Genera todas las formaciones posibles con 6 jugadores (1 GK + 5 de campo)"""
+def generar_formaciones_posibles(jugadores_campo=5):
+    """Genera formaciones flexibles para 5 o 6 jugadores de campo"""
     formaciones = []
     
-    # Todas las combinaciones que sumen 5 jugadores de campo
-    # [LCB, RCB, LM, CM, RM, CF]
-    for lcb in range(0, 3):  # 0-2 defensas izquierdos
-        for rcb in range(0, 3):  # 0-2 defensas derechos
-            for lm in range(0, 3):  # 0-2 mediocampos izquierdos
-                for cm in range(0, 3):  # 0-2 mediocampos centrales
-                    for rm in range(0, 3):  # 0-2 mediocampos derechos
-                        for cf in range(0, 3):  # 0-2 delanteros
-                            if lcb + rcb + lm + cm + rm + cf == 5:
-                                # Debe tener al menos 1 defensa, 1 mediocampo y 1 delantero
-                                total_defensas = lcb + rcb
-                                total_mediocampos = lm + cm + rm
-                                total_delanteros = cf
-                                
-                                if total_defensas >= 1 and total_mediocampos >= 1 and total_delanteros >= 1:
-                                    formacion = {
-                                        'LCB': lcb, 'RCB': rcb, 
-                                        'LM': lm, 'CM': cm, 'RM': rm,
-                                        'CF': cf
-                                    }
-                                    formaciones.append(formacion)
+    if jugadores_campo == 5:
+        # Formaciones para equipos de 6 (1 GK + 5 campo)
+        formaciones_basicas = [
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 0, 'CF': 1},  # 2-3-1
+            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-3-0 
+            {'LCB': 2, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+            {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1
+            {'LCB': 1, 'RCB': 1, 'LM': 2, 'CM': 1, 'RM': 0, 'CF': 0},  # 2-3-0
+            {'LCB': 0, 'RCB': 2, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+        ]
+    elif jugadores_campo == 6:
+        # Formaciones para equipos de 7 (1 GK + 6 campo)
+        formaciones_basicas = [
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-4-0
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1
+            {'LCB': 2, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
+            {'LCB': 1, 'RCB': 2, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
+            {'LCB': 1, 'RCB': 1, 'LM': 2, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-4-0
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 2, 'CF': 0},  # 2-4-0
+            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 3, 'RM': 1, 'CF': 0},  # 2-4-0
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 2},  # 2-2-2
+        ]
+    else:
+        return []
+    
+    # Verificar que suman el número correcto de jugadores
+    for formacion in formaciones_basicas:
+        total = sum(formacion.values())
+        if total == jugadores_campo:
+            formaciones.append(formacion)
     
     return formaciones
 
@@ -182,22 +204,29 @@ def calcular_puntaje_formacion(jugadores_asignados, formacion):
     return puntaje_total, jugadores_usados
 
 def optimizar_posiciones_equipo(jugadores_equipo):
-    """Optimiza las posiciones para un equipo específico priorizando especialidades"""
-    if len(jugadores_equipo) != 6:
+    """Optimiza las posiciones para un equipo específico - FLEXIBLE para 6 o 7 jugadores"""
+    if len(jugadores_equipo) not in [6, 7]:
         return None, 0, []
     
     # El primer jugador debe ser el mejor arquero
     arquero = jugadores_equipo[0]
     jugadores_campo = jugadores_equipo[1:]
     
-    formaciones_posibles = generar_formaciones_posibles()
+    # Generar formaciones según el número de jugadores de campo
+    if len(jugadores_campo) == 5:  # Equipos de 6 total
+        formaciones_posibles = generar_formaciones_posibles(5)
+    elif len(jugadores_campo) == 6:  # Equipos de 7 total  
+        formaciones_posibles = generar_formaciones_posibles(6)
+    else:
+        return None, 0, []
+    
     mejor_formacion = None
     mejor_puntaje = -1
     mejor_asignacion = []
     
-    # Probar formaciones limitadas con asignación inteligente por especialidad
-    for formacion in formaciones_posibles[:15]:  # Probar más formaciones
-        puntaje, asignacion = asignar_por_especialidad(jugadores_campo, formacion)
+    # Probar todas las formaciones disponibles
+    for formacion in formaciones_posibles:
+        puntaje, asignacion = asignar_flexible(jugadores_campo, formacion)
         
         if puntaje > mejor_puntaje:
             mejor_puntaje = puntaje
@@ -206,8 +235,8 @@ def optimizar_posiciones_equipo(jugadores_equipo):
     
     return mejor_formacion, mejor_puntaje, mejor_asignacion
 
-def asignar_por_especialidad(jugadores_campo, formacion):
-    """Asigna jugadores a posiciones priorizando sus especialidades usando algoritmo greedy mejorado"""
+def asignar_flexible(jugadores_campo, formacion):
+    """Asigna jugadores a posiciones de forma más flexible"""
     posiciones_necesarias = []
     
     # Crear lista de posiciones necesarias según la formación
@@ -218,69 +247,36 @@ def asignar_por_especialidad(jugadores_campo, formacion):
     if len(posiciones_necesarias) != len(jugadores_campo):
         return 0, []
     
-    # Crear lista de candidatos para cada posición con sus puntajes
-    candidatos_por_posicion = {}
-    for posicion in set(posiciones_necesarias):
-        candidatos_por_posicion[posicion] = []
+    # Asignación simple: mejores puntajes posibles
+    import itertools
+    mejor_puntaje = 0
+    mejor_asignacion = []
+    
+    # Probar todas las permutaciones (para 5 jugadores es factible)
+    for permutacion in itertools.permutations(jugadores_campo):
+        puntaje_total = 0
+        asignacion_temp = []
         
-        for jugador in jugadores_campo:
-            posiciones_validas = [pos.strip() for pos in jugador['posicion'].split(',')]
-            
-            if posicion in posiciones_validas:
-                # Posición válida: usar puntaje completo + bonus por especialidad
-                puntaje_base = jugador['puntajes_posicion'][posicion]
-                # Bonus si es su mejor posición
-                mejor_posicion = max(jugador['puntajes_posicion'].items(), key=lambda x: x[1])
-                bonus = 0.5 if mejor_posicion[0] == posicion else 0
-                puntaje_final = puntaje_base + bonus
-            else:
-                # Posición no válida: penalizar fuertemente
-                puntaje_final = jugador['puntajes_posicion'][posicion] * 0.2
-            
-            candidatos_por_posicion[posicion].append((jugador, puntaje_final))
+        for i, jugador in enumerate(permutacion):
+            posicion = posiciones_necesarias[i]
+            # Usar puntaje de la posición (sin penalizaciones estrictas)
+            puntaje = jugador['puntajes_posicion'][posicion]
+            puntaje_total += puntaje
+            asignacion_temp.append((jugador['nombre'], posicion, puntaje))
         
-        # Ordenar candidatos por puntaje descendente
-        candidatos_por_posicion[posicion].sort(key=lambda x: x[1], reverse=True)
+        if puntaje_total > mejor_puntaje:
+            mejor_puntaje = puntaje_total
+            mejor_asignacion = asignacion_temp
     
-    # Algoritmo greedy mejorado: asignar primero las posiciones más difíciles de cubrir
-    nombres_asignados = set()  # Usar nombres en lugar de objetos completos
-    asignacion_final = []
-    posiciones_pendientes = posiciones_necesarias.copy()
-    
-    # Ordenar posiciones por disponibilidad (menos candidatos válidos primero)
-    def contar_candidatos_validos(posicion):
-        return len([j for j, p in candidatos_por_posicion[posicion] 
-                   if posicion in [pos.strip() for pos in j['posicion'].split(',')]])
-    
-    posiciones_pendientes.sort(key=contar_candidatos_validos)
-    
-    # Asignar posiciones una por una
-    for posicion in posiciones_pendientes:
-        mejor_candidato = None
-        mejor_puntaje = -1
-        
-        for jugador, puntaje in candidatos_por_posicion[posicion]:
-            if jugador['nombre'] not in nombres_asignados:  # Usar nombre para verificar
-                if puntaje > mejor_puntaje:
-                    mejor_puntaje = puntaje
-                    mejor_candidato = jugador
-        
-        if mejor_candidato:
-            nombres_asignados.add(mejor_candidato['nombre'])  # Agregar nombre
-            asignacion_final.append((mejor_candidato['nombre'], posicion, mejor_puntaje))
-    
-    # Calcular puntaje total
-    puntaje_total = sum(puntaje for _, _, puntaje in asignacion_final)
-    
-    return puntaje_total, asignacion_final
+    return mejor_puntaje, mejor_asignacion
 
 def puede_jugar_posicion(jugador, posicion):
     """Verifica si un jugador puede jugar en una posición específica"""
     posiciones_validas = [pos.strip() for pos in jugador['posicion'].split(',')]
     return posicion in posiciones_validas
 
-def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000):
-    """Realiza el sorteo optimizando posiciones específicas y respetando posiciones válidas"""
+def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6):
+    """Realiza el sorteo optimizando posiciones específicas - FLEXIBLE para 6 o 7 jugadores por equipo"""
     if len(jugadores) % 2 != 0:
         print("❌ Error: Número impar de jugadores")
         return None, None, None
@@ -348,6 +344,14 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000):
         formacion1, puntaje1, asignacion1 = optimizar_posiciones_equipo(equipo1)
         formacion2, puntaje2, asignacion2 = optimizar_posiciones_equipo(equipo2)
         
+        # DEBUG: Mostrar información de debug cada 100 intentos
+        if (intento + 1) % 100 == 0:
+            print(f"   Intento {intento + 1}: Formación1={formacion1 is not None}, Formación2={formacion2 is not None}")
+            if formacion1 is None:
+                print(f"      ❌ Equipo1 falló: {[j['nombre'] for j in equipo1]}")
+            if formacion2 is None:
+                print(f"      ❌ Equipo2 falló: {[j['nombre'] for j in equipo2]}")
+        
         if formacion1 is None or formacion2 is None:
             continue
         
@@ -379,7 +383,7 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000):
                 'diferencia': diferencia
             }
         
-        # Mostrar progreso cada 100 intentos para el rango reducido
+        # Mostrar progreso con mejor diferencia
         if (intento + 1) % 100 == 0:
             print(f"   Intento {intento + 1}: Mejor diferencia = {mejor_diferencia:.3f}")
     
@@ -392,7 +396,7 @@ def formatear_formacion(formacion):
     delanteros = formacion['CF']
     return f"1-{defensas}-{mediocampos}-{delanteros}"
 
-def guardar_equipos(equipo1, equipo2, info_sorteo, info_partido):
+def guardar_equipos(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo=6):
     """Guarda los equipos en equipos.json"""
     
     # Convertir las posiciones específicas a las categorías generales para el campo
@@ -426,8 +430,8 @@ def guardar_equipos(equipo1, equipo2, info_sorteo, info_partido):
         # Formato compatible con actualizar_html.py
         "rojo": [j['nombre'] for j in equipo1],
         "negro": [j['nombre'] for j in equipo2],
-        "promedio_rojo": round(info_sorteo['puntaje1']/6, 2),
-        "promedio_negro": round(info_sorteo['puntaje2']/6, 2),
+        "promedio_rojo": round(info_sorteo['puntaje1']/jugadores_por_equipo, 2),
+        "promedio_negro": round(info_sorteo['puntaje2']/jugadores_por_equipo, 2),
         "diferencia": round(info_sorteo['diferencia'], 3),
         # Posiciones para la visualización del campo
         "rojo_posiciones": rojo_posiciones,
@@ -455,7 +459,7 @@ def guardar_equipos(equipo1, equipo2, info_sorteo, info_partido):
     with open('equipos.json', 'w', encoding='utf-8') as f:
         json.dump(equipos_data, f, ensure_ascii=False, indent=2)
 
-def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido):
+def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo=6):
     """Muestra los equipos con posiciones específicas detalladas"""
     print(f"\n⚽ Partido {info_partido['fecha']} - {info_partido['hora']} - {info_partido['cancha']}")
     print("📋 Formaciones con Posiciones Específicas (Respetando Posiciones Válidas)")
@@ -463,7 +467,11 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido):
     
     # Equipo Rojo
     formacion1_str = formatear_formacion(info_sorteo['formacion1'])
-    print(f"\n🔴 EQUIPO ROJO - Formación {formacion1_str} (Promedio: {info_sorteo['puntaje1']/6:.2f}):")
+    
+    # Calcular promedio general del equipo rojo
+    promedio_general_rojo = sum(j['puntaje'] for j in equipo1) / len(equipo1)
+    
+    print(f"\n🔴 EQUIPO ROJO - Formación {formacion1_str} (Promedio general: {promedio_general_rojo:.2f}, Promedio por posición: {info_sorteo['puntaje1']/jugadores_por_equipo:.2f}):")
     
     for nombre, posicion, puntaje in info_sorteo['asignacion1']:
         jugador_data = next(j for j in equipo1 if j['nombre'] == nombre)
@@ -489,7 +497,11 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido):
     
     # Equipo Negro
     formacion2_str = formatear_formacion(info_sorteo['formacion2'])
-    print(f"\n⚫ EQUIPO NEGRO - Formación {formacion2_str} (Promedio: {info_sorteo['puntaje2']/6:.2f}):")
+    
+    # Calcular promedio general del equipo negro
+    promedio_general_negro = sum(j['puntaje'] for j in equipo2) / len(equipo2)
+    
+    print(f"\n⚫ EQUIPO NEGRO - Formación {formacion2_str} (Promedio general: {promedio_general_negro:.2f}, Promedio por posición: {info_sorteo['puntaje2']/jugadores_por_equipo:.2f}):")
     
     for nombre, posicion, puntaje in info_sorteo['asignacion2']:
         jugador_data = next(j for j in equipo2 if j['nombre'] == nombre)
@@ -513,13 +525,37 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido):
         estado = "" if puede_jugar else " (fuera de posición)"
         print(f"  {icono}{pos_nombre[posicion]:<15} - {nombre:<15} ({puntaje:.1f} pts en pos, {jugador_data['puntaje']:.1f} general){estado}")
     
-    print(f"\n📊 Diferencia de promedios: {info_sorteo['diferencia']:.3f}")
+    print(f"\n📊 Diferencia de promedios (por posición): {info_sorteo['diferencia']:.3f}")
+    print(f"📊 Diferencia de promedios (general): {abs(promedio_general_rojo - promedio_general_negro):.3f}")
     print(f"🎲 Formaciones: Rojo {formacion1_str} vs Negro {formacion2_str}")
     print("⭐ = Posición válida | ⚠️ = Fuera de posición (penalizado)")
     print("=" * 80)
 
 def actualizar_archivos_html():
     """Actualiza los archivos HTML desde equipos.json"""
+    try:
+        # Actualizar cancha simple
+        import subprocess
+        result = subprocess.run(['python', 'actualizar_cancha_simple.py'], 
+                              capture_output=True, text=True, cwd='.')
+        if result.returncode == 0:
+            print("✅ Cancha simple actualizada automáticamente")
+        else:
+            print(f"⚠️  Error actualizando cancha simple: {result.stderr}")
+    except Exception as e:
+        print(f"⚠️  Error ejecutando actualización de cancha: {e}")
+    
+    try:
+        # Actualizar index.html
+        result = subprocess.run(['python', 'actualizar_index.py'], 
+                              capture_output=True, text=True, cwd='.')
+        if result.returncode == 0:
+            print("✅ Index.html actualizado automáticamente")
+        else:
+            print(f"⚠️  Error actualizando index.html: {result.stderr}")
+    except Exception as e:
+        print(f"⚠️  Error ejecutando actualización de index: {e}")
+    
     print("✅ Sorteo completado - Los archivos HTML se actualizarán automáticamente desde la web")
 
 def main():
@@ -541,13 +577,49 @@ def main():
     # Filtrar confirmados
     confirmados = jugadores_confirmados(jugadores)
     
-    if len(confirmados) < 6:
-        print(f"❌ Error: Se necesitan al menos 6 jugadores confirmados (tienes {len(confirmados)})")
+    if len(confirmados) < 12:
+        print(f"❌ Error: Se necesitan al menos 12 jugadores confirmados (tienes {len(confirmados)})")
         return
     
-    if len(confirmados) % 2 != 0:
-        print(f"❌ Error: Número impar de jugadores confirmados ({len(confirmados)})")
-        return
+    # Determinar configuración de equipos según número de jugadores
+    if len(confirmados) == 12:
+        print("📊 Configuración: 2 equipos de 6 jugadores (1 GK + 5 campo)")
+        jugadores_por_equipo = 6
+        suplentes = []
+    elif len(confirmados) == 14:
+        print("📊 Configuración: 2 equipos de 7 jugadores (1 GK + 6 campo)")
+        jugadores_por_equipo = 7
+        suplentes = []
+    elif len(confirmados) > 14:
+        # Más de 14: usar 14 y dejar suplentes
+        arqueros = [j for j in confirmados if puede_jugar_posicion(j, 'GK')]
+        otros = [j for j in confirmados if not puede_jugar_posicion(j, 'GK')]
+        
+        if len(arqueros) >= 2:
+            confirmados_finales = arqueros[:2] + otros[:12]  # 2 arqueros + 12 de campo
+            suplentes = [j['nombre'] for j in confirmados if j not in confirmados_finales]
+            print(f"📊 Configuración: 2 equipos de 7 jugadores de {len(confirmados)} disponibles")
+            print(f"   Suplentes: {suplentes}")
+            confirmados = confirmados_finales
+            jugadores_por_equipo = 7
+        else:
+            print(f"❌ Error: Se necesitan al menos 2 arqueros válidos (tienes {len(arqueros)})")
+            return
+    elif len(confirmados) == 13:
+        # 13 jugadores: usar 12 para equipos de 6
+        arqueros = [j for j in confirmados if puede_jugar_posicion(j, 'GK')]
+        otros = [j for j in confirmados if not puede_jugar_posicion(j, 'GK')]
+        
+        if len(arqueros) >= 2:
+            confirmados_finales = arqueros[:2] + otros[:10]  # 2 arqueros + 10 de campo
+            suplentes = [j['nombre'] for j in confirmados if j not in confirmados_finales]
+            print(f"📊 Configuración: 2 equipos de 6 jugadores (1 suplente)")
+            print(f"   Suplente: {suplentes}")
+            confirmados = confirmados_finales
+            jugadores_por_equipo = 6
+        else:
+            print(f"❌ Error: Se necesitan al menos 2 arqueros válidos (tienes {len(arqueros)})")
+            return
     
     print(f"👥 Jugadores confirmados: {len(confirmados)}")
     for jugador in confirmados:
@@ -562,17 +634,17 @@ def main():
         intentos = 1000
     
     # Realizar sorteo
-    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos)
+    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos, jugadores_por_equipo)
     
     if equipo1 is None:
         print("❌ Error: No se pudo generar un sorteo válido")
         return
     
     # Mostrar resultados
-    mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido)
+    mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo)
     
     # Guardar resultados
-    guardar_equipos(equipo1, equipo2, info_sorteo, info_partido)
+    guardar_equipos(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo)
     print(f"\n✅ Sorteo con posiciones específicas completado y guardado en equipos.json")
     
     # Actualizar HTML

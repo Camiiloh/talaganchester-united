@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1755131400000,
+    "fecha": "2025-08-12",
+    "fecha_formato": "martes, 12 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "1",
+    "jugadores_confirmados": [
+      "Maxi",
+      "Carlos P",
+      "Marco",
+      "Francisco H",
+      "Fabian",
+      "Diego",
+      "Nel",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Enrique",
+      "Jaime"
+    ],
+    "equipo_rojo": [
+      "Maxi",
+      "Carlos P",
+      "Marco",
+      "Francisco H",
+      "Fabian",
+      "Diego"
+    ],
+    "equipo_negro": [
+      "Nel",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Enrique",
+      "Jaime"
+    ],
+    "resultado": {
+      "rojo": 15,
+      "negro": 12
+    },
+    "mvp": "Maxi",
+    "asistencia": 12,
+    "estado": "finalizado"
+  },
+  {
+    "id": 1755138382253,
+    "fecha": "2025-08-14",
+    "fecha_formato": "jueves, 14 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "2",
+    "jugadores_confirmados": [
+      "Maxi",
+      "Enrique",
+      "Félix",
+      "Iván",
+      "Ruben",
+      "Willians",
+      "Nel",
+      "Juan HG",
+      "Vicente",
+      "Pablo",
+      "Camilo",
+      "Marco"
+    ],
+    "equipo_rojo": [
+      "Maxi",
+      "Enrique",
+      "Félix",
+      "Iván",
+      "Ruben",
+      "Willians"
+    ],
+    "equipo_negro": [
+      "Nel",
+      "Juan HG",
+      "Vicente",
+      "Pablo",
+      "Camilo",
+      "Marco"
+    ],
+    "resultado": {
+      "rojo": 5,
+      "negro": 8
+    },
+    "mvp": "Vicente",
+    "asistencia": 12,
+    "estado": "finalizado"
+  },
+  {
+    "id": 1755138382253,
+    "fecha": "2025-08-14",
+    "fecha_formato": "jueves, 14 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "2",
+    "jugadores_confirmados": [
+      "Maxi",
+      "Enrique",
+      "Félix",
+      "Iván",
+      "Ruben",
+      "Willians",
+      "Nel",
+      "Juan HG",
+      "Vicente",
+      "Pablo",
+      "Camilo",
+      "Marco"
+    ],
+    "equipo_rojo": [
+      "Maxi",
+      "Enrique",
+      "Félix",
+      "Iván",
+      "Ruben",
+      "Willians"
+    ],
+    "equipo_negro": [
+      "Nel",
+      "Juan HG",
+      "Vicente",
+      "Pablo",
+      "Camilo",
+      "Marco"
+    ],
+    "resultado": {
+      "rojo": 5,
+      "negro": 8
+    },
+    "mvp": "Vicente",
+    "asistencia": 12,
+    "estado": "finalizado",
+    "timestamp": "2025-08-13T22:26:24.594552"
+  }
+]

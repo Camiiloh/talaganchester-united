@@ -307,6 +307,20 @@
       "CF": 8.2
     }
   },
+      {
+    "nombre": "Jaime",
+    "posicion": "CM, LM, RM, CF",
+    "puntaje": 7.9,
+    "puntajes_posicion": {
+      "GK": 5.5,
+      "LCB": 8.0,
+      "RCB": 7.8,
+      "LM": 7.4,
+      "CM": 7.8,
+      "RM": 7.6,
+      "CF": 7.4
+    }
+  },
   {
     "nombre": "Nel",
     "posicion": "LCB, RCB, GK",
@@ -357,10 +371,10 @@
       "GK": 3.0,
       "LCB": 4.2,
       "RCB": 4.0,
-      "LM": 4.8,
-      "CM": 8.0,
-      "RM": 7.5,
-      "CF": 7.0
+      "LM": 5.8,
+      "CM": 5.5,
+      "RM": 5.8,
+      "CF": 6.0
     }
   }
 ]
