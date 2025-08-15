@@ -54,7 +54,25 @@ function actualizarTitulo(equipos) {
   }
 }
 
-// Posiciones para los jugadores en la cancha (basado en el HTML original)
+// Función para ordenar jugadores por función (igual que cancha-v2.js)
+function obtenerJugadoresOrdenadosPorFuncion(equipo, posiciones_dict) {
+  // Agrupar por función
+  const arqueros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'arquero').map(([n]) => n);
+  const defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
+  const mediocampos = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'mediocampo').map(([n]) => n);
+  const delanteros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'delantero').map(([n]) => n);
+  const sin_funcion = Object.entries(posiciones_dict).filter(([_, pos]) => !pos).map(([n]) => n);
+  
+  // Orden por líneas (igual que cancha-v2.js)
+  const ordenado = [];
+  ordenado.push(...arqueros);
+  ordenado.push(...defensas);
+  ordenado.push(...mediocampos);
+  ordenado.push(...delanteros);
+  ordenado.push(...sin_funcion);
+  
+  return ordenado;
+}
 const posicionesCancha = {
   negro: [
     { left: '2%', top: '50%' },   // Arquero
@@ -100,8 +118,12 @@ async function renderCancha() {
     const existingPlayers = field.querySelectorAll('.player');
     existingPlayers.forEach(player => player.remove());
     
-    // Agregar jugadores del equipo negro
-    equipos.negro.forEach((nombre, i) => {
+    // 🆕 ORDENAR JUGADORES POR FUNCIÓN (igual que cancha-v2.js)
+    const equipoNegroOrdenado = obtenerJugadoresOrdenadosPorFuncion(equipos.negro, equipos.negro_posiciones || {});
+    const equipoRojoOrdenado = obtenerJugadoresOrdenadosPorFuncion(equipos.rojo, equipos.rojo_posiciones || {});
+    
+    // Agregar jugadores del equipo negro (ORDEN POR FUNCIÓN)
+    equipoNegroOrdenado.forEach((nombre, i) => {
       if (i < posicionesCancha.negro.length) {
         const div = document.createElement('div');
         div.innerHTML = crearJugadorCancha(nombre, 'black', posicionesCancha.negro[i]);
@@ -109,8 +131,8 @@ async function renderCancha() {
       }
     });
     
-    // Agregar jugadores del equipo rojo
-    equipos.rojo.forEach((nombre, i) => {
+    // Agregar jugadores del equipo rojo (ORDEN POR FUNCIÓN)
+    equipoRojoOrdenado.forEach((nombre, i) => {
       if (i < posicionesCancha.rojo.length) {
         const div = document.createElement('div');
         div.innerHTML = crearJugadorCancha(nombre, 'red', posicionesCancha.rojo[i]);
@@ -118,16 +140,16 @@ async function renderCancha() {
       }
     });
     
-    // Actualizar listados de equipos abajo de la cancha
+    // Actualizar listados de equipos abajo de la cancha (MISMO ORDEN que equipos.json)
     const teamBlack = document.querySelector('.team-info.black ul');
     const teamRed = document.querySelector('.team-info.red ul');
     
     if (teamBlack) {
-      teamBlack.innerHTML = crearListadoEquipo(equipos.negro, 'black');
+      teamBlack.innerHTML = crearListadoEquipo(equipoNegroOrdenado, 'black');
     }
     
     if (teamRed) {
-      teamRed.innerHTML = crearListadoEquipo(equipos.rojo, 'red');
+      teamRed.innerHTML = crearListadoEquipo(equipoRojoOrdenado, 'red');
     }
     
     console.log('✅ Cancha actualizada con jugadores:', {
