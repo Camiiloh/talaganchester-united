@@ -15,10 +15,10 @@
   },
   {
     "nombre": "Pablo",
-    "posicion": "LCB, RCB, CM",
+    "posicion": "LCB, RCB, CM, GK",
     "puntaje": 6.2,
     "puntajes_posicion": {
-      "GK": 5.5,
+      "GK": 6.5,
       "LCB": 6.5,
       "RCB": 6.3,
       "LM": 5.8,
@@ -323,12 +323,12 @@
   },
   {
     "nombre": "Félix",
-    "posicion": "LCB, RCB, CM, CF",
+    "posicion": "LCB, RCB, CF",
     "puntaje": 5.0,
     "puntajes_posicion": {
       "GK": 3.1,
-      "LCB": 5.2,
-      "RCB": 5.0,
+      "LCB": 4.6,
+      "RCB": 4.6,
       "LM": 4.2,
       "CM": 4.5,
       "RM": 4.0,
@@ -346,6 +346,34 @@
       "LM": 7.8,
       "CM": 8.0,
       "RM": 7.5,
+      "CF": 7.0
+    }
+  },
+  {
+    "nombre": "Teo",
+    "posicion": "LCB, RCB, CM",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 7.0,
+      "RCB": 7.0,
+      "LM": 7.2,
+      "CM": 7.2,
+      "RM": 7.5,
+      "CF": 7.0
+    }
+  },
+  {
+    "nombre": "Seba",
+    "posicion": "CM, LM, RM",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.2,
+      "RCB": 8.0,
+      "LM": 8.8,
+      "CM": 8.5,
+      "RM": 8.5,
       "CF": 7.0
     }
   },

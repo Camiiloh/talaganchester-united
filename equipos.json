@@ -4,73 +4,73 @@
   "cancha": "Cancha por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Nel",
     "Maxi",
-    "Marco",
-    "Pablo",
-    "Francisco H",
-    "Willians"
-  ],
-  "negro": [
-    "Luisito",
     "Diego",
-    "Ruben",
-    "Enrique",
-    "Vicente",
+    "Seba",
+    "Marco",
+    "Carlos P",
     "Félix"
   ],
-  "promedio_rojo": 7.27,
-  "promedio_negro": 7.22,
-  "diferencia": 0.3,
+  "negro": [
+    "Pablo",
+    "Willians",
+    "Teo",
+    "Enrique",
+    "Pantera",
+    "Juan HG"
+  ],
+  "promedio_rojo": 6.95,
+  "promedio_negro": 6.98,
+  "diferencia": 0.2,
   "rojo_posiciones": {
-    "Nel": "Arquero",
+    "Maxi": "Arquero",
     "Marco": "Defensa",
-    "Pablo": "Defensa",
-    "Willians": "Mediocampo",
-    "Francisco H": "Mediocampo",
-    "Maxi": "Delantero"
+    "Félix": "Defensa",
+    "Seba": "Mediocampo",
+    "Carlos P": "Mediocampo",
+    "Diego": "Delantero"
   },
   "negro_posiciones": {
-    "Luisito": "Arquero",
-    "Félix": "Defensa",
-    "Ruben": "Defensa",
-    "Diego": "Mediocampo",
-    "Enrique": "Mediocampo",
-    "Vicente": "Delantero"
+    "Pablo": "Arquero",
+    "Enrique": "Defensa",
+    "Juan HG": "Mediocampo",
+    "Willians": "Mediocampo",
+    "Teo": "Mediocampo",
+    "Pantera": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Nel",
       "Maxi",
+      "Diego",
+      "Seba",
       "Marco",
-      "Pablo",
-      "Francisco H",
-      "Willians"
+      "Carlos P",
+      "Félix"
     ],
     "negro": [
-      "Luisito",
-      "Diego",
-      "Ruben",
+      "Pablo",
+      "Willians",
+      "Teo",
       "Enrique",
-      "Vicente",
-      "Félix"
+      "Pantera",
+      "Juan HG"
     ]
   },
   "formaciones": {
     "rojo": "1-2-2-1",
-    "negro": "1-2-2-1"
+    "negro": "1-1-3-1"
   },
   "puntajes": {
-    "rojo": 43.6,
-    "negro": 43.3,
-    "diferencia": 0.3
+    "rojo": 41.7,
+    "negro": 41.9,
+    "diferencia": 0.2
   },
   "posiciones": {
     "rojo": [
       [
-        "Nel",
+        "Maxi",
         "GK",
-        7.8
+        6.8
       ],
       [
         "Marco",
@@ -78,56 +78,56 @@
         7.0
       ],
       [
-        "Pablo",
+        "Félix",
         "RCB",
-        6.3
+        4.6
       ],
       [
-        "Willians",
+        "Seba",
         "LM",
-        7.8
+        8.8
       ],
       [
-        "Francisco H",
+        "Carlos P",
         "CM",
-        8.5
+        6.5
       ],
       [
-        "Maxi",
+        "Diego",
         "CF",
-        6.2
+        8.0
       ]
     ],
     "negro": [
       [
-        "Luisito",
+        "Pablo",
         "GK",
-        7.0
-      ],
-      [
-        "Félix",
-        "LCB",
-        5.2
-      ],
-      [
-        "Ruben",
-        "RCB",
-        6.6
-      ],
-      [
-        "Diego",
-        "LM",
-        7.8
+        6.5
       ],
       [
         "Enrique",
-        "CM",
-        8.2
+        "LCB",
+        8.5
       ],
       [
-        "Vicente",
+        "Juan HG",
+        "LM",
+        5.8
+      ],
+      [
+        "Willians",
+        "CM",
+        8.0
+      ],
+      [
+        "Teo",
+        "RM",
+        7.5
+      ],
+      [
+        "Pantera",
         "CF",
-        8.5
+        5.6
       ]
     ]
   }
