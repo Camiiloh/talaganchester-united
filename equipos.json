@@ -5,65 +5,65 @@
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
     "Pablo",
-    "Marco",
-    "Carlos P",
-    "Diego",
+    "Enrique",
     "Pantera",
-    "Enrique"
+    "Diego",
+    "Iván",
+    "Willians"
   ],
   "negro": [
     "Maxi",
+    "Carlos P",
     "Teo",
+    "Marco",
     "Juan HG",
-    "Seba",
-    "Willians",
-    "Félix"
+    "Seba"
   ],
-  "promedio_rojo": 6.95,
-  "promedio_negro": 6.98,
-  "diferencia": 0.2,
+  "promedio_rojo": 7.12,
+  "promedio_negro": 7.1,
+  "diferencia": 0.1,
   "rojo_posiciones": {
     "Pablo": "Arquero",
-    "Marco": "Defensa",
     "Enrique": "Defensa",
     "Diego": "Mediocampo",
-    "Carlos P": "Mediocampo",
+    "Willians": "Mediocampo",
+    "Iván": "Mediocampo",
     "Pantera": "Delantero"
   },
   "negro_posiciones": {
     "Maxi": "Arquero",
-    "Willians": "Defensa",
-    "Félix": "Defensa",
+    "Marco": "Defensa",
     "Seba": "Mediocampo",
+    "Carlos P": "Mediocampo",
     "Teo": "Mediocampo",
     "Juan HG": "Delantero"
   },
   "equipos": {
     "rojo": [
       "Pablo",
-      "Marco",
-      "Carlos P",
-      "Diego",
+      "Enrique",
       "Pantera",
-      "Enrique"
+      "Diego",
+      "Iván",
+      "Willians"
     ],
     "negro": [
       "Maxi",
+      "Carlos P",
       "Teo",
+      "Marco",
       "Juan HG",
-      "Seba",
-      "Willians",
-      "Félix"
+      "Seba"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-2-1",
-    "negro": "1-2-2-1"
+    "rojo": "1-1-3-1",
+    "negro": "1-1-3-1"
   },
   "puntajes": {
-    "rojo": 41.7,
-    "negro": 41.9,
-    "diferencia": 0.2
+    "rojo": 42.7,
+    "negro": 42.6,
+    "diferencia": 0.1
   },
   "posiciones": {
     "rojo": [
@@ -73,14 +73,9 @@
         6.5
       ],
       [
-        "Marco",
-        "LCB",
-        7.0
-      ],
-      [
         "Enrique",
-        "RCB",
-        8.3
+        "LCB",
+        8.5
       ],
       [
         "Diego",
@@ -88,9 +83,14 @@
         7.8
       ],
       [
-        "Carlos P",
+        "Willians",
         "CM",
-        6.5
+        8.0
+      ],
+      [
+        "Iván",
+        "RM",
+        6.3
       ],
       [
         "Pantera",
@@ -105,19 +105,19 @@
         6.8
       ],
       [
-        "Willians",
+        "Marco",
         "LCB",
-        8.2
-      ],
-      [
-        "Félix",
-        "RCB",
-        4.6
+        7.0
       ],
       [
         "Seba",
         "LM",
         8.8
+      ],
+      [
+        "Carlos P",
+        "CM",
+        6.5
       ],
       [
         "Teo",
