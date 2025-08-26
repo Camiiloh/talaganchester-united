@@ -1,16 +1,16 @@
-FECHA: 2025-08-21
-HORA: 21:00
+FECHA: 2025-08-28
+HORA: 22:00
 CANCHA: Cancha por Confirmar
 ---
 Pablo
-Maxi
-Marco 
-Juan HG
-Enrique
+Cristóbal 
 Diego 
-Pantera
-Iván 
-Willians 
+Willians 
+Maxi
+Juan HG
+Iván  
+Francisco H
+Enrique
 Seba
 Teo
-Carlos P
+José Luis
