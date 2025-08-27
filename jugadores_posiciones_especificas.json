@@ -37,8 +37,8 @@
       "RCB": 4.8,
       "LM": 5.2,
       "CM": 5.5,
-      "RM": 5.0,
-      "CF": 6.2
+      "RM": 5.1,
+      "CF": 5.0
     }
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "nombre": "Camilo",
-    "posicion": "GK, CF, RM",
+    "posicion": "CF, GK, RM",
     "puntaje": 6.0,
     "puntajes_posicion": {
       "GK": 7.5,
@@ -86,9 +86,9 @@
   {
     "nombre": "Luisito",
     "posicion": "GK, LCB, RCB",
-    "puntaje": 6.4,
+    "puntaje": 6.0,
     "puntajes_posicion": {
-      "GK": 7.0,
+      "GK": 7.2,
       "LCB": 7.0,
       "RCB": 7.0,
       "LM": 4.5,
@@ -121,8 +121,8 @@
       "RCB": 7.8,
       "LM": 8.2,
       "CM": 8.5,
-      "RM": 8.0,
-      "CF": 8.8
+      "RM": 8.4,
+      "CF": 8.0
     }
   },
   {

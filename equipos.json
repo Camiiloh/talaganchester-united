@@ -5,64 +5,64 @@
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
     "Maxi",
-    "Seba",
-    "Diego",
-    "Teo",
     "Juan HG",
-    "Willians"
+    "Seba",
+    "José Luis",
+    "Enrique",
+    "Teo"
   ],
   "negro": [
-    "Pablo",
+    "Camilo",
     "Francisco H",
-    "Enrique",
-    "Iván",
-    "Cristóbal",
-    "José Luis"
+    "Luisito",
+    "Willians",
+    "Diego",
+    "Iván"
   ],
-  "promedio_rojo": 7.47,
-  "promedio_negro": 7.42,
+  "promedio_rojo": 7.6,
+  "promedio_negro": 7.55,
   "diferencia": 0.3,
   "rojo_posiciones": {
     "Maxi": "Arquero",
-    "Willians": "Defensa",
+    "Enrique": "Defensa",
     "Seba": "Mediocampo",
+    "José Luis": "Mediocampo",
     "Teo": "Mediocampo",
-    "Diego": "Mediocampo",
     "Juan HG": "Delantero"
   },
   "negro_posiciones": {
-    "Pablo": "Arquero",
-    "Enrique": "Defensa",
-    "José Luis": "Mediocampo",
-    "Cristóbal": "Mediocampo",
-    "Iván": "Mediocampo",
-    "Francisco H": "Delantero"
+    "Camilo": "Arquero",
+    "Luisito": "Defensa",
+    "Willians": "Defensa",
+    "Diego": "Mediocampo",
+    "Francisco H": "Mediocampo",
+    "Iván": "Mediocampo"
   },
   "equipos": {
     "rojo": [
       "Maxi",
-      "Seba",
-      "Diego",
-      "Teo",
       "Juan HG",
-      "Willians"
+      "Seba",
+      "José Luis",
+      "Enrique",
+      "Teo"
     ],
     "negro": [
-      "Pablo",
+      "Camilo",
       "Francisco H",
-      "Enrique",
-      "Iván",
-      "Cristóbal",
-      "José Luis"
+      "Luisito",
+      "Willians",
+      "Diego",
+      "Iván"
     ]
   },
   "formaciones": {
     "rojo": "1-1-3-1",
-    "negro": "1-1-3-1"
+    "negro": "1-2-3-0"
   },
   "puntajes": {
-    "rojo": 44.8,
-    "negro": 44.5,
+    "rojo": 45.6,
+    "negro": 45.3,
     "diferencia": 0.3
   },
   "posiciones": {
@@ -73,9 +73,9 @@
         6.8
       ],
       [
-        "Willians",
+        "Enrique",
         "LCB",
-        8.2
+        8.5
       ],
       [
         "Seba",
@@ -83,14 +83,14 @@
         8.8
       ],
       [
-        "Teo",
+        "José Luis",
         "CM",
-        7.2
+        8.0
       ],
       [
-        "Diego",
+        "Teo",
         "RM",
-        7.8
+        7.5
       ],
       [
         "Juan HG",
@@ -100,34 +100,34 @@
     ],
     "negro": [
       [
-        "Pablo",
+        "Camilo",
         "GK",
-        6.5
+        7.5
       ],
       [
-        "Enrique",
+        "Luisito",
         "LCB",
-        8.5
+        7.0
       ],
       [
-        "José Luis",
+        "Willians",
+        "LCB",
+        8.2
+      ],
+      [
+        "Diego",
         "LM",
         7.8
       ],
       [
-        "Cristóbal",
+        "Francisco H",
         "CM",
-        6.6
+        8.5
       ],
       [
         "Iván",
         "RM",
         6.3
-      ],
-      [
-        "Francisco H",
-        "CF",
-        8.8
       ]
     ]
   }
