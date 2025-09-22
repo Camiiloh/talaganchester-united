@@ -1,16 +1,16 @@
-FECHA: 2025-08-28
+FECHA: 2025-09-25
 HORA: 22:00
 CANCHA: Cancha por Confirmar
 ---
-Luisito
-Camilo
-Diego
-Willians
 Maxi
-Juan HG
-Iván
+Marco
 Francisco H
-Enrique
-Seba
-Teo
-José Luis
+Pablo
+Félix
+Willians
+Iván
+Ruben
+Pancho
+Turra
+Juan HG
+Gus

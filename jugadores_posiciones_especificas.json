@@ -15,7 +15,7 @@
   },
   {
     "nombre": "Pablo",
-    "posicion": "LCB, RCB, CM, GK",
+    "posicion": "LCB, RCB, CM",
     "puntaje": 6.2,
     "puntajes_posicion": {
       "GK": 6.5,
@@ -81,6 +81,20 @@
       "CM": 5.8,
       "RM": 5.2,
       "CF": 6.5
+    }
+  },
+    {
+    "nombre": "Gus",
+    "posicion": "GK",
+    "puntaje": 6.3,
+    "puntajes_posicion": {
+      "GK": 6.5,
+      "LCB": 5.0,
+      "RCB": 4.8,
+      "LM": 5.5,
+      "CM": 5.8,
+      "RM": 5.2,
+      "CF": 5.5
     }
   },
   {
