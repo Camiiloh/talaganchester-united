@@ -1,6 +1,6 @@
-FECHA: 2025-09-25
-HORA: 22:00
-CANCHA: Cancha por Confirmar
+FECHA: 2025-10-02
+HORA: 21:00
+CANCHA: por Confirmar
 ---
 Maxi
 Marco
@@ -9,8 +9,8 @@ Pablo
 Félix
 Willians
 Iván
-Ruben
+Juan R
 Pancho
 Turra
-Juan HG
-Gus
+Luisito
+Camilo

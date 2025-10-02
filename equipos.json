@@ -1,59 +1,59 @@
 {
-  "fecha": "2025-09-25",
-  "hora": "22:00",
-  "cancha": "Cancha por Confirmar",
+  "fecha": "2025-10-02",
+  "hora": "21:00",
+  "cancha": "por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Gus",
-    "Juan HG",
-    "Pancho",
-    "Iván",
+    "Maxi",
+    "Turra",
     "Willians",
-    "Turra"
+    "Juan R",
+    "Iván",
+    "Marco"
   ],
   "negro": [
-    "Maxi",
-    "Marco",
+    "Camilo",
     "Pablo",
+    "Luisito",
+    "Francisco H",
     "Félix",
-    "Ruben",
-    "Francisco H"
+    "Pancho"
   ],
-  "promedio_rojo": 6.58,
-  "promedio_negro": 6.58,
+  "promedio_rojo": 6.68,
+  "promedio_negro": 6.68,
   "diferencia": 0.0,
   "rojo_posiciones": {
-    "Gus": "Arquero",
-    "Pancho": "Defensa",
+    "Maxi": "Arquero",
     "Willians": "Defensa",
-    "Juan HG": "Mediocampo",
+    "Marco": "Defensa",
     "Turra": "Mediocampo",
+    "Juan R": "Mediocampo",
     "Iván": "Mediocampo"
   },
   "negro_posiciones": {
-    "Maxi": "Arquero",
-    "Marco": "Defensa",
-    "Ruben": "Defensa",
+    "Camilo": "Arquero",
+    "Pancho": "Defensa",
+    "Luisito": "Defensa",
     "Pablo": "Mediocampo",
     "Francisco H": "Mediocampo",
     "Félix": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Gus",
-      "Juan HG",
-      "Pancho",
-      "Iván",
+      "Maxi",
+      "Turra",
       "Willians",
-      "Turra"
+      "Juan R",
+      "Iván",
+      "Marco"
     ],
     "negro": [
-      "Maxi",
-      "Marco",
+      "Camilo",
       "Pablo",
+      "Luisito",
+      "Francisco H",
       "Félix",
-      "Ruben",
-      "Francisco H"
+      "Pancho"
     ]
   },
   "formaciones": {
@@ -61,21 +61,16 @@
     "negro": "1-2-2-1"
   },
   "puntajes": {
-    "rojo": 39.5,
-    "negro": 39.5,
+    "rojo": 40.1,
+    "negro": 40.1,
     "diferencia": 0.0
   },
   "posiciones": {
     "rojo": [
       [
-        "Gus",
+        "Maxi",
         "GK",
-        6.5
-      ],
-      [
-        "Pancho",
-        "LCB",
-        6.5
+        6.8
       ],
       [
         "Willians",
@@ -83,14 +78,19 @@
         8.2
       ],
       [
-        "Juan HG",
-        "LM",
-        5.8
+        "Marco",
+        "RCB",
+        6.8
       ],
       [
         "Turra",
         "CM",
         6.2
+      ],
+      [
+        "Juan R",
+        "CM",
+        5.8
       ],
       [
         "Iván",
@@ -100,19 +100,19 @@
     ],
     "negro": [
       [
-        "Maxi",
+        "Camilo",
         "GK",
-        6.8
+        7.5
       ],
       [
-        "Marco",
+        "Pancho",
         "LCB",
-        7.0
+        6.5
       ],
       [
-        "Ruben",
+        "Luisito",
         "RCB",
-        6.6
+        7.0
       ],
       [
         "Pablo",
