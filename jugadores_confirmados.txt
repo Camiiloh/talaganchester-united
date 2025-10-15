@@ -1,18 +1,18 @@
-FECHA: 2025-10-09
+FECHA: 2025-10-16
 HORA: 22:00
-CANCHA: por Confirmar
+CANCHA: Cancha 2
 ---
-Pablo
 Camilo
-Luisito
-Maxi
-Pancho
-Willians
-Marco
-Carlos P
-Iván
-Ruben
-Vicente
-J.Águila
-Francisco H
-Jaime
+⁠Pablo
+⁠Marco
+⁠Turra
+⁠Maxi Vargas
+Iván 
+José F. (Retorno)
+8. ⁠ Vicente
+9. ⁠  Ruben
+10. ⁠ Pancho
+11. ⁠ Francisco H
+12. ⁠ Diego C
+13. ⁠ Luis F.
+14. Willians

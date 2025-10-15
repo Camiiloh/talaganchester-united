@@ -248,43 +248,56 @@ def jugadores_confirmados(todos_jugadores):
         return []
 
 def generar_formaciones_posibles(jugadores_campo=5):
-    """Genera formaciones flexibles para 5 o 6 jugadores de campo"""
+    """Genera formaciones con posiciones ESPECÍFICAS - cada posición tiene máximo 1 jugador
+    
+    IMPORTANTE: LCB, RCB, LM, CM, RM, CF son posiciones ESPECÍFICAS.
+    Solo CM y CF pueden tener 2 jugadores en casos especiales (2 mediocentros, 2 delanteros).
+    """
     formaciones = []
     
     if jugadores_campo == 5:
         # Formaciones para equipos de 6 (1 GK + 5 campo)
+        # REGLA: LCB, RCB, LM, RM máximo 1 cada uno
         formaciones_basicas = [
             {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 0, 'CF': 1},  # 2-3-1
-            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-3-0 
-            {'LCB': 2, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-3-0 (doble pivote)
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
             {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
             {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
             {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1
-            {'LCB': 1, 'RCB': 1, 'LM': 2, 'CM': 1, 'RM': 0, 'CF': 0},  # 2-3-0
-            {'LCB': 0, 'RCB': 2, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+            {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 0},  # 1-4-0
+            {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 0},  # 1-4-0
         ]
     elif jugadores_campo == 6:
         # Formaciones para equipos de 7 (1 GK + 6 campo)
+        # REGLA: LCB, RCB, LM, RM máximo 1 cada uno
+        # IMPORTANTE: LM, CM, RM son posiciones ESPECÍFICAS - no se repiten jugadores
         formaciones_basicas = [
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-4-0
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1
-            {'LCB': 2, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
-            {'LCB': 1, 'RCB': 2, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
-            {'LCB': 1, 'RCB': 1, 'LM': 2, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-4-0
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 2, 'CF': 0},  # 2-4-0
-            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 3, 'RM': 1, 'CF': 0},  # 2-4-0
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 2},  # 2-2-2
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 0},  # 2-4-0 (doble pivote centro)
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1 (clásico)
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 2},  # 2-2-2 (doble 9)
+            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 2, 'RM': 1, 'CF': 1},  # 2-3-1 (sin mediocampo izq)
+            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 0, 'CF': 1},  # 2-3-1 (sin mediocampo der)
+            {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 1},  # 1-4-1 (sin defensa der)
+            {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 2, 'RM': 1, 'CF': 1},  # 1-4-1 (sin defensa izq)
         ]
     else:
         return []
     
-    # Verificar que suman el número correcto de jugadores
+    # ✅ VALIDACIÓN ESTRICTA: Verificar que ninguna posición lateral tenga más de 1 jugador
+    formaciones_validas = []
     for formacion in formaciones_basicas:
         total = sum(formacion.values())
-        if total == jugadores_campo:
-            formaciones.append(formacion)
+        
+        # Verificar que LCB, RCB, LM, RM tengan máximo 1
+        if (formacion['LCB'] <= 1 and formacion['RCB'] <= 1 and 
+            formacion['LM'] <= 1 and formacion['RM'] <= 1 and
+            total == jugadores_campo):
+            formaciones_validas.append(formacion)
+        else:
+            print(f"⚠️  Formación inválida descartada: {formacion} (posiciones laterales duplicadas)")
     
-    return formaciones
+    return formaciones_validas
 
 def calcular_puntaje_formacion(jugadores_asignados, formacion):
     """Calcula el puntaje total de una formación específica considerando solo posiciones válidas"""
@@ -348,7 +361,11 @@ def optimizar_posiciones_equipo(jugadores_equipo):
     return mejor_formacion, mejor_puntaje, mejor_asignacion
 
 def asignar_flexible(jugadores_campo, formacion):
-    """Asigna jugadores a posiciones de forma más flexible"""
+    """Asigna jugadores a posiciones de forma más flexible
+    
+    IMPORTANTE: Cada jugador solo puede estar en UNA posición específica.
+    Usa permutaciones para garantizar que no haya duplicados.
+    """
     posiciones_necesarias = []
     
     # Crear lista de posiciones necesarias según la formación
@@ -364,17 +381,31 @@ def asignar_flexible(jugadores_campo, formacion):
     mejor_puntaje = 0
     mejor_asignacion = []
     
-    # Probar todas las permutaciones (para 5 jugadores es factible)
+    # Probar todas las permutaciones (para 5-6 jugadores es factible)
+    # NOTA: itertools.permutations garantiza que cada jugador aparezca EXACTAMENTE una vez
     for permutacion in itertools.permutations(jugadores_campo):
         puntaje_total = 0
         asignacion_temp = []
+        jugadores_usados = set()  # ✅ VALIDACIÓN ADICIONAL: verificar unicidad
         
         for i, jugador in enumerate(permutacion):
             posicion = posiciones_necesarias[i]
+            
+            # ✅ VERIFICACIÓN: Asegurar que cada jugador solo aparezca una vez
+            if jugador['nombre'] in jugadores_usados:
+                print(f"⚠️  ERROR: Jugador {jugador['nombre']} duplicado en asignación!")
+                continue  # Saltar esta permutación inválida
+            
+            jugadores_usados.add(jugador['nombre'])
+            
             # Usar puntaje de la posición (sin penalizaciones estrictas)
             puntaje = jugador['puntajes_posicion'][posicion]
             puntaje_total += puntaje
             asignacion_temp.append((jugador['nombre'], posicion, puntaje))
+        
+        # ✅ VERIFICACIÓN FINAL: Confirmar que se usaron todos los jugadores
+        if len(jugadores_usados) != len(jugadores_campo):
+            continue  # Saltar si hay jugadores faltantes
         
         if puntaje_total > mejor_puntaje:
             mejor_puntaje = puntaje_total
@@ -386,6 +417,96 @@ def puede_jugar_posicion(jugador, posicion):
     """Verifica si un jugador puede jugar en una posición específica"""
     posiciones_validas = [pos.strip() for pos in jugador['posicion'].split(',')]
     return posicion in posiciones_validas
+
+def validar_equipos_sin_duplicados(equipo1, equipo2, info_sorteo):
+    """Valida que no haya jugadores duplicados en posiciones
+    
+    REGLAS ESTRICTAS:
+    - Cada jugador aparece EXACTAMENTE una vez
+    - LCB, RCB, LM, RM: máximo 1 jugador por posición
+    - CM, CF: máximo 2 jugadores por posición
+    
+    Returns:
+        bool: True si no hay duplicados, False si hay algún problema
+    """
+    print("\n🔍 Validando equipos (sin duplicados)...")
+    
+    errores = []
+    advertencias = []
+    
+    # Validar equipo 1
+    jugadores_eq1 = set()
+    posiciones_eq1 = {}
+    
+    for nombre, posicion, puntaje in info_sorteo['asignacion1']:
+        if nombre in jugadores_eq1:
+            errores.append(f"❌ EQUIPO ROJO: Jugador '{nombre}' aparece más de una vez")
+        jugadores_eq1.add(nombre)
+        
+        if posicion in posiciones_eq1:
+            posiciones_eq1[posicion].append(nombre)
+        else:
+            posiciones_eq1[posicion] = [nombre]
+    
+    # Validar equipo 2
+    jugadores_eq2 = set()
+    posiciones_eq2 = {}
+    
+    for nombre, posicion, puntaje in info_sorteo['asignacion2']:
+        if nombre in jugadores_eq2:
+            errores.append(f"❌ EQUIPO NEGRO: Jugador '{nombre}' aparece más de una vez")
+        jugadores_eq2.add(nombre)
+        
+        if posicion in posiciones_eq2:
+            posiciones_eq2[posicion].append(nombre)
+        else:
+            posiciones_eq2[posicion] = [nombre]
+    
+    # ✅ VALIDACIÓN ESTRICTA: Posiciones laterales solo 1 jugador
+    posiciones_unicas = ['GK', 'LCB', 'RCB', 'LM', 'RM']
+    posiciones_dobles_permitidas = ['CM', 'CF']  # Solo estas pueden tener 2
+    
+    for posicion, jugadores in posiciones_eq1.items():
+        if posicion in posiciones_unicas and len(jugadores) > 1:
+            errores.append(f"❌ EQUIPO ROJO: Posición {posicion} tiene {len(jugadores)} jugadores: {', '.join(jugadores)} (DEBE ser 1)")
+        elif posicion in posiciones_dobles_permitidas and len(jugadores) > 2:
+            errores.append(f"❌ EQUIPO ROJO: Posición {posicion} tiene {len(jugadores)} jugadores: {', '.join(jugadores)} (máximo 2)")
+    
+    for posicion, jugadores in posiciones_eq2.items():
+        if posicion in posiciones_unicas and len(jugadores) > 1:
+            errores.append(f"❌ EQUIPO NEGRO: Posición {posicion} tiene {len(jugadores)} jugadores: {', '.join(jugadores)} (DEBE ser 1)")
+        elif posicion in posiciones_dobles_permitidas and len(jugadores) > 2:
+            errores.append(f"❌ EQUIPO NEGRO: Posición {posicion} tiene {len(jugadores)} jugadores: {', '.join(jugadores)} (máximo 2)")
+    
+    # Mostrar resultados
+    if errores:
+        print("❌ Se encontraron ERRORES CRÍTICOS:")
+        for error in errores:
+            print(f"   {error}")
+        return False
+    elif advertencias:
+        print("⚠️  Se encontraron advertencias:")
+        for adv in advertencias:
+            print(f"   {adv}")
+        print("✅ Sin errores críticos - continuando...")
+        return True
+    else:
+        print("✅ Validación exitosa: Todos los jugadores están asignados correctamente")
+        print(f"   - Equipo Rojo: {len(jugadores_eq1)} jugadores únicos en {len(posiciones_eq1)} posiciones")
+        print(f"   - Equipo Negro: {len(jugadores_eq2)} jugadores únicos en {len(posiciones_eq2)} posiciones")
+        
+        # Mostrar distribución de posiciones
+        print("   📊 Distribución Equipo Rojo:")
+        for pos in ['GK', 'LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
+            if pos in posiciones_eq1:
+                print(f"      {pos}: {len(posiciones_eq1[pos])} jugador(es)")
+        
+        print("   📊 Distribución Equipo Negro:")
+        for pos in ['GK', 'LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
+            if pos in posiciones_eq2:
+                print(f"      {pos}: {len(posiciones_eq2[pos])} jugador(es)")
+        
+        return True
 
 def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6, margen_error=0.3):
     """Realiza el sorteo optimizando posiciones específicas - FLEXIBLE para 6 o 7 jugadores por equipo
@@ -782,6 +903,14 @@ def main():
     if equipo1 is None:
         print("❌ Error: No se pudo generar un sorteo válido")
         return
+    
+    # ✅ VALIDAR que no haya duplicados
+    if not validar_equipos_sin_duplicados(equipo1, equipo2, info_sorteo):
+        print("⚠️  ADVERTENCIA: Se detectaron problemas en la asignación de jugadores")
+        respuesta = input("¿Deseas continuar de todos modos? (s/n) [n]: ").strip().lower()
+        if respuesta != 's':
+            print("❌ Sorteo cancelado por el usuario")
+            return
     
     # Mostrar resultados
     mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo)

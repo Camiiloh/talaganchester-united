@@ -111,6 +111,20 @@
       "CF": 3.2
     }
   },
+    {
+    "nombre": "José F",
+    "posicion": "CM, RM",
+    "puntaje": 6.1,
+    "puntajes_posicion": {
+      "GK": 5.8,
+      "LCB": 5.5,
+      "RCB": 5.2,
+      "LM": 5.2,
+      "CM": 5.5,
+      "RM": 5.0,
+      "CF": 5.0
+    }
+  },
   {
     "nombre": "Pancho",
     "posicion": "LCB, RCB",
