@@ -1,7 +1,44 @@
 import './style.css'
 
+// Mapeo de posiciones técnicas a nombres en español
+const positionMapping = {
+  'CF': 'Delantero',
+  'LM': 'Mediocampo Izquierdo',
+  'CM': 'Mediocampo Centro',
+  'RM': 'Mediocampo Derecho',
+  'LCB': 'Defensa Izquierdo',
+  'RCB': 'Defensa Derecho',
+  'GK': 'Arquero'
+};
+
 // Variables globales para datos dinámicos
 let equiposDinamicos = null;
+let jugadoresEspecificos = [];
+
+// Función para cargar jugadores con posiciones específicas
+async function cargarJugadoresEspecificos() {
+  try {
+    const response = await fetch('jugadores_posiciones_especificas.json?_=' + Date.now());
+    jugadoresEspecificos = await response.json();
+    console.log('Jugadores con posiciones específicas cargados:', jugadoresEspecificos.length);
+  } catch (error) {
+    console.log('No se pudieron cargar jugadores específicos:', error);
+  }
+}
+
+// Función para obtener la posición principal de un jugador
+function obtenerPosicionPrincipal(posiciones) {
+  if (!posiciones) return 'Posición desconocida';
+  
+  // Si es un string con múltiples posiciones, tomar la primera
+  if (typeof posiciones === 'string') {
+    const posArray = posiciones.split(',').map(p => p.trim());
+    const primeraPosicion = posArray[0];
+    return positionMapping[primeraPosicion] || primeraPosicion;
+  }
+  
+  return 'Posición desconocida';
+}
 
 // Función para cargar datos del partido actual
 async function cargarDatosPartido() {
@@ -85,21 +122,8 @@ const teams = {
   }
 };
 
-// Lista completa de jugadores confirmados
-const allPlayers = [
-  { name: 'Erik Bravo', rating: 8.8, position: 'Creador' },
-  { name: 'Pablo (P. Lamilladonna)', rating: 7.0, position: 'Mediocampo' },
-  { name: 'Maxi Vargas', rating: 5.5, position: 'Mediocampo' },
-  { name: 'Iván', rating: 7.5, position: 'Defensa' },
-  { name: 'Marco', rating: 6.3, position: 'Mediocampo' },
-  { name: 'Camilo', rating: 5.2, position: 'Defensa' },
-  { name: 'Luis Fuentealba (Luisito)', rating: 7.3, position: 'Mediocampo' },
-  { name: 'Pancho', rating: 6.0, position: 'Mediocampo' },
-  { name: 'Francisco H', rating: 8.2, position: 'Delantero' },
-  { name: 'Diego', rating: 7.8, position: 'Mediocampo' },
-  { name: 'Riky', rating: 9.0, position: 'Atacante' },
-  { name: 'Enrique', rating: 8.1, position: 'Delantero' }
-];
+// Lista completa de jugadores confirmados - construida dinámicamente
+let allPlayers = [];
 
 // Calculate team average
 function calculateAverage(players) {
@@ -140,9 +164,19 @@ function addPlayerToTeam(teamId, player) {
 }
 
 // Initialize the app
-function init() {
-  // Cargar datos dinámicos del partido
-  cargarDatosPartido();
+async function init() {
+  // Cargar datos dinámicos del partido y jugadores específicos
+  await cargarDatosPartido();
+  await cargarJugadoresEspecificos();
+  
+  // Construir allPlayers desde los datos cargados
+  allPlayers = jugadoresEspecificos.map(jugador => ({
+    name: jugador.nombre,
+    rating: jugador.puntaje,
+    position: obtenerPosicionPrincipal(jugador.posicion),
+    posiciones: jugador.posicion,
+    puntajesPorPosicion: jugador.puntajes_posicion
+  }));
   
   // Update team averages button
   document.getElementById('update-teams').addEventListener('click', () => {
@@ -215,4 +249,4 @@ function init() {
 }
 
 // Start the app
-init();
+init().catch(error => console.error('Error al inicializar la aplicación:', error));

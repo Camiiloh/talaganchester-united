@@ -14,13 +14,55 @@
     }
   },
   {
+    "nombre": "Miguelito",
+    "posicion": "CM, LM, RM",
+    "puntaje": 8.2,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.2,
+      "RCB": 8.2,
+      "LM": 8.2,
+      "CM": 8.2,
+      "RM": 8.2,
+      "CF": 8.0
+    }
+  },
+  {
+    "nombre": "Gustavo",
+    "posicion": "LCB, RCB",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.0,
+      "RCB": 8.0,
+      "LM": 6.8,
+      "CM": 7.0,
+      "RM": 7.6,
+      "CF": 6.8
+    }
+  },
+    {
+    "nombre": "José",
+    "posicion": "LM, CM, RM",
+    "puntaje": 7.5,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 6.5,
+      "RCB": 6.3,
+      "LM": 7.8,
+      "CM": 8.0,
+      "RM": 7.6,
+      "CF": 6.8
+    }
+  },
+  {
     "nombre": "Pablo",
     "posicion": "LCB, RCB, CM",
     "puntaje": 6.2,
     "puntajes_posicion": {
       "GK": 6.5,
-      "LCB": 6.5,
-      "RCB": 6.3,
+      "LCB": 7.5,
+      "RCB": 7.3,
       "LM": 5.8,
       "CM": 6.0,
       "RM": 5.5,
@@ -29,15 +71,15 @@
   },
   {
     "nombre": "Maxi",
-    "posicion": "GK, LCB, RCB, RM",
+    "posicion": "GK",
     "puntaje": 5.9,
     "puntajes_posicion": {
-      "GK": 6.8,
-      "LCB": 5.0,
+      "GK": 7.2,
+      "LCB": 4.0,
       "RCB": 4.8,
-      "LM": 5.2,
-      "CM": 5.5,
-      "RM": 5.1,
+      "LM": 4.2,
+      "CM": 4.5,
+      "RM": 4.1,
       "CF": 5.0
     }
   },
@@ -99,12 +141,12 @@
   },
   {
     "nombre": "Luisito",
-    "posicion": "GK, LCB, RCB",
-    "puntaje": 6.0,
+    "posicion": "LCB, RCB",
+    "puntaje": 7.0,
     "puntajes_posicion": {
-      "GK": 7.2,
-      "LCB": 7.0,
-      "RCB": 7.0,
+      "GK": 4.2,
+      "LCB": 7.3,
+      "RCB": 7.3,
       "LM": 4.5,
       "CM": 4.8,
       "RM": 4.2,
@@ -232,9 +274,9 @@
       "LCB": 5.2,
       "RCB": 5.5,
       "LM": 6.2,
-      "CM": 6.6,
+      "CM": 6.1,
       "RM": 6.0,
-      "CF": 6.5
+      "CF": 6.1
     }
   },
   {
