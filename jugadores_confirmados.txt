@@ -1,17 +1,19 @@
-FECHA: 2025-10-19
-HORA: 09:00
+FECHA: 2025-10-23
+HORA: 22:00
 CANCHA: Por Confirmar
 ---
 
 Camilo
-Luisito
 Francisco H
-Gustavo
-Iván 
-Maxi
-Cristóbal
-Pancho
-José
-Miguelito
 Pablo
-Marco
+Maxi Vargas
+Iván 
+Carlos P
+Willians
+Juan R 
+Luisito
+Pancho
+Turra
+Félix
+Vicente
+Ruben
