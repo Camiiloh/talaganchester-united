@@ -4,56 +4,56 @@
   "cancha": "Por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Maxi Vargas",
+    "Camilo",
     "Riky",
+    "Marco",
+    "Francisco H",
     "Carlos P",
-    "Pancho",
-    "Enrique",
-    "Diego"
+    "Enrique"
   ],
   "negro": [
-    "Camilo",
+    "Maxi Vargas",
     "Fabián",
-    "Willians",
     "Iván",
-    "Marco",
-    "Francisco H"
+    "Pablo",
+    "Willians",
+    "Diego"
   ],
-  "promedio_rojo": 7.55,
+  "promedio_rojo": 7.63,
   "promedio_negro": 7.58,
-  "diferencia": 0.2,
+  "diferencia": 0.3,
   "rojo_posiciones": {
-    "Maxi Vargas": "Arquero",
-    "Pancho": "Defensa",
-    "Enrique": "Defensa",
-    "Diego": "Mediocampo",
+    "Camilo": "Arquero",
+    "Marco": "Defensa",
+    "Riky": "Defensa",
+    "Enrique": "Mediocampo",
     "Carlos P": "Mediocampo",
-    "Riky": "Delantero"
+    "Francisco H": "Delantero"
   },
   "negro_posiciones": {
-    "Camilo": "Arquero",
+    "Maxi Vargas": "Arquero",
+    "Pablo": "Defensa",
     "Willians": "Defensa",
-    "Marco": "Defensa",
     "Fabián": "Mediocampo",
     "Iván": "Mediocampo",
-    "Francisco H": "Delantero"
+    "Diego": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Maxi Vargas",
+      "Camilo",
       "Riky",
+      "Marco",
+      "Francisco H",
       "Carlos P",
-      "Pancho",
-      "Enrique",
-      "Diego"
+      "Enrique"
     ],
     "negro": [
-      "Camilo",
+      "Maxi Vargas",
       "Fabián",
-      "Willians",
       "Iván",
-      "Marco",
-      "Francisco H"
+      "Pablo",
+      "Willians",
+      "Diego"
     ]
   },
   "formaciones": {
@@ -61,31 +61,31 @@
     "negro": "1-2-2-1"
   },
   "puntajes": {
-    "rojo": 45.3,
+    "rojo": 45.8,
     "negro": 45.5,
-    "diferencia": 0.2
+    "diferencia": 0.3
   },
   "posiciones": {
     "rojo": [
       [
-        "Maxi Vargas",
+        "Camilo",
         "GK",
-        7.2
+        7.5
       ],
       [
-        "Pancho",
+        "Marco",
         "LCB",
-        6.5
+        7.0
+      ],
+      [
+        "Riky",
+        "RCB",
+        8.6
       ],
       [
         "Enrique",
-        "RCB",
-        8.3
-      ],
-      [
-        "Diego",
         "LM",
-        7.8
+        8.0
       ],
       [
         "Carlos P",
@@ -93,26 +93,26 @@
         6.5
       ],
       [
-        "Riky",
+        "Francisco H",
         "CF",
-        9.0
+        8.2
       ]
     ],
     "negro": [
       [
-        "Camilo",
+        "Maxi Vargas",
         "GK",
+        7.2
+      ],
+      [
+        "Pablo",
+        "LCB",
         7.5
       ],
       [
         "Willians",
-        "LCB",
-        8.2
-      ],
-      [
-        "Marco",
         "RCB",
-        6.8
+        8.0
       ],
       [
         "Fabián",
@@ -125,9 +125,9 @@
         6.3
       ],
       [
-        "Francisco H",
+        "Diego",
         "CF",
-        8.2
+        8.0
       ]
     ]
   }
