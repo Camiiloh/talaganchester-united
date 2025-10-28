@@ -184,15 +184,15 @@
   {
     "nombre": "Francisco H",
     "posicion": "CM, LM, RM",
-    "puntaje": 8.2,
+    "puntaje": 8.0,
     "puntajes_posicion": {
       "GK": 4.5,
       "LCB": 8.0,
       "RCB": 7.8,
       "LM": 8.2,
-      "CM": 8.5,
-      "RM": 8.4,
-      "CF": 8.0
+      "CM": 7.8,
+      "RM": 8.2,
+      "CF": 8.2
     }
   },
   {

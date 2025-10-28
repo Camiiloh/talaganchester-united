@@ -1,134 +1,91 @@
 {
-  "fecha": "2025-10-23",
+  "fecha": "2025-10-28",
   "hora": "22:00",
   "cancha": "Por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Camilo",
-    "Francisco H",
-    "Juan R",
+    "Maxi Vargas",
+    "Riky",
+    "Carlos P",
     "Pancho",
-    "Iván",
-    "Luisito",
-    "Ruben"
+    "Enrique",
+    "Diego"
   ],
   "negro": [
-    "Maxi Vargas",
+    "Camilo",
+    "Fabián",
     "Willians",
-    "Carlos P",
-    "Turra",
-    "Félix",
-    "Pablo",
-    "Vicente"
+    "Iván",
+    "Marco",
+    "Francisco H"
   ],
-  "promedio_rojo": 6.81,
-  "promedio_negro": 6.86,
-  "diferencia": 0.3,
+  "promedio_rojo": 7.55,
+  "promedio_negro": 7.58,
+  "diferencia": 0.2,
   "rojo_posiciones": {
-    "Camilo": "Arquero",
-    "Luisito": "Defensa",
-    "Ruben": "Defensa",
-    "Francisco H": "Mediocampo",
-    "Juan R": "Mediocampo",
-    "Iván": "Mediocampo",
-    "Pancho": "Delantero"
+    "Maxi Vargas": "Arquero",
+    "Pancho": "Defensa",
+    "Enrique": "Defensa",
+    "Diego": "Mediocampo",
+    "Carlos P": "Mediocampo",
+    "Riky": "Delantero"
   },
   "negro_posiciones": {
-    "Maxi Vargas": "Arquero",
+    "Camilo": "Arquero",
     "Willians": "Defensa",
-    "Pablo": "Defensa",
-    "Turra": "Mediocampo",
-    "Carlos P": "Mediocampo",
-    "Vicente": "Mediocampo",
-    "Félix": "Delantero"
+    "Marco": "Defensa",
+    "Fabián": "Mediocampo",
+    "Iván": "Mediocampo",
+    "Francisco H": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Camilo",
-      "Francisco H",
-      "Juan R",
+      "Maxi Vargas",
+      "Riky",
+      "Carlos P",
       "Pancho",
-      "Iván",
-      "Luisito",
-      "Ruben"
+      "Enrique",
+      "Diego"
     ],
     "negro": [
-      "Maxi Vargas",
+      "Camilo",
+      "Fabián",
       "Willians",
-      "Carlos P",
-      "Turra",
-      "Félix",
-      "Pablo",
-      "Vicente"
+      "Iván",
+      "Marco",
+      "Francisco H"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-3-1",
-    "negro": "1-2-3-1"
+    "rojo": "1-2-2-1",
+    "negro": "1-2-2-1"
   },
   "puntajes": {
-    "rojo": 47.7,
-    "negro": 48.0,
-    "diferencia": 0.3
+    "rojo": 45.3,
+    "negro": 45.5,
+    "diferencia": 0.2
   },
   "posiciones": {
     "rojo": [
-      [
-        "Camilo",
-        "GK",
-        7.5
-      ],
-      [
-        "Luisito",
-        "LCB",
-        7.3
-      ],
-      [
-        "Ruben",
-        "RCB",
-        6.6
-      ],
-      [
-        "Francisco H",
-        "LM",
-        8.2
-      ],
-      [
-        "Juan R",
-        "CM",
-        5.8
-      ],
-      [
-        "Iván",
-        "RM",
-        6.3
-      ],
-      [
-        "Pancho",
-        "CF",
-        6.0
-      ]
-    ],
-    "negro": [
       [
         "Maxi Vargas",
         "GK",
         7.2
       ],
       [
-        "Willians",
+        "Pancho",
         "LCB",
-        8.2
+        6.5
       ],
       [
-        "Pablo",
+        "Enrique",
         "RCB",
-        7.3
+        8.3
       ],
       [
-        "Turra",
+        "Diego",
         "LM",
-        6.0
+        7.8
       ],
       [
         "Carlos P",
@@ -136,14 +93,41 @@
         6.5
       ],
       [
-        "Vicente",
-        "RM",
-        8.0
+        "Riky",
+        "CF",
+        9.0
+      ]
+    ],
+    "negro": [
+      [
+        "Camilo",
+        "GK",
+        7.5
       ],
       [
-        "Félix",
+        "Willians",
+        "LCB",
+        8.2
+      ],
+      [
+        "Marco",
+        "RCB",
+        6.8
+      ],
+      [
+        "Fabián",
+        "CM",
+        8.5
+      ],
+      [
+        "Iván",
+        "RM",
+        6.3
+      ],
+      [
+        "Francisco H",
         "CF",
-        4.8
+        8.2
       ]
     ]
   }
