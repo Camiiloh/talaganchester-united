@@ -1,18 +1,20 @@
-FECHA: 2025-10-28
+FECHA: 2025-11-06
 HORA: 22:00
 CANCHA: Por Confirmar
 ---
 
 
-Camilo
-Fabián
 Maxi Vargas
-Iván
-Riky
-Willians 
 Francisco H
-Marco
+Camilo
 Carlos P
-Enrique 
-Diego
-Pablo
+Iván
+Marco
+Willians
+Enrique
+Vicente
+Ruben
+Luis F
+Juan HG
+Félix
+Juan R
