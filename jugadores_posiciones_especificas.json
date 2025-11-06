@@ -450,7 +450,7 @@
     {
     "nombre": "Juan HG",
     "posicion": "CF, LM, RM",
-    "puntaje": 6.0,
+    "puntaje": 5.0,
     "puntajes_posicion": {
       "GK": 3.0,
       "LCB": 4.2,
@@ -458,7 +458,7 @@
       "LM": 5.8,
       "CM": 5.5,
       "RM": 5.8,
-      "CF": 6.0
+      "CF": 5.2
     }
   }
 ]

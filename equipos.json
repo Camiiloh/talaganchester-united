@@ -6,60 +6,60 @@
   "rojo": [
     "Camilo",
     "Willians",
-    "Marco",
+    "Félix",
+    "Pablo",
     "Juan R",
-    "Iván",
-    "Juan HG",
-    "Vicente"
+    "Vicente",
+    "Luis F"
   ],
   "negro": [
     "Maxi Vargas",
     "Francisco H",
-    "Félix",
+    "Juan HG",
+    "Pancho",
     "Ruben",
-    "Enrique",
-    "Carlos P",
-    "Luis F"
+    "Iván",
+    "Enrique"
   ],
-  "promedio_rojo": 6.99,
-  "promedio_negro": 6.94,
-  "diferencia": 0.3,
+  "promedio_rojo": 6.96,
+  "promedio_negro": 6.97,
+  "diferencia": 0.1,
   "rojo_posiciones": {
     "Camilo": "Arquero",
-    "Willians": "Defensa",
-    "Marco": "Defensa",
-    "Juan HG": "Mediocampo",
+    "Pablo": "Defensa",
+    "Luis F": "Defensa",
+    "Willians": "Mediocampo",
+    "Félix": "Mediocampo",
     "Juan R": "Mediocampo",
-    "Iván": "Mediocampo",
     "Vicente": "Delantero"
   },
   "negro_posiciones": {
     "Maxi Vargas": "Arquero",
-    "Luis F": "Defensa",
+    "Pancho": "Defensa",
     "Ruben": "Defensa",
+    "Juan HG": "Mediocampo",
     "Enrique": "Mediocampo",
-    "Carlos P": "Mediocampo",
-    "Francisco H": "Mediocampo",
-    "Félix": "Delantero"
+    "Iván": "Mediocampo",
+    "Francisco H": "Delantero"
   },
   "equipos": {
     "rojo": [
       "Camilo",
       "Willians",
-      "Marco",
+      "Félix",
+      "Pablo",
       "Juan R",
-      "Iván",
-      "Juan HG",
-      "Vicente"
+      "Vicente",
+      "Luis F"
     ],
     "negro": [
       "Maxi Vargas",
       "Francisco H",
-      "Félix",
+      "Juan HG",
+      "Pancho",
       "Ruben",
-      "Enrique",
-      "Carlos P",
-      "Luis F"
+      "Iván",
+      "Enrique"
     ]
   },
   "formaciones": {
@@ -67,9 +67,9 @@
     "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 48.9,
-    "negro": 48.6,
-    "diferencia": 0.3
+    "rojo": 48.7,
+    "negro": 48.8,
+    "diferencia": 0.1
   },
   "posiciones": {
     "rojo": [
@@ -79,29 +79,29 @@
         7.5
       ],
       [
-        "Willians",
+        "Pablo",
         "LCB",
-        8.2
+        7.5
       ],
       [
-        "Marco",
+        "Luis F",
         "RCB",
-        6.8
+        7.3
       ],
       [
-        "Juan HG",
+        "Willians",
         "LM",
-        5.8
+        7.8
+      ],
+      [
+        "Félix",
+        "CM",
+        4.5
       ],
       [
         "Juan R",
-        "CM",
-        5.8
-      ],
-      [
-        "Iván",
         "RM",
-        6.3
+        5.6
       ],
       [
         "Vicente",
@@ -116,9 +116,9 @@
         7.2
       ],
       [
-        "Luis F",
+        "Pancho",
         "LCB",
-        7.3
+        6.5
       ],
       [
         "Ruben",
@@ -126,24 +126,24 @@
         6.6
       ],
       [
-        "Enrique",
+        "Juan HG",
         "LM",
-        8.0
+        5.8
       ],
       [
-        "Carlos P",
+        "Enrique",
         "CM",
-        6.5
-      ],
-      [
-        "Francisco H",
-        "RM",
         8.2
       ],
       [
-        "Félix",
+        "Iván",
+        "RM",
+        6.3
+      ],
+      [
+        "Francisco H",
         "CF",
-        4.8
+        8.2
       ]
     ]
   }
