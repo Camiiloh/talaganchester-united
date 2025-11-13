@@ -1,65 +1,65 @@
 {
-  "fecha": "2025-11-06",
-  "hora": "22:00",
+  "fecha": "2025-11-13",
+  "hora": "21:00",
   "cancha": "Por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
     "Camilo",
-    "Willians",
+    "Enrique",
+    "Luis F",
+    "Marco",
+    "Carlos P",
     "Félix",
-    "Pablo",
-    "Juan R",
-    "Vicente",
-    "Luis F"
+    "Vicente"
   ],
   "negro": [
     "Maxi Vargas",
     "Francisco H",
-    "Juan HG",
-    "Pancho",
+    "Pablo",
     "Ruben",
+    "Juan R",
     "Iván",
-    "Enrique"
+    "Felipe"
   ],
-  "promedio_rojo": 6.96,
-  "promedio_negro": 6.97,
-  "diferencia": 0.1,
+  "promedio_rojo": 7.01,
+  "promedio_negro": 7.01,
+  "diferencia": 0.0,
   "rojo_posiciones": {
     "Camilo": "Arquero",
-    "Pablo": "Defensa",
+    "Marco": "Defensa",
     "Luis F": "Defensa",
-    "Willians": "Mediocampo",
-    "Félix": "Mediocampo",
-    "Juan R": "Mediocampo",
-    "Vicente": "Delantero"
+    "Enrique": "Mediocampo",
+    "Carlos P": "Mediocampo",
+    "Vicente": "Mediocampo",
+    "Félix": "Delantero"
   },
   "negro_posiciones": {
     "Maxi Vargas": "Arquero",
-    "Pancho": "Defensa",
+    "Pablo": "Defensa",
     "Ruben": "Defensa",
-    "Juan HG": "Mediocampo",
-    "Enrique": "Mediocampo",
+    "Felipe": "Mediocampo",
+    "Juan R": "Mediocampo",
     "Iván": "Mediocampo",
     "Francisco H": "Delantero"
   },
   "equipos": {
     "rojo": [
       "Camilo",
-      "Willians",
+      "Enrique",
+      "Luis F",
+      "Marco",
+      "Carlos P",
       "Félix",
-      "Pablo",
-      "Juan R",
-      "Vicente",
-      "Luis F"
+      "Vicente"
     ],
     "negro": [
       "Maxi Vargas",
       "Francisco H",
-      "Juan HG",
-      "Pancho",
+      "Pablo",
       "Ruben",
+      "Juan R",
       "Iván",
-      "Enrique"
+      "Felipe"
     ]
   },
   "formaciones": {
@@ -67,9 +67,9 @@
     "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 48.7,
-    "negro": 48.8,
-    "diferencia": 0.1
+    "rojo": 49.1,
+    "negro": 49.1,
+    "diferencia": 0.0
   },
   "posiciones": {
     "rojo": [
@@ -79,9 +79,9 @@
         7.5
       ],
       [
-        "Pablo",
+        "Marco",
         "LCB",
-        7.5
+        7.0
       ],
       [
         "Luis F",
@@ -89,24 +89,24 @@
         7.3
       ],
       [
-        "Willians",
+        "Enrique",
         "LM",
-        7.8
+        8.0
       ],
       [
-        "Félix",
+        "Carlos P",
         "CM",
-        4.5
-      ],
-      [
-        "Juan R",
-        "RM",
-        5.6
+        6.5
       ],
       [
         "Vicente",
+        "RM",
+        8.0
+      ],
+      [
+        "Félix",
         "CF",
-        8.5
+        4.8
       ]
     ],
     "negro": [
@@ -116,9 +116,9 @@
         7.2
       ],
       [
-        "Pancho",
+        "Pablo",
         "LCB",
-        6.5
+        7.5
       ],
       [
         "Ruben",
@@ -126,14 +126,14 @@
         6.6
       ],
       [
-        "Juan HG",
+        "Felipe",
         "LM",
-        5.8
+        7.5
       ],
       [
-        "Enrique",
+        "Juan R",
         "CM",
-        8.2
+        5.8
       ],
       [
         "Iván",

@@ -448,6 +448,20 @@
     }
   },
     {
+    "nombre": "Felipe",
+    "posicion": "LCB, RCB, LM, RM",
+    "puntaje": 7.8,
+    "puntajes_posicion": {
+      "GK": 5.0,
+      "LCB": 8.0,
+      "RCB": 8.0,
+      "LM": 7.5,
+      "CM": 6.0,
+      "RM": 7.5,
+      "CF": 7.0
+    }
+  },
+    {
     "nombre": "Juan HG",
     "posicion": "CF, LM, RM",
     "puntaje": 5.0,
