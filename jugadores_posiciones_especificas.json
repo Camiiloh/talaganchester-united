@@ -71,7 +71,7 @@
   },
   {
     "nombre": "Maxi Vargas",
-    "posicion": "GK",
+    "posicion": "GK, CF",
     "puntaje": 5.9,
     "puntajes_posicion": {
       "GK": 7.2,
@@ -113,7 +113,7 @@
   },
   {
     "nombre": "Camilo",
-    "posicion": "CF, GK, RM",
+    "posicion": "CF, CM",
     "puntaje": 6.0,
     "puntajes_posicion": {
       "GK": 7.5,
@@ -253,10 +253,10 @@
   },
   {
     "nombre": "Carlos P",
-    "posicion": "LM, LCB, CM",
+    "posicion": "LM, LCB, CM, GK",
     "puntaje": 6.6,
     "puntajes_posicion": {
-      "GK": 5.0,
+      "GK": 6.2,
       "LCB": 6.2,
       "RCB": 6.0,
       "LM": 6.2,
@@ -296,7 +296,7 @@
   {
     "nombre": "Vicente",
     "posicion": "CM, LM, RM, CF",
-    "puntaje": 8.0,
+    "puntaje": 7.8,
     "puntajes_posicion": {
       "GK": 5.2,
       "LCB": 7.0,
@@ -406,7 +406,7 @@
     }
   },
   {
-    "nombre": "J.Águila",
+    "nombre": "J.Aguila",
     "posicion": "LCB, RCB, CM",
     "puntaje": 7.8,
     "puntajes_posicion": {
@@ -448,9 +448,9 @@
     }
   },
     {
-    "nombre": "Felipe",
+    "nombre": "Felipe S",
     "posicion": "LCB, RCB, LM, RM",
-    "puntaje": 7.8,
+    "puntaje": 7.9,
     "puntajes_posicion": {
       "GK": 5.0,
       "LCB": 8.0,
