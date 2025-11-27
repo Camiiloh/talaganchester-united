@@ -57,7 +57,7 @@
   },
   {
     "nombre": "Pablo",
-    "posicion": "LCB, RCB, CM",
+    "posicion": "LCB, RCB, CM, GK",
     "puntaje": 6.2,
     "puntajes_posicion": {
       "GK": 6.5,
@@ -203,10 +203,10 @@
       "GK": 4.5,
       "LCB": 8.5,
       "RCB": 8.0,
-      "LM": 8.2,
+      "LM": 7.2,
       "CM": 7.8,
-      "RM": 8.2,
-      "CF": 8.2
+      "RM": 7.2,
+      "CF": 7.2
     }
   },
   {
@@ -324,6 +324,20 @@
   {
     "nombre": "Willians",
     "posicion": "LCB, RCB, CM",
+    "puntaje": 8.1,
+    "puntajes_posicion": {
+      "GK": 4.0,
+      "LCB": 8.2,
+      "RCB": 8.0,
+      "LM": 7.8,
+      "CM": 8.0,
+      "RM": 7.5,
+      "CF": 7.5
+    }
+  },
+  {
+    "nombre": "Benja",
+    "posicion": "CM, LM, RM, LCB, RCB",
     "puntaje": 8.1,
     "puntajes_posicion": {
       "GK": 4.0,

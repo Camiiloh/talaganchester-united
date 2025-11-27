@@ -4,62 +4,62 @@
   "cancha": "Por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Luis F",
-    "Fabián",
-    "Pancho",
-    "Francisco H",
-    "Félix",
-    "José V",
-    "Javier V"
-  ],
-  "negro": [
     "Camilo",
-    "Willians",
+    "Fabián",
     "Felipe S",
-    "Damián",
-    "Pablo",
-    "Diego",
+    "Luis F",
+    "Pancho",
+    "Benja",
     "Marco"
   ],
-  "promedio_rojo": 7.29,
-  "promedio_negro": 7.3,
-  "diferencia": 0.1,
+  "negro": [
+    "Pablo",
+    "Willians",
+    "Francisco H",
+    "José V",
+    "Javier V",
+    "Diego",
+    "Félix"
+  ],
+  "promedio_rojo": 7.37,
+  "promedio_negro": 7.34,
+  "diferencia": 0.2,
   "rojo_posiciones": {
-    "Luis F": "Arquero",
-    "Pancho": "Defensa",
-    "Javier V": "Defensa",
-    "Francisco H": "Mediocampo",
+    "Camilo": "Arquero",
+    "Marco": "Defensa",
+    "Luis F": "Defensa",
+    "Benja": "Mediocampo",
     "Fabián": "Mediocampo",
-    "José V": "Mediocampo",
-    "Félix": "Delantero"
+    "Felipe S": "Mediocampo",
+    "Pancho": "Delantero"
   },
   "negro_posiciones": {
-    "Camilo": "Arquero",
-    "Pablo": "Defensa",
-    "Marco": "Defensa",
-    "Felipe S": "Mediocampo",
+    "Pablo": "Arquero",
+    "José V": "Defensa",
+    "Javier V": "Defensa",
+    "Diego": "Mediocampo",
     "Willians": "Mediocampo",
-    "Damián": "Mediocampo",
-    "Diego": "Delantero"
+    "Francisco H": "Mediocampo",
+    "Félix": "Delantero"
   },
   "equipos": {
     "rojo": [
-      "Luis F",
+      "Camilo",
       "Fabián",
+      "Felipe S",
+      "Luis F",
       "Pancho",
-      "Francisco H",
-      "Félix",
-      "José V",
-      "Javier V"
+      "Benja",
+      "Marco"
     ],
     "negro": [
-      "Camilo",
-      "Willians",
-      "Felipe S",
-      "Damián",
       "Pablo",
+      "Willians",
+      "Francisco H",
+      "José V",
+      "Javier V",
       "Diego",
-      "Marco"
+      "Félix"
     ]
   },
   "formaciones": {
@@ -67,31 +67,31 @@
     "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 51.0,
-    "negro": 51.1,
-    "diferencia": 0.1
+    "rojo": 51.6,
+    "negro": 51.4,
+    "diferencia": 0.2
   },
   "posiciones": {
     "rojo": [
       [
-        "Luis F",
+        "Camilo",
         "GK",
-        7.2
+        7.5
       ],
       [
-        "Pancho",
+        "Marco",
         "LCB",
-        6.5
+        7.0
       ],
       [
-        "Javier V",
+        "Luis F",
         "RCB",
-        7.6
+        7.3
       ],
       [
-        "Francisco H",
+        "Benja",
         "LM",
-        8.2
+        7.8
       ],
       [
         "Fabián",
@@ -99,36 +99,36 @@
         8.5
       ],
       [
-        "José V",
+        "Felipe S",
         "RM",
-        8.2
+        7.5
       ],
       [
-        "Félix",
+        "Pancho",
         "CF",
-        4.8
+        6.0
       ]
     ],
     "negro": [
       [
-        "Camilo",
-        "GK",
-        7.5
-      ],
-      [
         "Pablo",
+        "GK",
+        6.5
+      ],
+      [
+        "José V",
         "LCB",
-        7.5
+        8.5
       ],
       [
-        "Marco",
+        "Javier V",
         "RCB",
-        6.8
+        7.6
       ],
       [
-        "Felipe S",
+        "Diego",
         "LM",
-        7.5
+        7.8
       ],
       [
         "Willians",
@@ -136,14 +136,14 @@
         8.0
       ],
       [
-        "Damián",
+        "Francisco H",
         "RM",
-        5.8
+        8.2
       ],
       [
-        "Diego",
+        "Félix",
         "CF",
-        8.0
+        4.8
       ]
     ]
   }
