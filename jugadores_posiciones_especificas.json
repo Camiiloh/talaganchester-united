@@ -41,7 +41,7 @@
       "CF": 6.8
     }
   },
-    {
+  {
     "nombre": "José",
     "posicion": "LM, CM, RM",
     "puntaje": 7.5,
@@ -113,7 +113,7 @@
   },
   {
     "nombre": "Camilo",
-    "posicion": "CF, CM",
+    "posicion": "CF, CM, GK",
     "puntaje": 6.0,
     "puntajes_posicion": {
       "GK": 7.5,
@@ -125,7 +125,7 @@
       "CF": 6.5
     }
   },
-    {
+  {
     "nombre": "Gus",
     "posicion": "GK",
     "puntaje": 6.3,
@@ -141,10 +141,10 @@
   },
   {
     "nombre": "Luis F",
-    "posicion": "LCB, RCB",
+    "posicion": "GK, LCB, RCB",
     "puntaje": 7.0,
     "puntajes_posicion": {
-      "GK": 4.2,
+      "GK": 7.2,
       "LCB": 7.3,
       "RCB": 7.3,
       "LM": 4.5,
@@ -153,7 +153,7 @@
       "CF": 3.2
     }
   },
-    {
+  {
     "nombre": "José F",
     "posicion": "CM, RM",
     "puntaje": 6.1,
@@ -196,6 +196,34 @@
     }
   },
   {
+    "nombre": "José V",
+    "posicion": "LCB, RCB",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "GK": 4.5,
+      "LCB": 8.5,
+      "RCB": 8.0,
+      "LM": 8.2,
+      "CM": 7.8,
+      "RM": 8.2,
+      "CF": 8.2
+    }
+  },
+  {
+    "nombre": "Javier V",
+    "posicion": "RCB, LCB",
+    "puntaje": 8.0,
+    "puntajes_posicion": {
+      "GK": 4.5,
+      "LCB": 7.5,
+      "RCB": 7.6,
+      "LM": 6.2,
+      "CM": 6.8,
+      "RM": 6.2,
+      "CF": 6.2
+    }
+  },
+  {
     "nombre": "Diego",
     "posicion": "CM, RM, CF",
     "puntaje": 7.6,
@@ -221,6 +249,20 @@
       "CM": 8.2,
       "RM": 7.8,
       "CF": 8.2
+    }
+  },
+  {
+    "nombre": "Damián",
+    "posicion": "CF, LCB, RCB",
+    "puntaje": 6.2,
+    "puntajes_posicion": {
+      "GK": 4.0,
+      "LCB": 5.6,
+      "RCB": 5.6,
+      "LM": 5.0,
+      "CM": 5.2,
+      "RM": 5.8,
+      "CF": 5.2
     }
   },
   {
