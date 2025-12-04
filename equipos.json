@@ -4,62 +4,62 @@
   "cancha": "Por Confirmar",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Luis F",
+    "Carlos P",
     "Fabián",
+    "Diego",
     "Marco",
+    "Felipe S",
     "Enrique",
-    "Francisco H",
-    "Pancho",
-    "Carlos P"
+    "Juan R"
   ],
   "negro": [
     "Camilo",
     "Willians",
-    "Juan R",
-    "Felipe S",
-    "Juan HG",
+    "Luis F",
     "J.Aguila",
-    "Diego"
+    "Juan HG",
+    "Francisco H",
+    "Pancho"
   ],
-  "promedio_rojo": 7.34,
+  "promedio_rojo": 7.33,
   "promedio_negro": 7.3,
-  "diferencia": 0.3,
+  "diferencia": 0.2,
   "rojo_posiciones": {
-    "Luis F": "Arquero",
+    "Carlos P": "Arquero",
     "Marco": "Defensa",
-    "Enrique": "Defensa",
-    "Fabián": "Mediocampo",
-    "Carlos P": "Mediocampo",
-    "Francisco H": "Mediocampo",
-    "Pancho": "Delantero"
-  },
-  "negro_posiciones": {
-    "Camilo": "Arquero",
-    "Willians": "Defensa",
     "Felipe S": "Defensa",
-    "Juan HG": "Mediocampo",
-    "J.Aguila": "Mediocampo",
+    "Enrique": "Mediocampo",
+    "Fabián": "Mediocampo",
     "Juan R": "Mediocampo",
     "Diego": "Delantero"
   },
+  "negro_posiciones": {
+    "Camilo": "Arquero",
+    "Pancho": "Defensa",
+    "Luis F": "Defensa",
+    "Willians": "Mediocampo",
+    "J.Aguila": "Mediocampo",
+    "Juan HG": "Mediocampo",
+    "Francisco H": "Delantero"
+  },
   "equipos": {
     "rojo": [
-      "Luis F",
+      "Carlos P",
       "Fabián",
+      "Diego",
       "Marco",
+      "Felipe S",
       "Enrique",
-      "Francisco H",
-      "Pancho",
-      "Carlos P"
+      "Juan R"
     ],
     "negro": [
       "Camilo",
       "Willians",
-      "Juan R",
-      "Felipe S",
-      "Juan HG",
+      "Luis F",
       "J.Aguila",
-      "Diego"
+      "Juan HG",
+      "Francisco H",
+      "Pancho"
     ]
   },
   "formaciones": {
@@ -67,16 +67,16 @@
     "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 51.4,
+    "rojo": 51.3,
     "negro": 51.1,
-    "diferencia": 0.3
+    "diferencia": 0.2
   },
   "posiciones": {
     "rojo": [
       [
-        "Luis F",
+        "Carlos P",
         "GK",
-        7.2
+        6.2
       ],
       [
         "Marco",
@@ -84,56 +84,19 @@
         7.0
       ],
       [
-        "Enrique",
-        "RCB",
-        8.3
-      ],
-      [
-        "Fabián",
-        "LM",
-        8.2
-      ],
-      [
-        "Carlos P",
-        "CM",
-        6.5
-      ],
-      [
-        "Francisco H",
-        "RM",
-        8.2
-      ],
-      [
-        "Pancho",
-        "CF",
-        6.0
-      ]
-    ],
-    "negro": [
-      [
-        "Camilo",
-        "GK",
-        7.5
-      ],
-      [
-        "Willians",
-        "LCB",
-        8.2
-      ],
-      [
         "Felipe S",
         "RCB",
         8.0
       ],
       [
-        "Juan HG",
+        "Enrique",
         "LM",
-        5.8
+        8.0
       ],
       [
-        "J.Aguila",
+        "Fabián",
         "CM",
-        8.0
+        8.5
       ],
       [
         "Juan R",
@@ -144,6 +107,43 @@
         "Diego",
         "CF",
         8.0
+      ]
+    ],
+    "negro": [
+      [
+        "Camilo",
+        "GK",
+        7.5
+      ],
+      [
+        "Pancho",
+        "LCB",
+        6.5
+      ],
+      [
+        "Luis F",
+        "RCB",
+        7.3
+      ],
+      [
+        "Willians",
+        "LM",
+        7.8
+      ],
+      [
+        "J.Aguila",
+        "CM",
+        8.0
+      ],
+      [
+        "Juan HG",
+        "RM",
+        5.8
+      ],
+      [
+        "Francisco H",
+        "CF",
+        8.2
       ]
     ]
   }
