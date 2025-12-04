@@ -1,18 +1,19 @@
-FECHA: 2025-11-27
+FECHA: 2025-12-04
 HORA: 22:00
 CANCHA: Por Confirmar
 ---
+
 Camilo
-Pablo
-Fabián
-Felipe S
-Willians
 Luis F
-Diego
-Marco
-José V
-Pancho
-Félix
-Benja
 Francisco H
-Javier V
+Pancho
+Juan HG
+Carlos P
+Enrique
+Willians
+Diego
+Felipe S
+Juan R
+Marco
+J.Aguila
+Fabián
