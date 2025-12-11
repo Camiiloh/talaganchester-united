@@ -1,19 +1,19 @@
-FECHA: 2025-12-04
+FECHA: 2025-12-11
 HORA: 22:00
 CANCHA: Por Confirmar
 ---
 
 Camilo
 Luis F
-Francisco H
-Pancho
-Juan HG
-Carlos P
-Enrique
+Maxi Vargas
+Pablo
+Iván
+Félix
+José A
 Willians
-Diego
+Francisco H
 Felipe S
-Juan R
 Marco
-J.Aguila
-Fabián
+Carlos P
+Diego
+Pancho
