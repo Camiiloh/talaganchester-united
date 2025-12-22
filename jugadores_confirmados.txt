@@ -1,19 +1,19 @@
-FECHA: 2025-12-18
+FECHA: 2025-12-23
 HORA: 22:00
 CANCHA: Por Confirmar
 ---
 
-José V
-Javier V 
-Camilo
-Maxi Vargas
-Félix
-Iván
-Pablo
 Francisco H
-Fabián
-Diego 
-Enrique
+Pancho
+Carlos P
+Ruben 
+Willians 
+Maxi Vargas 
+Gustavo
+Iván 
+Marco
+Vicente
 Felipe S
-José F
-Alonso F
+Juan HG
+Camilo
+Pablo

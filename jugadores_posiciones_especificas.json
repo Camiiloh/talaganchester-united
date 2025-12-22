@@ -30,15 +30,15 @@
   {
     "nombre": "Gustavo",
     "posicion": "LCB, RCB",
-    "puntaje": 7.8,
+    "puntaje": 5.2,
     "puntajes_posicion": {
       "GK": 5.0,
-      "LCB": 8.0,
-      "RCB": 8.0,
-      "LM": 6.8,
-      "CM": 7.0,
-      "RM": 7.6,
-      "CF": 6.8
+      "LCB": 5.2,
+      "RCB": 5.0,
+      "LM": 5.8,
+      "CM": 5.0,
+      "RM": 5.6,
+      "CF": 5.8
     }
   },
   {
@@ -57,16 +57,16 @@
   },
   {
     "nombre": "Pablo",
-    "posicion": "LCB, RCB, CM, GK",
+    "posicion": "CM, CF",
     "puntaje": 6.2,
     "puntajes_posicion": {
       "GK": 6.5,
-      "LCB": 7.5,
-      "RCB": 7.3,
+      "LCB": 4.5,
+      "RCB": 4.3,
       "LM": 5.8,
       "CM": 6.0,
       "RM": 5.5,
-      "CF": 5.0
+      "CF": 5.8
     }
   },
   {
@@ -85,14 +85,14 @@
   },
   {
     "nombre": "Iván",
-    "posicion": "RM, CF",
+    "posicion": "RM, LM, CF",
     "puntaje": 6.2,
     "puntajes_posicion": {
       "GK": 3.5,
       "LCB": 5.5,
       "RCB": 5.8,
       "LM": 6.0,
-      "CM": 6.0,
+      "CM": 4.0,
       "RM": 6.3,
       "CF": 6.0
     }
@@ -183,15 +183,15 @@
   },
   {
     "nombre": "Pancho",
-    "posicion": "LCB, RCB",
+    "posicion": "RCB, RM, CF",
     "puntaje": 6.1,
     "puntajes_posicion": {
       "GK": 3.8,
-      "LCB": 6.5,
+      "LCB": 5.5,
       "RCB": 6.2,
       "LM": 5.2,
       "CM": 5.5,
-      "RM": 5.0,
+      "RM": 6.0,
       "CF": 6.0
     }
   },
@@ -201,8 +201,8 @@
     "puntaje": 8.0,
     "puntajes_posicion": {
       "GK": 4.5,
-      "LCB": 8.0,
-      "RCB": 7.8,
+      "LCB": 6.0,
+      "RCB": 5.8,
       "LM": 8.2,
       "CM": 7.8,
       "RM": 8.2,
@@ -519,7 +519,7 @@
   },
     {
     "nombre": "Felipe S",
-    "posicion": "LCB, RCB, LM, RM",
+    "posicion": "LCB, RCB",
     "puntaje": 7.9,
     "puntajes_posicion": {
       "GK": 5.0,
