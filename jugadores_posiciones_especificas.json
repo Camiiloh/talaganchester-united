@@ -28,17 +28,17 @@
     }
   },
   {
-    "nombre": "Gustavo",
+    "nombre": "Sebastian",
     "posicion": "LCB, RCB",
     "puntaje": 5.2,
     "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 5.2,
-      "RCB": 5.0,
-      "LM": 5.8,
-      "CM": 5.0,
-      "RM": 5.6,
-      "CF": 5.8
+      "GK": 1.0,
+      "LCB": 4.2,
+      "RCB": 4.0,
+      "LM": 3.8,
+      "CM": 3.0,
+      "RM": 3.6,
+      "CF": 4.0
     }
   },
   {
@@ -84,6 +84,20 @@
     }
   },
   {
+    "nombre": "Gus",
+    "posicion": "GK",
+    "puntaje": 5.9,
+    "puntajes_posicion": {
+      "GK": 7.5,
+      "LCB": 4.0,
+      "RCB": 4.8,
+      "LM": 4.2,
+      "CM": 4.5,
+      "RM": 4.1,
+      "CF": 5.0
+    }
+  },
+  {
     "nombre": "Iván",
     "posicion": "RM, LM, CF",
     "puntaje": 6.2,
@@ -114,15 +128,15 @@
   {
     "nombre": "Camilo",
     "posicion": "CF, CM, GK",
-    "puntaje": 6.0,
+    "puntaje": 5.0,
     "puntajes_posicion": {
-      "GK": 7.5,
+      "GK": 6.1,
       "LCB": 5.0,
       "RCB": 4.8,
       "LM": 5.5,
       "CM": 5.8,
       "RM": 5.2,
-      "CF": 6.5
+      "CF": 5.5
     }
   },
   {
@@ -406,7 +420,7 @@
     }
   },
   {
-    "nombre": "Turra",
+    "nombre": "Seba Turra",
     "posicion": "CM, LM, RM, CF",
     "puntaje": 6.0,
     "puntajes_posicion": {
