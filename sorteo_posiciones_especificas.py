@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Sistema de sorteo avanzado para fútbol con 7 posiciones específicas:
+Sistema de sorteo avanzado para fútbol con 8 posiciones específicas:
 - GK (Goalkeeper/Arquero)
 - LCB (Left Center Back/Defensa Central Izquierdo)  
+- CB (Center Back/Defensa Central)
 - RCB (Right Center Back/Defensa Central Derecho)
 - LM (Left Midfielder/Mediocampo Izquierdo)
 - CM (Central Midfielder/Mediocampo Central)
@@ -11,6 +12,7 @@ Sistema de sorteo avanzado para fútbol con 7 posiciones específicas:
 - CF (Center Forward/Delantero Centro)
 
 Genera formaciones tácticas específicas y balance perfecto entre equipos.
+Las formaciones pueden ser diferentes en cada equipo.
 """
 
 import json
@@ -58,7 +60,7 @@ def convertir_fecha_formato_completo(fecha_corta):
 def cargar_jugadores(archivo='jugadores_posiciones_especificas.json'):
     """Carga la lista de jugadores con puntajes por posición específica."""
     try:
-        with open(archivo, 'r', encoding='utf-8') as f:
+        with open(archivo, 'r', encoding='utf-8-sig') as f:
             return json.load(f)
     except FileNotFoundError:
         print(f"❌ Error: No se encontró el archivo {archivo}")
@@ -248,34 +250,61 @@ def jugadores_confirmados(todos_jugadores):
         return []
 
 def generar_formaciones_posibles(jugadores_campo=5):
-    """Genera formaciones con posiciones ESPECÍFICAS - MÁXIMO 1 jugador por cada posición
+    """Genera formaciones con posiciones ESPECÍFICAS - Incluye CB y permite hasta 3 defensas
     
-    IMPORTANTE: Todas las posiciones (LCB, RCB, LM, CM, RM, CF) tienen máximo 1 jugador.
+    IMPORTANTE: Todas las posiciones (LCB, CB, RCB, LM, CM, RM, CF) tienen máximo 1 jugador.
     Cada jugador ocupa una única posición específica.
+    REGLA ESPECIAL: Si hay exactamente 2 defensas o 2 mediocampos, deben ser Izq y Der (no Centro).
     """
     formaciones = []
     
     if jugadores_campo == 5:
         # Formaciones para equipos de 6 (1 GK + 5 campo)
-        # REGLA: Cada posición máximo 1 jugador
+        # REGLA: Cada posición máximo 1 jugador, hasta 3 defensas
+        # IMPORTANTE: 2 defensas = LCB + RCB (no CB), 2 mediocampos = LM + RM (no CM)
         formaciones_basicas = [
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 0, 'CF': 1},  # 2-3-1 (4-3-1)
-            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1 (4-1-2-1)
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0 (4-3-0)
-            {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (3-3-1)
-            {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (3-3-1)
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1 (4-2-1)
+            # Formaciones con 2 defensas (SIEMPRE Izq + Der) y 2 mediocampos (SIEMPRE Izq + Der)
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1 (def Izq+Der, med Izq+Der)
+            # Formaciones con 2 defensas (SIEMPRE Izq + Der) y 3 mediocampos
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+            # Formaciones con 3 defensas y 2 mediocampos (SIEMPRE Izq + Der)
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 0},  # 3-2-0 (med Izq+Der)
+            # Formaciones con 3 defensas y 1 mediocampo
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 0, 'CF': 1},  # 3-1-1
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-1-1
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1
+            # Formaciones con 2 defensas y 1 mediocampo
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2
+            # Formaciones con 1 defensa y 3 mediocampos
+            {'LCB': 1, 'CB': 0, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 0, 'CB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 0, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
         ]
     elif jugadores_campo == 6:
         # Formaciones para equipos de 7 (1 GK + 6 campo)
-        # REGLA: Cada posición máximo 1 jugador
+        # REGLA: Cada posición máximo 1 jugador, hasta 3 defensas
+        # IMPORTANTE: 2 defensas = LCB + RCB (no CB), 2 mediocampos = LM + RM (no CM)
         formaciones_basicas = [
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1 (4-3-1 clásico)
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0 (4-3-0)
-            {'LCB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1 (4-2-1)
-            {'LCB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-2-1 (4-1-2-1)
-            {'LCB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (3-3-1)
-            {'LCB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (3-3-1)
+            # Formaciones con 2 defensas (SIEMPRE Izq + Der) y 2 mediocampos (SIEMPRE Izq + Der)
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 2-2-1 (def Izq+Der, med Izq+Der)
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 2},  # 2-2-2 (def Izq+Der, med Izq+Der)
+            # Formaciones con 2 defensas (SIEMPRE Izq + Der) y 3 mediocampos
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 2-3-1 clásico
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
+            # Formaciones con 3 defensas y 2 mediocampos (SIEMPRE Izq + Der)
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-2-1 (med Izq+Der)
+            # Formaciones con 3 defensas y 3 mediocampos
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
+            # Formaciones con 3 defensas y 1 mediocampo
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 0, 'CF': 1},  # 3-1-1
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-1-1
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1
+            # Formaciones con 2 defensas y 1 mediocampo
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2
+            # Formaciones con 1 defensa y 3 mediocampos
+            {'LCB': 1, 'CB': 0, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 0, 'CB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
+            {'LCB': 0, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1
         ]
     else:
         return []
@@ -299,7 +328,7 @@ def calcular_puntaje_formacion(jugadores_asignados, formacion):
     puntaje_total = 0
     jugadores_usados = []
     
-    posiciones = ['LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']
+    posiciones = ['LCB', 'CB', 'RCB', 'LM', 'CM', 'RM', 'CF']
     
     idx_jugador = 1  # Empezar desde 1 (índice 0 es el arquero)
     
@@ -323,7 +352,7 @@ def calcular_puntaje_formacion(jugadores_asignados, formacion):
     
     return puntaje_total, jugadores_usados
 
-def optimizar_posiciones_equipo(jugadores_equipo):
+def optimizar_posiciones_equipo(jugadores_equipo, permitir_fuera_posicion=False):
     """Optimiza las posiciones para un equipo específico - FLEXIBLE para 6 o 7 jugadores"""
     if len(jugadores_equipo) not in [6, 7]:
         return None, 0, []
@@ -346,7 +375,7 @@ def optimizar_posiciones_equipo(jugadores_equipo):
     
     # Probar todas las formaciones disponibles
     for formacion in formaciones_posibles:
-        puntaje, asignacion = asignar_flexible(jugadores_campo, formacion)
+        puntaje, asignacion = asignar_flexible(jugadores_campo, formacion, permitir_fuera_posicion)
         
         if puntaje > mejor_puntaje:
             mejor_puntaje = puntaje
@@ -355,13 +384,14 @@ def optimizar_posiciones_equipo(jugadores_equipo):
     
     return mejor_formacion, mejor_puntaje, mejor_asignacion
 
-def asignar_flexible(jugadores_campo, formacion):
+def asignar_flexible(jugadores_campo, formacion, permitir_fuera_posicion=False):
     """Asigna jugadores a posiciones específicas - MÁXIMO 1 por posición
     
     IMPORTANTE: 
     - Cada jugador solo puede estar en UNA posición específica
     - Cada POSICIÓN solo puede tener MÁXIMO 1 jugador
     - Usa permutaciones para garantizar óptimo global
+    - Si permitir_fuera_posicion=False, rechaza asignaciones donde jugadores no pueden jugar en su posición
     """
     posiciones_necesarias = []
     
@@ -393,17 +423,25 @@ def asignar_flexible(jugadores_campo, formacion):
         asignacion_temp = []
         jugadores_usados = set()
         posiciones_usadas = set()
+        valida = True
         
         for i, jugador in enumerate(permutacion):
             posicion = posiciones_necesarias[i]
             
             # ✅ VERIFICACIÓN 1: Cada jugador solo una vez
             if jugador['nombre'] in jugadores_usados:
-                break  # Permutación inválida
+                valida = False
+                break
             
             # ✅ VERIFICACIÓN 2: Cada posición solo una vez
             if posicion in posiciones_usadas:
-                break  # Permutación inválida
+                valida = False
+                break
+            
+            # 🆕 VERIFICACIÓN 3: Si no se permiten jugadores fuera de posición, verificar que puede jugar ahí
+            if not permitir_fuera_posicion and not puede_jugar_posicion(jugador, posicion, False):
+                valida = False
+                break
             
             jugadores_usados.add(jugador['nombre'])
             posiciones_usadas.add(posicion)
@@ -413,16 +451,25 @@ def asignar_flexible(jugadores_campo, formacion):
             puntaje_total += puntaje
             asignacion_temp.append((jugador['nombre'], posicion, puntaje))
         
-        # ✅ VERIFICACIÓN FINAL: Todos los jugadores y posiciones fueron usados
-        if len(jugadores_usados) == len(jugadores_campo) and len(posiciones_usadas) == len(posiciones_necesarias):
+        # ✅ VERIFICACIÓN FINAL: Todos los jugadores y posiciones fueron usados y asignación es válida
+        if valida and len(jugadores_usados) == len(jugadores_campo) and len(posiciones_usadas) == len(posiciones_necesarias):
             if puntaje_total > mejor_puntaje:
                 mejor_puntaje = puntaje_total
                 mejor_asignacion = asignacion_temp
     
     return mejor_puntaje, mejor_asignacion
 
-def puede_jugar_posicion(jugador, posicion):
-    """Verifica si un jugador puede jugar en una posición específica"""
+def puede_jugar_posicion(jugador, posicion, permitir_fuera_posicion=False):
+    """Verifica si un jugador puede jugar en una posición específica
+    
+    Args:
+        jugador: Diccionario con datos del jugador
+        posicion: Posición a verificar (ej: 'GK', 'LCB', etc.)
+        permitir_fuera_posicion: Si True, permite cualquier jugador en cualquier posición
+    """
+    if permitir_fuera_posicion:
+        return True
+    
     posiciones_validas = [pos.strip() for pos in jugador['posicion'].split(',')]
     return posicion in posiciones_validas
 
@@ -470,7 +517,7 @@ def validar_equipos_sin_duplicados(equipo1, equipo2, info_sorteo):
             posiciones_eq2[posicion] = [nombre]
     
     # ✅ VALIDACIÓN ESTRICTA: MÁXIMO 1 jugador por cada posición (sin excepciones)
-    posiciones_validas = ['GK', 'LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']
+    posiciones_validas = ['GK', 'LCB', 'CB', 'RCB', 'LM', 'CM', 'RM', 'CF']
     
     for posicion in posiciones_validas:
         # Equipo 1
@@ -500,18 +547,18 @@ def validar_equipos_sin_duplicados(equipo1, equipo2, info_sorteo):
         
         # Mostrar distribución de posiciones
         print("   📊 Distribución Equipo Rojo:")
-        for pos in ['GK', 'LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
+        for pos in ['GK', 'LCB', 'CB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
             cantidad = len(posiciones_eq1[pos]) if pos in posiciones_eq1 else 0
             print(f"      {pos}: {cantidad} jugador" + ("" if cantidad == 1 else "es"))
         
         print("   📊 Distribución Equipo Negro:")
-        for pos in ['GK', 'LCB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
+        for pos in ['GK', 'LCB', 'CB', 'RCB', 'LM', 'CM', 'RM', 'CF']:
             cantidad = len(posiciones_eq2[pos]) if pos in posiciones_eq2 else 0
             print(f"      {pos}: {cantidad} jugador" + ("" if cantidad == 1 else "es"))
         
         return True
 
-def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6, margen_error=0.3):
+def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_por_equipo=6, margen_error=0.3, permitir_fuera_posicion=False):
     """Realiza el sorteo optimizando posiciones específicas - FLEXIBLE para 6 o 7 jugadores por equipo
     
     REGLA CRÍTICA: Los 2 mejores jugadores SIEMPRE quedan en equipos separados
@@ -521,6 +568,7 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         num_intentos: Número máximo de intentos de optimización
         jugadores_por_equipo: Jugadores por equipo (6 o 7)
         margen_error: Margen de error aceptable en diferencia de promedios (por ejemplo, 0.3 puntos)
+        permitir_fuera_posicion: Si True, permite jugadores en posiciones que no están en su lista
     """
     if len(jugadores) % 2 != 0:
         print("❌ Error: Número impar de jugadores")
@@ -537,9 +585,10 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
     print(f"   Se garantizará que queden en equipos DIFERENTES\n")
     
     # Identificar mejores arqueros que PUEDEN jugar en GK
-    arqueros_validos = [j for j in jugadores if puede_jugar_posicion(j, 'GK')]
+    arqueros_validos = [j for j in jugadores if puede_jugar_posicion(j, 'GK', permitir_fuera_posicion)]
     if len(arqueros_validos) < 2:
-        print("⚠️  Advertencia: Menos de 2 arqueros válidos disponibles")
+        if not permitir_fuera_posicion:
+            print("⚠️  Advertencia: Menos de 2 arqueros válidos disponibles")
         jugadores_sorted_gk = sorted(jugadores, key=lambda j: j['puntajes_posicion']['GK'], reverse=True)
     else:
         jugadores_sorted_gk = sorted(arqueros_validos, key=lambda j: j['puntajes_posicion']['GK'], reverse=True)
@@ -573,28 +622,28 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         arquero2 = None
         
         # Si el mejor o segundo mejor jugador puede jugar en GK, usarlos
-        if puede_jugar_posicion(mejor_jugador, 'GK') and mejor_jugador in equipo1_temp:
+        if puede_jugar_posicion(mejor_jugador, 'GK', permitir_fuera_posicion) and mejor_jugador in equipo1_temp:
             arquero1 = mejor_jugador
-        elif puede_jugar_posicion(segundo_mejor_jugador, 'GK') and segundo_mejor_jugador in equipo2_temp:
+        elif puede_jugar_posicion(segundo_mejor_jugador, 'GK', permitir_fuera_posicion) and segundo_mejor_jugador in equipo2_temp:
             arquero2 = segundo_mejor_jugador
         
         # Buscar arqueros para equipos que los necesitan
         for jugador in mejores_arqueros:
-            if arquero1 is None and jugador in equipo1_temp and puede_jugar_posicion(jugador, 'GK'):
+            if arquero1 is None and jugador in equipo1_temp and puede_jugar_posicion(jugador, 'GK', permitir_fuera_posicion):
                 arquero1 = jugador
-            elif arquero2 is None and jugador in equipo2_temp and puede_jugar_posicion(jugador, 'GK'):
+            elif arquero2 is None and jugador in equipo2_temp and puede_jugar_posicion(jugador, 'GK', permitir_fuera_posicion):
                 arquero2 = jugador
         
         # Si no encontramos arqueros válidos, usar los mejores disponibles
         if arquero1 is None:
-            candidatos = [j for j in equipo1_temp if puede_jugar_posicion(j, 'GK')]
+            candidatos = [j for j in equipo1_temp if puede_jugar_posicion(j, 'GK', permitir_fuera_posicion)]
             if candidatos:
                 arquero1 = max(candidatos, key=lambda j: j['puntajes_posicion']['GK'])
             else:
                 arquero1 = max(equipo1_temp, key=lambda j: j['puntajes_posicion']['GK'])
                 
         if arquero2 is None:
-            candidatos = [j for j in equipo2_temp if puede_jugar_posicion(j, 'GK')]
+            candidatos = [j for j in equipo2_temp if puede_jugar_posicion(j, 'GK', permitir_fuera_posicion)]
             if candidatos:
                 arquero2 = max(candidatos, key=lambda j: j['puntajes_posicion']['GK'])
             else:
@@ -605,8 +654,8 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         equipo2 = [arquero2] + [j for j in equipo2_temp if j != arquero2]
         
         # Optimizar posiciones para cada equipo
-        formacion1, puntaje1, asignacion1 = optimizar_posiciones_equipo(equipo1)
-        formacion2, puntaje2, asignacion2 = optimizar_posiciones_equipo(equipo2)
+        formacion1, puntaje1, asignacion1 = optimizar_posiciones_equipo(equipo1, permitir_fuera_posicion)
+        formacion2, puntaje2, asignacion2 = optimizar_posiciones_equipo(equipo2, permitir_fuera_posicion)
         
         # DEBUG: Mostrar información de debug cada 100 intentos
         if (intento + 1) % 100 == 0:
@@ -623,9 +672,9 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         puntaje_arquero1 = arquero1['puntajes_posicion']['GK']
         puntaje_arquero2 = arquero2['puntajes_posicion']['GK']
         
-        if not puede_jugar_posicion(arquero1, 'GK'):
+        if not puede_jugar_posicion(arquero1, 'GK', permitir_fuera_posicion):
             puntaje_arquero1 *= 0.3  # Penalizar si no puede jugar en GK
-        if not puede_jugar_posicion(arquero2, 'GK'):
+        if not puede_jugar_posicion(arquero2, 'GK', permitir_fuera_posicion):
             puntaje_arquero2 *= 0.3
             
         puntaje_total1 = puntaje1 + puntaje_arquero1
@@ -698,7 +747,7 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
                 arquero1 = max(equipo1_temp, key=lambda j: j['puntajes_posicion']['GK'])
                 
         if arquero2 is None:
-            candidatos = [j for j in equipo2_temp if puede_jugar_posicion(j, 'GK')]
+            candidatos = [j for j in equipo2_temp if puede_jugar_posicion(j, 'GK', permitir_fuera_posicion)]
             if candidatos:
                 arquero2 = max(candidatos, key=lambda j: j['puntajes_posicion']['GK'])
             else:
@@ -709,8 +758,8 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         equipo2 = [arquero2] + [j for j in equipo2_temp if j != arquero2]
         
         # Optimizar posiciones para cada equipo
-        formacion1, puntaje1, asignacion1 = optimizar_posiciones_equipo(equipo1)
-        formacion2, puntaje2, asignacion2 = optimizar_posiciones_equipo(equipo2)
+        formacion1, puntaje1, asignacion1 = optimizar_posiciones_equipo(equipo1, permitir_fuera_posicion)
+        formacion2, puntaje2, asignacion2 = optimizar_posiciones_equipo(equipo2, permitir_fuera_posicion)
         
         # DEBUG: Mostrar información de debug cada 100 intentos
         if (intento + 1) % 100 == 0:
@@ -727,9 +776,9 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         puntaje_arquero1 = arquero1['puntajes_posicion']['GK']
         puntaje_arquero2 = arquero2['puntajes_posicion']['GK']
         
-        if not puede_jugar_posicion(arquero1, 'GK'):
+        if not puede_jugar_posicion(arquero1, 'GK', permitir_fuera_posicion):
             puntaje_arquero1 *= 0.3  # Penalizar si no puede jugar en GK
-        if not puede_jugar_posicion(arquero2, 'GK'):
+        if not puede_jugar_posicion(arquero2, 'GK', permitir_fuera_posicion):
             puntaje_arquero2 *= 0.3
             
         puntaje_total1 = puntaje1 + puntaje_arquero1
@@ -772,18 +821,19 @@ def formatear_formacion(formacion):
 def guardar_equipos(equipo1, equipo2, info_sorteo, info_partido, jugadores_por_equipo=6):
     """Guarda los equipos en equipos.json"""
     
-    # Convertir las posiciones específicas a las categorías generales para el campo
+    # Convertir las posiciones específicas a las categorías con información de lado
     def convertir_posicion_para_campo(posicion_especifica):
         conversion = {
             'GK': 'Arquero',
-            'LCB': 'Defensa', 
-            'RCB': 'Defensa',
-            'LM': 'Mediocampo',
-            'CM': 'Mediocampo', 
-            'RM': 'Mediocampo',
-            'CF': 'Delantero'
+            'LCB': 'Defensa-Izq',
+            'CB': 'Defensa-Centro',
+            'RCB': 'Defensa-Der',
+            'LM': 'Mediocampo-Izq',
+            'CM': 'Mediocampo-Centro', 
+            'RM': 'Mediocampo-Der',
+            'CF': 'Delantero-Centro'
         }
-        return conversion.get(posicion_especifica, 'Mediocampo')
+        return conversion.get(posicion_especifica, 'Mediocampo-Centro')
     
     # Crear diccionarios de posiciones para la visualización del campo
     rojo_posiciones = {}
@@ -858,6 +908,7 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido, juga
         pos_nombre = {
             'GK': 'Arquero',
             'LCB': 'Defensa Izq',
+            'CB': 'Defensa Centro',
             'RCB': 'Defensa Der', 
             'LM': 'Mediocampo Izq',
             'CM': 'Mediocampo Centro',
@@ -888,6 +939,7 @@ def mostrar_equipos_detallados(equipo1, equipo2, info_sorteo, info_partido, juga
         pos_nombre = {
             'GK': 'Arquero',
             'LCB': 'Defensa Izq',
+            'CB': 'Defensa Centro',
             'RCB': 'Defensa Der',
             'LM': 'Mediocampo Izq', 
             'CM': 'Mediocampo Centro',
@@ -933,9 +985,9 @@ def actualizar_archivos_html():
     print("✅ Sorteo completado - Los archivos HTML se actualizarán automáticamente desde la web")
 
 def main():
-    print("🚀 SORTEO CON POSICIONES ESPECÍFICAS (7 POSICIONES)")
+    print("🚀 SORTEO CON POSICIONES ESPECÍFICAS (8 POSICIONES)")
     print("=" * 60)
-    print("Posiciones: GK, LCB, RCB, LM, CM, RM, CF")
+    print("Posiciones: GK, LCB, CB, RCB, LM, CM, RM, CF")
     print("=" * 60)
     
     # Cargar información del partido
@@ -1007,6 +1059,17 @@ def main():
         intentos = 1000
         margen_error = 0.4  # Margen más amplio para permitir más rotación
         print(f"🤖 Configuración automática: {intentos} intentos, margen de error {margen_error:.1f}")
+        
+        # 🆕 Preguntar si permitir jugadores fuera de posición (incluso en modo automático)
+        try:
+            fuera_pos_str = input(f"\n¿Permitir jugadores fuera de posición? (s/n) [n]: ").strip().lower()
+            permitir_fuera_posicion = fuera_pos_str == 's'
+            if permitir_fuera_posicion:
+                print("⚠️  ADVERTENCIA: Jugadores podrán jugar en cualquier posición (puede afectar balance)")
+            else:
+                print("✅ Solo jugadores en sus posiciones válidas")
+        except ValueError:
+            permitir_fuera_posicion = False
     else:
         # Modo interactivo: preguntar al usuario
         try:
@@ -1024,9 +1087,20 @@ def main():
             print(f"📊 Margen de error configurado: {margen_error:.1f} puntos (permite más rotación de jugadores)")
         except ValueError:
             margen_error = 0.3
+        
+        # 🆕 Preguntar si permitir jugadores fuera de posición
+        try:
+            fuera_pos_str = input(f"\n¿Permitir jugadores fuera de posición? (s/n) [n]: ").strip().lower()
+            permitir_fuera_posicion = fuera_pos_str == 's'
+            if permitir_fuera_posicion:
+                print("⚠️  ADVERTENCIA: Jugadores podrán jugar en cualquier posición (puede afectar balance)")
+            else:
+                print("✅ Solo jugadores en sus posiciones válidas")
+        except ValueError:
+            permitir_fuera_posicion = False
     
     # Realizar sorteo
-    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos, jugadores_por_equipo, margen_error)
+    equipo1, equipo2, info_sorteo = sorteo_con_posiciones_especificas(confirmados, intentos, jugadores_por_equipo, margen_error, permitir_fuera_posicion)
     
     if equipo1 is None:
         print("❌ Error: No se pudo generar un sorteo válido")
@@ -1052,3 +1126,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

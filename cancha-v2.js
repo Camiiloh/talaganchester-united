@@ -2,7 +2,7 @@
 const posiciones = {
   negro: [
     { left: '10%', top: '50%' }, // arquero (de 50% a 53%)
-    { left: '13%', top: '20%' },  // defensas (de 20% a 23%)
+    { left: '1%', top: '20%' },  // defensas (de 20% a 23%)
     { left: '13%', top: '80%' },  // defensas (de 80% a 83%)
     { left: '31%', top: '35%' },  // defensas (de 35% a 38%)
     { left: '31%', top: '65%' },  // defensas (de 65% a 68%)
@@ -112,44 +112,101 @@ let primeraCarga = true;
 let ultimoEstado = '';
 
 function obtenerPosicionesPorFuncion(equipo, posiciones_dict, lado) {
-  // Agrupar por función
-  const arqueros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'arquero').map(([n]) => n);
-  const defensas = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'defensa').map(([n]) => n);
-  const mediocampos = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'mediocampo').map(([n]) => n);
-  const delanteros = Object.entries(posiciones_dict).filter(([_, pos]) => pos.toLowerCase() === 'delantero').map(([n]) => n);
-  const sin_funcion = Object.entries(posiciones_dict).filter(([_, pos]) => !pos).map(([n]) => n);
-  let x_key, x_fr;
-  if (lado === 'izq') {
-    x_key = 'left';
-    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37, sin_funcion: 50 };
-  } else {
-    x_key = 'right';
-    x_fr = { arquero: 2, defensa: 15, mediocampo: 27, delantero: 37, sin_funcion: 60 };
-  }
-  const lineas = [
-    ['arquero', arqueros],
-    ['defensa', defensas],
-    ['mediocampo', mediocampos],
-    ['delantero', delanteros],
-    ['sin_funcion', sin_funcion]
-  ];
   const posiciones = {};
-  for (const [funcion, grupo] of lineas) {
-    const n = grupo.length;
-    if (n === 0) continue;
-    for (let i = 0; i < n; i++) {
-      const nombre = grupo[i];
-      let y;
-      if (n === 1) {
-        y = 50;
-      } else {
-        y = Math.round(15 + 70 * i / (n - 1)); // de 15% a 85%
-      }
-      y = y - 10; // subir 10% más arriba en total
-      const x = x_fr[funcion] || 50;
-      posiciones[nombre] = { [x_key]: x + '%', top: y + '%' };
+  const x_key = lado === 'izq' ? 'left' : 'right';
+  
+  // Agrupar jugadores por línea
+  const lineas = {
+    'Arquero': [],
+    'Defensa': [],
+    'Mediocampo': [],
+    'Delantero': []
+  };
+  
+  for (const [nombre, posicion] of Object.entries(posiciones_dict)) {
+    const linea = posicion.split('-')[0];
+    if (lineas[linea]) {
+      lineas[linea].push({ nombre, posicion });
     }
   }
+  
+  // Definir posiciones Y por línea y lado - distribución más amplia
+  const posicionesY = {
+    'Arquero': { y: 43 },
+    'Defensa-Izq': { y: 11 },
+    'Defensa-Centro': { y: 43 },
+    'Defensa-Der': { y: 73 },
+    'Mediocampo-Izq': { y: 9 },
+    'Mediocampo-Centro': { y: 43 },
+    'Mediocampo-Der': { y: 79 },
+    'Delantero-Centro': { y: 43 }
+  };
+  
+  // Posiciones X por línea - defensas y mediocampo más atrás
+  const posicionesX = {
+    'Arquero': 1,
+    'Defensa': 13,
+    'Mediocampo': 25,
+    'Delantero': 38
+  };
+  
+  // Procesar cada línea
+  for (const [lineaNombre, jugadores] of Object.entries(lineas)) {
+    if (jugadores.length === 0) continue;
+    
+    const x = posicionesX[lineaNombre] || 20;
+    
+    // REGLA ESPECIAL: Si hay exactamente 2 jugadores en Defensa o Mediocampo,
+    // forzar posiciones Izq y Der (evitar Centro)
+    if ((lineaNombre === 'Defensa' || lineaNombre === 'Mediocampo') && jugadores.length === 2) {
+      // Ordenar por posición original para mantener consistencia
+      jugadores.sort((a, b) => {
+        const ordenPosicion = { 'Izq': 0, 'Centro': 1, 'Der': 2 };
+        const ladoA = a.posicion.split('-')[1] || 'Centro';
+        const ladoB = b.posicion.split('-')[1] || 'Centro';
+        return (ordenPosicion[ladoA] || 1) - (ordenPosicion[ladoB] || 1);
+      });
+      
+      // Asignar: primero a Izq, segundo a Der
+      for (let i = 0; i < jugadores.length; i++) {
+        const { nombre } = jugadores[i];
+        let posKey = i === 0 ? `${lineaNombre}-Izq` : `${lineaNombre}-Der`;
+        
+        // Para equipo rojo (derecha), invertir izquierda<->derecha
+        if (lado === 'der') {
+          posKey = posKey.replace('-Izq', '-TEMP').replace('-Der', '-Izq').replace('-TEMP', '-Der');
+        }
+        
+        const y = posicionesY[posKey]?.y || 50;
+        posiciones[nombre] = { [x_key]: x + '%', top: y + '%' };
+      }
+    } else {
+      // Comportamiento normal para otras configuraciones
+      for (const { nombre, posicion } of jugadores) {
+        let posKey = posicion;
+        let y = 50;
+        
+        // Para equipo rojo (derecha), invertir izquierda<->derecha
+        if (lado === 'der') {
+          if (posicion.includes('-Izq')) {
+            posKey = posicion.replace('-Izq', '-Der');
+          } else if (posicion.includes('-Der')) {
+            posKey = posicion.replace('-Der', '-Izq');
+          }
+        }
+        
+        // Obtener Y de la posición
+        if (posicionesY[posKey]) {
+          y = posicionesY[posKey].y;
+        } else if (posicionesY[posicion]) {
+          y = posicionesY[posicion].y;
+        }
+        
+        posiciones[nombre] = { [x_key]: x + '%', top: y + '%' };
+      }
+    }
+  }
+  
   return posiciones;
 }
 

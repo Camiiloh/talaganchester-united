@@ -1,562 +1,602 @@
-[
-  {
-    "nombre": "Erik",
-    "posicion": "CM, LM, RM",
-    "puntaje": 8.8,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 8.5,
-      "RCB": 8.3,
-      "LM": 8.8,
-      "CM": 9.0,
-      "RM": 8.6,
-      "CF": 8.8
-    }
-  },
-  {
-    "nombre": "Miguelito",
-    "posicion": "CM, LM, RM",
-    "puntaje": 8.2,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 8.2,
-      "RCB": 8.2,
-      "LM": 8.2,
-      "CM": 8.2,
-      "RM": 8.2,
-      "CF": 8.0
-    }
-  },
-  {
-    "nombre": "Sebastian",
-    "posicion": "LCB, RCB",
-    "puntaje": 5.2,
-    "puntajes_posicion": {
-      "GK": 1.0,
-      "LCB": 4.2,
-      "RCB": 4.0,
-      "LM": 3.8,
-      "CM": 3.0,
-      "RM": 3.6,
-      "CF": 4.0
-    }
-  },
-  {
-    "nombre": "José",
-    "posicion": "LM, CM, RM",
-    "puntaje": 7.5,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 6.5,
-      "RCB": 6.3,
-      "LM": 7.8,
-      "CM": 8.0,
-      "RM": 7.6,
-      "CF": 6.8
-    }
-  },
-  {
-    "nombre": "Pablo",
-    "posicion": "CM, CF",
-    "puntaje": 6.2,
-    "puntajes_posicion": {
-      "GK": 6.5,
-      "LCB": 4.5,
-      "RCB": 4.3,
-      "LM": 5.8,
-      "CM": 6.0,
-      "RM": 5.5,
-      "CF": 5.8
-    }
-  },
-  {
-    "nombre": "Maxi Vargas",
-    "posicion": "GK, CF",
-    "puntaje": 5.9,
-    "puntajes_posicion": {
-      "GK": 7.2,
-      "LCB": 4.0,
-      "RCB": 4.8,
-      "LM": 4.2,
-      "CM": 4.5,
-      "RM": 4.1,
-      "CF": 5.0
-    }
-  },
-  {
-    "nombre": "Gus",
-    "posicion": "GK",
-    "puntaje": 5.9,
-    "puntajes_posicion": {
-      "GK": 7.5,
-      "LCB": 4.0,
-      "RCB": 4.8,
-      "LM": 4.2,
-      "CM": 4.5,
-      "RM": 4.1,
-      "CF": 5.0
-    }
-  },
-  {
-    "nombre": "Iván",
-    "posicion": "RM, LM, CF",
-    "puntaje": 6.2,
-    "puntajes_posicion": {
-      "GK": 3.5,
-      "LCB": 5.5,
-      "RCB": 5.8,
-      "LM": 6.0,
-      "CM": 4.0,
-      "RM": 6.3,
-      "CF": 6.0
-    }
-  },
-  {
-    "nombre": "Marco",
-    "posicion": "LCB, RCB",
-    "puntaje": 6.4,
-    "puntajes_posicion": {
-      "GK": 4.2,
-      "LCB": 7.0,
-      "RCB": 6.8,
-      "LM": 5.8,
-      "CM": 6.2,
-      "RM": 5.5,
-      "CF": 5.5
-    }
-  },
-  {
-    "nombre": "Camilo",
-    "posicion": "CF, CM, GK",
-    "puntaje": 5.0,
-    "puntajes_posicion": {
-      "GK": 6.1,
-      "LCB": 5.0,
-      "RCB": 4.8,
-      "LM": 5.5,
-      "CM": 5.8,
-      "RM": 5.2,
-      "CF": 5.5
-    }
-  },
-  {
-    "nombre": "Gus",
-    "posicion": "GK",
-    "puntaje": 6.3,
-    "puntajes_posicion": {
-      "GK": 6.5,
-      "LCB": 5.0,
-      "RCB": 4.8,
-      "LM": 5.5,
-      "CM": 5.8,
-      "RM": 5.2,
-      "CF": 5.5
-    }
-  },
-  {
-    "nombre": "Luis F",
-    "posicion": "GK, LCB, RCB",
-    "puntaje": 7.0,
-    "puntajes_posicion": {
-      "GK": 7.2,
-      "LCB": 7.3,
-      "RCB": 7.3,
-      "LM": 4.5,
-      "CM": 4.8,
-      "RM": 4.2,
-      "CF": 3.2
-    }
-  },
-  {
-    "nombre": "José F",
-    "posicion": "CM, RM",
-    "puntaje": 6.1,
-    "puntajes_posicion": {
-      "GK": 5.8,
-      "LCB": 5.5,
-      "RCB": 5.2,
-      "LM": 5.2,
-      "CM": 5.5,
-      "RM": 5.0,
-      "CF": 5.0
-    }
-  },
+﻿[
     {
-    "nombre": "Alonso F",
-    "posicion": "CF",
-    "puntaje": 6.1,
-    "puntajes_posicion": {
-      "GK": 5.8,
-      "LCB": 5.5,
-      "RCB": 5.2,
-      "LM": 5.2,
-      "CM": 5.5,
-      "RM": 5.0,
-      "CF": 5.7
-    }
-  },
-  {
-    "nombre": "Pancho",
-    "posicion": "RCB, RM, CF",
-    "puntaje": 6.1,
-    "puntajes_posicion": {
-      "GK": 3.8,
-      "LCB": 5.5,
-      "RCB": 6.2,
-      "LM": 5.2,
-      "CM": 5.5,
-      "RM": 6.0,
-      "CF": 6.0
-    }
-  },
-  {
-    "nombre": "Francisco H",
-    "posicion": "CM, LM, RM",
-    "puntaje": 8.0,
-    "puntajes_posicion": {
-      "GK": 4.5,
-      "LCB": 6.0,
-      "RCB": 5.8,
-      "LM": 8.2,
-      "CM": 7.8,
-      "RM": 8.2,
-      "CF": 8.2
-    }
-  },
-  {
-    "nombre": "José V",
-    "posicion": "LCB, RCB",
-    "puntaje": 8.0,
-    "puntajes_posicion": {
-      "GK": 4.5,
-      "LCB": 8.5,
-      "RCB": 8.0,
-      "LM": 7.2,
-      "CM": 7.8,
-      "RM": 7.2,
-      "CF": 7.2
-    }
-  },
-  {
-    "nombre": "Javier V",
-    "posicion": "RCB, LCB",
-    "puntaje": 8.0,
-    "puntajes_posicion": {
-      "GK": 4.5,
-      "LCB": 7.5,
-      "RCB": 7.6,
-      "LM": 6.2,
-      "CM": 6.8,
-      "RM": 6.2,
-      "CF": 6.2
-    }
-  },
-  {
-    "nombre": "Diego",
-    "posicion": "CM, RM, CF",
-    "puntaje": 7.6,
-    "puntajes_posicion": {
-      "GK": 4.5,
-      "LCB": 6.8,
-      "RCB": 7.0,
-      "LM": 7.8,
-      "CM": 7.2,
-      "RM": 7.8,
-      "CF": 8.0
-    }
-  },
-  {
-    "nombre": "Riky",
-    "posicion": "LCB, RCB, CF",
-    "puntaje": 9.2,
-    "puntajes_posicion": {
-      "GK": 4.0,
-      "LCB": 8.6,
-      "RCB": 8.6,
-      "LM": 8.0,
-      "CM": 8.2,
-      "RM": 7.8,
-      "CF": 8.2
-    }
-  },
-  {
-    "nombre": "Damián",
-    "posicion": "CF, LCB, RCB",
-    "puntaje": 6.2,
-    "puntajes_posicion": {
-      "GK": 4.0,
-      "LCB": 5.6,
-      "RCB": 5.6,
-      "LM": 5.0,
-      "CM": 5.2,
-      "RM": 5.8,
-      "CF": 5.2
-    }
-  },
-  {
-    "nombre": "Enrique",
-    "posicion": "LCB, RCB",
-    "puntaje": 8.0,
-    "puntajes_posicion": {
-      "GK": 5.2,
-      "LCB": 8.5,
-      "RCB": 8.3,
-      "LM": 8.0,
-      "CM": 8.2,
-      "RM": 7.8,
-      "CF": 7.0
-    }
-  },
-  {
-    "nombre": "Juan R",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 5.2,
-    "puntajes_posicion": {
-      "GK": 3.0,
-      "LCB": 4.2,
-      "RCB": 4.5,
-      "LM": 5.5,
-      "CM": 5.8,
-      "RM": 5.6,
-      "CF": 5.6
-    }
-  },
-  {
-    "nombre": "Carlos P",
-    "posicion": "LM, LCB, CM, GK",
-    "puntaje": 6.6,
-    "puntajes_posicion": {
-      "GK": 6.2,
-      "LCB": 6.2,
-      "RCB": 6.0,
-      "LM": 6.2,
-      "CM": 6.5,
-      "RM": 6.0,
-      "CF": 6.0
-    }
-  },
-  {
-    "nombre": "Cristóbal",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 6.1,
-    "puntajes_posicion": {
-      "GK": 3.8,
-      "LCB": 5.2,
-      "RCB": 5.5,
-      "LM": 6.2,
-      "CM": 6.1,
-      "RM": 6.0,
-      "CF": 6.1
-    }
-  },
-  {
-    "nombre": "Willians",
-    "posicion": "LCB, RCB, CM",
-    "puntaje": 8.1,
-    "puntajes_posicion": {
-      "GK": 4.0,
-      "LCB": 8.2,
-      "RCB": 8.0,
-      "LM": 7.8,
-      "CM": 8.0,
-      "RM": 7.5,
-      "CF": 7.5
-    }
-  },
-  {
-    "nombre": "Benja",
-    "posicion": "CM, LM, RM, LCB, RCB",
-    "puntaje": 8.1,
-    "puntajes_posicion": {
-      "GK": 4.0,
-      "LCB": 8.2,
-      "RCB": 8.0,
-      "LM": 7.8,
-      "CM": 8.0,
-      "RM": 7.5,
-      "CF": 7.5
-    }
-  },
-  {
-    "nombre": "Vicente",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 7.8,
-    "puntajes_posicion": {
-      "GK": 5.2,
-      "LCB": 7.0,
-      "RCB": 7.2,
-      "LM": 7.8,
-      "CM": 7.5,
-      "RM": 8.0,
-      "CF": 8.5
-    }
-  },
-  {
-    "nombre": "Ruben",
-    "posicion": "LCB, RCB, CF",
-    "puntaje": 6.2,
-    "puntajes_posicion": {
-      "GK": 4.0,
-      "LCB": 6.4,
-      "RCB": 6.6,
-      "LM": 5.8,
-      "CM": 6.0,
-      "RM": 5.5,
-      "CF": 5.2
-    }
-  },
-  {
-    "nombre": "Pantera",
-    "posicion": "CF",
-    "puntaje": 5.2,
-    "puntajes_posicion": {
-      "GK": 3.2,
-      "LCB": 4.5,
-      "RCB": 4.8,
-      "LM": 4.8,
-      "CM": 5.0,
-      "RM": 4.5,
-      "CF": 5.6
-    }
-  },
-  {
-    "nombre": "Seba Turra",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 6.0,
-    "puntajes_posicion": {
-      "GK": 3.8,
-      "LCB": 5.2,
-      "RCB": 5.5,
-      "LM": 6.0,
-      "CM": 6.2,
-      "RM": 5.8,
-      "CF": 6.3
-    }
-  },
-  {
-    "nombre": "Fabián",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 8.2,
-    "puntajes_posicion": {
-      "GK": 5.5,
-      "LCB": 8.0,
-      "RCB": 7.8,
-      "LM": 8.2,
-      "CM": 8.5,
-      "RM": 8.0,
-      "CF": 8.2
-    }
-  },
- {
-    "nombre": "Jaime",
-    "posicion": "CM, LM, RM, CF",
-    "puntaje": 7.9,
-    "puntajes_posicion": {
-      "GK": 5.5,
-      "LCB": 8.0,
-      "RCB": 7.8,
-      "LM": 7.4,
-      "CM": 7.8,
-      "RM": 7.6,
-      "CF": 7.4
-    }
-  },
-  {
-    "nombre": "Nel",
-    "posicion": "LCB, RCB, GK",
-    "puntaje": 6.8,
-    "puntajes_posicion": {
-      "GK": 7.8,
-      "LCB": 6.4,
-      "RCB": 6.8,
-      "LM": 6.0,
-      "CM": 6.5,
-      "RM": 5.8,
-      "CF": 6.0
-    }
-  },
-  {
-    "nombre": "Félix",
-    "posicion": "LCB, RCB, CF",
-    "puntaje": 5.0,
-    "puntajes_posicion": {
-      "GK": 3.1,
-      "LCB": 4.6,
-      "RCB": 4.6,
-      "LM": 4.2,
-      "CM": 4.5,
-      "RM": 4.0,
-      "CF": 4.8
-    }
-  },
-  {
-    "nombre": "José A",
-    "posicion": "LCB, RCB, CM",
-    "puntaje": 7.8,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 8.2,
-      "RCB": 8.0,
-      "LM": 7.8,
-      "CM": 8.0,
-      "RM": 7.5,
-      "CF": 7.0
-    }
-  },
-  {
-    "nombre": "Teo",
-    "posicion": "LCB, RCB, CM",
-    "puntaje": 7.8,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 7.0,
-      "RCB": 7.0,
-      "LM": 7.2,
-      "CM": 7.2,
-      "RM": 7.5,
-      "CF": 7.0
-    }
-  },
-  {
-    "nombre": "Seba",
-    "posicion": "CM, LM, RM",
-    "puntaje": 7.8,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 8.2,
-      "RCB": 8.0,
-      "LM": 8.8,
-      "CM": 8.5,
-      "RM": 8.5,
-      "CF": 7.0
-    }
-  },
+        "nombre":  "Erik",
+        "posicion":  "CM, LM, RM",
+        "puntaje":  8.8,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  8.5,
+                                  "CB":  8.4,
+                                  "RCB":  8.3,
+                                  "LM":  8.8,
+                                  "CM":  9.0,
+                                  "RM":  8.6,
+                                  "CF":  8.8
+                              }
+    },
     {
-    "nombre": "Felipe S",
-    "posicion": "LCB, RCB",
-    "puntaje": 7.9,
-    "puntajes_posicion": {
-      "GK": 5.0,
-      "LCB": 8.0,
-      "RCB": 8.0,
-      "LM": 7.5,
-      "CM": 6.0,
-      "RM": 7.5,
-      "CF": 7.0
-    }
-  },
+        "nombre":  "Miguelito",
+        "posicion":  "CM, LM, RM",
+        "puntaje":  8.2,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  8.2,
+                                  "CB":  8.2,
+                                  "RCB":  8.2,
+                                  "LM":  8.2,
+                                  "CM":  8.2,
+                                  "RM":  8.2,
+                                  "CF":  8.0
+                              }
+    },
     {
-    "nombre": "Juan HG",
-    "posicion": "CF, LM, RM",
-    "puntaje": 5.0,
-    "puntajes_posicion": {
-      "GK": 3.0,
-      "LCB": 4.2,
-      "RCB": 4.0,
-      "LM": 5.8,
-      "CM": 5.5,
-      "RM": 5.8,
-      "CF": 5.2
+        "nombre":  "Sebastian",
+        "posicion":  "LCB, RCB",
+        "puntaje":  4.1,
+        "puntajes_posicion":  {
+                                  "GK":  1.0,
+                                  "LCB":  4.2,
+                                  "CB":  4.1,
+                                  "RCB":  4.0,
+                                  "LM":  3.8,
+                                  "CM":  3.0,
+                                  "RM":  3.6,
+                                  "CF":  4.0
+                              }
+    },
+    {
+        "nombre":  "José",
+        "posicion":  "LM, CM, RM",
+        "puntaje":  7.8,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  6.5,
+                                  "CB":  6.4,
+                                  "RCB":  6.3,
+                                  "LM":  7.8,
+                                  "CM":  8.0,
+                                  "RM":  7.6,
+                                  "CF":  6.8
+                              }
+    },
+    {
+        "nombre":  "Pablo",
+        "posicion":  "CM, CF",
+        "puntaje":  5.9,
+        "puntajes_posicion":  {
+                                  "GK":  6.5,
+                                  "LCB":  4.5,
+                                  "CB":  4.4,
+                                  "RCB":  4.3,
+                                  "LM":  5.8,
+                                  "CM":  6.0,
+                                  "RM":  5.5,
+                                  "CF":  5.8
+                              }
+    },
+    {
+        "nombre":  "Maxi Vargas",
+        "posicion":  "GK, CF",
+        "puntaje":  6.1,
+        "puntajes_posicion":  {
+                                  "GK":  7.2,
+                                  "LCB":  4.0,
+                                  "CB":  4.4,
+                                  "RCB":  4.8,
+                                  "LM":  4.2,
+                                  "CM":  4.5,
+                                  "RM":  4.1,
+                                  "CF":  5.0
+                              }
+    },
+    {
+        "nombre":  "Gus",
+        "posicion":  "GK",
+        "puntaje":  7.5,
+        "puntajes_posicion":  {
+                                  "GK":  7.5,
+                                  "LCB":  4.0,
+                                  "CB":  4.4,
+                                  "RCB":  4.8,
+                                  "LM":  4.2,
+                                  "CM":  4.5,
+                                  "RM":  4.1,
+                                  "CF":  5.0
+                              }
+    },
+    {
+        "nombre":  "Iván",
+        "posicion":  "RM, LM, CF",
+        "puntaje":  6.1,
+        "puntajes_posicion":  {
+                                  "GK":  3.5,
+                                  "CB":  5.65,
+                                  "LCB":  5.5,
+                                  "RCB":  5.8,
+                                  "LM":  6.0,
+                                  "CM":  4.0,
+                                  "RM":  6.3,
+                                  "CF":  6.0
+                              }
+    },
+    {
+        "nombre":  "Marco",
+        "posicion":  "LCB, RCB, CB",
+        "puntaje":  6.9,
+        "puntajes_posicion":  {
+                                  "GK":  4.2,
+                                  "LCB":  7.0,
+                                  "CB":  6.9,
+                                  "RCB":  6.8,
+                                  "LM":  5.8,
+                                  "CM":  6.2,
+                                  "RM":  5.5,
+                                  "CF":  5.5
+                              }
+    },
+    {
+        "nombre":  "Camilo",
+        "posicion":  "CF, CM, GK",
+        "puntaje":  5.8,
+        "puntajes_posicion":  {
+                                  "GK":  6.1,
+                                  "LCB":  5.0,
+                                  "CB":  4.9,
+                                  "RCB":  4.8,
+                                  "LM":  5.5,
+                                  "CM":  5.8,
+                                  "RM":  5.2,
+                                  "CF":  5.5
+                              }
+    },
+    {
+        "nombre":  "Gus",
+        "posicion":  "GK",
+        "puntaje":  5.4,
+        "puntajes_posicion":  {
+                                  "GK":  5.4,
+                                  "LCB":  5.0,
+                                  "CB":  4.9,
+                                  "RCB":  4.8,
+                                  "LM":  5.5,
+                                  "CM":  5.8,
+                                  "RM":  5.2,
+                                  "CF":  5.5
+                              }
+    },
+    {
+        "nombre":  "Luis F",
+        "posicion":  "GK, LCB, RCB, CB",
+        "puntaje":  7.28,
+        "puntajes_posicion":  {
+                                  "GK":  7.2,
+                                  "LCB":  7.3,
+                                  "CB":  7.3,
+                                  "RCB":  7.3,
+                                  "LM":  4.5,
+                                  "CM":  4.8,
+                                  "RM":  4.2,
+                                  "CF":  3.2
+                              }
+    },
+    {
+        "nombre":  "José F",
+        "posicion":  "CM, RM",
+        "puntaje":  5.25,
+        "puntajes_posicion":  {
+                                  "GK":  5.8,
+                                  "LCB":  5.5,
+                                  "CB":  5.3,
+                                  "RCB":  5.2,
+                                  "LM":  5.2,
+                                  "CM":  5.5,
+                                  "RM":  5.0,
+                                  "CF":  5.0
+                              }
+    },
+    {
+        "nombre":  "Alonso F",
+        "posicion":  "CF",
+        "puntaje":  4.2,
+        "puntajes_posicion":  {
+                                  "GK":  1.8,
+                                  "LCB":  4.5,
+                                  "CB":  4.3,
+                                  "RCB":  4.2,
+                                  "LM":  4.3,
+                                  "CM":  3.2,
+                                  "RM":  4.6,
+                                  "CF":  4.2
+                              }
+    },
+    {
+        "nombre":  "Pancho",
+        "posicion":  "RCB, RM, CF, CB, LCB",
+        "puntaje":  5.9,
+        "puntajes_posicion":  {
+                                  "GK":  3.8,
+                                  "LCB":  5.5,
+                                  "CB":  5.8,
+                                  "RCB":  6.2,
+                                  "LM":  5.2,
+                                  "CM":  5.5,
+                                  "RM":  6.0,
+                                  "CF":  6.0
+                              }
+    },
+    {
+        "nombre":  "Francisco H",
+        "posicion":  "CM, LM, RM",
+        "puntaje":  8.07,
+        "puntajes_posicion":  {
+                                  "GK":  4.5,
+                                  "LCB":  6.0,
+                                  "CB":  5.9,
+                                  "RCB":  5.8,
+                                  "LM":  8.2,
+                                  "CM":  7.8,
+                                  "RM":  8.2,
+                                  "CF":  8.2
+                              }
+    },
+    {
+        "nombre":  "José V",
+        "posicion":  "LCB, RCB, CB",
+        "puntaje":  8.23,
+        "puntajes_posicion":  {
+                                  "GK":  4.5,
+                                  "LCB":  8.5,
+                                  "CB":  8.2,
+                                  "RCB":  8.0,
+                                  "LM":  7.2,
+                                  "CM":  7.8,
+                                  "RM":  7.2,
+                                  "CF":  7.2
+                              }
+    },
+    {
+        "nombre":  "Javier V",
+        "posicion":  "RCB, LCB, CB, CF",
+        "puntaje":  5.6,
+        "puntajes_posicion":  {
+                                  "GK":  4.5,
+                                  "LCB":  5.5,
+                                  "CB":  5.5,
+                                  "RCB":  5.6,
+                                  "LM":  5.2,
+                                  "CM":  4.8,
+                                  "RM":  5.2,
+                                  "CF":  5.8
+                              }
+    },
+    {
+        "nombre":  "Diego",
+        "posicion":  "CM, RM, CF",
+        "puntaje":  7.67,
+        "puntajes_posicion":  {
+                                  "GK":  4.5,
+                                  "LCB":  6.8,
+                                  "CB":  6.9,
+                                  "RCB":  7.0,
+                                  "LM":  7.8,
+                                  "CM":  7.2,
+                                  "RM":  7.8,
+                                  "CF":  8.0
+                              }
+    },
+    {
+        "nombre":  "Riky",
+        "posicion":  "LCB, RCB, CF, CB",
+        "puntaje":  8.5,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  8.6,
+                                  "CB":  8.6,
+                                  "RCB":  8.6,
+                                  "LM":  8.0,
+                                  "CM":  8.2,
+                                  "RM":  7.8,
+                                  "CF":  8.2
+                              }
+    },
+    {
+        "nombre":  "Damián",
+        "posicion":  "CF, LCB, RCB, CB",
+        "puntaje":  6.2,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  5.6,
+                                  "CB":  8.4,
+                                  "RCB":  5.6,
+                                  "LM":  5.0,
+                                  "CM":  5.2,
+                                  "RM":  5.8,
+                                  "CF":  5.2
+                              }
+    },
+    {
+        "nombre":  "Enrique",
+        "posicion":  "LCB, RCB, CB",
+        "puntaje":  8.4,
+        "puntajes_posicion":  {
+                                  "GK":  5.2,
+                                  "LCB":  8.5,
+                                  "CB":  8.4,
+                                  "RCB":  8.3,
+                                  "LM":  8.0,
+                                  "CM":  8.2,
+                                  "RM":  7.8,
+                                  "CF":  7.0
+                              }
+    },
+    {
+        "nombre":  "Juan R",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  5.62,
+        "puntajes_posicion":  {
+                                  "GK":  3.0,
+                                  "LCB":  4.2,
+                                  "CB":  4.35,
+                                  "RCB":  4.5,
+                                  "LM":  5.5,
+                                  "CM":  5.8,
+                                  "RM":  5.6,
+                                  "CF":  5.6
+                              }
+    },
+    {
+        "nombre":  "Carlos P",
+        "posicion":  "LM, LCB, CM, GK, RCB, CB",
+        "puntaje":  6.2,
+        "puntajes_posicion":  {
+                                  "GK":  6.2,
+                                  "LCB":  6.2,
+                                  "CB":  6.1,
+                                  "RCB":  6.0,
+                                  "LM":  6.2,
+                                  "CM":  6.5,
+                                  "RM":  6.0,
+                                  "CF":  6.0
+                              }
+    },
+    {
+        "nombre":  "Cristóbal",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  6.1,
+        "puntajes_posicion":  {
+                                  "GK":  3.8,
+                                  "LCB":  5.2,
+                                  "CB":  5.35,
+                                  "RCB":  5.5,
+                                  "LM":  6.2,
+                                  "CM":  6.1,
+                                  "RM":  6.0,
+                                  "CF":  6.1
+                              }
+    },
+    {
+        "nombre":  "Willians",
+        "posicion":  "LCB, RCB, CM, CB",
+        "puntaje":  8.07,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  8.2,
+                                  "CB":  8.1,
+                                  "RCB":  8.0,
+                                  "LM":  7.8,
+                                  "CM":  8.0,
+                                  "RM":  7.5,
+                                  "CF":  7.5
+                              }
+    },
+    {
+        "nombre":  "Benja",
+        "posicion":  "CM, LM, RM, LCB, RCB, CB",
+        "puntaje":  7.93,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  8.2,
+                                  "CB":  8.1,
+                                  "RCB":  8.0,
+                                  "LM":  7.8,
+                                  "CM":  8.0,
+                                  "RM":  7.5,
+                                  "CF":  7.5
+                              }
+    },
+    {
+        "nombre":  "Vicente",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  7.95,
+        "puntajes_posicion":  {
+                                  "GK":  5.2,
+                                  "LCB":  7.0,
+                                  "CB":  7.1,
+                                  "RCB":  7.2,
+                                  "LM":  7.8,
+                                  "CM":  7.5,
+                                  "RM":  8.0,
+                                  "CF":  8.5
+                              }
+    },
+    {
+        "nombre":  "Ruben",
+        "posicion":  "LCB, RCB, CF, CB",
+        "puntaje":  6.18,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  6.4,
+                                  "CB":  6.5,
+                                  "RCB":  6.6,
+                                  "LM":  5.8,
+                                  "CM":  6.0,
+                                  "RM":  5.5,
+                                  "CF":  5.2
+                              }
+    },
+    {
+        "nombre":  "Pantera",
+        "posicion":  "CF",
+        "puntaje":  5.6,
+        "puntajes_posicion":  {
+                                  "GK":  3.2,
+                                  "LCB":  4.5,
+                                  "CB":  4.65,
+                                  "RCB":  4.8,
+                                  "LM":  4.8,
+                                  "CM":  5.0,
+                                  "RM":  4.5,
+                                  "CF":  5.6
+                              }
+    },
+    {
+        "nombre":  "Seba Turra",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  6.08,
+        "puntajes_posicion":  {
+                                  "GK":  3.8,
+                                  "LCB":  5.2,
+                                  "CB":  5.35,
+                                  "RCB":  5.5,
+                                  "LM":  6.0,
+                                  "CM":  6.2,
+                                  "RM":  5.8,
+                                  "CF":  6.3
+                              }
+    },
+    {
+        "nombre":  "Fabián",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  8.22,
+        "puntajes_posicion":  {
+                                  "GK":  5.5,
+                                  "LCB":  8.0,
+                                  "CB":  7.9,
+                                  "RCB":  7.8,
+                                  "LM":  8.2,
+                                  "CM":  8.5,
+                                  "RM":  8.0,
+                                  "CF":  8.2
+                              }
+    },
+    {
+        "nombre":  "Jaime",
+        "posicion":  "CM, LM, RM, CF",
+        "puntaje":  7.55,
+        "puntajes_posicion":  {
+                                  "GK":  5.5,
+                                  "LCB":  8.0,
+                                  "CB":  7.9,
+                                  "RCB":  7.8,
+                                  "LM":  7.4,
+                                  "CM":  7.8,
+                                  "RM":  7.6,
+                                  "CF":  7.4
+                              }
+    },
+    {
+        "nombre":  "Nel",
+        "posicion":  "LCB, RCB, GK, CB",
+        "puntaje":  6.9,
+        "puntajes_posicion":  {
+                                  "GK":  7.8,
+                                  "LCB":  6.4,
+                                  "RCB":  6.8,
+                                  "LM":  6.0,
+                                  "CM":  6.5,
+                                  "RM":  5.8,
+                                  "CF":  6.0,
+                                  "CB":  6.6
+                              }
+    },
+    {
+        "nombre":  "Félix",
+        "posicion":  "LCB, RCB, CF, CB",
+        "puntaje":  4.65,
+        "puntajes_posicion":  {
+                                  "GK":  3.1,
+                                  "LCB":  4.6,
+                                  "RCB":  4.6,
+                                  "LM":  4.2,
+                                  "CM":  4.5,
+                                  "RM":  4.0,
+                                  "CF":  4.8,
+                                  "CB":  4.6
+                              }
+    },
+    {
+        "nombre":  "José A",
+        "posicion":  "LCB, RCB, CM, CB",
+        "puntaje":  8.07,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  8.2,
+                                  "RCB":  8.0,
+                                  "LM":  7.8,
+                                  "CM":  8.0,
+                                  "RM":  7.5,
+                                  "CF":  7.0,
+                                  "CB":  8.1
+                              }
+    },
+    {
+        "nombre":  "Teo",
+        "posicion":  "LCB, RCB, CM, CB",
+        "puntaje":  7.05,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  7.0,
+                                  "RCB":  7.0,
+                                  "LM":  7.2,
+                                  "CM":  7.2,
+                                  "RM":  7.5,
+                                  "CF":  7.0,
+                                  "CB":  7.0
+                              }
+    },
+    {
+        "nombre":  "Seba",
+        "posicion":  "CM, LM, RM",
+        "puntaje":  8.6,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  8.2,
+                                  "RCB":  8.0,
+                                  "LM":  8.8,
+                                  "CM":  8.5,
+                                  "RM":  8.5,
+                                  "CF":  7.0,
+                                  "CB":  8.1
+                              }
+    },
+    {
+        "nombre":  "Felipe S",
+        "posicion":  "LCB, RCB, CB",
+        "puntaje":  8,
+        "puntajes_posicion":  {
+                                  "GK":  5.0,
+                                  "LCB":  8.0,
+                                  "RCB":  8.0,
+                                  "LM":  7.5,
+                                  "CM":  6.0,
+                                  "RM":  7.5,
+                                  "CF":  7.0,
+                                  "CB":  8.0
+                              }
+    },
+    {
+        "nombre":  "Juan HG",
+        "posicion":  "CF, LM, RM",
+        "puntaje":  5.6,
+        "puntajes_posicion":  {
+                                  "GK":  3.0,
+                                  "LCB":  4.2,
+                                  "CB":  4.1,
+                                  "RCB":  4.0,
+                                  "LM":  5.8,
+                                  "CM":  5.5,
+                                  "RM":  5.8,
+                                  "CF":  5.2
+                              }
     }
-  }
 ]
