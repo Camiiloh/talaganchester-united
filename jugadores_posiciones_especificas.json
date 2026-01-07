@@ -211,16 +211,16 @@
     },
     {
         "nombre":  "Pancho",
-        "posicion":  "RCB, RM, CF, CB, LCB",
+        "posicion":  "LM, CF, CB, LCB",
         "puntaje":  5.9,
         "puntajes_posicion":  {
                                   "GK":  3.8,
-                                  "LCB":  5.5,
+                                  "LCB":  6.5,
                                   "CB":  5.8,
-                                  "RCB":  6.2,
-                                  "LM":  5.2,
+                                  "RCB":  5.2,
+                                  "LM":  6.2,
                                   "CM":  5.5,
-                                  "RM":  6.0,
+                                  "RM":  5.0,
                                   "CF":  6.0
                               }
     },

@@ -235,7 +235,33 @@ async function renderCanchaV2() {
     div.innerHTML = crearJugador(nombre, 'red-team', posRojo[nombre] || {}, i);
     field.appendChild(div.firstElementChild);
   });
+  
+  // Renderizar listados de jugadores
+  renderListaJugadores('lista-negro', equipos.negro, equipos.negro_posiciones);
+  renderListaJugadores('lista-rojo', equipos.rojo, equipos.rojo_posiciones);
+  
   primeraCarga = false;
+}
+
+function renderListaJugadores(containerId, jugadores, posiciones) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  jugadores.forEach(nombre => {
+    const posicion = posiciones[nombre] || 'Posición no asignada';
+    const item = document.createElement('div');
+    item.className = 'player-item';
+    item.innerHTML = `
+      <img src="fotos/${nombre}.png" alt="${nombre}" class="player-item-photo" onerror="this.style.display='none'">
+      <div class="player-item-info">
+        <div class="player-item-name">${nombre}</div>
+        <div class="player-item-position">${posicion}</div>
+      </div>
+    `;
+    container.appendChild(item);
+  });
 }
 
 // Animación de entrada

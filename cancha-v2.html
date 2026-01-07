@@ -12,16 +12,16 @@
     <header>
       <h1 id="partido-info">⚽ Cargando información del partido...</h1>
       <nav class="page-navigation">
-        <a href="index.html" class="nav-link">📊 Lista Jugadores</a>
+        <!-- <a href="index.html" class="nav-link">📊 Lista Jugadores</a> -->
         <a href="cancha-v2.html" class="nav-link active">✨ Cancha v2</a>
         <a href="estadisticas.html" class="nav-link">📈 Estadísticas</a>
       </nav>
     </header>
     <main>
       <div class="main-spacing"></div>
-      <!-- MOBILE: Equipo Negro arriba, cancha, Equipo Rojo abajo -->
-      <div class="alineacion-responsive">
-        <div class="equipo-negro-label">⚫ Equipo Negro</div>
+      <!-- Layout horizontal: Campo a la izquierda, listados a la derecha -->
+      <div class="layout-horizontal">
+        <!-- Campo de fútbol -->
         <div class="field-container">
           <div id="soccer-field-v2" class="soccer-field-v2">
                   <div class="field-line center-line"></div>
@@ -37,7 +37,19 @@
                   <div class="goal right"></div>
           </div>
         </div>
-        <div class="equipo-rojo-label">🔴 Equipo Rojo</div>
+        
+        <!-- Listados de jugadores -->
+        <div class="teams-list">
+          <div class="team-list-section">
+            <div class="equipo-negro-label">⚫ Equipo Negro</div>
+            <div id="lista-negro" class="player-list"></div>
+          </div>
+          
+          <div class="team-list-section">
+            <div class="equipo-rojo-label">🔴 Equipo Rojo</div>
+            <div id="lista-rojo" class="player-list"></div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
