@@ -24,20 +24,21 @@ body {
 }
 
 #app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 header {
   text-align: center;
-  margin-bottom: 40px;
-}
+  margin-bottom: 40px;  padding: 20px;
+  max-width: 100%;
+  width: 100%;}
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #3b82f6;
   margin-bottom: 8px;
 }
 
@@ -56,15 +57,16 @@ header p {
 }
 
 .nav-link {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, #5b6a91, #7582aa);
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 0.9rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .nav-link:hover {
@@ -74,8 +76,9 @@ header p {
 
 .nav-link.active {
   background: white;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  color: #3b82f6;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
 }
 
 .match-info {

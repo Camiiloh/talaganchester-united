@@ -19,9 +19,15 @@
     </header>
     <main>
       <div class="main-spacing"></div>
-      <!-- Layout horizontal: Campo a la izquierda, listados a la derecha -->
+      <!-- Layout horizontal: Negro - Campo - Rojo -->
       <div class="layout-horizontal">
-        <!-- Campo de fútbol -->
+        <!-- Listado Equipo Negro (izquierda) -->
+        <div class="team-list-section">
+          <div class="equipo-negro-label">⚫ Equipo Negro</div>
+          <div id="lista-negro" class="player-list"></div>
+        </div>
+        
+        <!-- Campo de fútbol (centro) -->
         <div class="field-container">
           <div id="soccer-field-v2" class="soccer-field-v2">
                   <div class="field-line center-line"></div>
@@ -38,17 +44,10 @@
           </div>
         </div>
         
-        <!-- Listados de jugadores -->
-        <div class="teams-list">
-          <div class="team-list-section">
-            <div class="equipo-negro-label">⚫ Equipo Negro</div>
-            <div id="lista-negro" class="player-list"></div>
-          </div>
-          
-          <div class="team-list-section">
-            <div class="equipo-rojo-label">🔴 Equipo Rojo</div>
-            <div id="lista-rojo" class="player-list"></div>
-          </div>
+        <!-- Listado Equipo Rojo (derecha) -->
+        <div class="team-list-section">
+          <div class="equipo-rojo-label">🔴 Equipo Rojo</div>
+          <div id="lista-rojo" class="player-list"></div>
         </div>
       </div>
     </main>
