@@ -278,83 +278,232 @@ function mostrarHistorial() {
     const equipoRojoJugadores = equipoRojo.length > 0 ? equipoRojo.join(', ') : 'No registrado';
     const equipoNegroJugadores = equipoNegro.length > 0 ? equipoNegro.join(', ') : 'No registrado';
     
-    return `
-      <div class="match-item" data-index="${indiceOriginal}" style="background: white; color: black; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; padding: 15px;">
-        <div class="match-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <div>
-            <div style="font-weight: bold; color: black;">${partido.fecha_formato}</div>
-            <div class="match-date" style="color: #555;">${partido.hora} hrs - ${partido.cancha}</div>
-            ${partido.mvp ? `<div style="font-size: 0.9em; color: #333;">🏆 MVP: ${partido.mvp}</div>` : ''}
-          </div>
-          <div class="match-result" style="text-align: center;">
-            <div style="font-size: 1.5em; font-weight: bold; color: black; background: none;">
-              <span class="team-red" style="color: black;">${partido.resultado.rojo}</span>
-              <span style="color: black;"> - </span>
-              <span class="team-black" style="color: black;">${partido.resultado.negro}</span>
-              ${ganador !== 'empate' ? `<span style="margin-left: 10px;">${ganador === 'rojo' ? '🔴' : '⚫'}</span>` : ' 🤝'}
-            </div>
-          </div>
-          <div class="match-actions" ${!isAuthenticated ? 'style="display: none;"' : ''}>
-            <button class="btn-edit" onclick="verificarParaEditar(editarPartido, ${indiceOriginal})">✏️ Editar</button>
-            <button class="btn-delete" onclick="verificarParaEditar(eliminarPartido, ${indiceOriginal})">🗑️ Eliminar</button>
-          </div>
-        </div>
-        
-        <div class="teams-lineup" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-          <div class="team-red-lineup">
-            <div style="font-weight: bold; color: #d32f2f; margin-bottom: 5px;">🔴 Equipo Rojo</div>
-            <div style="font-size: 0.9em; color: black; line-height: 1.4;">${equipoRojoJugadores}</div>
-          </div>
-          <div class="team-black-lineup">
-            <div style="font-weight: bold; color: #424242; margin-bottom: 5px;">⚫ Equipo Negro</div>
-            <div style="font-size: 0.9em; color: black; line-height: 1.4;">${equipoNegroJugadores}</div>
-          </div>
-        </div>
-        
-        
-        ${(() => {
-          // Procesar jugadores_confirmados que puede venir como string o array
-          let jugadoresConfirmados = [];
-          if (partido.jugadores_confirmados) {
-            if (Array.isArray(partido.jugadores_confirmados)) {
-              jugadoresConfirmados = partido.jugadores_confirmados;
-            } else if (typeof partido.jugadores_confirmados === 'string') {
-              // Si es string, intentar parsearlo o separarlo
-              try {
-                if (partido.jugadores_confirmados.startsWith('[') || partido.jugadores_confirmados.startsWith('{')) {
-                  jugadoresConfirmados = JSON.parse(partido.jugadores_confirmados);
-                } else {
-                  // Separar por comas, punto y coma, o saltos de línea
-                  jugadoresConfirmados = partido.jugadores_confirmados
-                    .split(/[,;|\n]/)
-                    .map(j => j.trim())
-                    .filter(j => j.length > 0);
-                }
-              } catch (e) {
-                // Si falla el parsing, separar por comas
-                jugadoresConfirmados = partido.jugadores_confirmados
-                  .split(',')
-                  .map(j => j.trim())
-                  .filter(j => j.length > 0);
-              }
-            }
+    // Procesar jugadores_confirmados que puede venir como string o array
+    let jugadoresConfirmados = [];
+    if (partido.jugadores_confirmados) {
+      if (Array.isArray(partido.jugadores_confirmados)) {
+        jugadoresConfirmados = partido.jugadores_confirmados;
+      } else if (typeof partido.jugadores_confirmados === 'string') {
+        // Si es string, intentar parsearlo o separarlo
+        try {
+          if (partido.jugadores_confirmados.startsWith('[') || partido.jugadores_confirmados.startsWith('{')) {
+            jugadoresConfirmados = JSON.parse(partido.jugadores_confirmados);
+          } else {
+            // Separar por comas, punto y coma, o saltos de línea
+            jugadoresConfirmados = partido.jugadores_confirmados
+              .split(/[,;|\n]/)
+              .map(j => j.trim())
+              .filter(j => j.length > 0);
           }
-          
-          return jugadoresConfirmados.length > 0 ? `
-            <div class="jugadores-confirmados" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-              <div style="font-weight: bold; color: #2196f3; margin-bottom: 5px;">👥 Jugadores Confirmados (${jugadoresConfirmados.length})</div>
-              <div style="font-size: 0.9em; color: black; line-height: 1.4;">
-                ${jugadoresConfirmados.join(' • ')}
-              </div>
+        } catch (e) {
+          // Si falla el parsing, separar por comas
+          jugadoresConfirmados = partido.jugadores_confirmados
+            .split(',')
+            .map(j => j.trim())
+            .filter(j => j.length > 0);
+        }
+      }
+    }
+    
+    return `
+      <div class="partido-card" data-index="${indiceOriginal}" style="
+        background: var(--card-background);
+        border: 2px solid var(--border-color);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+      ">
+        <!-- Encabezado con título y fecha -->
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span style="font-size: 2em;">📅</span>
+          <div>
+            <div style="font-weight: 700; font-size: 1.3em; color: var(--text-color);">${partido.fecha_formato}</div>
+            <div style="color: var(--text-color); opacity: 0.7; font-size: 0.95em;">
+              ${partido.hora} hrs - ${partido.cancha}
+              ${partido.mvp ? ` • 🏆 MVP: ${partido.mvp}` : ''}
             </div>
-          ` : '';
-        })()} 
-                ${partido.goleadores && partido.goleadores.length > 0 ? `
-          <div class="goleadores-partido" style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-            <div style="font-weight: bold; color: black; margin-bottom: 5px;">⚽ Goleadores</div>
-            <div style="font-size: 0.9em; color: black;">
-              ${partido.goleadores.map(g => `${g.jugador} (${g.goles})`).join(' • ')}
+          </div>
+        </div>
+
+        <!-- Marcador principal -->
+        <div style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          margin: 24px 0;
+          padding: 20px;
+          background: ${ganador === 'empate' ? 'rgba(255, 255, 255, 0.03)' : ganador === 'rojo' ? 'rgba(229, 57, 53, 0.1)' : 'rgba(66, 66, 66, 0.1)'};
+          border-radius: 12px;
+        ">
+          <div style="
+            font-size: 4em;
+            font-weight: 900;
+            color: ${ganador === 'rojo' ? '#e53935' : 'var(--text-color)'};
+            opacity: ${ganador === 'rojo' ? '1' : '0.6'};
+          ">${partido.resultado.rojo}</div>
+          <div style="
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-color);
+            opacity: 0.5;
+          ">-</div>
+          <div style="
+            font-size: 4em;
+            font-weight: 900;
+            color: ${ganador === 'negro' ? '#424242' : 'var(--text-color)'};
+            opacity: ${ganador === 'negro' ? '1' : '0.6'};
+          ">${partido.resultado.negro}</div>
+        </div>
+
+        <!-- Equipos lado a lado -->
+        <div style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+          margin-top: 20px;
+        ">
+          <!-- Equipo Rojo -->
+          <div style="
+            background: rgba(229, 57, 53, 0.08);
+            border-left: 4px solid #e53935;
+            padding: 16px;
+            border-radius: 8px;
+          ">
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 12px;
+              font-weight: 700;
+              font-size: 1.1em;
+              color: #e53935;
+            ">
+              <span style="font-size: 1.5em;">🔴</span>
+              Equipo Rojo
             </div>
+            <div style="
+              color: var(--text-color);
+              line-height: 1.6;
+              font-size: 0.95em;
+            ">${equipoRojoJugadores}</div>
+          </div>
+
+          <!-- Equipo Negro -->
+          <div style="
+            background: rgba(66, 66, 66, 0.15);
+            border-left: 4px solid #424242;
+            padding: 16px;
+            border-radius: 8px;
+          ">
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 12px;
+              font-weight: 700;
+              font-size: 1.1em;
+              color: #666;
+            ">
+              <span style="font-size: 1.5em;">⚫</span>
+              Equipo Negro
+            </div>
+            <div style="
+              color: var(--text-color);
+              line-height: 1.6;
+              font-size: 0.95em;
+            ">${equipoNegroJugadores}</div>
+          </div>
+        </div>
+
+        <!-- Jugadores Confirmados -->
+        ${jugadoresConfirmados.length > 0 ? `
+          <div style="
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(33, 150, 243, 0.08);
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+          ">
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 12px;
+              font-weight: 700;
+              font-size: 1.1em;
+              color: #2196f3;
+            ">
+              <span style="font-size: 1.5em;">👥</span>
+              Jugadores Confirmados (${jugadoresConfirmados.length})
+            </div>
+            <div style="
+              color: var(--text-color);
+              line-height: 1.6;
+              font-size: 0.95em;
+            ">${jugadoresConfirmados.join(' • ')}</div>
+          </div>
+        ` : ''}
+
+        <!-- Goleadores -->
+        ${partido.goleadores && partido.goleadores.length > 0 ? `
+          <div style="
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(76, 175, 80, 0.08);
+            border-left: 4px solid #4caf50;
+            border-radius: 8px;
+          ">
+            <div style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 12px;
+              font-weight: 700;
+              font-size: 1.1em;
+              color: #4caf50;
+            ">
+              <span style="font-size: 1.5em;">⚽</span>
+              Goleadores
+            </div>
+            <div style="
+              color: var(--text-color);
+              line-height: 1.6;
+              font-size: 0.95em;
+            ">${partido.goleadores.map(g => `${g.jugador} (${g.goles})`).join(' • ')}</div>
+          </div>
+        ` : ''}
+
+        <!-- Botones de acción -->
+        ${isAuthenticated ? `
+          <div style="
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+          ">
+            <button class="btn-edit" onclick="verificarParaEditar(editarPartido, ${indiceOriginal})" style="
+              background: #2196f3;
+              color: white;
+              border: none;
+              padding: 8px 16px;
+              border-radius: 6px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: background 0.2s;
+            ">✏️ Editar</button>
+            <button class="btn-delete" onclick="verificarParaEditar(eliminarPartido, ${indiceOriginal})" style="
+              background: #f44336;
+              color: white;
+              border: none;
+              padding: 8px 16px;
+              border-radius: 6px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: background 0.2s;
+            ">🗑️ Eliminar</button>
           </div>
         ` : ''}
       </div>

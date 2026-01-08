@@ -1,4 +1,17 @@
 :root {
+  --primary-color: #60a5fa;
+  --secondary-color: #ef4444;
+  --success-color: #22c55e;
+  --background-color: #0f172a;
+  --card-background: #1e293b;
+  --text-color: #e2e8f0;
+  --border-color: #334155;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --border-radius: 12px;
+}
+
+/* Tema claro */
+body.light-theme {
   --primary-color: #2563eb;
   --secondary-color: #dc2626;
   --success-color: #16a34a;
@@ -7,7 +20,6 @@
   --text-color: #1e293b;
   --border-color: #e2e8f0;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --border-radius: 12px;
 }
 
 * {
@@ -81,7 +93,40 @@ header p {
   box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
 }
 
-.match-info {
+/* Botón de toggle de tema */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Ajustar navegación para incluir botón */
+.page-navigation {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
   text-align: center;
   background: var(--card-background);
   border-radius: var(--border-radius);

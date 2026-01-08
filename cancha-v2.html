@@ -15,6 +15,9 @@
         <!-- <a href="index.html" class="nav-link">📊 Lista Jugadores</a> -->
         <a href="cancha-v2.html" class="nav-link active">✨ Cancha v2</a>
         <a href="estadisticas.html" class="nav-link">📈 Estadísticas</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
       </nav>
     </header>
     <main>
@@ -23,7 +26,7 @@
       <div class="layout-horizontal">
         <!-- Listado Equipo Negro (izquierda) -->
         <div class="team-list-section">
-          <div class="equipo-negro-label">⚫ Equipo Negro</div>
+          <div class="equipo-negro-label"><span class="team-icon team-icon-negro">🔘</span> Equipo Negro</div>
           <div id="lista-negro" class="player-list"></div>
         </div>
         
@@ -46,13 +49,14 @@
         
         <!-- Listado Equipo Rojo (derecha) -->
         <div class="team-list-section">
-          <div class="equipo-rojo-label">🔴 Equipo Rojo</div>
+          <div class="equipo-rojo-label"><span class="team-icon team-icon-rojo">🔴</span> Equipo Rojo</div>
           <div id="lista-rojo" class="player-list"></div>
         </div>
       </div>
     </main>
   </div>
   <script src="cancha-v2.js?v=2"></script>
+  <script src="theme-toggle.js"></script>
   <!-- Script de actualización eliminado - ya no es necesario -->
 </body>
 </html>

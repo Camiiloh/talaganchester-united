@@ -20,23 +20,23 @@
     }
     
     .stat-card {
-      background: #fff;
-      border: 2px solid #ddd;
+      background: var(--card-background);
+      border: 2px solid var(--border-color);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 16px rgba(34, 42, 54, 0.1);
+      box-shadow: var(--shadow);
       border-left: 4px solid #e53935;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     
     .stat-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(34, 42, 54, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
     
     .stat-card h3 {
       margin: 0 0 15px 0;
-      color: #000;
+      color: var(--text-color);
       font-size: 1.2em;
       font-weight: 600;
     }
@@ -44,21 +44,21 @@
     .stat-number {
       font-size: 2.5em;
       font-weight: bold;
-      color: #000;
+      color: var(--primary-color);
       margin: 10px 0;
     }
     
     .match-history {
-      background: #fff;
-      border: 2px solid #ddd;
+      background: var(--card-background);
+      border: 2px solid var(--border-color);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 16px rgba(34, 42, 54, 0.1);
+      box-shadow: var(--shadow);
       margin-bottom: 20px;
     }
     
     .match-history h3 {
-      color: #000;
+      color: var(--text-color);
       margin-bottom: 15px;
       font-weight: 600;
     }
@@ -68,12 +68,16 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
       transition: background 0.2s;
       position: relative;
     }
     
     .match-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    body.light-theme .match-item:hover {
       background: #f8f9fa;
     }
     
@@ -125,7 +129,8 @@
     }
     
     .match-date {
-      color: #666;
+      color: var(--text-color);
+      opacity: 0.7;
       font-size: 0.9em;
     }
     
@@ -133,14 +138,15 @@
       font-weight: bold;
       font-size: 1.1em;
       background: none !important;
+      color: var(--text-color);
     }
     
     .match-result .team-red { 
-      color: black !important; 
+      color: var(--text-color) !important; 
       background: none !important;
     }
     .match-result .team-black { 
-      color: black !important; 
+      color: var(--text-color) !important; 
       background: none !important;
     }
     
@@ -149,15 +155,15 @@
     }
     
     .top-scorers {
-      background: #fff;
-      border: 2px solid #ddd;
+      background: var(--card-background);
+      border: 2px solid var(--border-color);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 16px rgba(34, 42, 54, 0.1);
+      box-shadow: var(--shadow);
     }
     
     .top-scorers h3 {
-      color: #000;
+      color: var(--text-color);
       margin-bottom: 15px;
       font-weight: 600;
     }
@@ -167,8 +173,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      color: #000;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
     }
     
     .scorer-item:last-child {
@@ -208,7 +214,7 @@
     }
     
     .modal-content {
-      background: white;
+      background: var(--card-background);
       margin: 5% auto;
       padding: 20px;
       border-radius: 12px;
@@ -216,6 +222,7 @@
       max-height: 80vh;
       overflow-y: auto;
       position: relative;
+      border: 2px solid var(--border-color);
     }
     
     .modal-header {
@@ -224,12 +231,12 @@
       align-items: center;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
     }
     
     .modal-header h3 {
       margin: 0;
-      color: #222a36;
+      color: var(--text-color);
       font-size: 1.3em;
     }
     
@@ -238,7 +245,7 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #666;
+      color: var(--text-color);
       padding: 0;
       width: 30px;
       height: 30px;
@@ -247,11 +254,16 @@
       justify-content: center;
       border-radius: 50%;
       transition: background-color 0.2s;
+      opacity: 0.7;
     }
     
     .close:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      opacity: 1;
+    }
+    
+    body.light-theme .close:hover {
       background-color: #f0f0f0;
-      color: #000;
     }
     
     .modal-actions {
@@ -297,15 +309,23 @@
       display: block;
       margin-bottom: 5px;
       font-weight: 600;
-      color: #222a36;
+      color: var(--text-color);
     }
     
     .form-group input, .form-group select {
       width: 100%;
       padding: 8px 12px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+    }
+    
+    body.light-theme .form-group input,
+    body.light-theme .form-group select {
+      background: #ffffff;
+      color: #1e293b;
     }
     
     .score-input {
@@ -381,6 +401,9 @@
         <!-- <a href="index.html" class="nav-link">📊 Lista Jugadores</a> -->
         <a href="cancha-v2.html" class="nav-link">✨ Cancha v2</a>
         <a href="estadisticas.html" class="nav-link active">📈 Estadísticas</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
       </nav>
     </header>
     
@@ -540,5 +563,6 @@
   <script src="auth_simple.js?v=7"></script>
   <script src="api-config.js?v=1"></script>
   <script src="estadisticas.js?v=14"></script>
+  <script src="theme-toggle.js"></script>
 </body>
 </html>
