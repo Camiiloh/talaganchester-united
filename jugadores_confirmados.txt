@@ -1,19 +1,19 @@
-FECHA: 2026-01-08
+FECHA: 2026-01-15
 HORA: 22:00
 CANCHA: Por Confirmar
 ---
 
-Camilo
-Maxi Vargas 
-Marco
-Félix 
-Pancho
-Willians
-José A
-Iván
-Francisco H 
-Felipe S
 Carlos P
-Juan R
-José F
+Willians 
+Maxi Vargas
+Félix
+Pancho
+Felipe S 
+Iván 
+Marco
+Francisco H
+Sebastian
+José F 
 Alonso F
+Pantera
+Renato

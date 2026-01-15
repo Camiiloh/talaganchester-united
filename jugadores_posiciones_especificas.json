@@ -45,6 +45,21 @@
                               }
     },
     {
+        "nombre":  "Renato",
+        "posicion":  "LM, RM, CF",
+        "puntaje":  4.1,
+        "puntajes_posicion":  {
+                                  "GK":  1.0,
+                                  "LCB":  4.2,
+                                  "CB":  4.1,
+                                  "RCB":  4.0,
+                                  "LM":  3.8,
+                                  "CM":  6.0,
+                                  "RM":  5.6,
+                                  "CF":  6.0
+                              }
+    },
+    {
         "nombre":  "José",
         "posicion":  "LM, CM, RM",
         "puntaje":  7.8,
