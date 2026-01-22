@@ -1,11 +1,11 @@
 FECHA: 2026-01-22
 HORA: 22:00
-CANCHA: Por Confirmar
+CANCHA: Cancha 1
 ---
 
 Camilo
 Félix
-Miguelito
+Pablo
 Enrique
 Felipe S
 Willians
