@@ -17,15 +17,15 @@
     {
         "nombre":  "Miguelito",
         "posicion":  "CM, LM, RM",
-        "puntaje":  8.2,
+        "puntaje":  8.6,
         "puntajes_posicion":  {
                                   "GK":  5.0,
                                   "LCB":  8.2,
                                   "CB":  8.2,
                                   "RCB":  8.2,
-                                  "LM":  8.2,
-                                  "CM":  8.2,
-                                  "RM":  8.2,
+                                  "LM":  8.6,
+                                  "CM":  8.8,
+                                  "RM":  8.9,
                                   "CF":  8.0
                               }
     },

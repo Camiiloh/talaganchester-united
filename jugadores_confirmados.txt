@@ -1,19 +1,17 @@
-FECHA: 2026-01-22
+FECHA: 2026-01-27
 HORA: 22:00
-CANCHA: Cancha 1
+CANCHA: Cancha ?
 ---
 
 Camilo
-Félix
-Pablo
-Enrique
-Felipe S
-Willians
-Marco
-Pancho
-Francisco H
+Carlos P
+Maxi Vargas
+Sebastian
 Vicente
 Ruben
-Maxi Vargas
+Miguelito
+José F
+Alonso F
+Willians
 Juan R
-Pantera
+Fabián
