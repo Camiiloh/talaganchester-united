@@ -269,12 +269,10 @@ def generar_formaciones_posibles(jugadores_campo=5):
             {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 2-3-0
             # Formaciones con 3 defensas y 2 mediocampos (SIEMPRE Izq + Der)
             {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 0},  # 3-2-0 (med Izq+Der)
-            # Formaciones con 3 defensas y 1 mediocampo
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 0, 'CF': 1},  # 3-1-1
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-1-1
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1
-            # Formaciones con 2 defensas y 1 mediocampo
-            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2
+            # Formaciones con 3 defensas y 1 mediocampo (SIEMPRE mediocampo central)
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1 (CM central)
+            # Formaciones con 2 defensas y 1 mediocampo (SIEMPRE mediocampo central)
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2 (CM central)
             # Formaciones con 1 defensa y 3 mediocampos (SIEMPRE defensa central)
             {'LCB': 0, 'CB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (CB central)
         ]
@@ -293,12 +291,10 @@ def generar_formaciones_posibles(jugadores_campo=5):
             {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-2-1 (med Izq+Der)
             # Formaciones con 3 defensas y 3 mediocampos
             {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 0},  # 3-3-0
-            # Formaciones con 3 defensas y 1 mediocampo
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 1, 'CM': 0, 'RM': 0, 'CF': 1},  # 3-1-1
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 0, 'RM': 1, 'CF': 1},  # 3-1-1
-            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1
-            # Formaciones con 2 defensas y 1 mediocampo
-            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2
+            # Formaciones con 3 defensas y 1 mediocampo (SIEMPRE mediocampo central)
+            {'LCB': 1, 'CB': 1, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 1},  # 3-1-1 (CM central)
+            # Formaciones con 2 defensas y 1 mediocampo (SIEMPRE mediocampo central)
+            {'LCB': 1, 'CB': 0, 'RCB': 1, 'LM': 0, 'CM': 1, 'RM': 0, 'CF': 2},  # 2-1-2 (CM central)
             # Formaciones con 1 defensa y 3 mediocampos (SIEMPRE defensa central)
             {'LCB': 0, 'CB': 1, 'RCB': 0, 'LM': 1, 'CM': 1, 'RM': 1, 'CF': 1},  # 1-3-1 (CB central)
         ]

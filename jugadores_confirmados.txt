@@ -1,17 +1,17 @@
-FECHA: 2026-01-27
+FECHA: 2026-02-05
 HORA: 22:00
-CANCHA: Cancha ?
+CANCHA: Cancha 1
 ---
 
-Camilo
 Carlos P
-Maxi Vargas
-Sebastian
-Vicente
-Ruben
-Miguelito
-José F
-Alonso F
+Seba Turra
 Willians
-Juan R
-Fabián
+Maxi Vargas
+Ruben
+Francisco H
+José A
+Enrique
+Félix
+José F 
+Alonso F 
+Juan David

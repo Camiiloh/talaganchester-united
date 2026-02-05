@@ -450,6 +450,21 @@
                               }
     },
     {
+        "nombre":  "Juan David",
+        "posicion":  "CM, LM, RM",
+        "puntaje":  6.18,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  4.4,
+                                  "CB":  4.5,
+                                  "RCB":  4.6,
+                                  "LM":  5.8,
+                                  "CM":  6.0,
+                                  "RM":  5.5,
+                                  "CF":  5.2
+                              }
+    },
+    {
         "nombre":  "Pantera",
         "posicion":  "CF",
         "puntaje":  5.6,
