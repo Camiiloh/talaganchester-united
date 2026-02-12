@@ -151,7 +151,7 @@
     },
     {
         "nombre":  "Camilo",
-        "posicion":  "CF, CM, GK",
+        "posicion":  "CF, CM",
         "puntaje":  5.8,
         "puntajes_posicion":  {
                                   "GK":  6.1,
@@ -211,17 +211,17 @@
     },
     {
         "nombre":  "Alonso F",
-        "posicion":  "CF",
-        "puntaje":  4.2,
+        "posicion":  "CF, RCB",
+        "puntaje":  4.6,
         "puntajes_posicion":  {
                                   "GK":  1.8,
                                   "LCB":  4.5,
                                   "CB":  4.3,
-                                  "RCB":  4.2,
+                                  "RCB":  4.8,
                                   "LM":  4.3,
                                   "CM":  3.2,
-                                  "RM":  4.6,
-                                  "CF":  4.2
+                                  "RM":  4.4,
+                                  "CF":  4.6
                               }
     },
     {
@@ -242,7 +242,7 @@
     {
         "nombre":  "Francisco H",
         "posicion":  "CM, LM, RM",
-        "puntaje":  8.07,
+        "puntaje":  8.2,
         "puntajes_posicion":  {
                                   "GK":  4.5,
                                   "LCB":  6.0,
@@ -332,11 +332,11 @@
     {
         "nombre":  "Enrique",
         "posicion":  "LCB, RCB, CB",
-        "puntaje":  8.4,
+        "puntaje":  8.1,
         "puntajes_posicion":  {
                                   "GK":  5.2,
-                                  "LCB":  8.5,
-                                  "CB":  8.4,
+                                  "LCB":  8.25,
+                                  "CB":  8.24,
                                   "RCB":  8.3,
                                   "LM":  8.0,
                                   "CM":  8.2,
@@ -392,7 +392,7 @@
     {
         "nombre":  "Willians",
         "posicion":  "LCB, RCB, CM, CB",
-        "puntaje":  8.07,
+        "puntaje":  8.2,
         "puntajes_posicion":  {
                                   "GK":  4.0,
                                   "LCB":  8.2,
