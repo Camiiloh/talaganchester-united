@@ -1,19 +1,19 @@
-FECHA: 2026-02-12
+FECHA: 2026-03-05
 HORA: 22:00
 CANCHA: Cancha ?
 ---
 
-Luis F
 Camilo
-Ruben
-Félix
-Willians
-Maxi Vargas
 Francisco H
-José F
-Alonso F
-Felipe S
 Marco
-Pancho
+Carlos P
+Maxi Vargas
+Félix
+Iván
+Ruben
 Juan R
+Vicente
 Enrique
+Pablo
+Pancho
+Willians
