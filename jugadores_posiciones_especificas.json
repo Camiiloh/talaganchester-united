@@ -347,14 +347,14 @@
     {
         "nombre":  "Enrique",
         "posicion":  "GK, LCB, RCB, CB",
-        "puntaje":  8.1,
+        "puntaje":  8.0,
         "puntajes_posicion":  {
                                   "GK":  4.0,
-                                  "LCB":  8.2,
-                                  "CB":  8.24,
-                                  "RCB":  8.2,
+                                  "LCB":  8.0,
+                                  "CB":  8.0,
+                                  "RCB":  8.0,
                                   "LM":  8.0,
-                                  "CM":  8.2,
+                                  "CM":  8.0,
                                   "RM":  7.8,
                                   "CF":  7.0
                               }
@@ -406,7 +406,7 @@
     },
     {
         "nombre":  "Willians",
-        "posicion":  "GK, LCB, RCB, CM, CB",
+        "posicion":  "LCB, RCB, CM, CB",
         "puntaje":  8.2,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -571,17 +571,17 @@
     },
     {
         "nombre":  "José A",
-        "posicion":  "GK, LCB, RCB, CM, CB",
-        "puntaje":  8.07,
+        "posicion":  "GK, LCB, RCB, CB",
+        "puntaje":  8.0,
         "puntajes_posicion":  {
                                   "GK":  4.0,
                                   "LCB":  8.2,
                                   "RCB":  8.0,
                                   "LM":  7.8,
-                                  "CM":  8.0,
+                                  "CM":  7.0,
                                   "RM":  7.5,
                                   "CF":  7.0,
-                                  "CB":  8.1
+                                  "CB":  8.0
                               }
     },
     {

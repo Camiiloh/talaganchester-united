@@ -1,149 +1,149 @@
 {
-  "fecha": "2026-03-17",
+  "fecha": "2026-03-19",
   "hora": "22:00",
   "cancha": "Cancha ?",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Pablo",
+    "Camilo",
     "Erik",
-    "Juan HG",
-    "Isra",
-    "Alejo",
-    "Felipe S",
-    "Pancho"
+    "Félix",
+    "Vicente",
+    "Ruben",
+    "Diego",
+    "Enrique"
   ],
   "negro": [
-    "Camilo",
-    "Riky",
-    "Jaime",
-    "José F",
+    "Maxi Vargas",
+    "Willians",
+    "José A",
+    "Francisco H",
+    "Juan R",
     "Carlos P",
-    "Marco",
-    "Seba Turra"
+    "Iván"
   ],
-  "promedio_rojo": 6.73,
-  "promedio_negro": 6.76,
-  "diferencia": 0.2,
+  "promedio_rojo": 7.2,
+  "promedio_negro": 7.14,
+  "diferencia": 0.4,
   "rojo_posiciones": {
-    "Pablo": "Arquero",
-    "Pancho": "Defensa-Izq",
-    "Felipe S": "Defensa-Der",
-    "Isra": "Mediocampo-Izq",
-    "Erik": "Mediocampo-Centro",
-    "Alejo": "Mediocampo-Der",
-    "Juan HG": "Delantero-Centro"
+    "Camilo": "Arquero",
+    "Félix": "Defensa-Izq",
+    "Enrique": "Defensa-Centro",
+    "Ruben": "Defensa-Der",
+    "Erik": "Mediocampo-Izq",
+    "Diego": "Mediocampo-Der",
+    "Vicente": "Delantero-Centro"
   },
   "negro_posiciones": {
-    "Camilo": "Arquero",
-    "Marco": "Defensa-Izq",
-    "Riky": "Defensa-Der",
-    "Carlos P": "Mediocampo-Izq",
-    "José F": "Mediocampo-Centro",
-    "Jaime": "Mediocampo-Der",
-    "Seba Turra": "Delantero-Centro"
+    "Maxi Vargas": "Arquero",
+    "Willians": "Defensa-Izq",
+    "José A": "Defensa-Der",
+    "Francisco H": "Mediocampo-Izq",
+    "Carlos P": "Mediocampo-Centro",
+    "Iván": "Mediocampo-Der",
+    "Juan R": "Delantero-Centro"
   },
   "equipos": {
     "rojo": [
-      "Pablo",
+      "Camilo",
       "Erik",
-      "Juan HG",
-      "Isra",
-      "Alejo",
-      "Felipe S",
-      "Pancho"
+      "Félix",
+      "Vicente",
+      "Ruben",
+      "Diego",
+      "Enrique"
     ],
     "negro": [
-      "Camilo",
-      "Riky",
-      "Jaime",
-      "José F",
+      "Maxi Vargas",
+      "Willians",
+      "José A",
+      "Francisco H",
+      "Juan R",
       "Carlos P",
-      "Marco",
-      "Seba Turra"
+      "Iván"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-3-1",
+    "rojo": "1-2-2-1",
     "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 47.1,
-    "negro": 47.3,
-    "diferencia": 0.2
+    "rojo": 50.4,
+    "negro": 50.0,
+    "diferencia": 0.4
   },
   "posiciones": {
     "rojo": [
-      [
-        "Pablo",
-        "GK",
-        4.0
-      ],
-      [
-        "Pancho",
-        "LCB",
-        6.5
-      ],
-      [
-        "Felipe S",
-        "RCB",
-        8.0
-      ],
-      [
-        "Isra",
-        "LM",
-        7.2
-      ],
-      [
-        "Erik",
-        "CM",
-        9.0
-      ],
-      [
-        "Alejo",
-        "RM",
-        7.2
-      ],
-      [
-        "Juan HG",
-        "CF",
-        5.2
-      ]
-    ],
-    "negro": [
       [
         "Camilo",
         "GK",
         6.1
       ],
       [
-        "Marco",
+        "Félix",
         "LCB",
-        7.0
+        4.6
       ],
       [
-        "Riky",
+        "Enrique",
+        "CB",
+        8.0
+      ],
+      [
+        "Ruben",
         "RCB",
-        8.6
+        6.6
+      ],
+      [
+        "Erik",
+        "LM",
+        8.8
+      ],
+      [
+        "Diego",
+        "RM",
+        7.8
+      ],
+      [
+        "Vicente",
+        "CF",
+        8.5
+      ]
+    ],
+    "negro": [
+      [
+        "Maxi Vargas",
+        "GK",
+        7.2
+      ],
+      [
+        "Willians",
+        "LCB",
+        8.2
+      ],
+      [
+        "José A",
+        "RCB",
+        8.0
+      ],
+      [
+        "Francisco H",
+        "LM",
+        8.2
       ],
       [
         "Carlos P",
-        "LM",
-        6.2
-      ],
-      [
-        "José F",
         "CM",
-        5.5
+        6.5
       ],
       [
-        "Jaime",
+        "Iván",
         "RM",
-        7.6
+        6.3
       ],
       [
-        "Seba Turra",
+        "Juan R",
         "CF",
-        6.3
+        5.6
       ]
     ]
   }

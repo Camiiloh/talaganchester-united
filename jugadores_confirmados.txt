@@ -1,4 +1,4 @@
-FECHA: 2026-03-17
+FECHA: 2026-03-19
 HORA: 22:00
 CANCHA: Cancha ?
 ---
@@ -6,14 +6,14 @@ CANCHA: Cancha ?
 Erik
 Camilo
 Carlos P
-Marco
-Pablo
-Riky
-Isra
-Jaime
-Pancho
-Felipe S
-Alejo
-José F
-Seba Turra
-Juan HG
+Willians
+Félix 
+Iván
+Enrique
+José A
+Maxi Vargas
+Diego
+Juan R
+Vicente 
+Ruben
+Francisco H
