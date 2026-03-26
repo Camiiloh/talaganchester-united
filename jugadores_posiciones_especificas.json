@@ -151,10 +151,10 @@
     },
     {
         "nombre":  "Camilo",
-        "posicion":  "CF, CM, GK",
+        "posicion":  "GK, CF",
         "puntaje":  5.8,
         "puntajes_posicion":  {
-                                  "GK":  6.1,
+                                  "GK":  7.1,
                                   "LCB":  5.0,
                                   "CB":  4.9,
                                   "RCB":  4.8,
@@ -226,7 +226,7 @@
     },
     {
         "nombre":  "Francisco H",
-        "posicion":  "GK, CM, LM, RM",
+        "posicion":  "CM, LM, RM",
         "puntaje":  8.2,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -285,7 +285,7 @@
                               }
     },
     {
-        "nombre":  "Isra",
+        "nombre":  "Izrock",
         "posicion":  "CM, RM, LM, CF",
         "puntaje":  7.67,
         "puntajes_posicion":  {
