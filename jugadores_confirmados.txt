@@ -1,6 +1,6 @@
 FECHA: 2026-04-16
 HORA: 22:00
-CANCHA: Cancha ?
+CANCHA: Cancha a
 ---
 
 Camilo
