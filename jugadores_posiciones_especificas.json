@@ -511,7 +511,7 @@
     },
     {
         "nombre":  "Fabián",
-        "posicion":  "GK, CM, LM, RM, CF",
+        "posicion":  "CM, LM, RM, CF",
         "puntaje":  8.22,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -526,7 +526,7 @@
     },
     {
         "nombre":  "Jaime",
-        "posicion":  "GK, CM, LM, RM, CF",
+        "posicion":  "CM, LM, RM, CF",
         "puntaje":  7.55,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -556,7 +556,7 @@
     },
     {
         "nombre":  "Félix",
-        "posicion":  "GK, LCB, RCB, CF, CB",
+        "posicion":  "LCB, RCB, CF, CB",
         "puntaje":  4.65,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -571,7 +571,7 @@
     },
     {
         "nombre":  "José A",
-        "posicion":  "GK, LCB, RCB, CB",
+        "posicion":  "LCB, RCB, CB",
         "puntaje":  8.0,
         "puntajes_posicion":  {
                                   "GK":  3.0,
@@ -586,7 +586,7 @@
     },
     {
         "nombre":  "Teo",
-        "posicion":  "GK, LCB, RCB, CM, CB",
+        "posicion":  "LCB, RCB, CM, CB",
         "puntaje":  7.05,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -601,7 +601,7 @@
     },
     {
         "nombre":  "Seba",
-        "posicion":  "GK, CM, LM, RM",
+        "posicion":  "CM, LM, RM",
         "puntaje":  8.6,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -616,7 +616,7 @@
     },
     {
         "nombre":  "Felipe S",
-        "posicion":  "GK, LCB, RCB, CB",
+        "posicion":  "LCB, RCB, CB",
         "puntaje":  8,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -631,7 +631,7 @@
     },
     {
         "nombre":  "Juan HG",
-        "posicion":  "GK, CF, LM, RM",
+        "posicion":  "CF, LM, RM",
         "puntaje":  5.6,
         "puntajes_posicion":  {
                                   "GK":  4.0,

@@ -1,19 +1,17 @@
-FECHA: 2026-03-19
+FECHA: 2026-04-16
 HORA: 22:00
 CANCHA: Cancha ?
 ---
 
 Camilo
-Maxi Vargas
-Iván
-Willians
-Félix
-Enrique
-Diego
-Pancho
-Vicente
-Ruben
-Izrock
+Willians 
+Carlos P
 Francisco H
-Alejo
 Pablo
+Enrique
+Pancho
+Juan R
+Marco
+Félix 
+Riky
+Fabián
