@@ -366,7 +366,7 @@ if __name__ == '__main__':
         except Exception as e:
             print(f"⚠️  Error en migración automática: {e}")
     
-    port = int(os.environ.get('PORT', 8080))
+    port = int(os.environ.get('PORT', 8081))
     
     print("🚀 SERVIDOR TODO-EN-UNO - TALAGANCHESTER UNITED")
     print("=" * 50)
