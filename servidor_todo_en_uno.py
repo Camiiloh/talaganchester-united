@@ -20,11 +20,16 @@ try:
     if os.environ.get('PORT'):  # Estamos en producción (Railway, Render, etc.)
         db_manager = DatabaseManager()
         print(f"🔧 Inicializado database_manager para producción")
+        print(f"   use_postgres: {db_manager.use_postgres}")
+        print(f"   database_url: {db_manager.database_url[:50] if db_manager.database_url else 'None'}...")
     else:
         from database_manager import db_manager
     DB_AVAILABLE = True
-except ImportError:
-    print("⚠️  database_manager no disponible, usando modo JSON")
+except ImportError as e:
+    print(f"⚠️  database_manager no disponible: {e}, usando modo JSON")
+    DB_AVAILABLE = False
+except Exception as e:
+    print(f"❌ Error inicializando database_manager: {e}")
     DB_AVAILABLE = False
 
 # Configurar logging
@@ -203,7 +208,7 @@ def debug_simple():
     """API: Debug simple de PostgreSQL - FIXED VERSION"""
     # Variables comunes de PostgreSQL en producción (Render, Railway, etc.)
     postgres_vars = [
-        'DATABASE_URL', 'POSTGRES_URL', 'DATABASE_PUBLIC_URL',
+        'DATABASE_PUBLIC_URL', 'POSTGRES_URL', 'DATABASE_PUBLIC_URL',
         'PGHOST', 'PGPORT', 'PGDATABASE', 'PGUSER', 'PGPASSWORD',
         'RAILWAY_DATABASE_URL', 'RAILWAY_POSTGRES_URL'
     ]
@@ -218,11 +223,13 @@ def debug_simple():
             found_vars[var] = False
     
     return jsonify({
-        'test': 'FIXED_VERSION_v3',
+        'test': 'FIXED_VERSION_v4',
         'postgres_vars': found_vars,
         'PORT': os.environ.get('PORT', 'not_set'),
+        'db_manager_available': DB_AVAILABLE,
         'db_manager_url': bool(db_manager.database_url) if DB_AVAILABLE else 'DB_NOT_AVAILABLE',
-        'db_use_postgres': db_manager.use_postgres if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
+        'db_use_postgres': db_manager.use_postgres if DB_AVAILABLE else 'DB_NOT_AVAILABLE',
+        'db_postgres_available': db_manager.POSTGRES_AVAILABLE if DB_AVAILABLE else 'DB_NOT_AVAILABLE'
     })
 
 @app.route('/api/version', methods=['GET'])

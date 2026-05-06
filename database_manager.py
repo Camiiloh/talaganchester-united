@@ -2,29 +2,48 @@
 # -*- coding: utf-8 -*-
 """
 Módulo de base de datos para manejar estadísticas de manera persistente
+Soporta PostgreSQL (Railway), SQLite y JSON como fallback
 """
 
 import os
 import json
 import sqlite3
 import datetime
+import sys
 
-# Intentar importar PostgreSQL
+# Intentar importar PostgreSQL - con mejor manejo de errores
 try:
     import psycopg2
     from psycopg2.extras import RealDictCursor
     POSTGRES_AVAILABLE = True
-except ImportError:
+    print("✅ psycopg2 importado correctamente", file=sys.stderr)
+except ImportError as e:
     POSTGRES_AVAILABLE = False
+    print(f"⚠️  psycopg2 no disponible: {e}", file=sys.stderr)
+except Exception as e:
+    POSTGRES_AVAILABLE = False
+    print(f"❌ Error importando psycopg2: {e}", file=sys.stderr)
 
 class DatabaseManager:
     def __init__(self):
-        # Buscar variables de PostgreSQL de Railway
-        self.database_url = (
-            os.environ.get('DATABASE_URL') or 
-            os.environ.get('DATABASE_PUBLIC_URL') or
-            os.environ.get('DATABASE_PRIVATE_URL')
-        )
+        # Buscar variables de PostgreSQL de Railway (múltiples nombres)
+        self.database_url = None
+        
+        # Orden de búsqueda: más específicas primero
+        postgres_vars = [
+            'DATABASE_PUBLIC_URL',
+            'DATABASE_URL',
+            'DATABASE_PRIVATE_URL',
+            'RAILWAY_DATABASE_URL',
+            'POSTGRES_URL'
+        ]
+        
+        for var_name in postgres_vars:
+            value = os.environ.get(var_name)
+            if value:
+                self.database_url = value
+                print(f"🔗 DATABASE_URL detectada desde {var_name}", file=sys.stderr)
+                break
         
         # También verificar si tenemos variables individuales de PostgreSQL
         if not self.database_url and os.environ.get('PGHOST'):
@@ -36,18 +55,27 @@ class DatabaseManager:
             
             if pgpassword:
                 self.database_url = f"postgresql://{pguser}:{pgpassword}@{pghost}:{pgport}/{pgdatabase}"
+                print(f"🔗 DATABASE_URL construida desde variables PGHOST", file=sys.stderr)
         
-        self.use_postgres = self.database_url is not None and POSTGRES_AVAILABLE
+        # Decidir qué usar
+        self.use_postgres = False
+        self.POSTGRES_AVAILABLE = POSTGRES_AVAILABLE  # Guardar como atributo
+        
+        if self.database_url:
+            if POSTGRES_AVAILABLE:
+                self.use_postgres = True
+                print(f"🐘 USANDO POSTGRESQL: {self.database_url[:50]}...", file=sys.stderr)
+            else:
+                print(f"⚠️  Tengo DATABASE_URL pero psycopg2 no está disponible, usando SQLite", file=sys.stderr)
+        
         self.sqlite_db = 'talaganchester.db'
         
+        # Inicializar la base de datos apropiada
         if self.use_postgres:
-            print(f"🐘 Usando PostgreSQL: {self.database_url[:50]}...")
             self._init_postgres()
-        elif os.path.exists(self.sqlite_db) or True:  # Always try SQLite for local
-            print("🗄️  Usando SQLite para testing local")
-            self._init_sqlite()
         else:
-            print("⚠️  Usando archivos JSON como fallback")
+            print("🗄️  USANDO SQLITE para persistencia", file=sys.stderr)
+            self._init_sqlite()
     
     def _init_sqlite(self):
         """Inicializa la base de datos SQLite"""
