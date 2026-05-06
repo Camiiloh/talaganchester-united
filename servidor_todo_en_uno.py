@@ -17,9 +17,9 @@ from pathlib import Path
 try:
     from database_manager import DatabaseManager
     # Crear instancia apropiada según el entorno
-    if os.environ.get('PORT'):  # Estamos en Railway
+    if os.environ.get('PORT'):  # Estamos en producción (Railway, Render, etc.)
         db_manager = DatabaseManager()
-        print(f"🔧 Inicializado database_manager para Railway")
+        print(f"🔧 Inicializado database_manager para producción")
     else:
         from database_manager import db_manager
     DB_AVAILABLE = True
@@ -169,7 +169,7 @@ def obtener_historial():
 
 @app.route('/api/historial-directo', methods=['GET'])
 def obtener_historial_directo():
-    """API: Obtiene historial directamente del JSON (para debug en Railway)"""
+    """API: Obtiene historial directamente del JSON (para debug en producción)"""
     try:
         if os.path.exists(HISTORIAL_FILE):
             with open(HISTORIAL_FILE, 'r', encoding='utf-8') as f:
@@ -183,7 +183,7 @@ def obtener_historial_directo():
 def ejecutar_migracion():
     """API: Ejecuta migración manual desde JSON a base de datos"""
     try:
-        # Verificar que estemos en producción (Railway tiene PORT)
+        # Verificar que estemos en producción (Render, Railway, etc. tienen PORT)
         if not os.environ.get('PORT'):
             return jsonify({'error': 'No disponible en desarrollo local'}), 400
             
@@ -201,7 +201,7 @@ def ejecutar_migracion():
 @app.route('/api/debug-simple', methods=['GET'])
 def debug_simple():
     """API: Debug simple de PostgreSQL - FIXED VERSION"""
-    # Variables comunes de Railway PostgreSQL
+    # Variables comunes de PostgreSQL en producción (Render, Railway, etc.)
     postgres_vars = [
         'DATABASE_URL', 'POSTGRES_URL', 'DATABASE_PUBLIC_URL',
         'PGHOST', 'PGPORT', 'PGDATABASE', 'PGUSER', 'PGPASSWORD',
@@ -357,7 +357,7 @@ def serve_static(filename):
         return "Archivo no encontrado", 404
 
 if __name__ == '__main__':
-    # Ejecutar migración automática en producción (Railway)
+    # Ejecutar migración automática en producción (Railway, Render, etc.)
     if os.environ.get('PORT'):
         print("🔄 Ejecutando migración automática de datos...")
         try:
