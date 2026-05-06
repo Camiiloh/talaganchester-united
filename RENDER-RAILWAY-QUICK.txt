@@ -1,0 +1,53 @@
+📋 CONFIGURACIÓN RENDER + RAILWAY - PASOS RÁPIDOS
+
+================================================================================
+1. ACCEDE A RENDER DASHBOARD
+   → https://dashboard.render.com
+   → Selecciona tu servicio
+
+2. ENVIRONMENT VARIABLES
+   Ve a: Environment → Environment Variables
+
+3. AGREGA VARIABLE 1
+   Name:  DATABASE_URL
+   Value: postgresql://postgres:bauAqztvgFAbwPtUZ6leIF6SvHrEogi@postgres.railway.internal:5432/railway
+   
+   ➕ Click ADD
+
+4. AGREGA VARIABLE 2
+   Name:  DATABASE_PUBLIC_URL
+   Value: postgresql://postgres:bauAqztvgFAbwPtUZ6leIF6SvHrEogi@magle.v.proxy.rlwy.net:19797/railway
+   
+   ➕ Click ADD
+
+5. GUARDA CAMBIOS
+   El servicio hará redeploy automáticamente ⏳
+
+6. ESPERA A QUE TERMINE (2-3 minutos)
+   Verifica el estado en "Deploy Status"
+
+7. VERIFICA LA CONEXIÓN
+   Abre en tu navegador:
+   https://tu-dominio-render.com/api/debug-env
+   
+   Deberías ver ✅ las variables configuradas
+
+8. PRUEBA EL HISTORIAL
+   https://tu-dominio-render.com/api/historial
+   
+   Deberías ver tus partidos guardados
+
+================================================================================
+
+💡 TIPS:
+
+✓ Si ves error "Connection refused" → Railway puede estar fuera de línea
+✓ Si ves error "timeout" → Aumenta el timeout en railway.app
+✓ Si ves error 502 Bad Gateway → Espera un poco, está deployando
+
+📍 ARCHIVOS DE REFERENCIA:
+
+   → configurar_render.md (guía completa)
+   → verificar_railway_render.py (script de verificación)
+
+================================================================================
