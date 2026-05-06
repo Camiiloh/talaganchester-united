@@ -1,0 +1,863 @@
+[
+  {
+    "id": 1773795601848,
+    "fecha": "2026-03-17",
+    "fecha_formato": "martes, 17 de marzo de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "rojo": [
+        "Pablo",
+        "Erik",
+        "Juan HG",
+        "Isra",
+        "Alejo",
+        "Felipe S",
+        "Pancho"
+      ],
+      "negro": [
+        "Camilo",
+        "Riky",
+        "Jaime",
+        "José F",
+        "Carlos P",
+        "Marco",
+        "Seba Turra"
+      ]
+    },
+    "resultado": {
+      "rojo": 13,
+      "negro": 6
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-03-19 16:57:36.504772",
+    "updated_at": "2026-03-19 16:57:53.562520"
+  },
+  {
+    "id": 1772758804127,
+    "fecha": "2026-03-05",
+    "fecha_formato": "jueves, 5 de marzo de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Willians",
+        "Pablo",
+        "Marco",
+        "Pancho",
+        "Vicente",
+        "Félix"
+      ],
+      "rojo": [
+        "Carlos P",
+        "Francisco H",
+        "Camilo",
+        "Ruben",
+        "Enrique",
+        "Iván",
+        "Juan R"
+      ]
+    },
+    "resultado": {
+      "negro": 13,
+      "rojo": 14
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-03-06 03:19:44.707434",
+    "updated_at": "2026-03-19 16:57:36.503995"
+  },
+  {
+    "id": 1769562006600,
+    "fecha": "2026-01-27",
+    "fecha_formato": "martes, 27 de enero de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Fabián",
+        "Sebastian",
+        "Carlos P",
+        "Willians",
+        "José F"
+      ],
+      "rojo": [
+        "Camilo",
+        "Miguelito",
+        "Ruben",
+        "Alonso F",
+        "Vicente",
+        "Juan R"
+      ]
+    },
+    "resultado": {
+      "negro": 9,
+      "rojo": 11
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-01-28 04:25:11.189162",
+    "updated_at": "2026-03-19 16:57:37.251680"
+  },
+  {
+    "id": 1769130006702,
+    "fecha": "2026-01-22",
+    "fecha_formato": "jueves, 22 de enero de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 1",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Willians",
+        "Félix",
+        "Marco",
+        "Vicente",
+        "Pancho",
+        "Ruben"
+      ],
+      "rojo": [
+        "Camilo",
+        "Enrique",
+        "Juan R",
+        "Felipe S",
+        "Pantera",
+        "Pablo",
+        "Francisco H"
+      ]
+    },
+    "resultado": {
+      "negro": 9,
+      "rojo": 14
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-01-27 15:41:09.868226",
+    "updated_at": "2026-03-19 16:57:37.990209"
+  },
+  {
+    "id": 1768525208759,
+    "fecha": "2026-01-15",
+    "fecha_formato": "jueves, 15 de enero de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Francisco H",
+        "Félix",
+        "Felipe S",
+        "Renato",
+        "Pantera",
+        "Sebastian"
+      ],
+      "rojo": [
+        "Carlos P",
+        "Willians",
+        "Pancho",
+        "Iván",
+        "José F",
+        "Alonso F",
+        "Marco"
+      ]
+    },
+    "resultado": {
+      "negro": 11,
+      "rojo": 7
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-01-16 02:26:18.657807",
+    "updated_at": "2026-03-19 16:57:38.758678"
+  },
+  {
+    "id": 1767920404940,
+    "fecha": "2026-01-08",
+    "fecha_formato": "jueves, 8 de enero de 2026",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "José A",
+        "Juan R",
+        "Marco",
+        "Francisco H",
+        "Alonso F",
+        "José F"
+      ],
+      "rojo": [
+        "Carlos P",
+        "Willians",
+        "Camilo",
+        "Pancho",
+        "Felipe S",
+        "Iván",
+        "Félix"
+      ]
+    },
+    "resultado": {
+      "negro": 13,
+      "rojo": 14
+    },
+    "mvp": "",
+    "asistencia": 0,
+    "created_at": "2026-01-09 12:12:51.112610",
+    "updated_at": "2026-03-19 16:57:39.488710"
+  },
+  {
+    "id": 1767142807366,
+    "fecha": "2025-12-30",
+    "fecha_formato": "martes, 30 de diciembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Gus",
+        "Marco",
+        "Juan HG",
+        "José F",
+        "Alonso F",
+        "Pancho",
+        "Pantera"
+      ],
+      "rojo": [
+        "Maxi Vargas",
+        "Vicente",
+        "Sebastian",
+        "Camilo",
+        "Ruben",
+        "Seba Turra",
+        "Félix"
+      ]
+    },
+    "resultado": {
+      "negro": 8,
+      "rojo": 11
+    },
+    "mvp": "",
+    "asistencia": null,
+    "created_at": "2026-01-06 21:41:07.588669",
+    "updated_at": "2026-03-19 16:57:40.210851"
+  },
+  {
+    "id": 1766538000720,
+    "fecha": "2025-12-23",
+    "fecha_formato": "martes, 23 de diciembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 1",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Pancho",
+        "Francisco",
+        "Felix",
+        "Ruben",
+        "Ivan",
+        "Marco",
+        "Arquero"
+      ],
+      "rojo": [
+        "Camilo",
+        "Willians",
+        "Juan HG",
+        "Pablo",
+        "Maxi",
+        "Sebastian",
+        "Renato"
+      ]
+    },
+    "resultado": {
+      "negro": 18,
+      "rojo": 5
+    },
+    "mvp": "",
+    "asistencia": null,
+    "created_at": "2025-12-30 18:23:33.431755",
+    "updated_at": "2026-03-19 16:57:40.978170"
+  },
+  {
+    "id": 1766106002434,
+    "fecha": "2025-12-18",
+    "fecha_formato": "jueves, 18 de diciembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 1",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Camilo",
+        "Javier V",
+        "José V",
+        "Francisco H",
+        "José F",
+        "Felipe S",
+        "Alonso F."
+      ],
+      "rojo": [
+        "Maxi",
+        "Enrique",
+        "Pablo",
+        "Diego",
+        "Fabian",
+        "Ivan",
+        "Felix"
+      ]
+    },
+    "resultado": {
+      "negro": 13,
+      "rojo": 7
+    },
+    "mvp": "",
+    "asistencia": null,
+    "created_at": "2025-12-30 18:27:58.026029",
+    "updated_at": "2026-03-19 16:57:41.743848"
+  },
+  {
+    "id": 1765501204469,
+    "fecha": "2025-12-11",
+    "fecha_formato": "jueves, 11 de diciembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Camilo",
+        "Luis",
+        "Marco",
+        "Felipe",
+        "Carlos",
+        "Francisco H",
+        "Pancho"
+      ],
+      "rojo": [
+        "Maxi",
+        "Willians",
+        "Pablo",
+        "Diego",
+        "José A",
+        "Iván",
+        "Félix"
+      ]
+    },
+    "resultado": {
+      "negro": 14,
+      "rojo": 9
+    },
+    "mvp": "",
+    "asistencia": null,
+    "created_at": "2025-12-30 18:30:02.662182",
+    "updated_at": "2026-03-19 16:57:42.481288"
+  },
+  {
+    "id": 1764896405729,
+    "fecha": "2025-12-04",
+    "fecha_formato": "jueves, 4 de diciembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Luis F",
+        "Willians",
+        "Juan HG",
+        "Felipe S",
+        "Enrique",
+        "Carlos P",
+        "J.Aguila"
+      ],
+      "rojo": [
+        "Camilo",
+        "Fabián",
+        "Francisco H",
+        "Diego",
+        "Marco",
+        "Juan R",
+        "Ruben"
+      ]
+    },
+    "resultado": {
+      "negro": 18,
+      "rojo": 13
+    },
+    "mvp": "Juan HG",
+    "asistencia": null,
+    "created_at": "2025-12-05 15:10:26.999817",
+    "updated_at": "2026-03-19 16:57:43.225276"
+  },
+  {
+    "id": 1764291600600,
+    "fecha": "2025-11-27",
+    "fecha_formato": "jueves, 27 de noviembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Pablo",
+        "Willians",
+        "Francisco H",
+        "José V",
+        "Javier V",
+        "Diego",
+        "Félix"
+      ],
+      "rojo": [
+        "Camilo",
+        "Fabián",
+        "Felipe S",
+        "Luis F",
+        "Pancho",
+        "Benja",
+        "Marco"
+      ]
+    },
+    "resultado": {
+      "negro": 10,
+      "rojo": 7
+    },
+    "mvp": "Francisco H / Willians",
+    "asistencia": null,
+    "created_at": "2025-11-28 05:10:28.426619",
+    "updated_at": "2026-03-19 16:57:43.988005"
+  },
+  {
+    "id": 1763078403336,
+    "fecha": "2025-11-13",
+    "fecha_formato": "jueves, 13 de noviembre de 2025",
+    "hora": "21:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Francisco H",
+        "Ruben",
+        "Juan R",
+        "Iván",
+        "Felipe"
+      ],
+      "rojo": [
+        "Luis F",
+        "Marco",
+        "Carlos P",
+        "Félix",
+        "Vicente",
+        "Pablo"
+      ]
+    },
+    "resultado": {
+      "negro": 12,
+      "rojo": 9
+    },
+    "mvp": "Iván",
+    "asistencia": null,
+    "created_at": "2025-11-14 01:46:55.607173",
+    "updated_at": "2026-03-19 16:57:44.720780"
+  },
+  {
+    "id": 1762477202121,
+    "fecha": "2025-11-06",
+    "fecha_formato": "jueves, 6 de noviembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Iván",
+        "Juan HG",
+        "Pancho",
+        "Francisco H",
+        "Rubén",
+        "Enrique",
+        "Maxi"
+      ],
+      "rojo": [
+        "Juan R",
+        "Vicente",
+        "Luis F",
+        "Felix",
+        "Pablo",
+        "Williams",
+        "Camilo"
+      ]
+    },
+    "resultado": {
+      "negro": 10,
+      "rojo": 14
+    },
+    "mvp": "Juan R",
+    "asistencia": 0,
+    "created_at": "2025-11-13 19:30:39.168690",
+    "updated_at": "2026-03-19 16:57:45.462802"
+  },
+  {
+    "id": 1761699606254,
+    "fecha": "2025-10-28",
+    "fecha_formato": "martes, 28 de octubre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Fabián",
+        "Iván",
+        "Pablo",
+        "Willians",
+        "Diego"
+      ],
+      "rojo": [
+        "Camilo",
+        "Riky",
+        "Marco",
+        "Francisco H",
+        "Carlos P",
+        "Enrique"
+      ]
+    },
+    "resultado": {
+      "negro": 14,
+      "rojo": 17
+    },
+    "mvp": "Carlos P.",
+    "asistencia": null,
+    "created_at": "2025-11-05 19:45:51.618194",
+    "updated_at": "2026-03-19 16:57:46.180707"
+  },
+  {
+    "id": 1761267607499,
+    "fecha": "2025-10-23",
+    "fecha_formato": "jueves, 23 de octubre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi Vargas",
+        "Willians",
+        "Carlos P",
+        "Turra",
+        "Félix",
+        "Pablo",
+        "Vicente"
+      ],
+      "rojo": [
+        "Camilo",
+        "Francisco H",
+        "Juan R",
+        "Pancho",
+        "Iván",
+        "Luisito",
+        "Ruben"
+      ]
+    },
+    "resultado": {
+      "negro": 5,
+      "rojo": 5
+    },
+    "mvp": "Vicente / Luisito",
+    "asistencia": null,
+    "created_at": "2025-10-24 04:51:28.428408",
+    "updated_at": "2026-03-19 16:57:46.914719"
+  },
+  {
+    "id": 1760875203737,
+    "fecha": "2025-10-19",
+    "fecha_formato": "domingo, 19 de octubre de 2025",
+    "hora": "09:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Camilo",
+        "Miguelito",
+        "Pablo",
+        "Luisito",
+        "Pancho",
+        "Marco",
+        "Sebastián"
+      ],
+      "rojo": [
+        "Maxi",
+        "Gustavo",
+        "José",
+        "Francisco H",
+        "Iván",
+        "Cristóbal"
+      ]
+    },
+    "resultado": {
+      "negro": 22,
+      "rojo": 17
+    },
+    "mvp": "Sebastián",
+    "asistencia": null,
+    "created_at": "2025-10-19 23:48:15",
+    "updated_at": "2026-03-19 16:57:47.658999"
+  },
+  {
+    "id": 1760662801316,
+    "fecha": "2025-10-16",
+    "fecha_formato": "jueves, 16 de octubre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi",
+        "Diego",
+        "Ruben",
+        "Turra",
+        "Francisco H",
+        "Pancho",
+        "Iván"
+      ],
+      "rojo": [
+        "Camilo",
+        "Luisito",
+        "Pablo",
+        "Marco",
+        "Vicente",
+        "José F",
+        "Willians"
+      ]
+    },
+    "resultado": {
+      "negro": 5,
+      "rojo": 17
+    },
+    "mvp": "José F / Pancho",
+    "asistencia": null,
+    "created_at": "2025-10-17 04:29:53.770847",
+    "updated_at": "2026-03-19 16:57:48.404407"
+  },
+  {
+    "id": 1760058008786,
+    "fecha": "2025-10-09",
+    "fecha_formato": "jueves, 9 de octubre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi",
+        "Jaime",
+        "Pancho",
+        "Marco",
+        "Carlos P",
+        "J.Águila",
+        "Vicente"
+      ],
+      "rojo": [
+        "Camilo",
+        "Pablo",
+        "Francisco H",
+        "Iván",
+        "Luisito",
+        "Willians",
+        "Ruben"
+      ]
+    },
+    "resultado": {
+      "negro": 8,
+      "rojo": 17
+    },
+    "mvp": "Rubén / Marco",
+    "asistencia": null,
+    "created_at": "2025-10-10 10:50:40.462510",
+    "updated_at": "2026-03-19 16:57:49.122087"
+  },
+  {
+    "id": 1759449606986,
+    "fecha": "2025-10-02",
+    "fecha_formato": "jueves, 2 de octubre de 2025",
+    "hora": "21:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Camilo",
+        "Pablo",
+        "Luisito",
+        "Francisco H",
+        "Félix",
+        "Pancho"
+      ],
+      "rojo": [
+        "Maxi",
+        "Turra",
+        "Willians",
+        "Juan R",
+        "Iván",
+        "Marco"
+      ]
+    },
+    "resultado": {
+      "negro": 8,
+      "rojo": 6
+    },
+    "mvp": "Maxi / Camilo",
+    "asistencia": null,
+    "created_at": "2025-10-03 13:39:17.702376",
+    "updated_at": "2026-03-19 16:57:49.872717"
+  },
+  {
+    "id": 1758848402255,
+    "fecha": "2025-09-25",
+    "fecha_formato": "jueves, 25 de septiembre de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 2",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Maxi",
+        "Marco",
+        "Pablo",
+        "Félix",
+        "Ruben",
+        "Francisco H"
+      ],
+      "rojo": [
+        "Gus",
+        "Juan HG",
+        "Pancho",
+        "Iván",
+        "Willians",
+        "Turra",
+        "Jaime"
+      ]
+    },
+    "resultado": {
+      "negro": 10,
+      "rojo": 16
+    },
+    "mvp": "Gus",
+    "asistencia": null,
+    "created_at": "2025-09-26 02:35:30.969749",
+    "updated_at": "2026-03-19 16:57:50.590830"
+  },
+  {
+    "id": 1756515607687,
+    "fecha": "2025-08-28",
+    "fecha_formato": "jueves, 28 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "Cancha 3",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Camilo",
+        "Francisco H",
+        "Luisito",
+        "Willians",
+        "Diego",
+        "Iván"
+      ],
+      "rojo": [
+        "Maxi",
+        "Juan HG",
+        "Seba",
+        "José Luis",
+        "Enrique",
+        "Teo"
+      ]
+    },
+    "resultado": {
+      "negro": 12,
+      "rojo": 8
+    },
+    "mvp": "Diego",
+    "asistencia": 12,
+    "created_at": "2025-08-29 17:37:29.602942",
+    "updated_at": "2026-03-19 16:57:51.312845"
+  },
+  {
+    "id": 1755131400000,
+    "fecha": "2025-08-12",
+    "fecha_formato": "martes, 12 de agosto de 2025",
+    "hora": "21:00",
+    "cancha": "1",
+    "jugadores_confirmados": [
+      "Maxi",
+      "Carlos P",
+      "Marco",
+      "Francisco H",
+      "Fabian",
+      "Diego",
+      "Nel",
+      "Turra",
+      "Camilo",
+      "Willians",
+      "Enrique",
+      "Jaime"
+    ],
+    "equipos": {
+      "negro": [
+        "Nel",
+        "Turra",
+        "Camilo",
+        "Willians",
+        "Enrique",
+        "Jaime"
+      ],
+      "rojo": [
+        "Maxi",
+        "Carlos P",
+        "Marco",
+        "Francisco H",
+        "Fabian",
+        "Diego"
+      ]
+    },
+    "resultado": {
+      "negro": 12,
+      "rojo": 15
+    },
+    "mvp": "Maxi",
+    "asistencia": 12,
+    "created_at": "2025-11-06 23:55:53.544896",
+    "updated_at": "2026-03-19 16:57:52.098852"
+  },
+  {
+    "id": 1755050402386,
+    "fecha": "2025-08-12",
+    "fecha_formato": "martes, 12 de agosto de 2025",
+    "hora": "22:00",
+    "cancha": "Cancha 1",
+    "jugadores_confirmados": [],
+    "equipos": {
+      "negro": [
+        "Nel",
+        "Turra",
+        "Enrique",
+        "Willians",
+        "Camilo",
+        "Jaime"
+      ],
+      "rojo": [
+        "Maxi",
+        "Marco",
+        "Francisco",
+        "Fabián",
+        "Diego",
+        "Carlos P"
+      ]
+    },
+    "resultado": {
+      "negro": 12,
+      "rojo": 15
+    },
+    "mvp": "Maxi",
+    "asistencia": 12,
+    "created_at": "2025-08-14 18:36:03.123434",
+    "updated_at": "2026-03-19 16:57:52.837871"
+  }
+]
