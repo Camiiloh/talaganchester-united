@@ -241,7 +241,7 @@
     },
     {
         "nombre":  "José V",
-        "posicion":  "GK, LCB, RCB, CB",
+        "posicion":  "LCB, RCB, CB",
         "puntaje":  8.23,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -301,7 +301,7 @@
     },
     {
         "nombre":  "Diego",
-        "posicion":  "GK, CM, RM, CF",
+        "posicion":  "CM, RM, CF",
         "puntaje":  7.67,
         "puntajes_posicion":  {
                                   "GK":  4.0,

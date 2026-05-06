@@ -1,17 +1,17 @@
-FECHA: 2026-04-16
+FECHA: 2026-05-07
 HORA: 22:00
-CANCHA: Cancha a
+CANCHA: Cancha
 ---
 
-Camilo
-Willians 
+Maxi Vargas
+Diego 
+Félix
+Willians
 Carlos P
-Francisco H
-Pablo
-Enrique
+José V
 Pancho
+Iván
 Juan R
 Marco
-Félix 
-Riky
-Fabián
+Francisco H
+Pablo
