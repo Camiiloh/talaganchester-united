@@ -104,6 +104,21 @@
                                   "CF":  5.0
                               }
     },
+        {
+        "nombre":  "Felipe Sepúlveda",
+        "posicion":  "RM, LM, CF",
+        "puntaje":  6.1,
+        "puntajes_posicion":  {
+                                  "GK":  6.2,
+                                  "LCB":  5.0,
+                                  "CB":  4.4,
+                                  "RCB":  4.8,
+                                  "LM":  5.2,
+                                  "CM":  5.5,
+                                  "RM":  5.1,
+                                  "CF":  5.0
+                              }
+    },
     {
         "nombre":  "Gus",
         "posicion":  "GK",
@@ -196,22 +211,22 @@
     },
     {
         "nombre":  "Alonso F",
-        "posicion":  "GK, CF, RCB",
+        "posicion":  "CF, RCB",
         "puntaje":  4.6,
         "puntajes_posicion":  {
                                   "GK":  4.0,
-                                  "LCB":  4.5,
-                                  "CB":  4.3,
-                                  "RCB":  4.8,
-                                  "LM":  4.3,
-                                  "CM":  3.2,
-                                  "RM":  4.4,
+                                  "LCB":  5.0,
+                                  "CB":  4.8,
+                                  "RCB":  5.2,
+                                  "LM":  5.3,
+                                  "CM":  4.2,
+                                  "RM":  5.4,
                                   "CF":  4.6
                               }
     },
     {
         "nombre":  "Pancho",
-        "posicion":  "GK, LM, CF, CB, LCB",
+        "posicion":  "LM, CF, CB, LCB",
         "puntaje":  5.9,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -436,7 +451,7 @@
     },
     {
         "nombre":  "Vicente",
-        "posicion":  "GK, CM, LM, RM, CF",
+        "posicion":  "CM, LM, RM, CF",
         "puntaje":  7.95,
         "puntajes_posicion":  {
                                   "GK":  4.0,

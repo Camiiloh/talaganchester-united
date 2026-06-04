@@ -573,8 +573,15 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
     
     print(f"\n👑 Mejores jugadores (deben estar separados):")
     print(f"   1️⃣  {mejor_jugador['nombre']} (Puntaje: {mejor_jugador['puntaje']})")
-    print(f"   2️⃣  {segundo_mejor_jugador['nombre']} (Puntaje: {segundo_mejor_jugador['puntaje']})")
-    print(f"   Se garantizará que queden en equipos DIFERENTES\n")
+    # 🆕 DECIDIR ALEATORIAMENTE QUÉ CAPITÁN VA A QUÉ EQUIPO EN ESTE SORTEO
+    capitanes_aleatorios = [mejor_jugador, segundo_mejor_jugador]
+    random.shuffle(capitanes_aleatorios)
+    capitan_equipo1 = capitanes_aleatorios[0]
+    capitan_equipo2 = capitanes_aleatorios[1]
+    
+    print(f"   🎲 Asignación para este sorteo:")
+    print(f"      Equipo 1 (Rojo):  {capitan_equipo1['nombre']}")
+    print(f"      Equipo 2 (Negro): {capitan_equipo2['nombre']}\n")
     
     # Identificar mejores arqueros que PUEDEN jugar en GK
     arqueros_validos = [j for j in jugadores if puede_jugar_posicion(j, 'GK', permitir_fuera_posicion)]
@@ -594,9 +601,9 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
     
     for intento in range(num_intentos):
         # 🆕 GARANTIZAR SEPARACIÓN DE MEJORES JUGADORES
-        # Asignar mejor_jugador al equipo 1 y segundo_mejor_jugador al equipo 2
-        equipo1_temp = [mejor_jugador]
-        equipo2_temp = [segundo_mejor_jugador]
+        # Asignar los capitanes de forma aleatoria (pero consistentes en este sorteo)
+        equipo1_temp = [capitan_equipo1]
+        equipo2_temp = [capitan_equipo2]
         
         # Obtener los otros jugadores (sin los 2 mejores)
         otros_jugadores = [j for j in jugadores if j not in [mejor_jugador, segundo_mejor_jugador]]
@@ -613,11 +620,11 @@ def sorteo_con_posiciones_especificas(jugadores, num_intentos=10000, jugadores_p
         arquero1 = None
         arquero2 = None
         
-        # Si el mejor o segundo mejor jugador puede jugar en GK, usarlos
-        if puede_jugar_posicion(mejor_jugador, 'GK', permitir_fuera_posicion) and mejor_jugador in equipo1_temp:
-            arquero1 = mejor_jugador
-        elif puede_jugar_posicion(segundo_mejor_jugador, 'GK', permitir_fuera_posicion) and segundo_mejor_jugador in equipo2_temp:
-            arquero2 = segundo_mejor_jugador
+        # Si el capitán del equipo correspondiente puede jugar en GK, usarlo
+        if puede_jugar_posicion(capitan_equipo1, 'GK', permitir_fuera_posicion):
+            arquero1 = capitan_equipo1
+        if arquero2 is None and puede_jugar_posicion(capitan_equipo2, 'GK', permitir_fuera_posicion):
+            arquero2 = capitan_equipo2
         
         # Buscar arqueros para equipos que los necesitan
         for jugador in mejores_arqueros:
