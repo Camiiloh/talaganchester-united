@@ -1,101 +1,112 @@
 {
-  "fecha": "2026-06-04",
+  "fecha": "2026-07-09",
   "hora": "22:00",
   "cancha": "Cancha",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Camilo",
-    "Willians",
-    "Felipe Sepúlveda",
+    "Nel",
+    "Francisco H",
     "Félix",
-    "Pancho",
-    "Vicente"
+    "Camilo",
+    "Marco",
+    "Benito",
+    "Iván"
   ],
   "negro": [
     "Maxi Vargas",
-    "Seba",
+    "Felipe S",
+    "Felipe Sepúlveda",
+    "Diego",
     "Pablo",
-    "Juan HG",
-    "José F",
-    "Ruben"
+    "Jano",
+    "Juan R"
   ],
-  "promedio_rojo": 6.62,
-  "promedio_negro": 6.6,
+  "promedio_rojo": 6.7,
+  "promedio_negro": 6.71,
   "diferencia": 0.1,
   "rojo_posiciones": {
-    "Camilo": "Arquero",
-    "Willians": "Defensa-Izq",
-    "Félix": "Defensa-Der",
-    "Pancho": "Mediocampo-Izq",
-    "Felipe Sepúlveda": "Mediocampo-Der",
-    "Vicente": "Delantero-Centro"
+    "Nel": "Arquero",
+    "Marco": "Defensa-Izq",
+    "Benito": "Defensa-Der",
+    "Francisco H": "Mediocampo-Izq",
+    "Camilo": "Mediocampo-Centro",
+    "Iván": "Mediocampo-Der",
+    "Félix": "Delantero-Centro"
   },
   "negro_posiciones": {
     "Maxi Vargas": "Arquero",
-    "Ruben": "Defensa-Centro",
-    "Seba": "Mediocampo-Izq",
-    "José F": "Mediocampo-Centro",
-    "Juan HG": "Mediocampo-Der",
-    "Pablo": "Delantero-Centro"
+    "Felipe S": "Defensa-Izq",
+    "Jano": "Defensa-Der",
+    "Felipe Sepúlveda": "Mediocampo-Izq",
+    "Pablo": "Mediocampo-Centro",
+    "Juan R": "Mediocampo-Der",
+    "Diego": "Delantero-Centro"
   },
   "equipos": {
     "rojo": [
-      "Camilo",
-      "Willians",
-      "Felipe Sepúlveda",
+      "Nel",
+      "Francisco H",
       "Félix",
-      "Pancho",
-      "Vicente"
+      "Camilo",
+      "Marco",
+      "Benito",
+      "Iván"
     ],
     "negro": [
       "Maxi Vargas",
-      "Seba",
+      "Felipe S",
+      "Felipe Sepúlveda",
+      "Diego",
       "Pablo",
-      "Juan HG",
-      "José F",
-      "Ruben"
+      "Jano",
+      "Juan R"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-2-1",
-    "negro": "1-0-3-1"
+    "rojo": "1-2-3-1",
+    "negro": "1-2-3-1"
   },
   "puntajes": {
-    "rojo": 39.7,
-    "negro": 39.6,
+    "rojo": 46.9,
+    "negro": 47.0,
     "diferencia": 0.1
   },
   "posiciones": {
     "rojo": [
       [
-        "Camilo",
+        "Nel",
         "GK",
-        7.1
+        7.8
       ],
       [
-        "Willians",
+        "Marco",
         "LCB",
+        7.0
+      ],
+      [
+        "Benito",
+        "RCB",
+        7.0
+      ],
+      [
+        "Francisco H",
+        "LM",
         8.2
       ],
       [
-        "Félix",
-        "RCB",
-        4.6
+        "Camilo",
+        "CM",
+        5.8
       ],
       [
-        "Pancho",
-        "LM",
-        6.2
-      ],
-      [
-        "Felipe Sepúlveda",
+        "Iván",
         "RM",
-        5.1
+        6.3
       ],
       [
-        "Vicente",
+        "Félix",
         "CF",
-        8.5
+        4.8
       ]
     ],
     "negro": [
@@ -105,29 +116,34 @@
         7.2
       ],
       [
-        "Ruben",
-        "CB",
-        6.5
+        "Felipe S",
+        "LCB",
+        8.0
       ],
       [
-        "Seba",
+        "Jano",
+        "RCB",
+        7.0
+      ],
+      [
+        "Felipe Sepúlveda",
         "LM",
-        8.8
-      ],
-      [
-        "José F",
-        "CM",
-        5.5
-      ],
-      [
-        "Juan HG",
-        "RM",
-        5.8
+        5.2
       ],
       [
         "Pablo",
+        "CM",
+        6.0
+      ],
+      [
+        "Juan R",
+        "RM",
+        5.6
+      ],
+      [
+        "Diego",
         "CF",
-        5.8
+        8.0
       ]
     ]
   }

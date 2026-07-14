@@ -1,18 +1,19 @@
-FECHA: 2026-06-04
+FECHA: 2026-07-09
 HORA: 22:00
 CANCHA: Cancha
 ---
 
-Maxi vargas
-
 Camilo
-Juan HG
-Pancho
+Diego
 Félix
-Seba
-Vicente
-Ruben
+Iván
 Felipe Sepúlveda
-José F
+Maxi Vargas
+Francisco H
+Felipe S
+Jano
 Pablo
-Willians
+Nel
+Marco
+Benito
+Juan R
