@@ -645,6 +645,36 @@
                               }
     },
     {
+        "nombre":  "Simón",
+        "posicion":  "CF",
+        "puntaje":  7.05,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  7.0,
+                                  "RCB":  7.0,
+                                  "LM":  7.2,
+                                  "CM":  7.2,
+                                  "RM":  7.5,
+                                  "CF":  7.6,
+                                  "CB":  7.0
+                              }
+    },
+    {
+        "nombre":  "Matías",
+        "posicion":  "CF",
+        "puntaje":  7.05,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  7.0,
+                                  "RCB":  7.0,
+                                  "LM":  7.2,
+                                  "CM":  7.2,
+                                  "RM":  7.5,
+                                  "CF":  7.0,
+                                  "CB":  7.0
+                              }
+    },
+    {
         "nombre":  "Seba",
         "posicion":  "CM, LM, RM",
         "puntaje":  8.6,
