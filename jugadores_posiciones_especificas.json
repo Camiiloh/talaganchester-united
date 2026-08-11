@@ -2,16 +2,16 @@
     {
         "nombre":  "Erik",
         "posicion":  "CM, LM, RM",
-        "puntaje":  8.8,
+        "puntaje":  8.5,
         "puntajes_posicion":  {
                                   "GK":  4.0,
                                   "LCB":  8.5,
                                   "CB":  8.4,
                                   "RCB":  8.3,
-                                  "LM":  8.8,
-                                  "CM":  9.0,
-                                  "RM":  8.6,
-                                  "CF":  8.8
+                                  "LM":  8.5,
+                                  "CM":  8.0,
+                                  "RM":  8.5,
+                                  "CF":  8.5
                               }
     },
     {
@@ -242,15 +242,15 @@
     {
         "nombre":  "Francisco H",
         "posicion":  "LCB, RCB, CM, LM, RM",
-        "puntaje":  8.2,
+        "puntaje":  8.6,
         "puntajes_posicion":  {
                                   "GK":  4.0,
                                   "LCB":  7.8,
                                   "CB":  5.9,
                                   "RCB":  7.8,
-                                  "LM":  8.2,
-                                  "CM":  7.8,
-                                  "RM":  8.2,
+                                  "LM":  8.6,
+                                  "CM":  8.5,
+                                  "RM":  8.6,
                                   "CF":  8.2
                               }
     },
@@ -361,7 +361,7 @@
     },
     {
         "nombre":  "Jano",
-        "posicion":  "LCB, RCB, CB",
+        "posicion":  "LCB, RCB, CB, LM, RM",
         "puntaje":  7.0,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -371,6 +371,20 @@
                                   "LM":  6.0,
                                   "CM":  6.0,
                                   "RM":  5.8,
+                                  "CF":  6.0
+                              }
+    },{
+        "nombre":  "Nacho",
+        "posicion":  "LM, RM",
+        "puntaje":  7.0,
+        "puntajes_posicion":  {
+                                  "GK":  4.0,
+                                  "LCB":  7.0,
+                                  "CB":  7.0,
+                                  "RCB":  7.0,
+                                  "LM":  6.5,
+                                  "CM":  6.0,
+                                  "RM":  6.5,
                                   "CF":  6.0
                               }
     },
