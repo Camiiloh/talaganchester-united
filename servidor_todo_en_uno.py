@@ -41,6 +41,21 @@ CORS(app)
 
 # Archivos de datos
 HISTORIAL_FILE = 'historial_partidos.json'
+EVALUACIONES_FILE = 'evaluaciones_posiciones.json'
+
+def cargar_evaluaciones():
+    if not os.path.exists(EVALUACIONES_FILE):
+        return {}
+    try:
+        with open(EVALUACIONES_FILE, 'r', encoding='utf-8') as f:
+            datos = json.load(f)
+        return datos if isinstance(datos, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+def guardar_evaluaciones(evaluaciones):
+    with open(EVALUACIONES_FILE, 'w', encoding='utf-8') as f:
+        json.dump(evaluaciones, f, ensure_ascii=False, indent=2)
 
 def cargar_historial():
     """Carga el historial de partidos"""
@@ -98,6 +113,23 @@ def guardar_partido(partido):
     return guardar_historial(historial)
 
 # ===== API ENDPOINTS =====
+
+@app.route('/api/evaluaciones', methods=['GET'])
+def obtener_evaluaciones():
+    """API: Obtiene las evaluaciones agrupadas por votante."""
+    return jsonify(cargar_evaluaciones())
+
+@app.route('/api/evaluaciones', methods=['POST'])
+def guardar_evaluaciones_api():
+    """API: Guarda las evaluaciones agrupadas por votante."""
+    datos = request.get_json(silent=True)
+    if not isinstance(datos, dict):
+        return jsonify({'error': 'Formato de evaluaciones inválido'}), 400
+    try:
+        guardar_evaluaciones(datos)
+        return jsonify({'success': True})
+    except OSError as error:
+        return jsonify({'error': str(error)}), 500
 
 @app.route('/api/guardar-resultado', methods=['POST'])
 def guardar_resultado():

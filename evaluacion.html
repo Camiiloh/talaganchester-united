@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación TU</title>
+  <link rel="stylesheet" href="evaluacion.css">
+</head>
+<body>
+  <section id="login-screen" class="login-screen">
+    <form id="login-form" class="login-card">
+      <p class="eyebrow">Talaganchester United</p>
+      <h1>Evaluación TU</h1>
+      <p>Ingresa con tu usuario de jugador para evaluar a tus compañeros.</p>
+      <label for="login-user">Usuario</label>
+      <select id="login-user" required></select>
+      <label for="login-password">Contraseña</label>
+      <input id="login-password" type="password" placeholder="Tu contraseña" required>
+      <small>Cada jugador tiene una contraseña independiente.</small>
+      <button class="primary-button" type="submit">Ingresar</button>
+      <div id="login-error" class="login-error" role="alert"></div>
+    </form>
+  </section>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">⚽</span> Evaluación TU</a>
+    <nav class="topnav" aria-label="Secciones">
+      <button class="nav-tab active" data-view="evaluate">Evaluación</button>
+      <button class="nav-tab" data-view="players">Jugadores</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Talaganchester United</p>
+        <h1 id="page-title">Evaluación de compañeros</h1>
+        <p id="page-description">Califica a cada compañero solo en las posiciones que juega.</p>
+      </div>
+      <button id="save-button" class="primary-button">Guardar puntuaciones</button>
+    </section>
+
+    <section id="identity-panel" class="identity-panel" hidden>
+      <h2>¿Quién eres?</h2>
+      <p>Elige tu nombre para que tus evaluaciones queden registradas a tu nombre.</p>
+      <label for="evaluator-select">Tu jugador</label>
+      <select id="evaluator-select"></select>
+    </section>
+
+    <section id="summary" class="summary-grid" aria-label="Resumen"></section>
+
+    <section id="evaluate-view" class="content-grid">
+      <div>
+        <div class="view-toolbar">
+          <p id="evaluating-label"></p>
+          <button id="change-evaluator" class="text-button">Cambiar</button>
+        </div>
+        <div id="evaluation-list" class="evaluation-list"></div>
+      </div>
+      <aside class="side-column">
+        <div class="info-panel">
+          <h2>Criterio de puntaje <span>(1-10)</span></h2>
+          <p><strong>9.0-10.0</strong>: desequilibrante, nivel superior.</p>
+          <p><strong>7.5-8.9</strong>: muy sólido, marca diferencia.</p>
+          <p><strong>5.5-7.4</strong>: cumplidor, conoce lo básico.</p>
+          <p><strong>1.0-5.4</strong>: puesto secundario o improvisado.</p>
+        </div>
+        <div class="info-panel">
+          <h2>Glosario de posiciones</h2>
+          <p><strong>GK</strong>: Arquero</p><p><strong>LCB</strong>: Central izq.</p>
+          <p><strong>CB</strong>: Central</p><p><strong>RCB</strong>: Central der.</p>
+          <p><strong>LM</strong>: Volante izq.</p><p><strong>CM</strong>: Volante central</p>
+          <p><strong>RM</strong>: Volante der.</p><p><strong>CF</strong>: Delantero</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="players-view" hidden>
+      <div class="players-toolbar">
+        <div class="filters" role="tablist" aria-label="Filtrar jugadores">
+          <button class="filter active" data-filter="all">Todos</button>
+          <button class="filter" data-filter="GK">Arqueros</button>
+          <button class="filter" data-filter="defense">Defensas</button>
+          <button class="filter" data-filter="midfield">Volantes</button>
+          <button class="filter" data-filter="attack">Delanteros</button>
+        </div>
+        <input id="search-input" type="search" placeholder="Buscar jugador..." aria-label="Buscar jugador">
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Jugador</th><th>Posiciones</th><th>Global</th><th>GK</th><th>LCB</th><th>CB</th><th>RCB</th><th>LM</th><th>CM</th><th>RM</th><th>CF</th><th>Mejor</th><th>Evals</th></tr></thead><tbody id="players-table"></tbody></table></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="evaluacion.js?v=6"></script>
+</body>
+</html>
