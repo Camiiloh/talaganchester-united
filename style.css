@@ -357,7 +357,7 @@ header p {
 
 .team-player .player-name {
   font-weight: 600;
-  color: var(--text-color);
+  color: #334155;
   flex-grow: 1;
   min-width: 120px;
 }
