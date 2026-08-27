@@ -1,19 +1,19 @@
-FECHA: 2026-08-11
+FECHA: 2026-08-27
 HORA: 22:00
 CANCHA: Cancha
 ---
 
-Camilo
-Maxi Vargas 
-Erik
-Felipe S
-Willians 
-Félix 
-Ruben
-Riky
-Benito 
+Camilo 
+Maxi Vargas
 Francisco H
+Félix
+Willians
 Jano
-Nacho
+Ruben
 Felipe Sepúlveda
+Mati
+Iván
+Felipe S
+Pablo
+Benito
 Pancho

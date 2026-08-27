@@ -674,8 +674,8 @@
                               }
     },
     {
-        "nombre":  "Matías",
-        "posicion":  "CF",
+        "nombre":  "Mati",
+        "posicion":  "LM, RM",
         "puntaje":  7.05,
         "puntajes_posicion":  {
                                   "GK":  4.0,
@@ -706,7 +706,7 @@
     {
         "nombre":  "Felipe S",
         "posicion":  "LCB, RCB, CB",
-        "puntaje":  8,
+        "puntaje":  8.3,
         "puntajes_posicion":  {
                                   "GK":  4.0,
                                   "LCB":  8.0,

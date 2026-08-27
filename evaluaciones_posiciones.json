@@ -2,7 +2,214 @@
   "Camilo": {
     "erik": {}
   },
+  "Francisco H": {
+    "alonso-f": {
+      "CF": 6,
+      "LM": 6,
+      "RM": 6
+    },
+    "benito": {
+      "CB": 8,
+      "LCB": 8,
+      "RCB": 8
+    },
+    "camilo": {
+      "CF": 5,
+      "CM": 4,
+      "GK": 6
+    },
+    "carlos-p": {
+      "CB": 5,
+      "CM": 7,
+      "GK": 6,
+      "LCB": 8,
+      "LM": 6,
+      "RCB": 4
+    },
+    "enrique": {
+      "CB": 8,
+      "LCB": 8,
+      "RCB": 8
+    },
+    "erik": {
+      "CM": 8,
+      "LM": 7,
+      "RM": 7
+    },
+    "fabian": {
+      "CF": 8,
+      "CM": 7,
+      "LM": 7,
+      "RM": 8
+    },
+    "felipe-s": {
+      "CB": 7,
+      "LCB": 6,
+      "RCB": 6
+    },
+    "felipe-sepulveda": {
+      "CF": 5,
+      "CM": 6.4,
+      "LM": 6,
+      "RM": 4.3
+    },
+    "felix": {
+      "CB": 6,
+      "CF": 6,
+      "LCB": 6,
+      "RCB": 6
+    },
+    "ivan": {
+      "CM": 6,
+      "LM": 6,
+      "RM": 4
+    },
+    "izrock": {
+      "CF": 7,
+      "CM": 6,
+      "LM": 4,
+      "RM": 5
+    },
+    "jaime": {
+      "CF": 7,
+      "CM": 7,
+      "LM": 7,
+      "RM": 7
+    },
+    "jano": {
+      "CB": 4,
+      "LCB": 6,
+      "LM": 6,
+      "RCB": 5,
+      "RM": 5
+    },
+    "jose-a": {
+      "CB": 7,
+      "LCB": 7,
+      "RCB": 7
+    },
+    "jose-f": {
+      "CM": 6,
+      "GK": 6,
+      "RM": 6
+    },
+    "juan-hg": {
+      "CF": 4,
+      "LM": 4,
+      "RM": 5
+    },
+    "juan-r": {
+      "CF": 6,
+      "CM": 6,
+      "LM": 6,
+      "RM": 6
+    },
+    "luis-f": {
+      "CB": 8,
+      "GK": 7,
+      "LCB": 6,
+      "RCB": 6
+    },
+    "marco": {
+      "CB": 4,
+      "LCB": 7,
+      "RCB": 8
+    },
+    "maxi-vargas": {
+      "CF": 5.1,
+      "GK": 7.1
+    },
+    "nacho": {
+      "LM": 6,
+      "RM": 7
+    },
+    "nel": {
+      "CB": 8,
+      "GK": 8,
+      "LCB": 7,
+      "RCB": 7
+    },
+    "pablo": {
+      "CF": 6.1,
+      "CM": 6
+    },
+    "pancho": {
+      "CB": 8,
+      "CF": 5,
+      "LCB": 5,
+      "LM": 4
+    },
+    "pantera": {
+      "CF": 6
+    },
+    "riky": {
+      "CB": 9,
+      "CF": 8,
+      "LCB": 6,
+      "RCB": 6
+    },
+    "ruben": {
+      "CB": 7,
+      "CF": 6,
+      "LCB": 6,
+      "RCB": 7
+    },
+    "seba": {
+      "CM": 8,
+      "LM": 8,
+      "RM": 8
+    },
+    "seba-turra": {
+      "CF": 5,
+      "CM": 6,
+      "LM": 6,
+      "RM": 6
+    },
+    "vicente": {
+      "CF": 8,
+      "CM": 6,
+      "LM": 8,
+      "RM": 7
+    },
+    "willians": {
+      "CB": 8,
+      "CM": 8,
+      "LCB": 7,
+      "RCB": 7
+    }
+  },
   "Pablo": {
     "erik": {}
+  },
+  "Pancho": {
+    "erik": {
+      "CM": 4,
+      "LM": 5,
+      "RM": 6
+    },
+    "pablo": {
+      "CM": 4,
+      "CF": 4
+    },
+    "maxi-vargas": {
+      "GK": 2,
+      "CF": 2
+    },
+    "felipe-sepulveda": {
+      "RM": 5.5,
+      "CM": 7.5,
+      "LM": 6.2,
+      "CF": 4.2
+    },
+    "ivan": {
+      "RM": 5,
+      "LM": 5.2,
+      "CM": 4.8
+    },
+    "marco": {
+      "LCB": 8.5,
+      "RCB": 8,
+      "CB": 5.1
+    }
   }
 }

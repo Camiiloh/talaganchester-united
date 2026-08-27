@@ -1,139 +1,97 @@
 {
-  "fecha": "2026-08-11",
+  "fecha": "2026-08-27",
   "hora": "22:00",
   "cancha": "Cancha",
   "metodo": "Posiciones Específicas (7 posiciones)",
   "rojo": [
-    "Camilo",
-    "Francisco H",
-    "Willians",
     "Felipe S",
+    "Iván",
+    "Willians",
+    "Pablo",
     "Pancho",
-    "Félix",
-    "Benito"
+    "Camilo",
+    "Felipe Sepúlveda"
   ],
   "negro": [
-    "Maxi Vargas",
-    "Erik",
+    "Francisco H",
     "Jano",
+    "Maxi Vargas",
+    "Mati",
+    "Félix",
     "Ruben",
-    "Nacho",
-    "Felipe Sepúlveda",
-    "Riky"
+    "Benito"
   ],
-  "promedio_rojo": 7.13,
-  "promedio_negro": 7.13,
-  "diferencia": 0.0,
+  "promedio_rojo": 5.94,
+  "promedio_negro": 5.9,
+  "diferencia": 0.3,
   "rojo_posiciones": {
-    "Camilo": "Arquero",
-    "Willians": "Defensa-Izq",
-    "Felipe S": "Defensa-Centro",
-    "Benito": "Defensa-Der",
-    "Pancho": "Mediocampo-Izq",
-    "Francisco H": "Mediocampo-Der",
-    "Félix": "Delantero-Centro"
+    "Felipe S": "Arquero",
+    "Pancho": "Defensa-Izq",
+    "Willians": "Defensa-Der",
+    "Pablo": "Mediocampo-Izq",
+    "Felipe Sepúlveda": "Mediocampo-Centro",
+    "Iván": "Mediocampo-Der",
+    "Camilo": "Delantero-Centro"
   },
   "negro_posiciones": {
-    "Maxi Vargas": "Arquero",
+    "Francisco H": "Arquero",
     "Jano": "Defensa-Izq",
-    "Riky": "Defensa-Centro",
+    "Benito": "Defensa-Centro",
     "Ruben": "Defensa-Der",
-    "Erik": "Mediocampo-Izq",
-    "Felipe Sepúlveda": "Mediocampo-Centro",
-    "Nacho": "Mediocampo-Der"
+    "Félix": "Mediocampo-Izq",
+    "Mati": "Mediocampo-Der",
+    "Maxi Vargas": "Delantero-Centro"
   },
   "equipos": {
     "rojo": [
-      "Camilo",
-      "Francisco H",
-      "Willians",
       "Felipe S",
+      "Iván",
+      "Willians",
+      "Pablo",
       "Pancho",
-      "Félix",
-      "Benito"
+      "Camilo",
+      "Felipe Sepúlveda"
     ],
     "negro": [
-      "Maxi Vargas",
-      "Erik",
+      "Francisco H",
       "Jano",
+      "Maxi Vargas",
+      "Mati",
+      "Félix",
       "Ruben",
-      "Nacho",
-      "Felipe Sepúlveda",
-      "Riky"
+      "Benito"
     ]
   },
   "formaciones": {
-    "rojo": "1-2-2-1",
-    "negro": "1-2-3-0"
+    "rojo": "1-2-3-1",
+    "negro": "1-2-2-1"
   },
   "puntajes": {
-    "rojo": 49.9,
-    "negro": 49.9,
-    "diferencia": 0.0
+    "rojo": 41.6,
+    "negro": 41.3,
+    "diferencia": 0.3
   },
   "posiciones": {
     "rojo": [
       [
-        "Camilo",
-        "GK",
-        7.1
-      ],
-      [
-        "Willians",
-        "LCB",
-        8.2
-      ],
-      [
         "Felipe S",
-        "CB",
-        8.0
-      ],
-      [
-        "Benito",
-        "RCB",
-        7.0
+        "GK",
+        4.0
       ],
       [
         "Pancho",
-        "LM",
-        6.2
-      ],
-      [
-        "Francisco H",
-        "RM",
-        8.6
-      ],
-      [
-        "Félix",
-        "CF",
-        4.8
-      ]
-    ],
-    "negro": [
-      [
-        "Maxi Vargas",
-        "GK",
-        7.2
-      ],
-      [
-        "Jano",
         "LCB",
-        7.0
+        6.5
       ],
       [
-        "Riky",
-        "CB",
-        8.6
-      ],
-      [
-        "Ruben",
+        "Willians",
         "RCB",
-        6.6
+        8.0
       ],
       [
-        "Erik",
+        "Pablo",
         "LM",
-        8.5
+        5.8
       ],
       [
         "Felipe Sepúlveda",
@@ -141,9 +99,51 @@
         5.5
       ],
       [
-        "Nacho",
+        "Iván",
         "RM",
-        6.5
+        6.3
+      ],
+      [
+        "Camilo",
+        "CF",
+        5.5
+      ]
+    ],
+    "negro": [
+      [
+        "Francisco H",
+        "GK",
+        4.0
+      ],
+      [
+        "Jano",
+        "LCB",
+        7.0
+      ],
+      [
+        "Benito",
+        "CB",
+        7.0
+      ],
+      [
+        "Ruben",
+        "RCB",
+        6.6
+      ],
+      [
+        "Félix",
+        "LM",
+        4.2
+      ],
+      [
+        "Mati",
+        "RM",
+        7.5
+      ],
+      [
+        "Maxi Vargas",
+        "CF",
+        5.0
       ]
     ]
   }
